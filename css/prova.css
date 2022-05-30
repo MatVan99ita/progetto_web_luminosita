@@ -130,7 +130,7 @@ section#articoli article
 section#Contatti
 {
   width: 100%;
-  background-image: url("img/logo_chiaro.png");
+  background-image: url("../upload/logo_chiaro.png");
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center center;
