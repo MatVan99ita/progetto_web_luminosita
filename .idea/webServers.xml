@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="e4eefc32-06a3-437e-b317-3b967bc96e26" name="ProgettoWeb" url="http://localhost">
+        <fileTransfer mountedRoot="C:\xampp\htdocs\PROGETTO_WEBBBETE\progetto_web_luminosita" accessType="MOUNT" port="0" />
+      </webServer>
+    </option>
+  </component>
+</project>

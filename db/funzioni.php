@@ -24,6 +24,3 @@ function data_usr2db($datausr) {
     $a=explode("/",$datausr);
     return ($a[0] . "-" . $a[1] . "-" . $a[2]); // restituisco la data nel formato "aaaa-mm-gg"
 }
-
-
-?>

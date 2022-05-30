@@ -161,10 +161,7 @@ class Database {
     
     public function debugDumpParams(){
         return $this->stmt->debugDumpParams();
-    }    
-    
-  
-    
+    }
     
     function findTE($table,$field,$value){
         $query = "SELECT * FROM $table WHERE $field = :value";
@@ -329,8 +326,3 @@ class Database {
     }    
         
 }
-
-
-
-
-?>

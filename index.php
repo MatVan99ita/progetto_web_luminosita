@@ -1,3 +1,4 @@
+<?php require_once("bootstrap.php");?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,7 +11,12 @@
 
     <section>
         <?php
-
+        $dbo = new Database();
+        $query = "SELECT * FROM utente";
+        $dbo->query($query);
+        $dbo->execute();
+        $info = $dbo->resultset();
+        print_r($info);
         ?>
     </section>
         <br>
