@@ -1,0 +1,410 @@
+@font-face{
+  src: url("font/PirataOne-Regular.ttf");
+  font-family: 'PirataOne-Regular';
+}
+body
+{
+  margin: 0px;
+  font-family: 'PirataOne-Regular';
+}
+
+nav#menualtonav ul li{
+  display: inline-block;
+  padding: 10px;
+}
+nav#menualtonav ul li a{
+  color: white;
+}
+
+nav#menualtonav{
+  background-color: black;
+  text-align: center;
+}
+div#banneralto
+{
+    background-image: url("PNG/immagini/rias_gremory_wallpaper_2_deviantart_by_xxalbafikaxx-d78k6pb.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+    width: 100%;
+    height: 250px;
+    cursor:crosshair;
+
+    animation: change-background 4s ease infinite;
+}
+.width80
+{
+  width: 80%
+  margin: 0 auto;
+}
+div#testochisiamo
+{
+  width: 60%;
+}
+div#immaginechisiamo
+{
+  width: 38%;
+  height: 40%;
+  background-image: url("PNG/immagini/senkag2.jpg");
+  background-position: top center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  border-radius: 100%;
+  box-shadow: 5px 5px 5px 2px green;
+}
+div#testochisiamo, div#immaginechisiamo
+{
+  display: inline-block;
+}
+/*SMARTPHONE*/
+@media screen and (max-width:576px)
+{
+  div#testochisiamo, div#immaginechisiamo
+  {
+    width: 100%;
+  }
+  div#immaginechisiamo
+  {
+    margin: 15 0;
+    border: black solid 1px;
+  }
+
+  div#banneralto
+  {
+      background-image: url("PNG/immagini/one_punch_man___saitama_wallpaper_by_xthedeathcardx-d9l1p60.jpg");
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-position: center center;
+      width: 100%;
+      height: 250px;
+  }
+
+
+  section#articoli article{
+    font-size: 16px;
+    width: 100%;
+    text-align: justify;
+    padding: 15px;
+
+  }
+
+
+  div#colonnaSx, div#colonnaDx{
+    width: 100%;
+  }
+  div#colonnaDx{
+    margin-top: 25px;
+  }
+}
+/*tablet*/
+@media screen and (min-width:576px)
+{
+  div#testochisiamo
+  {
+    width: 60%;
+  }
+  div#immaginechisiamo
+  {
+    width: 38%;
+  }
+  div#testochisiamo, div#immaginechisiamo
+  {
+    display: inline-block;
+  }
+  section#articoli article{
+    display: inline-block;
+    width: 33%;
+    text-align: justify;
+    padding: 15px;
+    box-sizing: border-box;
+  }
+  div#colonnaSx, div#colonnaDx{
+    width: 30%;
+  }
+
+  div#colonnaDx{
+    position: absolute;
+    right: 0;
+  }
+
+}
+
+section#articoli article footer{
+  border-bottom: 1px  solid black;
+}
+
+
+
+
+section#vision h1
+{
+  text-align: center;
+  padding: 80px 20px;
+  color: rgb(0, 77, 0);
+}
+section#vision
+{
+  height: 400px;
+  width: 100%;
+  background-image: url("PNG/immagini/316459.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
+  position: relative;
+  background-attachment: fixed;/*Serve a mettere le immagini fisse mentre la pagina scorre a fare l'effetto sfondo fisso pagina che si muove */
+}
+
+.pellicola
+{
+  width: 100%;
+  height: 100%;
+  border: 1px solid black;
+  background-color: rgba(114, 0, 148, 0.5);
+  position: relative;
+  z-index: 3;
+}
+div#pellicano h1
+{
+  color: yellow;
+}
+
+div#contenitore
+{
+  width: 100%;
+  height: 500px;
+  border: 1px black solid;
+  background-color: rgb(114, 0, 148);
+}
+div#contenuto, div#contenuto1, div#contenuto2, div#contenuto3, div#contenuto4, div#contenuto5, div#contenuto6
+{
+  width: 20%;
+  height: 80px;
+  border: 1px black solid;
+  position: absolute;
+  display: inline-block;
+}
+div#contenuto
+{
+  margin: 10 10;
+  background-color: cadetblue;
+  position: relative;
+  float: left;
+}
+
+div#contenuto1
+{
+  margin: 10 10;
+  background-color: pink;
+  float: left;
+  position: relative;
+  clear: left;/*pulisce a destra e va sotto*/
+}
+
+div#contenuto2
+{
+  /*margin: 20 20;*/
+  background-color: brown;
+  position: relative;
+  float: right;
+}
+
+div#contenuto3
+{
+  /*margin: 100 30;*/
+  background-color: red;
+  /*position: fixed;/*l'oggetto si fissa allo scorrimento del browser*/
+  height: 50px;
+  position: sticky;/*si attacca al bordo top/bottom e scorre nella direzione quando incontra il margine della window*/
+  top: 0;
+  left: 0;
+  width: 50;
+
+}
+
+div#contenuto4
+{
+  background-color: blue;
+  position: fixed;/*l'oggetto si fissa allo scorrimento del browser*/
+
+  /*position: sticky;/*si attacca al bordo top/bottom e scorre nella direzione quando incontra il margine della window*/
+  bottom: 0;
+  left: 0;
+  width: 100%;
+}
+
+div#contenuto5
+{
+  margin: 50 50;
+  background-color: white;
+
+}
+
+div#contenuto6
+{
+  margin: 60 60;
+  background-color: purple;
+  /*z-index: 2;/*permette di gestire gli elementi a prescindere dalla generazione*/
+
+}
+
+
+section#footer{
+  background-color: black;
+  height: 200px;
+  padding: 20px;
+  position: relative;
+}
+div#colonnaSx, div#colonnaDx{
+  color: white;
+  display: inline-block;
+}
+
+div#colonnaSx{
+  float: left;
+}
+
+div#colonnaDx{
+  float: right;
+}
+
+div#testochisiamo
+{
+  line-height: 1.5;
+  letter-spacing: 1.3px;
+  word-spacing: 5px;
+  text-align: justify;
+}
+
+h2:hover
+{
+  transition: 2s;/*Transizione da 2 secondi*/
+  text-transform: capitalize;
+  text-shadow: 3px 3px 3px purple;
+}
+
+small
+{
+  transition: 1s;
+}
+small:hover
+{
+  animation-name: lampeggio;
+  animation-duration: 3s;
+  background-color: purple;
+  animation-iteration-count: 1;
+}
+
+@keyframes lampeggio/*cambio animato di sfondo*/
+{
+from{opacity: 0.0;}
+50%{opacity: 0.2;}
+100%{opacity: 1.0;}
+}
+
+
+@keyframes change-background /*animazione di cambio immagine*/
+{
+  0%{
+    background-image: url("PNG/immagini/rias_gremory_wallpaper_2_deviantart_by_xxalbafikaxx-d78k6pb.jpg");
+    opacity: 0.5;
+  }
+  12.5%
+  {
+    background-image: url("PNG/immagini/rias_gremory_wallpaper_2_deviantart_by_xxalbafikaxx-d78k6pb.jpg");
+    opacity: 1;
+  }
+  25%
+  {
+    background-image: url("PNG/immagini/1196-58710-2.jpg");
+    opacity: 0.5;
+  }
+  50%
+  {
+    background-image: url("PNG/immagini/1196-58710-2.jpg");
+    opacity: 1;
+  }
+  75%
+  {
+    background-image: url("PNG/immagini/1196-58710-2.jpg");
+    opacity: 0.5  ;
+  }
+  87.5%
+  {
+    background-image: url("PNG/immagini/rias_gremory_wallpaper_2_deviantart_by_xxalbafikaxx-d78k6pb.jpg");
+    opacity: 0.5;
+  }
+  100%
+  {
+    background-image: url("PNG/immagini/rias_gremory_wallpaper_2_deviantart_by_xxalbafikaxx-d78k6pb.jpg");
+    opacity: 1;
+  }
+}
+
+section#cursore
+{
+  padding:25px;
+  height: 50px;
+  border: 1px solid black;
+}
+div#miocursore
+{
+  width: 5px;
+  height: 100%;
+  background-color: black;
+  position: relative;
+  animation-name: supercar;
+  animation-duration: 0.059s;
+  animation-iteration-count: infinite;
+}
+
+  @keyframes supercar/*animazione di rotazione del cursore*/
+  {
+    0%
+    {
+      left:0;
+      background-color: purple;
+      transform: rotateZ(0deg);
+    }
+    12.5%
+    {
+      background-color: green;
+      transform: rotateZ(45deg);
+    }
+    25%
+    {
+      background-color: purple;
+      transform: rotateZ(90deg);
+    }
+    37.5%
+    {
+      background-color: green;
+      transform: rotateZ(135deg);
+    }
+    50%
+    {
+      left:100%;
+      background-color: purple;
+      transform: rotateZ(180deg);
+    }
+    62.5%
+    {
+      background-color: green;
+      transform: rotateZ(225deg);
+    }
+    75%
+    {
+      background-color: purple;
+      transform: rotateZ(270deg);
+    }
+    87.5%
+    {
+      background-color: green;
+      transform: rotateZ(315deg);
+    }
+    100%
+    {
+      left:0;
+      background-color: purple;
+      transform: rotateZ(360deg);
+    }
+  }

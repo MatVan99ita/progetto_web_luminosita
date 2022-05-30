@@ -1,0 +1,226 @@
+body
+{
+  font-family: 'Roboto', sans-serif;
+  text-align: center;
+}
+#header1
+{
+  background-color: #F2F2F2;
+}
+#header2
+{
+  background-color: black;
+  color: white;
+  padding-top: 50px;
+  padding-bottom: 50px;
+}
+
+button{
+  background-color: black;
+  color: white;
+  display: inline-block;
+  padding: 7px;
+}
+#articoli article
+{
+  display: inline-block;
+  border: 1px solid black;
+}
+#articoli
+{
+  padding-top: 5px;
+}
+
+button#bottoneScoperta
+{
+  background-color: #F2F2F2;
+  color: black;
+  width: 200px;
+}
+div#testochisiamo
+{
+  text-align: justify;
+}
+div#testochisiamo button
+{
+  text-align: center;
+}
+
+div#colonnaSx, div#testochisiamo{
+  display: inline-block;
+}
+
+#null
+{
+  color:black;
+}
+.width80
+{
+  width: 80%;
+  margin: 0 auto;
+}
+section#articoli article
+{
+  text-align: center;
+  }
+/*tablet e desktop*/
+@media screen and (min-width:576px)
+{
+  section#Contatti
+  {
+    display: inline-block;
+  }
+  div#colonnaSx{
+    float: left;
+    }
+    section#ilForm
+    {
+      position: absolute;
+    }
+    div#testochisiamo{
+      position: absolute;
+      right: 0;
+    }
+  div#testochisiamo{
+    float: right;
+  }
+  div#chisiamo2
+  {
+    column-count: 2;
+    column-width: 50%;
+  }
+  section#articoli article{
+    width: 30%;
+    padding: 15px;
+    box-sizing: border-box;
+    }
+  div#testochisiamo
+  {
+    color: black;
+    width: 60%;
+    padding-right: 10px;
+  }
+  img#immaginechisiamo
+  {
+    width: 50%;
+  }
+
+
+  form#formCont
+  {
+    float: right;
+    padding: 5px;
+  }
+  div#colonna1, div#colonna4{
+    width: 100%;
+  }
+  div#colonna4{
+    margin-top: 25px;
+  }
+}
+.pellicola
+{
+  width: 100%;
+  border: 1px solid black;
+  padding: 50px;
+  background-color: rgba(0, 0, 0, 0.9);
+  position: relative;
+
+}
+section#Contatti
+{
+  width: 100%;
+  background-image: url("img/logo_chiaro.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
+  position: relative;
+  background-attachment: fixed;/*Serve a mettere le immagini fisse mentre la pagina scorre a fare l'effetto sfondo fisso pagina che si muove */
+  text-align: center;
+}
+form#formCont input
+{
+  height: 30px;
+  width: 100%;
+  width: auto;
+  text-align: justify;
+}
+form#formCont label
+{
+  color: white;
+}
+form#formCont
+{
+  padding: 10px;
+}
+.contact
+{
+  border: 1px solid white;
+  padding: 5px;
+  text-align: justify;
+  color: white;
+  width: 47%;
+}
+.formazione
+{
+  background-color: orange;
+  text-align: justify;
+}
+section#ilForm
+{
+  width: 50%;
+  height: 50%;
+}
+
+/*SMARTPHONE*/
+@media screen and (max-width:576px)
+{
+  div#colonnaSx img
+  {
+    width: 50%
+  }
+  div#colonnaSx, div#testochisiamo
+  {
+    width: 100%;
+  }
+  div#colonnaSx
+  {
+    margin: 15 0;
+  }
+
+  section#articoli article{
+    font-size: 16px;
+    width: 50%;
+    text-align: center;
+    padding: 15px;
+  }
+
+  section#ChiSiamo
+  {
+    text-align: center;
+  }
+}
+section#footer{
+  column-count: 4;
+  column-width: 25%;
+  background-color: black;
+  height: 200px;
+  padding: 20px;
+  position: relative;
+}
+div#colonna1 img
+{
+  background-repeat: no-repeat;
+  background-size: auto;
+}
+
+div#colonna1 p
+{
+  color: white;
+}
+
+ul{
+  color: white;
+  list-style-type: none;
+  font-size: 0.4em;
+}
