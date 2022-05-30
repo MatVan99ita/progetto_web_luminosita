@@ -31,27 +31,18 @@
     ?>
 </main><aside>
     <section>
-        <h2>Post Casuali</h2>
+        <h2>info casuali</h2>
         <ul>
-            <?php foreach($templateParams["articolicasuali"] as $articolocasuale): ?>
-                <li>
-                    <img src="<?php echo UPLOAD_DIR.$articolocasuale["imgarticolo"]; ?>" alt="" />
-                    <a href="articolo.php?id=<?php echo $articolocasuale["idarticolo"]; ?>"><?php echo $articolocasuale["titoloarticolo"]; ?></a>
-                </li>
-            <?php endforeach; ?>
+            <?php foreach($templateParams["varie"] as $elemento):
+                echo $elemento;
+            endforeach; ?>
         </ul>
     </section>
-    <section>
-        <h2>Categorie</h2>
-        <ul>
-            <?php foreach($templateParams["categorie"] as $categoria): ?>
-                <li><a href="articoli-categoria.php?id=<?php echo $categoria["idcategoria"]; ?>"><?php echo $categoria["nomecategoria"]; ?></a></li>
-            <?php endforeach; ?>
-        </ul>
-    </section>
+
 </aside>
 <footer>
-    <p>Tecnologie Web - A.A. 2019/2020</p>
+    <p><img src="UP">Luminosità - Vicinanza . Silezio . Bevande</p>
+    <p>UniBo - Campus Cesena</p>
 </footer>
 </body>
 </html>
