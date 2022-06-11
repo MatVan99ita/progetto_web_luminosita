@@ -19,7 +19,7 @@
     <h1>Luminostà - </h1>
 </header>
 <nav>
-    <ul>
+    <ul> <!--le 4 voci in alto-->
         <li><a <?php isActive("index.php");?> href="index.php">Home</a></li><li><a <?php isActive("archivio.php");?> href="archivio.php">Archivio</a></li><li><a <?php isActive("contatti.php");?> href="contatti.php">Contatti</a></li><li><a <?php isActive("login.php");?> href="login.php">Login</a></li>
     </ul>
 </nav>

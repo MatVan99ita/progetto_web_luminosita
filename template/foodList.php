@@ -1,5 +1,5 @@
 
-//CategoryID, Nome, Descrizione, GlutenFree, Quantity, NomeAzienda
+
 <?php if(isset($templateParams["titolo_pagina"])): ?>
     <h2><?php echo $templateParams["titolo_pagina"]; ?></h2>
 <?php endif;?>
@@ -9,13 +9,16 @@
             <div>
                 <img src="" alt="<?php echo "Immagina PUAOI";/*echo UPLOAD_DIR.$tipo["imgarticolo"];*/ ?>" />
             </div>
-            <h2><?php echo $art["Nome"]; ?></h2>
+            <h2><?php echo $art["nomeProd"]; ?></h2>
         </header>
         <section>
-            <p><?php echo $tipo["Descrizione"]; ?></p>
+            <p><?php echo $art["descrProd"]; ?></p>
+            <p><?php echo $art["glutenFree"]; ?></p>
+            <p><?php echo $art["quantity"]; ?></p>
+            <p><?php echo $art["nomeAzienda"]; ?></p>
         </section>
         <footer>
-            <a href="foodCategory.php?id=<?php echo $tipo["catID"]; ?>">Vai ai prodotti</a>
+            <a href="">Aggiungi al carrello</a>
         </footer>
     </article>
 <?php endforeach; ?>
