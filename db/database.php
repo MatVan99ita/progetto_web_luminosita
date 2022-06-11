@@ -79,6 +79,32 @@ class DatabaseHelper{
         //$stmt->bind_param('ss',$username, $password);
         $stmt->execute();
         $result = $stmt->get_result();
+        echo $result;
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
+    public function getFoodTypes(){
+        $stmt = $this->db->prepare("SELECT CategoryID, CategoryName, CategoryDescr FROM foodcategory");
+        $stmt->execute();
+        $result = $stmt->get_result();
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
+    public function getFoodByType($type){
+        $sql = "SELECT P.CategoryID AS catID, Nome, Descrizione, GlutenFree, Quantity, NomeAzienda, CategoryName FROM prodotto AS P, foodcategory AS F, venditore WHERE CategoryID = ?";
+        $stmt = $this->db->prepare($sql);
+        $stmt->bind_param('i', $type);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
+    public function getSpecificCat($id){
+        $sql = "SELECT P.CategoryID, CategoryName FROM foodcategory WHERE CategoryID = ?";
+        $stmt = $this->db->prepare($sql);
+        $stmt->bind_param('i', $id);
+        $stmt->execute();
+        $result = $stmt->get_result();
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 

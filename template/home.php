@@ -1,20 +1,19 @@
 <?php if(isset($templateParams["titolo_pagina"])): ?>
     <h2><?php echo $templateParams["titolo_pagina"]; ?></h2>
 <?php endif;?>
-<?php foreach($templateParams["articoli"] as $articolo): ?>
+<?php foreach($templateParams["categorie"] as $tipo): ?>
     <article>
         <header>
             <div>
-                <img src="<?php echo UPLOAD_DIR.$articolo["imgarticolo"]; ?>" alt="" />
+                <img src="<?php echo "Immagina PUAOI";/*echo UPLOAD_DIR.$tipo["imgarticolo"];*/ ?>" alt="" />
             </div>
-            <h2><?php echo $articolo["titoloarticolo"]; ?></h2>
-            <p><?php echo $articolo["dataarticolo"]; ?> - <?php echo $articolo["nome"]; ?></p>
+            <h2><?php echo $tipo["CategoryName"]; ?></h2>
         </header>
         <section>
-            <p><?php echo $articolo["anteprimaarticolo"]; ?></p>
+            <p><?php echo $tipo["CategoryDescr"]; ?></p>
         </section>
         <footer>
-            <a href="articolo.php?id=<?php echo $articolo["idarticolo"]; ?>">Leggi tutto</a>
+            <a href="foodCategory.php?id=<?php echo $tipo["CategoryID"]; ?>">Vai ai prodotti</a>
         </footer>
     </article>
 <?php endforeach; ?>

@@ -16,7 +16,7 @@
 </head>
 <body>
 <header>
-    <h1>Blog di Tecnologie Web</h1>
+    <h1>Luminostà - </h1>
 </header>
 <nav>
     <ul>
@@ -29,17 +29,19 @@
         require($templateParams["nome"]);
     }
     ?>
-</main><aside>
+</main>
+
+<aside>
     <section>
-        <h2>info casuali</h2>
+        <h2>info casuali da rimuovere</h2>
         <ul>
             <?php foreach($templateParams["varie"] as $elemento):
                 echo $elemento;
             endforeach; ?>
         </ul>
     </section>
-
 </aside>
+
 <footer>
     <p><img src="UP">Luminosità - Vicinanza . Silezio . Bevande</p>
     <p>UniBo - Campus Cesena</p>
