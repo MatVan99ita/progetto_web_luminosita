@@ -5,7 +5,7 @@
     <article>
         <header>
             <div>
-                <img src="<?php echo "Immagina PUAOI";/*echo UPLOAD_DIR.$tipo["imgarticolo"];*/ ?>" alt="" />
+                <img src="<?php echo CAT_DIR.$tipo["CategoryID"].". ".$tipo["CategoryName"].".jpg"; ?>" alt="<?php echo $tipo["CategoryID"].". ".$tipo["CategoryName"]; ?>" />
             </div>
             <h2><?php echo $tipo["CategoryName"]; ?></h2>
         </header>
