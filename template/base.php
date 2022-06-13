@@ -16,7 +16,8 @@
 </head>
 <body>
 <header>
-    <h1>Luminostà - </h1>
+    <div id="logo_zone"><img id="logo_head" src="<?php echo LOGO."chiaro.png"?>" alt="<?php echo $templateParams["titolo"]; ?>" /></div>
+    <div id="user_zone"><img id="logo_head" src="<?php echo LOGO."scuro.png"?>" alt="<?php echo $templateParams["titolo"]; ?>" /></div>
 </header>
 <nav>
     <ul> <!--le 4 voci in alto-->
@@ -31,19 +32,8 @@
     ?>
 </main>
 
-<aside>
-    <section>
-        <h2>info casuali da rimuovere</h2>
-        <ul>
-            <?php foreach($templateParams["varie"] as $elemento):
-                echo $elemento;
-            endforeach; ?>
-        </ul>
-    </section>
-</aside>
-
 <footer>
-    <p><img src="UP">Luminosità - Vicinanza . Silezio . Bevande</p>
+    <p><img id="logo_foot" src=<?php echo LOGO."chiaro.png"; ?> ><?php echo $templateParams["titolo"]; ?></p>
     <p>UniBo - Campus Cesena</p>
 </footer>
 </body>

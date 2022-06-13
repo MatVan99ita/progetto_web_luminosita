@@ -4,14 +4,29 @@ body, header, h1, h2, h5, ul{
 }
 
 body{
-    background-color: #e4e4e4;
+    background-color: #e4e4e4; 
+}
+
+#categories{
+    display: inline-block;
+    width: 25%;
+    height: 10%;
 }
 
 body > header, body > footer{
     background-color: rgb(54,54,54);
     color: #fff;
-    text-align: center;
     padding: 20px 0;
+}
+
+#logo_zone {
+    position:absolute;
+    left:0;
+}
+
+#user_zone {
+    position:absolute;
+    right:0;
 }
 
 body > header > h1{
@@ -55,6 +70,7 @@ nav ul li:hover a, nav ul li a.active{
 main{
     margin: 20px 5% 0;
 }
+
 article, form, main > section{
     background-color: #fff;
     border: 1px solid #cacaca;
@@ -237,7 +253,13 @@ body > footer > p{
     font-family: 'Courier New', Courier, monospace;
 }
 
+#logo_foot{
+    width: 15px;
+}
 
+#logo_head{
+    width: 50px;
+}
 
 @media screen and (min-width:768px){
     nav{
