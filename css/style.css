@@ -12,6 +12,8 @@ body{
     size: 75px;
 }
 
+
+
 *{
     box-sizing: border-box;
 }
@@ -29,6 +31,7 @@ body{
   
 .right {
     width: 50%;
+    text-align: right;
 }
   
   /* Clear floats after the columns */
