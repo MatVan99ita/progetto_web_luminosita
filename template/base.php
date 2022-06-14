@@ -3,7 +3,7 @@
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title><?php echo $templateParams["titolo"]; ?></title>
-    <link rel="stylesheet" type="text/css" href="./css/style.css" />
+    <link rel="stylesheet" type="text/css" href="./css/main_style.css" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 <?php
     if(isset($templateParams["js"])):
@@ -20,8 +20,10 @@
 </head>
 <body>
 <header class="navbar navbar-inverse navbar-static-top">
-        <div class="column left"> 
-            <img id="logo_head" src="<?php echo LOGO."chiaro.png"?>" alt="<?php echo $templateParams["titolo"]; ?>" />
+        <div class="column left">
+            <a href="index.php">
+                <img id="logo_head" src="<?php echo LOGO."chiaro.png"?>" alt="<?php echo $templateParams["titolo"]; ?>"/>      
+            </a>
             <p>DATA</p>
             <p>ORARIO</p>
         </div>
@@ -31,13 +33,13 @@
             <p>NOME</p>
         </div>
 </header>
-<nav>
-    <ul> <!--le 4 voci in alto-->
+<!--nav>
+    <ul> <--le 4 voci in alto->
         <li><a <?php isActive("index.php");?> href="index.php">Home</a></li><li><a <?php isActive("archivio.php");?> href="archivio.php">Archivio</a></li><li><a <?php isActive("contatti.php");?> href="contatti.php">Contatti</a></li><li><a <?php isActive("login.php");?> href="login.php">Login</a></li>
     </ul>
-</nav>
-<main>
-    <?php
+</nav-->
+<main class="container">
+    <?php //class="<?php echo $templateParams["list-type"]"
     if(isset($templateParams["nome"])){
         require($templateParams["nome"]);
     }

@@ -14,6 +14,7 @@ $nomecategoria = $dbh->getSpecificCat($idcategoria)[0];
 if(count($nomecategoria)>0){
     $templateParams["titolo_pagina"] = $nomecategoria["CategoryName"];
     $templateParams["articoli"] = $dbh->getFoodByType($nomecategoria["CategoryID"]);
+    $templateParams["list-type"]="container";
 }
 else{
     $templateParams["titolo_pagina"] = "Categoria non trovata"; 
