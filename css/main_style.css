@@ -16,6 +16,7 @@ body > header, body > footer{
 
 #card_cat{
     width: 33%;
+    /*margin: 20px 20px 20px 20px;*/
 }
 
 body > header > h1{
@@ -64,20 +65,25 @@ main{
 body > footer > p{
     font-family: 'Courier New', Courier, monospace;
 }
-
-#logo_foot{
-    width: 15px;
+#logo_head{
+    width: 125px;
 }
 
-#logo_head{
-    width: 50px;
+<576px
+@media screen and (max-width:576px){
+    #card_cat{
+        width: 300px;
+    }
 }
 
 @media screen and (min-width:768px){
     
-    #card_cat{
-        max-width: 100%;
-    }
+    
+
+    main{
+        display: flex;
+        flex-direction: column;
+      }
 
     nav{
         margin: 0 10%;

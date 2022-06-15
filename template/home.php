@@ -9,7 +9,7 @@
         $id = $tipo["CategoryID"]."_catImg";
         ?>
         
-            <div class="card" id="card_cat">
+            <div id="card_cat" class="col-4" media="screen and (min-width: 480px) and (max-width: 1920px)">
                 <img src="<?php echo $img; ?>" class="card-img-top" alt="<?php echo $img; ?>">
                 <div class="card-header">
                     <h2 class="card-title"><?php echo $tipo["CategoryName"]; ?></h2>

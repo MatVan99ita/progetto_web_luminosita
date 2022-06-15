@@ -22,15 +22,15 @@
 <header class="navbar navbar-inverse navbar-static-top">
         <div class="column left">
             <a href="index.php">
-                <img id="logo_head" src="<?php echo LOGO."chiaro.png"?>" alt="<?php echo $templateParams["titolo"]; ?>"/>      
+                <img class="img-fluid float-left" id="logo_head" src="<?php echo LOGO."chiaro-200x200.png"?>" alt="<?php echo $templateParams["titolo"]; ?>"/>      
             </a>
             <p>DATA</p>
             <p>ORARIO</p>
         </div>
         <div class="column right">
-            <img id="logo_head" src="<?php echo LOGO."scuro.png"?>" alt="<?php echo $templateParams["titolo"]; ?>" />
-            <p>CARRELLO</p>
-            <p>NOME</p>
+            <img class="img-fluid float-right" id="logo_head" src="<?php echo LOGO."scuro-200x200.png"?>" alt="<?php echo $templateParams["titolo"]; ?>" />
+                <p>Ciao, <?php echo "Tizio" ?></p>
+            </div>
         </div>
 </header>
 <!--nav>
@@ -38,7 +38,7 @@
         <li><a <?php isActive("index.php");?> href="index.php">Home</a></li><li><a <?php isActive("archivio.php");?> href="archivio.php">Archivio</a></li><li><a <?php isActive("contatti.php");?> href="contatti.php">Contatti</a></li><li><a <?php isActive("login.php");?> href="login.php">Login</a></li>
     </ul>
 </nav-->
-<main class="container">
+<main class="container col col-lg-12 col-md-12 col-sm-12 col-1">
     <?php //class="<?php echo $templateParams["list-type"]"
     if(isset($templateParams["nome"])){
         require($templateParams["nome"]);

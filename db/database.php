@@ -26,7 +26,7 @@ class DatabaseHelper{
     }
 
     public function getFoodByType($type){
-        $sql = "SELECT nomeProd, descrProd, glutenFree, quantity, nomeAzienda FROM prodotto, foodcategory, venditore WHERE foodType = ? GROUP BY(nomeProd);";
+        $sql = "SELECT CategoryID, CategoryName, prodottoID, nomeProd, descrProd, glutenFree, quantity, nomeAzienda FROM prodotto, foodcategory, venditore WHERE foodType = ? GROUP BY(nomeProd);";
         $stmt = $this->db->prepare($sql);
         $stmt->bind_param('i', $type);
         $stmt->execute();
@@ -63,6 +63,15 @@ class DatabaseHelper{
         $ven = $result->fetch_all(MYSQLI_ASSOC);
         echo $ven;
         return $ven["vendors"]==0;
+    }
+
+    public function checkLogin($username, $password){
+        $query = "SELECT userID, Nome, Cognome, Email FROM utente WHERE attivo=1 AND username = ? AND password = ?";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('ss',$username, $password);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        return $result->fetch_all(MYSQLI_ASSOC);
     }
 
 }
