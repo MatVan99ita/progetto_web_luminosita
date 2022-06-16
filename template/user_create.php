@@ -58,4 +58,7 @@
             <p style="color: red"><?php echo $templateParams["erroreCreazione"]; ?></p>
         <?php endif;?>
     </div>
+    <a id="log_user" href="login.php">
+        Hai già un account?
+    </a>
 </div>
