@@ -34,11 +34,11 @@
 
         <div class="form-group">
             <label for="InputPassword1">Password</label>
-            <input type="password" class="form-control" id="InputPassword1" name="InputPassword1" placeholder="Password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" required>
+            <input type="password" class="form-control" id="InputPassword1" name="InputPassword1" placeholder="Password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*?[0-9])(?=.*?[!@#$%^&*+`~'=?\|\]\[\(\)\-<>/]).{8,}" required>
         </div>
         <div class="form-group">
             <label for="InputPassword2">Ripeti password</label>
-            <input type="password" class="form-control" id="InputPassword2" name="InputPassword2" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" placeholder="Password" required>
+            <input type="password" class="form-control" id="InputPassword2" name="InputPassword2" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*?[0-9])(?=.*?[!@#$%^&*+`~'=?\|\]\[\(\)\-<>/]).{8,}" placeholder="Password" required>
             <div style="margin-top: 7px;" id="CheckPasswordMatch"></div>
         </div>
         <button type="submit" class="btn btn-primary">Crea</button>

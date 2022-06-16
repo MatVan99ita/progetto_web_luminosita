@@ -31,3 +31,4 @@
  TODO:
    devo trovare un modo per evitare che refreshando register mi risegni le cose oppure no tanto chissene
    però una volta creato un utente devo mettere direttamente la pagina di logged così da far sembrare che una volta che l'account è stato creato è anche già loggato(quindi si torna alla storia dei cookie)
+   quindi mettere in mail la mail dell'account appena creato nel form di login e lasciar scrivere la pazzword(oppure mettere anche quella);
