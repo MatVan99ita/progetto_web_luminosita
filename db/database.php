@@ -66,12 +66,36 @@ class DatabaseHelper{
     }
 
     public function checkLogin($username, $password){
-        $query = "SELECT userID, Nome, Cognome, Email FROM utente WHERE attivo=1 AND username = ? AND password = ?";
+        $query = "SELECT userID, Nome, Cognome, Email, vendors FROM utente WHERE Email = ? AND password = ?";
         $stmt = $this->db->prepare($query);
         $stmt->bind_param('ss',$username, $password);
         $stmt->execute();
         $result = $stmt->get_result();
         return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
+    public function addUser($nome, $cognome, $sesso, $mail, $password){
+        /*manca un controllo da qualche parte per la mail che sia corretta
+            [credo si possa fare direttamente dall'html con il textbox in modalità mail spero]
+        */
+        $sql = "INSERT INTO `utente`(`Nome`, `Cognome`, `Email`, `password`, `vendors`) 
+        VALUES (?, ?, ?, ?, 0)";
+        $stmt = $this->db->prepare($sql1);
+        $stmt->bind_param('ssss',$nome, $cognome, $mail, $password);
+        $stmt->execute();
+        
+        //controllo se la query è andata a buon fine
+        if($this->db->error){
+            //echo($this->db->error);
+            return $this->db->error
+        }
+
+        $utenteId = this->getUser($mail, $password); //qui va sistemato
+
+        $sql="INSERT INTO `compratore`(`sesso`, `userID`) VALUES (?, utenteID)";
+        $stmt = $this->db->prepare($sql1);
+        $stmt->bind_param('s',$sesso, $utenteId);
+        $stmt->execute();
     }
 
 }
