@@ -168,6 +168,12 @@ form ul li img{
     display:none;
 }
 
+#good_end{
+    color: rgb(71, 176, 71);
+    margin-top: 100px;
+    margin-bottom: 100px;
+}
+
 /*<576px*/
 @media screen and (max-width:576px){
     #card_cat{

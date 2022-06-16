@@ -78,6 +78,7 @@ class DatabaseHelper{
         /*manca un controllo da qualche parte per la mail che sia corretta
             [credo si possa fare direttamente dall'html con il textbox in modalità mail spero]
         */
+        print_r($_POST);
         $sql = "INSERT INTO `utente`(`Nome`, `Cognome`, `Email`, `password`, `vendors`) 
         VALUES (?, ?, ?, ?, 0)";
         $stmt = $this->db->prepare($sql);
@@ -93,14 +94,14 @@ class DatabaseHelper{
         //se non entra nell'if aggiungerà l'utente anche sulla tabella compratore
 
         //prendiamo l'id dell'utente appena creato...
-        //$utenteId = this->getUser($mail, $password); //qui va sistemato
-        
+        $utente = $this->getUser($mail, $password); //qui va sistemato
+        print_r($utente[0]);
+        $id = $utente[0]["UserID"];
         //...e lo inseriamo su compratore
-        $sql="INSERT INTO `compratore`(`sesso`, `userID`) VALUES (?, 1)";
+        $sql="INSERT INTO `compratore`(`sesso`, `userID`) VALUES (?, ?)";
         $stmt = $this->db->prepare($sql);
-        $stmt->bind_param('s',$sesso);
+        $stmt->bind_param('ss',$sesso, $id);
         $stmt->execute();
-
         return array(true, "Registrazione avvenuta con successo");
     }
 
