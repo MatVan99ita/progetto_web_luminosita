@@ -74,28 +74,34 @@ class DatabaseHelper{
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 
-    public function addUser($nome, $cognome, $sesso, $mail, $password){
+    public function addUser($nome, $cognome, $mail, $sesso, $password){
         /*manca un controllo da qualche parte per la mail che sia corretta
             [credo si possa fare direttamente dall'html con il textbox in modalità mail spero]
         */
         $sql = "INSERT INTO `utente`(`Nome`, `Cognome`, `Email`, `password`, `vendors`) 
         VALUES (?, ?, ?, ?, 0)";
-        $stmt = $this->db->prepare($sql1);
+        $stmt = $this->db->prepare($sql);
         $stmt->bind_param('ssss',$nome, $cognome, $mail, $password);
         $stmt->execute();
         
-        //controllo se la query è andata a buon fine
+        /*controllo se la query è andata a buon fine poichè nel db la mail è un valore unico per utente e 
+        quindi non serve un controllo sull'esistenza dell'utente*/
         if($this->db->error){
-            //echo($this->db->error);
-            return $this->db->error
+            return array(false, "$mail esiste già");
         }
 
-        $utenteId = this->getUser($mail, $password); //qui va sistemato
+        //se non entra nell'if aggiungerà l'utente anche sulla tabella compratore
 
-        $sql="INSERT INTO `compratore`(`sesso`, `userID`) VALUES (?, utenteID)";
-        $stmt = $this->db->prepare($sql1);
-        $stmt->bind_param('s',$sesso, $utenteId);
+        //prendiamo l'id dell'utente appena creato...
+        //$utenteId = this->getUser($mail, $password); //qui va sistemato
+        
+        //...e lo inseriamo su compratore
+        $sql="INSERT INTO `compratore`(`sesso`, `userID`) VALUES (?, 1)";
+        $stmt = $this->db->prepare($sql);
+        $stmt->bind_param('s',$sesso);
         $stmt->execute();
+
+        return array(true, "Registrazione avvenuta con successo");
     }
 
 }
