@@ -44,7 +44,7 @@ class DatabaseHelper{
     }
 
     public function getUser($mail, $pass){
-        $ven = userIsVendors($mail, $pass);
+        //$ven = userIsVendors($mail, $pass);
         $sql = "SELECT UserID, Nome, Cognome, Email FROM utente WHERE Email = ? AND password = ?";
         $stmt = $this->db->prepare($sql);
         $stmt->bind_param('ss', $mail, $pass);
@@ -54,10 +54,10 @@ class DatabaseHelper{
         return $ven;
     }
 
-    public function userIsVendors($mail, $pass){
-        $sql = "SELECT vendors from utente where Email= ? AND password = ?";
+    public function userIsVendors($id){
+        $sql = "SELECT vendors from utente where id= ?";
         $stmt = $this->db->prepare($sql);
-        $stmt->bind_param('ii', $mail, $pass);
+        $stmt->bind_param('i', $id);
         $stmt->execute();
         $result = $stmt->get_result();
         $ven = $result->fetch_all(MYSQLI_ASSOC);

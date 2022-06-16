@@ -28,8 +28,10 @@
             <p>ORARIO</p>
         </div>
         <div class="column right">
-            <img class="img-fluid float-right" id="logo_head" src="<?php echo LOGO."scuro-200x200.png"?>" alt="<?php echo $templateParams["titolo"]; ?>" />
-                <p>Ciao, <?php echo "Tizio" ?></p>
+            <a href="login.php">
+                <img class="img-fluid float-right" id="logo_head" src="<?php echo LOGO."scuro-200x200.png"?>" alt="<?php echo $templateParams["titolo"]; ?>" />
+            </a>
+            <p>Ciao, <?php echo "Tizio" ?></p>
             </div>
         </div>
 </header>
