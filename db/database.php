@@ -65,8 +65,26 @@ class DatabaseHelper{
         return $ven["vendors"]==0;
     }
 
-    public function checkLogin($username, $password){
-        $query = "SELECT userID, Nome, Cognome, Email, vendors FROM utente WHERE Email = ? AND password = ?";
+    public function getAllUserLoggedInfo($username, $id, $pass){
+        
+        /*
+        UserID <- non serve
+        Nome
+        Cognome
+        Email
+        password <- questa viene passata con hashing quindi va decodificata
+        vendors <- per generare la seconda parte di template
+        BuyerID <- non serve
+        codUnibo
+        sesso
+        zoneConsegna
+        info_pagamento
+        userID <- non serve
+        */
+
+        $hashed_pass = $pass;
+
+        $query = "SELECT * FROM utente INNER JOIN compratore ON utente.UserID = compratore.userID WHERE Email = ? AND UserID = ?";
         $stmt = $this->db->prepare($query);
         $stmt->bind_param('ss',$username, $password);
         $stmt->execute();

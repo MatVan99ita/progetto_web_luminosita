@@ -32,3 +32,5 @@
    NUOVA PAGINA ALTRIMENTI ESPLODO CON STRONZATE GRAFICHE
    oppure potrei lasciare il login una volta creato e semplicemente fare 2 bottoni con dashboard e home e il tastino di chiusura per rimanere nella creazione dell'account
 
+ TODO:
+   devo pensare se aggiungere o meno le password hashate nel db in modo che il controllo sia più facile poi con le funzioni

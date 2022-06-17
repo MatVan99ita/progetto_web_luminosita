@@ -20,8 +20,8 @@ if(isset($_POST["username"]) && isset($_POST["password"])){
         registerLoggedUser($login_result[0]);
     }
 }
-if(isUserLoggedIn()){
-    $templateParams["nome"] = "loggin_in.php";
+if($_COOKIE["logged"]){
+    $templateParams["nome"] = "userDetails.php";
     //$templateParams["user_info"] = $dbh->getUserInfo($_SESSION["id"]);
     if(isset($_GET["formmsg"])){
         $templateParams["formmsg"] = $_GET["formmsg"];

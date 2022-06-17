@@ -12,7 +12,7 @@ require_once 'bootstrap.php';
 //Base Template
 $templateParams["titolo"] = "Luminosità - ";
 $templateParams["nome"] = "user_details.php";
-$templateParams["user"] = $dbh->getUser("gino", "pippo");
+$templateParams["user"] = $dbh->getUser($_COOKIE["mail"]);
 //Articoli Categoria Template
 
 
