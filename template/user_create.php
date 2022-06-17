@@ -41,7 +41,7 @@
             <input type="password" class="form-control" id="InputPassword2" name="InputPassword2" pattern = "(?=.*\d)(?=.*[a-z])(?=.*?[0-9])(?=.*?[~`!@#$%^&amp;*()_=+\[\]{};:&apos;.,&quot;\\|\/?&gt;&lt;-]).{8,}" placeholder="Password" required>
             <div style="margin-top: 7px;" id="CheckPasswordMatch"></div>
         </div>
-        <button type="submit" class="btn btn-primary">Crea</button>
+        <button id="submit" type="submit" class="btn btn-primary">Crea</button>
     </form>
     <div id="pswd_info">
         <h4>Password must meet the following requirements:</h4>
@@ -52,6 +52,11 @@
             <li id="length" class="invalid">Be at least <strong>8 characters</strong></li>
             <li id="special" class="invalid">At least <strong>1 special character(Ex.: .,_?! etc...)</strong></li>
         </ul>
+    </div>
+    <div id="account_successfull">
+        <h4>Creazione avvenuta con il cesso</h4>
+        <button class="btn btn-primary">Dashboard</button>
+        <button class="btn btn-primary">Prosegui sul sito</button>
     </div>
     <div>
         <?php if(isset($templateParams["erroreCreazione"])): ?>
