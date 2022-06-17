@@ -33,12 +33,9 @@
    oppure potrei lasciare il login una volta creato e semplicemente fare 2 bottoni con dashboard e home e il tastino di chiusura per rimanere nella creazione dell'account
 
  TODO:
-   devo pensare se aggiungere o meno le password hashate nel db in modo che il controllo sia più facile poi con le funzioni
-   e così da poter salvare i cookie
+   le info dell'utente dovranno esserci tutte tranne la password e quelle inutili
 
-   quindi la password devo criptare con sale(stringa generata casualmente) e poi hashare il sale
-   
-   // Crea una chiave casuale
-   $random_salt = hash('sha512', uniqid(mt_rand(1, mt_getrandmax()), true));
-   // Crea una password usando la chiave appena creata.
-   $password = hash('sha512', $password.$random_salt);
+ TODO:
+   se cambia password lo può fare forse
+
+   quindi mette la vecchia > sale + hash > controllo > se va bene la nuova dovrà avere stesso procedimento altrimenti errore

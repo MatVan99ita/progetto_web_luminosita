@@ -20,15 +20,17 @@ if(isset($_POST["username"]) && isset($_POST["password"])){
         registerLoggedUser($login_result[0]);
     }
 }
-if($_COOKIE["logged"]){
-    $templateParams["nome"] = "userDetails.php";
+else if(isset($_COOKIE["logged"])){
+    if($_COOKIE["logged"]){
+    $templateParams["nome"] = "user_details.php";
     //$templateParams["user_info"] = $dbh->getUserInfo($_SESSION["id"]);
     if(isset($_GET["formmsg"])){
         $templateParams["formmsg"] = $_GET["formmsg"];
     }
-} else if(isset($_POST["mail"]) && !isset($_POST["password"])){
-    $templateParams["nome"] = "loggin_in.php";
-    $templateParams["mail_created"] = $_POST["mail"];
+    } else if(isset($_POST["mail"]) && !isset($_POST["password"])){
+        $templateParams["nome"] = "loggin_in.php";
+        $templateParams["mail_created"] = $_POST["mail"];
+    }
 }
 else{
     $templateParams["nome"] = "loggin_in.php";

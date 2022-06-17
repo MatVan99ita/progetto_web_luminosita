@@ -44,8 +44,7 @@ class DatabaseHelper{
     }
 
     public function getUser($mail, $pass){
-        //$ven = userIsVendors($mail, $pass);
-        $sql = "SELECT UserID, Nome, Cognome, Email FROM utente WHERE Email = ? AND password = ?";
+        $sql = "SELECT UserID, Nome, Cognome, Email, password, salt FROM utente WHERE Email = ? AND password = ?";
         $stmt = $this->db->prepare($sql);
         $stmt->bind_param('ss', $mail, $pass);
         $stmt->execute();
@@ -65,14 +64,15 @@ class DatabaseHelper{
         return $ven["vendors"]==0;
     }
 
-    public function getAllUserLoggedInfo($username, $id, $pass){
+    public function getAllUserLoggedInfo($mail, $id, $pass){
         
         /*
         UserID <- non serve
         Nome
         Cognome
         Email
-        password <- questa viene passata con hashing quindi va decodificata
+        password <- hashata che va rimessa in chiaro
+        salt <- per le cose di hashing
         vendors <- per generare la seconda parte di template
         BuyerID <- non serve
         codUnibo
@@ -82,25 +82,35 @@ class DatabaseHelper{
         userID <- non serve
         */
 
-        $hashed_pass = $pass;
-
-        $query = "SELECT * FROM utente INNER JOIN compratore ON utente.UserID = compratore.userID WHERE Email = ? AND UserID = ?";
+        $query = "SELECT * FROM utente INNER JOIN compratore ON utente.UserID = compratore.userID WHERE Email = ? AND utente.UserID = ? AND password = ?";
         $stmt = $this->db->prepare($query);
-        $stmt->bind_param('ss',$username, $password);
+        $stmt->bind_param('sss',$mail, $id, $pass);
         $stmt->execute();
         $result = $stmt->get_result();
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 
     public function addUser($nome, $cognome, $mail, $sesso, $password){
-        /*manca un controllo da qualche parte per la mail che sia corretta
-            [credo si possa fare direttamente dall'html con il textbox in modalità mail spero]
-        */
-        print_r($_POST);
-        $sql = "INSERT INTO `utente`(`Nome`, `Cognome`, `Email`, `password`, `vendors`) 
-        VALUES (?, ?, ?, ?, 0)";
+
+        // Crea una chiave casuale
+        $random_salt = hash('sha512', uniqid(mt_rand(1, mt_getrandmax()), true));
+        // Crea una password usando la chiave appena creata.
+        $password = hash('sha512', $password.$random_salt);
+
+        //setto i cookie per la criptazione
+        if(isset($_COOKIE["hash"]) && isset($_COOKIE["salt"])){
+            unset($_COOKIE["hash"]);
+            unset($_COOKIE["salt"]);
+            setcookie("hash", $password);
+            setcookie("salt", $random_salt);
+        } else {
+            setcookie("hash", $password);
+            setcookie("salt", $random_salt);
+        }
+        $sql = "INSERT INTO `utente`(`Nome`, `Cognome`, `Email`, `password`, `salt`, `vendors`) 
+        VALUES (?, ?, ?, ?, ?, 0)";
         $stmt = $this->db->prepare($sql);
-        $stmt->bind_param('ssss',$nome, $cognome, $mail, $password);
+        $stmt->bind_param('sssss',$nome, $cognome, $mail, $password, $random_salt);
         $stmt->execute();
         
         /*controllo se la query è andata a buon fine poichè nel db la mail è un valore unico per utente e 
@@ -108,18 +118,37 @@ class DatabaseHelper{
         if($this->db->error){
             return array(false, "$mail esiste già");
         }
-
+        
+        
         //se non entra nell'if aggiungerà l'utente anche sulla tabella compratore
 
         //prendiamo l'id dell'utente appena creato...
         $utente = $this->getUser($mail, $password); //qui va sistemato
         print_r($utente[0]);
         $id = $utente[0]["UserID"];
+
+        
+
         //...e lo inseriamo su compratore
         $sql="INSERT INTO `compratore`(`sesso`, `userID`) VALUES (?, ?)";
         $stmt = $this->db->prepare($sql);
         $stmt->bind_param('ss',$sesso, $id);
         $stmt->execute();
+
+        //infine setto i cookie per i dati che servono per mantenere l'accesso
+        if (isset($_COOKIE['id']) && isset($_COOKIE['mail']) && isset($_COOKIE['logged'])) {
+            unset($_COOKIE['id']);
+            unset($_COOKIE['mail']);
+            unset($_COOKIE['logged']);
+            setcookie("id", $id);
+            setcookie("mail", $mail);
+            setcookie("logged", true);
+        } else {
+            setcookie("id", $id);
+            setcookie("mail", $mail);
+            setcookie("logged", true);
+        }
+        
         return array(true, "Registrazione avvenuta con successo");
     }
 
