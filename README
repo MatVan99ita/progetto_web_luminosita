@@ -34,3 +34,11 @@
 
  TODO:
    devo pensare se aggiungere o meno le password hashate nel db in modo che il controllo sia più facile poi con le funzioni
+   e così da poter salvare i cookie
+
+   quindi la password devo criptare con sale(stringa generata casualmente) e poi hashare il sale
+   
+   // Crea una chiave casuale
+   $random_salt = hash('sha512', uniqid(mt_rand(1, mt_getrandmax()), true));
+   // Crea una password usando la chiave appena creata.
+   $password = hash('sha512', $password.$random_salt);
