@@ -126,8 +126,9 @@ a, a:hover{
   }
 #pswd_info {
     position: absolute;
-    bottom:-75px;
+    bottom:-100px;
     bottom: -115px\9; /* IE Specific */
+    left: 100px;
     right:55px;
     width:250px;
     padding:15px;
@@ -146,7 +147,7 @@ a, a:hover{
 
 #pswd_info::before {
     content: "\25B2";
-    position:absolute;
+    position: absolute;
     top:-12px;
     left:45%;
     font-size:14px;
