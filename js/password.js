@@ -61,3 +61,17 @@ $(document).ready(function() {
   });
 
 });
+
+/**
+ * Popup per l'avvenuta creazione
+ */
+ $(document).ready(function() {
+  $("#InputPassword1").keyup(function() {
+    
+  }).focus(function() {
+    $('#pswd_info').show();
+  }).blur(function() {
+    $('#pswd_info').hide();
+  });
+
+});

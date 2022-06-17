@@ -20,7 +20,7 @@
     il carrello lo dovrò gestire in modo bislacco con jquery, cookie e backand sul sito, sarà un delirio
 
  TODO:
-    per la zona acquisti dovrò gestirmi non solo la znoa di consegna, tipo aula ma anche 
+    per la zona acquisti dovrò gestirmi non solo la zona di consegna, tipo aula ma anche 
     l'orario per chi vuole prenotare prima le cose altrimenti l'ora di arrivo 
     metto che di predefinito sarà sempre 1h o 30m dopo la conferma di acquisto
 
@@ -29,6 +29,7 @@
     altrimenti succede come per BdD
 
  TODO:
-   devo trovare un modo per evitare che refreshando register mi risegni le cose oppure no tanto chissene
-   però una volta creato un utente devo mettere direttamente la pagina di logged così da far sembrare che una volta che l'account è stato creato è anche già loggato(quindi si torna alla storia dei cookie)
-   quindi mettere in mail la mail dell'account appena creato nel form di login e lasciar scrivere la pazzword(oppure mettere anche quella);
+   creare un popup a creazione account avvenuta che ha sotto il form di login con già i dati inseriti
+   (qua devo passare i dati criptici in modo che non ci siano scammate)
+   oppure potrei lasciare il login una volta creato e semplicemente fare 2 bottoni con dashboard e home e il tastino di chiusura per rimanere nella creazione dell'account
+

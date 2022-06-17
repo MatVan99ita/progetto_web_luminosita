@@ -7,10 +7,13 @@
 
 <?php
 require_once 'bootstrap.php';
-
 $templateParams["titolo"] = "Luminosità -";
-$templateParams["nome"]  = "loggin_in.php";
+$templateParams["nome"]  = "user_created.php";
 
+$templateParams["buonFine"] = "va tutto bbiene";
+$templateParams["mail_created"] = "banana33";
+
+/*
 if(isset($_POST["username"]) && isset($_POST["password"])){
     $login_result = $dbh->checkLogin($_POST["mail"], $_POST["pass"]);
     if(count($login_result)==0){
@@ -28,6 +31,9 @@ if(isUserLoggedIn()){
     if(isset($_GET["formmsg"])){
         $templateParams["formmsg"] = $_GET["formmsg"];
     }
+} else if(isset($_POST["mail"]) && !isset($_POST["password"])){
+    $templateParams["nome"] = "loggin_in.php";
+    $templateParams["mail_created"] = $_POST["mail"];
 }
 else{
     $templateParams["nome"] = "loggin_in.php";

@@ -1,10 +1,12 @@
 
 <div id="login_form" class="container justify-content-center">
+    
+    <?php  ?>
     <form action="#" method="POST"> 
     <h2>Login</h2>
     <div class="form-group">
         <label for="exampleInputEmail1">Email address</label>
-        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" value="<?php if(isset($_GET["mail"])) echo $_GET["mail"]; ?>">
         <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
     </div>
     <div class="form-group">
