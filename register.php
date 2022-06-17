@@ -8,7 +8,7 @@ if(isset($_POST["inputName"]) && isset($_POST["inputSurname"]) && isset($_POST["
         $templateParams["erroreCreazione"] = $create_res[1];
     }
     else{
-        $templateParams["name"] = "user_created.php";
+        $templateParams["nome"] = "user_created.php";
         $templateParams["buonFine"] = $create_res[1];
     }
 } else {
