@@ -8,12 +8,7 @@
 <?php
 require_once 'bootstrap.php';
 $templateParams["titolo"] = "Luminosità -";
-$templateParams["nome"]  = "user_created.php";
 
-$templateParams["buonFine"] = "va tutto bbiene";
-$templateParams["mail_created"] = "banana33";
-
-/*
 if(isset($_POST["username"]) && isset($_POST["password"])){
     $login_result = $dbh->checkLogin($_POST["mail"], $_POST["pass"]);
     if(count($login_result)==0){

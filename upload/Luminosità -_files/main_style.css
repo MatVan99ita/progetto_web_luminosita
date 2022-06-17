@@ -121,11 +121,9 @@ form ul li textarea{
 form ul li img{
     width: 50px;
 }
-a, a:hover{
-    color:#333
-  }
+
 #pswd_info {
-    position: absolute;
+    position:absolute;
     bottom:-75px;
     bottom: -115px\9; /* IE Specific */
     right:55px;
@@ -174,6 +172,38 @@ a, a:hover{
     color: rgb(71, 176, 71);
     margin-top: 100px;
     margin-bottom: 100px;
+}
+
+#account_successfull {
+    position:absolute;
+    bottom:-75px;
+    bottom: -115px\9; /* IE Specific */
+    right:55px;
+    width:250px;
+    padding:15px;
+    background:#fefefe;
+    font-size:.875em;
+    border-radius:5px;
+    box-shadow:0 1px 3px #ccc;
+    border:1px solid #ddd;
+}
+
+#account_successfull {
+    margin:0 0 10px 0;
+    padding:0;
+    font-weight:normal;
+}
+
+#account_successfull {
+    content: "\25B2";
+    position:absolute;
+    top:-12px;
+    left:45%;
+    font-size:14px;
+    line-height:14px;
+    color:#ddd;
+    text-shadow:none;
+    display:block;
 }
 
 #succesfull{

@@ -2,7 +2,7 @@
     <h2><?php echo $templateParams["titolo_pagina"]; ?></h2>
 <?php endif;?>
 
-<div id="login_form" class="container justify-content-center col-md-12">
+<div id="register_form" class="container justify-content-center col-md-12">
     <form action="#" method="POST">
         <h2>Crea un account</h2>
 
@@ -33,9 +33,15 @@
         </div>
 
         <div class="form-group">
-            <label for="InputPassword1">Password</label>
-            <input type="password" class="form-control" id="InputPassword1" name="InputPassword1" pattern = "(?=.*\d)(?=.*[a-z])(?=.*?[0-9])(?=.*?[~`!@#$%^&amp;*()_=+\[\]{};:&apos;.,&quot;\\|\/?&gt;&lt;-]).{8,}" placeholder="Password" required>
+            <label>Password</label>
+            <div class="input-group" id="show_hide_password">
+                <input type="password" class="form-control" id="InputPassword1" name="InputPassword1" pattern = "(?=.*\d)(?=.*[a-z])(?=.*?[0-9])(?=.*?[~`!@#$%^&amp;*()_=+\[\]{};:&apos;.,&quot;\\|\/?&gt;&lt;-]).{8,}" placeholder="Password" required>
+                <div class="input-group-addon">
+                    <a href="" class="btn btn-secondary"><i class="fa fa-eye-slash yellow-color" aria-hidden="true"></i></a>
+                </div>
+            </div>
         </div>
+
         <div class="form-group">
             <label for="InputPassword2">Ripeti password</label>
             <input type="password" class="form-control" id="InputPassword2" name="InputPassword2" pattern = "(?=.*\d)(?=.*[a-z])(?=.*?[0-9])(?=.*?[~`!@#$%^&amp;*()_=+\[\]{};:&apos;.,&quot;\\|\/?&gt;&lt;-]).{8,}" placeholder="Password" required>
@@ -43,21 +49,7 @@
         </div>
         <button id="submit" type="submit" class="btn btn-primary">Crea</button>
     </form>
-    <div id="pswd_info">
-        <h4>Password must meet the following requirements:</h4>
-        <ul>
-            <li id="letter" class="invalid">At least <strong>one letter</strong></li>
-            <li id="capital" class="invalid">At least <strong>one capital letter</strong></li>
-            <li id="number" class="invalid">At least <strong>one number</strong></li>
-            <li id="length" class="invalid">Be at least <strong>8 characters</strong></li>
-            <li id="special" class="invalid">At least <strong>1 special character(Ex.: .,_?! etc...)</strong></li>
-        </ul>
-    </div>
-    <div id="account_successfull">
-        <h4>Creazione avvenuta con il cesso</h4>
-        <button class="btn btn-primary">Dashboard</button>
-        <button class="btn btn-primary">Prosegui sul sito</button>
-    </div>
+    
     <div>
         <?php if(isset($templateParams["erroreCreazione"])): ?>
             <p style="color: red"><?php echo $templateParams["erroreCreazione"]; ?></p>
@@ -66,4 +58,15 @@
     <a id="log_user" href="login.php">
         Hai già un account?
     </a>
+    
+    <div id="pswd_info">
+            <h4>Password must meet the following requirements:</h4>
+            <ul>
+                <li id="letter" class="invalid">At least <strong>one letter</strong></li>
+                <li id="capital" class="invalid">At least <strong>one capital letter</strong></li>
+                <li id="number" class="invalid">At least <strong>one number</strong></li>
+                <li id="length" class="invalid">Be at least <strong>8 characters</strong></li>
+                <li id="special" class="invalid">At least <strong>1 special character(Ex.: .,_?! etc...)</strong></li>
+            </ul>
+        </div>
 </div>

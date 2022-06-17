@@ -12,3 +12,9 @@
     </p>
 </div>
 
+
+<div id='account_successfull'>
+        <h4>Creazione avvenuta con il cesso</h4>
+        <button class='btn btn-primary'>Dashboard</button>
+        <button class='btn btn-primary'>Prosegui sul sito</button>
+    </div>
