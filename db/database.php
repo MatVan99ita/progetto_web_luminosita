@@ -9,8 +9,8 @@ class DatabaseHelper{
         }
     }
 
-    public function getRandomPosts($n){
-        $stmt = $this->db->prepare("SELECT idarticolo, titoloarticolo, imgarticolo FROM articolo ORDER BY RAND() LIMIT ?");
+    public function getRandomFoods($n){
+        $stmt = $this->db->prepare("SELECT * FROM prodotto ORDER BY RAND() LIMIT ?");
         $stmt->bind_param('i',$n);
         $stmt->execute();
         $result = $stmt->get_result();
@@ -44,7 +44,7 @@ class DatabaseHelper{
     }
 
     public function getUser($mail, $pass){
-        $sql = "SELECT UserID, Nome, Cognome, Email, password, salt FROM utente WHERE Email = ? AND password = ?";
+        $sql = "SELECT UserID, Nome, Cognome, Email, salt FROM utente WHERE Email = ? AND password = ?";
         $stmt = $this->db->prepare($sql);
         $stmt->bind_param('ss', $mail, $pass);
         $stmt->execute();
@@ -64,27 +64,27 @@ class DatabaseHelper{
         return $ven["vendors"]==0;
     }
 
-    public function getAllUserLoggedInfo($mail, $id, $pass){
+    public function getAllUserLoggedInfo($mail, $id){
         
         /*
-        UserID <- non serve
+        UserID      <- non serve
         Nome
         Cognome
         Email
-        password <- hashata che va rimessa in chiaro
-        salt <- per le cose di hashing
-        vendors <- per generare la seconda parte di template
-        BuyerID <- non serve
+        password    <- non serve(ma va controllata ogni volta dal form che la invia in chiaro)
+        salt        <- per le cose di hashing
+        vendors     <- per generare la seconda parte di template
+        BuyerID     <- non serve
         codUnibo
         sesso
         zoneConsegna
         info_pagamento
-        userID <- non serve
+        userID      <- non serve
         */
 
-        $query = "SELECT * FROM utente INNER JOIN compratore ON utente.UserID = compratore.userID WHERE Email = ? AND utente.UserID = ? AND password = ?";
+        $query = "SELECT * FROM utente INNER JOIN compratore ON utente.UserID = compratore.userID WHERE Email = ? AND utente.UserID = ?";
         $stmt = $this->db->prepare($query);
-        $stmt->bind_param('sss',$mail, $id, $pass);
+        $stmt->bind_param('ss', $mail, $id);
         $stmt->execute();
         $result = $stmt->get_result();
         return $result->fetch_all(MYSQLI_ASSOC);
@@ -98,13 +98,10 @@ class DatabaseHelper{
         $password = hash('sha512', $password.$random_salt);
 
         //setto i cookie per la criptazione
-        if(isset($_COOKIE["hash"]) && isset($_COOKIE["salt"])){
-            unset($_COOKIE["hash"]);
+        if(isset($_COOKIE["salt"])){
             unset($_COOKIE["salt"]);
-            setcookie("hash", $password);
             setcookie("salt", $random_salt);
         } else {
-            setcookie("hash", $password);
             setcookie("salt", $random_salt);
         }
         $sql = "INSERT INTO `utente`(`Nome`, `Cognome`, `Email`, `password`, `salt`, `vendors`) 
@@ -119,15 +116,12 @@ class DatabaseHelper{
             return array(false, "$mail esiste già");
         }
         
-        
         //se non entra nell'if aggiungerà l'utente anche sulla tabella compratore
 
         //prendiamo l'id dell'utente appena creato...
         $utente = $this->getUser($mail, $password); //qui va sistemato
         print_r($utente[0]);
         $id = $utente[0]["UserID"];
-
-        
 
         //...e lo inseriamo su compratore
         $sql="INSERT INTO `compratore`(`sesso`, `userID`) VALUES (?, ?)";

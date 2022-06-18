@@ -23,7 +23,8 @@ if(isset($_POST["username"]) && isset($_POST["password"])){
 else if(isset($_COOKIE["logged"])){
     if($_COOKIE["logged"]){
     $templateParams["nome"] = "user_details.php";
-    //$templateParams["user_info"] = $dbh->getUserInfo($_SESSION["id"]);
+    $templateParams["user"] = $dbh->getAllUserLoggedInfo($_COOKIE["mail"], $_COOKIE["id"]);
+    $templateParams["randomFoods"] = $dbh->getRandomFoods(5);
     if(isset($_GET["formmsg"])){
         $templateParams["formmsg"] = $_GET["formmsg"];
     }

@@ -36,6 +36,14 @@
    le info dell'utente dovranno esserci tutte tranne la password e quelle inutili
 
  TODO:
+
+   quindi la password non va salvata nei cookie
+   
    se cambia password lo può fare forse
 
    quindi mette la vecchia > sale + hash > controllo > se va bene la nuova dovrà avere stesso procedimento altrimenti errore
+
+ TODO:
+   nel cambio dati inserire i 2 bottoni per invio del cambiamento e annullamento, cioè:
+   • btn-salva -> method post che invia la richiesta al template "dati aggiornati" e controllo sulla validità con sale e hashing con redirect successivo a "user details"
+   • btn-annulla -> redirect a "user details" diretto
