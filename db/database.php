@@ -53,7 +53,7 @@ class DatabaseHelper{
         return $ven;
     }
 
-    public function userIsVendors($id){
+    public function userIsVendor($id){
         $sql = "SELECT vendors from utente where id= ?";
         $stmt = $this->db->prepare($sql);
         $stmt->bind_param('i', $id);
@@ -82,7 +82,7 @@ class DatabaseHelper{
         userID      <- non serve
         */
 
-        $query = "SELECT * FROM utente INNER JOIN compratore ON utente.UserID = compratore.userID WHERE Email = ? AND utente.UserID = ?";
+        $query = "SELECT Nome, Cognome, Email, codUnibo, sesso, zoneConsegna, info_pagamento FROM utente INNER JOIN compratore ON utente.UserID = compratore.userID WHERE Email = ? AND utente.UserID = ?";
         $stmt = $this->db->prepare($query);
         $stmt->bind_param('ss', $mail, $id);
         $stmt->execute();
@@ -96,14 +96,7 @@ class DatabaseHelper{
         $random_salt = hash('sha512', uniqid(mt_rand(1, mt_getrandmax()), true));
         // Crea una password usando la chiave appena creata.
         $password = hash('sha512', $password.$random_salt);
-
-        //setto i cookie per la criptazione
-        if(isset($_COOKIE["salt"])){
-            unset($_COOKIE["salt"]);
-            setcookie("salt", $random_salt);
-        } else {
-            setcookie("salt", $random_salt);
-        }
+        
         $sql = "INSERT INTO `utente`(`Nome`, `Cognome`, `Email`, `password`, `salt`, `vendors`) 
         VALUES (?, ?, ?, ?, ?, 0)";
         $stmt = $this->db->prepare($sql);
@@ -120,7 +113,6 @@ class DatabaseHelper{
 
         //prendiamo l'id dell'utente appena creato...
         $utente = $this->getUser($mail, $password); //qui va sistemato
-        print_r($utente[0]);
         $id = $utente[0]["UserID"];
 
         //...e lo inseriamo su compratore
@@ -130,20 +122,56 @@ class DatabaseHelper{
         $stmt->execute();
 
         //infine setto i cookie per i dati che servono per mantenere l'accesso
-        if (isset($_COOKIE['id']) && isset($_COOKIE['mail']) && isset($_COOKIE['logged'])) {
+        if (isset($_COOKIE['id']) && isset($_COOKIE['mail']) && isset($_COOKIE['logged']) ) {
             unset($_COOKIE['id']);
             unset($_COOKIE['mail']);
             unset($_COOKIE['logged']);
-            setcookie("id", $id);
-            setcookie("mail", $mail);
-            setcookie("logged", true);
-        } else {
-            setcookie("id", $id);
-            setcookie("mail", $mail);
-            setcookie("logged", true);
         }
+        setcookie("id", $id);
+        setcookie("mail", $mail);
+        setcookie("logged", true);
         
         return array(true, "Registrazione avvenuta con successo");
+    }
+
+    private function getHashedPassword(){
+        $sql = "SELECT password, salt FROM utente WHERE Email = ? AND UserID = ? ";
+        $stmt = $this->db->prepare($sql);
+        $stmt->bind_param('ss', $_COOKIE['mail'], $_COOKIE['id']);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        $ven = $result->fetch_all(MYSQLI_ASSOC);
+        return $ven[0];
+    }
+
+    public function changePassword($old_pass, $new_pass){
+        $db_privates = $this->getHashedPassword();
+
+        $salt = $db_privates["salt"];
+        $db_old_pass = $db_privates["password"];
+
+        $new_pass = hash('sha512', $new_pass.$salt);
+        $old_pass = hash('sha512', $old_pass.$salt);
+
+        if($old_pass == $new_pass || $old_pass != $db_old_pass){
+            return false;
+        }
+
+        $sql = "UPDATE `utente` SET `password`= $new_pass WHERE `Email`= ? AND `UserID` = ?;";
+        $stmt = $this->db->prepare($sql);
+        $stmt->bind_param('ss', $_COOKIE["mail"], $_COOKIE["id"]);
+        $stmt->execute();
+        return true;
+    }
+    
+    public function changeInfo($datas){
+        return $datas;
+    }
+
+    public function updateProduct($datas){
+    }
+
+    public function refillProduct($quantity){
     }
 
 }

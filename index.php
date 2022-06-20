@@ -8,7 +8,7 @@ $templateParams["nome"] = "home.php";
 $templateParams["categorie"] = $dbh->getFoodTypes();
 $templateParams["user"] = "UTENZIONATOH";
 $templateParams["list-type"]="card-deck";
-$templateParams["js"] = true;
+$templateParams["js"] = scandir("./js");
 //Home Template
 
 require 'template/base.php';

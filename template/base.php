@@ -57,6 +57,7 @@
 <footer>
     <p><img id="logo_foot" style="width: 10px" src=<?php echo LOGO."chiaro.png"; ?> ><?php echo $templateParams["titolo"]; ?></p>
     <p>UniBo - Campus Cesena</p>
+    
 </footer>
 </body>
 </html>
