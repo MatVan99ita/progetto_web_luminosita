@@ -90,6 +90,15 @@ class DatabaseHelper{
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 
+    private function getUserLogInfo($mail){
+        $query = "SELECT UserID, Email, password, salt FROM utente WHERE Email = ?";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('s', $mail);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
     public function addUser($nome, $cognome, $mail, $sesso, $password){
 
         // Crea una chiave casuale
@@ -172,6 +181,23 @@ class DatabaseHelper{
     }
 
     public function refillProduct($quantity){
+    }
+
+    public function logout(){
+    }
+
+    public function logUser($mail, $password){
+        $info = $this->getUserLogInfo($mail);
+        print_r($info);
+        // Crea una password usando la chiave appena creata.
+        $password = hash('sha512', $password.$info["salt"]);
+        echo($password."<br>");
+        echo($info["password"]."<br>");
+        if($password == $info["password"]){
+            setcookie("id", $id);
+            setcookie("mail", $mail);
+            setcookie("logged", true);
+        }
     }
 
 }

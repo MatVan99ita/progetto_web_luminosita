@@ -73,6 +73,10 @@ $pagah = $utente[0]["info_pagamento"];
             <a href="change_data.php?passData" class="btn btn-danger m-1">
                 Cambia password
             </a>
+
+            <a href="logout.php" class="btn btn-danger m-1">
+                Logout
+            </a>
         </div>
 
         <div class="container">
@@ -84,14 +88,18 @@ $pagah = $utente[0]["info_pagamento"];
             To make horizontal scrollable in a bootstrap row?
             </h3>
             <div class="container horizontal-scrollable">
-                <div class="row text-center">
-                    <div class="col-xs-4">1</div>
-                    <div class="col-xs-4">2</div>
-                    <div class="col-xs-4">3</div>
-                    <div class="col-xs-4">4</div>
-                    <div class="col-xs-4">5</div>
-                    <div class="col-xs-4">6</div>
-                    <div class="col-xs-4">7</div>
+            <div class="row text-center">
+                <?php foreach(range(0,40) as $i): ?>
+                    <div id="user_food" class="col-3" media="screen and (min-width: 480px) and (max-width: 1920px)">
+                        <div class="card-header">
+                            <h2 class="card-title"><?php echo "CIBO"; ?></h2>
+                        </div>
+                        <div class="card-body">
+                            <p class="card-text"><?php echo "BUONP"; ?></p>
+                            <a href="#">Vai ai prodotti</a>
+                        </div>
+                    </div>
+                <?php endforeach; ?>
                 </div>
             </div>
         </div>
