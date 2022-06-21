@@ -36,7 +36,8 @@
    le info dell'utente dovranno esserci tutte tranne la password e quelle inutili
 
  TODO:
-   per le notifiche creare una tabella sul db una roba stile mail con chi invia, chi è destinato, oggetto, corpo, e valore booleano letto/non letto e la chiave esterna su buyerID e quindi inserire nellan zona carrello la campanella con le notifiche
+   tabella notifiche creata
+   inserire nellan zona carrello la campanella con le notifiche
 
  TODO:
    sistemare la funzione di login
