@@ -36,14 +36,11 @@
    le info dell'utente dovranno esserci tutte tranne la password e quelle inutili
 
  TODO:
-
-   quindi la password non va salvata nei cookie
-   
-   se cambia password lo può fare forse
-
-   quindi mette la vecchia > sale + hash > controllo > se va bene la nuova dovrà avere stesso procedimento altrimenti errore
+   per le notifiche creare una tabella sul db una roba stile mail con chi invia, chi è destinato, oggetto, corpo, e valore booleano letto/non letto e la chiave esterna su buyerID e quindi inserire nellan zona carrello la campanella con le notifiche
 
  TODO:
-   nel cambio dati inserire i 2 bottoni per invio del cambiamento e annullamento, cioè:
-   • btn-salva -> method post che invia la richiesta al template "dati aggiornati" e controllo sulla validità con sale e hashing con redirect successivo a "user details"
-   • btn-annulla -> redirect a "user details" diretto
+   sistemare la funzione di login
+
+
+
+ 
