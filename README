@@ -3,18 +3,12 @@
 
  NOTA: 
     i login possono essere essere effettuati da utenti e venditori, 
-    ma la registrazione è solo per gli utenti
-    i venditori potranno essere aggiuntoi solo dagli admin del sito inseremdo i dati direttamente nel db
-    per evitare truffe
+    ma la registrazione è solo per gli utenti(per i vendors faccio un link nel footer tutto nascosto)
 
     quindi quando un venditore logga dovrà avere la zona con le proprie info come un utente normale,
     in più devo creare un template singolo per vendor e buyer
-    i vendor avranno la lista dei loro prodotti aggiornabile in qualsiasi momento, 
-    mentre gli utenti pensavo di mettere una roba stile randomPost ma con i cibi
+    i vendor avranno la lista dei loro prodotti aggiornabile in qualsiasi momento
 
- TODO: 
-    imparare ad usare i cookie per gestire le cose base di un sito come il mantenimento dell'accesso
-    e i prodotti consigliati basati sugli acquisti recenti**(questa parte credo che non la metterò)
 
  TODO:
     il carrello lo dovrò gestire in modo bislacco con jquery, cookie e backand sul sito, sarà un delirio
@@ -29,10 +23,6 @@
     altrimenti succede come per BdD
 
  TODO:
-   NUOVA PAGINA ALTRIMENTI ESPLODO CON STRONZATE GRAFICHE
-   oppure potrei lasciare il login una volta creato e semplicemente fare 2 bottoni con dashboard e home e il tastino di chiusura per rimanere nella creazione dell'account
-
- TODO:
    le info dell'utente dovranno esserci tutte tranne la password e quelle inutili
 
  TODO:
@@ -40,7 +30,6 @@
    inserire nellan zona carrello la campanella con le notifiche
 
  TODO:
-   sistemare la funzione di login
 
  TODO:
    creare zona per leggere le notifiche con tipo
