@@ -23,3 +23,13 @@ const deleteAllCookies = () => {
     document.cookie = name + "=;expires=Thu, 01 Jan 1970 00:00:00 GMT";
   }
 }
+
+$(document).ready(function() {
+  const scroll = document.getElementById('scrolling');
+
+  scroll.addEventListener('wheel', (evt) => {
+    evt.preventDefault();
+    scroll.scrollLeft += evt.deltaY;
+  });
+});
+

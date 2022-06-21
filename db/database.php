@@ -10,7 +10,7 @@ class DatabaseHelper{
     }
 
     public function getRandomFoods($n){
-        $stmt = $this->db->prepare("SELECT * FROM prodotto ORDER BY RAND() LIMIT ?");
+        $stmt = $this->db->prepare("SELECT nomeProd, prezzo, CategoryID, categoryName FROM prodotto, foodcategory WHERE prodotto.foodType =`CategoryID` ORDER BY RAND() LIMIT ?");
         $stmt->bind_param('i',$n);
         $stmt->execute();
         $result = $stmt->get_result();

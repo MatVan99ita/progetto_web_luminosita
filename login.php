@@ -24,7 +24,7 @@ else if(isset($_COOKIE["logged"])){
     if($_COOKIE["logged"]){
     $templateParams["nome"] = "user_details.php";
     $templateParams["user"] = $dbh->getAllUserLoggedInfo($_COOKIE["mail"], $_COOKIE["id"]);
-    $templateParams["randomFoods"] = $dbh->getRandomFoods(5);
+    $templateParams["randomFoods"] = $dbh->getRandomFoods(10);
     if(isset($_GET["formmsg"])){
         $templateParams["formmsg"] = $_GET["formmsg"];
     }

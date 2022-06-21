@@ -219,6 +219,33 @@ a, a:hover{
     background: black;
 }
 
+div.scrollmenu {
+    background-color: #333;
+    overflow: scroll;
+    white-space: nowrap;
+    margin-top: 30px;
+    margin-bottom: 100px;
+}
+  
+div.scrollmenu a {
+    display: inline-block;
+    color: rgb(14, 14, 14);
+    text-align: center;
+    padding: 14px;
+    text-decoration: none;
+}
+
+div.scrollmenu a img{
+    width: 200px;
+    height: 100px;
+}
+  
+div.scrollmenu a:hover {
+    background-color: #777;
+}
+  
+  
+  
 
 /*<576px*/
 @media screen and (max-width:576px){

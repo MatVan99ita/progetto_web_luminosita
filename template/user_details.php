@@ -78,31 +78,23 @@ $pagah = $utente[0]["info_pagamento"];
                 Logout
             </a>
         </div>
-
-        <div class="container">
-  
-            <h1 style="text-align:center;color:green;"> 
-            GeeksforGeeks 
-            </h1>
-            <h3>
-            To make horizontal scrollable in a bootstrap row?
-            </h3>
-            <div class="container horizontal-scrollable">
-            <div class="row text-center">
-                <?php foreach(range(0,40) as $i): ?>
-                    <div id="user_food" class="col-3" media="screen and (min-width: 480px) and (max-width: 1920px)">
-                        <div class="card-header">
-                            <h2 class="card-title"><?php echo "CIBO"; ?></h2>
-                        </div>
-                        <div class="card-body">
-                            <p class="card-text"><?php echo "BUONP"; ?></p>
-                            <a href="#">Vai ai prodotti</a>
-                        </div>
-                    </div>
-                <?php endforeach; ?>
-                </div>
-            </div>
+        
+        <h3 for="scrollmenu">Prodotti consigliati</h3>
+        <div class="scrollmenu" id="scrolling">
+            <?php foreach($templateParams["randomFoods"] as $food): 
+                $img = CAT_DIR.$food["CategoryID"].". ".$food["categoryName"].".jpg"; 
+                ?>
+                <a href="foodCategory.php?id=<?php echo $food["CategoryID"]; ?>&list-type=container" class="card">
+                    <section>
+                        <img alt="immmagina puaoi" src="<?php echo $img; ?>"></img>
+                        <h2 class="card-title"><?php echo $food["nomeProd"]; ?></h2>
+                        <p class="card-text"><?php echo $food["prezzo"]."€"; ?></p>
+                        <p class="card-text"><?php echo $food["categoryName"]; ?></p>
+                    </section>
+                </a>
+            <?php endforeach; ?>
         </div>
+        
 </div>
 
 <div id="change_data_form" class="container justify-content-center col-md-12">

@@ -9,20 +9,20 @@ $query = explode("&", $url["query"]);
         <h2>Cambio password</h2>
         <div class="form-group">
             <label>Old password</label>
-            <div class="input-group" id="show_hide_password">
+            <div class="input-group" id="show_hide_old_password">
                 <input type="password" class="form-control" id="InputOldPassword" name="InputOldPassword" placeholder="Old password" required>
                 <div class="input-group-addon">
-                    <a href="" class="btn btn-secondary"><i class="fa fa-eye-slash yellow-color" aria-hidden="true"></i></a>
+                    <a href="" class="btn btn-secondary"><i class="fa fa-eye-slash" aria-hidden="true"></i></a>
                 </div>
             </div>
         </div>
 
         <div class="form-group">
             <label>New password</label>
-            <div class="input-group" id="show_hide_password">
+            <div class="input-group" id="show_hide_new_password">
                 <input type="password" class="form-control" id="InputPassword1" name="InputPassword1" pattern = "(?=.*\d)(?=.*[a-z])(?=.*?[0-9])(?=.*?[~`!@#$%^&amp;*()_=+\[\]{};:&apos;.,&quot;\\|\/?&gt;&lt;-]).{8,}" placeholder="New password" required>
                 <div class="input-group-addon">
-                    <a href="" class="btn btn-secondary"><i class="fa fa-eye-slash yellow-color" aria-hidden="true"></i></a>
+                    <a href="" class="btn btn-secondary"><i class="fa fa-eye-slash" aria-hidden="true"></i></a>
                 </div>
             </div>
         </div>

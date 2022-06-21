@@ -135,18 +135,33 @@ $(document).ready(function() {
 });
 
 $(document).ready(function() {
-  $("#show_hide_password a").on('click', function(event) {
+  $("#show_hide_old_password a").on('click', function(event) {
       event.preventDefault();
-      if($('#show_hide_password input').attr("type") == "text"){
-          $('#show_hide_password input').attr('type', 'password');
-          $('#show_hide_password i').addClass( "fa-eye-slash" );
-          $('#show_hide_password i').removeClass( "fa-eye" );
-      }else if($('#show_hide_password input').attr("type") == "password"){
-          $('#show_hide_password input').attr('type', 'text');
-          $('#show_hide_password i').removeClass( "fa-eye-slash" );
-          $('#show_hide_password i').addClass( "fa-eye" );
+      if($('#show_hide_old_password input').attr("type") == "text"){
+          $('#show_hide_old_password input').attr('type', 'password');
+          $('#show_hide_old_password i').addClass( "fa-eye-slash" );
+          $('#show_hide_old_password i').removeClass( "fa-eye" );
+      }else if($('#show_hide_old_password input').attr("type") == "password"){
+          $('#show_hide_old_password input').attr('type', 'text');
+          $('#show_hide_old_password i').removeClass( "fa-eye-slash" );
+          $('#show_hide_old_password i').addClass( "fa-eye" );
       }
   });
+});
+
+$(document).ready(function(){
+  $("#show_hide_new_password a").on('click', function(event) {
+    event.preventDefault();
+    if($('#show_hide_new_password input').attr("type") == "text"){
+        $('#show_hide_new_password input').attr('type', 'password');
+        $('#show_hide_new_password i').addClass( "fa-eye-slash" );
+        $('#show_hide_new_password i').removeClass( "fa-eye" );
+    }else if($('#show_hide_new_password input').attr("type") == "password"){
+        $('#show_hide_new_password input').attr('type', 'text');
+        $('#show_hide_new_password i').removeClass( "fa-eye-slash" );
+        $('#show_hide_new_password i').addClass( "fa-eye" );
+    }
+});
 });
 /*
 
