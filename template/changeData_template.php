@@ -41,15 +41,19 @@ $query = explode("&", $url["query"]);
     </div>
     
     <div id="pswd_info">
-            <h4>Password must meet the following requirements:</h4>
-            <ul>
-                <li id="letter" class="invalid">At least <strong>one letter</strong></li>
-                <li id="capital" class="invalid">At least <strong>one capital letter</strong></li>
-                <li id="number" class="invalid">At least <strong>one number</strong></li>
-                <li id="length" class="invalid">Be at least <strong>8 characters</strong></li>
-                <li id="special" class="invalid">At least <strong>1 special character(Ex.: .,_?! etc...)</strong></li>
-            </ul>
-        </div>
+        <h4>Password must meet the following requirements:</h4>
+        <ul>
+            <li id="letter" class="invalid">At least <strong>one letter</strong></li>
+            <li id="capital" class="invalid">At least <strong>one capital letter</strong></li>
+            <li id="number" class="invalid">At least <strong>one number</strong></li>
+            <li id="length" class="invalid">Be at least <strong>8 characters</strong></li>
+            <li id="special" class="invalid">At least <strong>1 special character(Ex.: .,_?! etc...)</strong></li>
+        </ul>
+    </div>
+    <div>
+            <a href="change_edit.php?<?php echo $query[0]; ?>" class="btn btn-success m-1">
+                Cambia dati
+            </a>
 <?php
 elseif ($query[0] == "datas"):
     $utente = $dbh->getAllUserLoggedInfo($_COOKIE["mail"], $_COOKIE["id"]);
@@ -120,12 +124,12 @@ elseif ($query[0] == "datas"):
                 <input type="text" name="name" value="<?php echo $pagah; ?>" placeholder="info pagamento" class="form-control">
             </div>
         </div>
-        
-<?php endif; ?>
-<div>
+        <div>
             <a href="change_edit.php?<?php echo $query[0]; ?>" class="btn btn-success m-1">
                 Cambia dati
             </a>
+<?php endif; ?>
+
             <a href="login.php" class="btn btn-danger m-1">
                 Annulla
             </a>
