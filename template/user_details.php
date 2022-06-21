@@ -74,7 +74,7 @@ $pagah = $utente[0]["info_pagamento"];
                 Cambia password
             </a>
 
-            <a href="logout.php" class="btn btn-danger m-1">
+            <a href="login.php" onclick="deleteAllCookies()" class="btn btn-danger m-1">
                 Logout
             </a>
         </div>

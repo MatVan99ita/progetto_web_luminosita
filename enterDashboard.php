@@ -6,5 +6,5 @@ $templateParams["titolo"] = "Luminosità - ";
 if(isset($_POST["InputEmail"]) && isset($_POST["InputPassword"])){
     $dbh->logUser($_POST["InputEmail"], $_POST["InputPassword"]);
 }
-header("login.php");
+header("Location: ./login.php");
 ?>

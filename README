@@ -42,6 +42,14 @@
  TODO:
    sistemare la funzione di login
 
+ TODO:
+   creare zona per leggere le notifiche con tipo
+   Azienda<Mail azienda>
+   oggetto                                                   btn-leggi    btn-cancella
+
+   leggi apre la notifica completa con anche il corpo, immagini se ci sono e cambia il valore di lettura
+   
+
 
 
  

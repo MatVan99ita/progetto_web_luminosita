@@ -90,15 +90,6 @@ class DatabaseHelper{
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 
-    private function getUserLogInfo($mail){
-        $query = "SELECT UserID, Email, password, salt FROM utente WHERE Email = ?";
-        $stmt = $this->db->prepare($query);
-        $stmt->bind_param('s', $mail);
-        $stmt->execute();
-        $result = $stmt->get_result();
-        return $result->fetch_all(MYSQLI_ASSOC);
-    }
-
     public function addUser($nome, $cognome, $mail, $sesso, $password){
 
         // Crea una chiave casuale
@@ -187,17 +178,35 @@ class DatabaseHelper{
     }
 
     public function logUser($mail, $password){
+        
+        echo("<br><br>");
+        //UserID, Email, password, salt
         $info = $this->getUserLogInfo($mail);
         print_r($info);
+        echo("<br><br>");
         // Crea una password usando la chiave appena creata.
-        $password = hash('sha512', $password.$info["salt"]);
-        echo($password."<br>");
-        echo($info["password"]."<br>");
-        if($password == $info["password"]){
-            setcookie("id", $id);
+        $password = hash('sha512', $password.$info[0]['salt']);
+        
+        echo($password);
+        
+        echo("<br><br>");
+        echo($info[0]['password']);
+
+        if($password == $info[0]["password"]){
+            setcookie("id", $info[0]["UserID"]);
             setcookie("mail", $mail);
             setcookie("logged", true);
         }
+    }
+    
+
+    private function getUserLogInfo($mail){
+        $query = "SELECT UserID, Email, password, salt FROM utente WHERE Email = ?";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('s', $mail);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        return $result->fetch_all(MYSQLI_ASSOC);
     }
 
 }
