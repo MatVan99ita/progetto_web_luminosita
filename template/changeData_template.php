@@ -3,7 +3,7 @@
 $url = parse_url($_SERVER['REQUEST_URI'], $component = -1);
 $query = explode("&", $url["query"]);
 ?>
-<div id="change_data_form" class="container justify-content-center col-md-12">
+<div id="login_form" class="container justify-content-center col-md-12">
     <form action="#" method="POST">
 <?php if($query[0] == "passData"): ?>
         <h2>Cambio password</h2>

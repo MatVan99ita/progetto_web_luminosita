@@ -35,36 +35,52 @@ $pagah = $utente[0]["info_pagamento"];
  * [11] => info_pagamento [12] => userID )
  */
 ?>
+
 <div class="container" id="art">
-        <form id="user_det" action="#" method="POST">
-            <h2>Dashboard</h2>
-
-            <div class="form-group">
-                <label>Utente: </label>
-                <label><?php echo $nome." ".$cognome; ?></label>
-            </div>
-            <div class="form-group">
-                <label>Mail: </label>
-                <label><?php echo $mail; ?></label>
-            </div>
-            <div class="form-group">
-                <label>Sesso: </label>
-                <label><?php echo $sesso; ?></label>
-            </div>
-            <div class="form-group">
-                <label>Cod. UniBo: </label>
-                <label><?php echo $unicode; ?></label>
-            </div>
-            <div class="form-group">
-                <label>Zone consegna: </label>
-                <label><?php echo $consegne; ?></label>
-            </div>
-            <div class="form-group">
-                <label>Info pagamento: </label>
-                <label><?php echo $pagah; ?></label>
-            </div>
-        </form>
-
+        <table class="table table-striped table-bordered" style="width: 1000px">
+        <thead>
+            <tr>
+                <th scope="col"><h2>Dashboard</h2></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th scope="row" style="width: 10%">•</th>
+                <td style="width: 100px"><h5>Utente:</h5></td>
+                <td style="width: 100px"><?php echo $nome." ".$cognome; ?></td>
+            </tr>
+            
+            <tr>
+                <th scope="row">•</th>
+                <td><h5>Mail:</h5></td>
+                <td><?php echo $mail; ?></td>
+            </tr>
+            
+            <tr>
+                <th scope="row">•</th>
+                <td><h5>Sesso:</h5></td>
+                <td><?php echo $sesso; ?></td>
+            </tr>
+            
+            <tr>
+                <th scope="row">•</th>
+                <td><h5>Cod. Unibo:</h5></td>
+                <td><?php echo $unicode; ?></td>
+            </tr>
+            
+            <tr>
+                <th scope="row">•</th>
+                <td><h5>Zone consegna:</h5></td>
+                <td><?php echo $consegne; ?></td>
+            </tr>
+            
+            <tr>
+                <th scope="row">•</th>
+                <td><h5>Info pagamento:</h5></td>
+                <td><?php echo $pagah; ?></td>
+            </tr>
+        </tbody>
+        </table>
         <div>
             <a href="change_data.php?datas" class="btn btn-warning m-1">
                 Cambia dati
