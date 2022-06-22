@@ -244,7 +244,12 @@ div.scrollmenu a:hover {
     background-color: #777;
 }
   
-  
+#selector_phone {
+    width: 20%;
+}
+#phone_number {
+    width: 90%;
+}
   
 
 /*<576px*/

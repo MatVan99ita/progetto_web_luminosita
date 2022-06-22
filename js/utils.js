@@ -33,3 +33,11 @@ $(document).ready(function() {
   });
 });
 
+$(document).ready(function() {
+  const scroll = document.getElementById('inputDescr');
+
+  scroll.addEventListener('wheel', (evt) => {
+    evt.preventDefault();
+    scroll.scrollTop += evt.deltaY;
+  });
+});

@@ -22,9 +22,15 @@ if(isset($_POST["username"]) && isset($_POST["password"])){
 }
 else if(isset($_COOKIE["logged"])){
     if($_COOKIE["logged"]){
-    $templateParams["nome"] = "user_details.php";
-    $templateParams["user"] = $dbh->getAllUserLoggedInfo($_COOKIE["mail"], $_COOKIE["id"]);
-    $templateParams["randomFoods"] = $dbh->getRandomFoods(10);
+        if($_COOKIE["vendors"]==0){
+            $templateParams["nome"] = "user_details.php";
+            $templateParams["user"] = $dbh->getAllUserLoggedInfo($_COOKIE["mail"], $_COOKIE["id"]);
+            $templateParams["randomFoods"] = $dbh->getRandomFoods(10);
+        } else {
+            $templateParams["nome"] = "vendor_details.php";
+            $templateParams["user"] = $dbh->getAllUserLoggedInfo($_COOKIE["mail"], $_COOKIE["id"]);
+            $templateParams["foods"] = $dbh->getVendorFoods($_COOKIE["mail"], $_COOKIE["id"]);
+        }
     if(isset($_GET["formmsg"])){
         $templateParams["formmsg"] = $_GET["formmsg"];
     }
