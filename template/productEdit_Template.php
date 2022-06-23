@@ -46,23 +46,24 @@ elseif($templateParams["editType"] == "edit"):
         <div class="form-group">
             <label>Prezzo €</label>
             <div class="input-group" id="show_hide_password">
-                <input type="number" name="price" value="<?php echo $templateParams["food"]["prezzo"]; ?>" class="form-control" min=0.0 step="any">
+                <input type="number" name="price" value="<?php echo $templateParams["food"]["prezzo"]; ?>" class="form-control" min=0.01 step=0.01>
             </div>
         </div>
 
         <div class="form-group">
+            <label></label>
             <div class="form-check form-switch">
-                <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault" <?php if ($templateParams["food"]["glutenFree"] == "0") echo "checked"; ?>/>
+                <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault" <?php if ($templateParams["food"]["glutenFree"] == "1") echo "checked"; ?>/>
                 <label class="form-check-label" for="flexSwitchCheckDefault">Gluten Free</label>
             </div>
         </div>
 
         <div class="form-group">
-            <div class="form-group">
+            <div class="input-group">
                 <label>Quantità attuale:</label>
                 <label><?php echo $templateParams["food"]["quantity"]; ?></label>
             </div>
-            <div class="form-group">
+            <div class="input-group">
                 <label>Cambia quantità</label>
                 <div class="input-group" id="show_hide_new_password">
                     <input type="number" name="quantityInput" class="form-control" value="<?php echo $templateParams["food"]["quantity"]; ?>">
@@ -72,13 +73,13 @@ elseif($templateParams["editType"] == "edit"):
         <div class="form-group">
             <label>Categoria</label>
             <div class="input-group">
-                <select class="selectpicker" data-live-search="true" data-dropup-auto="true" style="width: 'auto'">
-                    <option data-tokens="porco">bananan1</option>
-                    <option data-tokens="dio">bananan2</option>
+                <select name="categoryInput" class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
+                <?php foreach($templateParams["category"] as $category): ?>
+                    <option value="<?php echo $category["CategoryID"]; ?>" <?php if ($templateParams["food"]["CategoryName"]==$category["CategoryName"]) echo "selected"; ?>><?php echo $category["CategoryID"] . " - " . $category["CategoryName"]; ?></option>
+                <?php endforeach; ?>
                 </select>
             </div>
         </div>
-        
 <?php 
 
 /*
