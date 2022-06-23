@@ -58,21 +58,37 @@ elseif($templateParams["editType"] == "edit"):
         </div>
 
         <div class="form-group">
-            <label>Nome</label>
-            <div class="input-group" id="show_hide_password">
-                <input type="text" name="name" value="<?php echo $nome; ?>" class="form-control">
+            <div class="form-group">
+                <label>Quantità attuale:</label>
+                <label><?php echo $templateParams["food"]["quantity"]; ?></label>
+            </div>
+            <div class="form-group">
+                <label>Cambia quantità</label>
+                <div class="input-group" id="show_hide_new_password">
+                    <input type="number" name="quantityInput" class="form-control" value="<?php echo $templateParams["food"]["quantity"]; ?>">
             </div>
         </div>
 
         <div class="form-group">
-            <label>Nome</label>
-            <div class="input-group" id="show_hide_password">
-                <input type="text" name="name" value="<?php echo $nome; ?>" class="form-control">
+            <label>Categoria</label>
+            <div class="input-group">
+                <select class="selectpicker" data-live-search="true" data-dropup-auto="true" style="width: 'auto'">
+                    <option data-tokens="porco">bananan1</option>
+                    <option data-tokens="dio">bananan2</option>
+                </select>
             </div>
         </div>
         
-<?php endif; ?>
+<?php 
 
+/*
+<?php foreach($templateParams["category"] as $category): ?>
+                        <option value="<?php echo $category["CategoryID"]; ?>" data-tokens="<?php echo $category["CategoryName"]; ?>"><?php echo $category["CategoryID"] . " - " . $category["CategoryName"]; ?></option>
+                    <?php endforeach; ?>
+*/
+
+endif; ?>
+            
             <input type="submit" class="btn btn-primary">
             <a href="login.php" class="btn btn-danger m-1">
                 Annulla
