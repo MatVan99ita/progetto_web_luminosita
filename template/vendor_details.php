@@ -7,13 +7,6 @@
 
 print_r($templateParams["foods"]);
 
-
-/**
- * Array ( [0] => UserID [1] => Nome [2] => Cognome [3] => Email 
- * [4] => password [5] => salt [6] => vendors [7] => BuyerID 
- * [8] => codUnibo [9] => sesso [10] => zoneConsegna 
- * [11] => info_pagamento [12] => userID )
- */
 ?>
 
 <div class="container" id="art">
@@ -94,8 +87,8 @@ print_r($templateParams["foods"]);
                     foreach($food as $key => $det):
                     echo "<td>".$det."</td>";
                     if($key == "vendorID"): ?>
-                        <th scope='col'><a class="btn btn-warning" href="#">Edit</a></th>
-                        <th scope='col'><a class="btn btn-warning" href="#">Refill</a></th>
+                        <th scope='col'><a class="btn btn-warning" href="product_edit.php?edit&id=<?php echo $food["prodottoID"]; ?>">Edit</a></th>
+                        <th scope='col'><a class="btn btn-warning" href="product_edit.php?refill&id=<?php echo $food["prodottoID"]; ?>">Refill</a></th>
                 <?php endif;
                 endforeach;
                 ?>

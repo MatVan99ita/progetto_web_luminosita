@@ -178,7 +178,19 @@ class DatabaseHelper{
         return $datas;
     }
 
+    public function getFoodByID($id){
+        $sql = "SELECT `nomeProd`, `descrProd`, `prezzo`, `glutenFree`, `quantity`, `CategoryName`  FROM `prodotto` AS p LEFT JOIN `foodcategory` AS f ON p.foodType = f.CategoryID WHERE p.prodottoID = ?;";
+        $stmt = $this->db->prepare($sql);
+        $stmt->bind_param('s', $id);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        $ven = $result->fetch_all(MYSQLI_ASSOC);
+        print_r($ven);
+        return $ven[0];
+    }
+
     public function updateProduct($datas){
+
     }
 
     public function refillProduct($quantity){

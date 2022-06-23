@@ -1,8 +1,25 @@
 <?php
 
-/**
- * modalità di edit del prodotto con tutti i dettagli riusando l'asset di food details
- * qua come per la lista di prodotti nel login
- */
+/* Qua c'è l'edit del prodotto sia per quanto riguarda i dati o quanto riguarda il refill
+
+in più lo userò anche per creare nuovi prodotti
+*/
+
+require_once 'bootstrap.php';
+
+$url = explode('?', $_SERVER['REQUEST_URI'])[1];
+$url = explode('&', $url);
+$type = $url[0];
+$id = explode('=', $url[1])[1];
+
+print_r($url);
+
+$templateParams["editType"] = $url[0];
+$templateParams["category"] = $dbh->getFoodTypes();
+$templateParams["food"] = $dbh->getFoodByID($id);
+$templateParams["nome"] = "productEdit_Template.php";
+
+
+require 'template/base.php';
 
 ?>
