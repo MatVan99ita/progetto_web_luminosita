@@ -185,18 +185,57 @@ class DatabaseHelper{
         $stmt->execute();
         $result = $stmt->get_result();
         $ven = $result->fetch_all(MYSQLI_ASSOC);
-        print_r($ven);
         return $ven[0];
     }
 
-    public function updateProduct($datas){
-
+    /*
+    
+    UPDATE `prodotto` SET 
+    `nomeProd`='[value-2]',
+    `descrProd`='[value-3]',
+    `prezzo`='[value-4]',
+    `glutenFree`='[value-5]',
+    `quantity`='[value-6]',
+    `foodType`='[value-8]' WHERE id = $id
+    */
+    public function updateProduct($nome, $descr, $prezzo, $gluten, $quantity, $type, $id) {
+        $sql = "UPDATE `prodotto` SET nomeProd=?, descrProd=?, prezzo=?, glutenFree=?, foodType=? WHERE prodottoID=?";
+        $stmt = $this->db->prepare($sql);
+        $stmt->bind_param('ssssss', $nome, $descr, $prezzo, $gluten, $type, $id);
+        $stmt->execute();
+        $this->refillProduct($quantity, $id);
+        if($this->db->error){
+            return false;
+        }
+        return true;
     }
 
-    public function refillProduct($quantity){
+    public function deleteProduct($id) {
+        $sql = "DELETE FROM `prodotto` WHERE prodottoID=?";
+        $stmt = $this->db->prepare($sql);
+        $stmt->bind_param('s', $id);
+        $stmt->execute();
+        if($this->db->error){
+            print_r($this->db->error);
+            return false;
+        }
+        return true;
     }
 
-    public function logout(){
+    public function refillProduct($quantity, $id){
+        $sql = "UPDATE `prodotto` SET quantity=? WHERE prodottoID=?";
+        $stmt = $this->db->prepare($sql);
+        $stmt->bind_param('ss', $quantity, $id);
+        $stmt->execute();
+        if($this->db->error){
+            print_r($this->db->error);
+            return false;
+        }
+        return true;
+    }
+
+    public function addNewProduct(){
+
     }
 
     

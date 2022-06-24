@@ -250,6 +250,79 @@ div.scrollmenu a:hover {
 #phone_number {
     width: 90%;
 }
+
+.nopad {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+}
+/*image gallery*
+.image-checkbox {
+    cursor: pointer;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    border: 4px solid transparent;
+    margin-bottom: 0;
+    outline: 0;
+}
+.image-checkbox input[type="checkbox"] {
+    display: none;
+}
+
+.image-checkbox-checked {
+    border-color: #4783B0;
+}
+.image-checkbox .fa {
+    position: absolute;
+    color: #4A79A3;
+    background-color: #fff;
+    padding: 10px;
+    top: 0;
+    right: 0;
+}
+.image-checkbox-checked .fa {
+    display: block !important;
+}/**/
+
+.custom-control.image-checkbox {
+    position: relative;
+    padding-left: 0;
+  }
+  
+  .custom-control.image-checkbox .custom-control-input:checked ~ .custom-control-label:after, .custom-control.image-checkbox .custom-control-input:checked ~ .custom-control-label:before {
+    opacity: 1;
+  }
+  
+  .custom-control.image-checkbox label {
+    cursor: pointer;
+  }
+  
+  .custom-control.image-checkbox label:before {
+    border-color: #007bff;
+    background-color: #007bff;
+  }
+  
+  .custom-control.image-checkbox label:after, .custom-control.image-checkbox label:before {
+    transition: opacity .3s ease;
+    opacity: 0;
+    left: .25rem;
+  }
+  
+  .custom-control.image-checkbox label:focus, .custom-control.image-checkbox label:hover {
+    opacity: .8;
+  }
+  
+  .custom-control.image-checkbox label img {
+    border-radius: 2.5px;
+  }
+  
+  .form-group-image-checkbox.is-invalid label {
+    color: #dc3545;
+  }
+  
+  .form-group-image-checkbox.is-invalid .invalid-feedback {
+    display: block;
+  }
   
 
 /*<576px*/

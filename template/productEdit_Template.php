@@ -1,14 +1,11 @@
 
 <div id="login_form" class="container justify-content-center col-md-12">
-    <form action="product_details.php" method="POST">
-<?php 
-
-
-if($templateParams["editType"] == "refill"): ?>
+    <form action="product_updated.php?<?php echo $templateParams["editType"]."&".$templateParams["foodID"]; ?>" method="POST">
+<?php if($templateParams["editType"] == "refill"): ?>
         <h2>Refill prodotto</h2>
         <div class="form-group">
-            <label>Quantità attuale:</label>
-            <label><?php echo $templateParams["food"]["quantity"]; ?></label>
+            <label>Quantità attuale:   .</label>      
+            <label>    <?php echo $templateParams["food"]["quantity"]; ?></label>
         </div>
 
         <div class="form-group">
@@ -16,7 +13,7 @@ if($templateParams["editType"] == "refill"): ?>
             <div class="input-group" id="show_hide_new_password">
                 <input type="number" name="quantityInput" class="form-control" value="<?php echo $templateParams["food"]["quantity"]; ?>">
             </div>
-    <div>
+        <div>
 <?php
 elseif($templateParams["editType"] == "edit"):
     //`nomeProd`, `descrProd`, `prezzo`, `glutenFree`, `quantity`, `CategoryName`
@@ -29,7 +26,7 @@ elseif($templateParams["editType"] == "edit"):
  */
     ?>
     
-        <h2>Cambio dati</h2>
+        <h2>Aggiorna prodotto</h2>
 
         <div class="form-group">
             <label>Nome</label>
@@ -51,10 +48,14 @@ elseif($templateParams["editType"] == "edit"):
         </div>
 
         <div class="form-group">
-            <label></label>
-            <div class="form-check form-switch">
-                <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault" <?php if ($templateParams["food"]["glutenFree"] == "1") echo "checked"; ?>/>
-                <label class="form-check-label" for="flexSwitchCheckDefault">Gluten Free</label>
+            <label class="form-check-label" for="flexSwitchCheckDefault">Gluten Free</label>
+            <div class="col-md-3">
+                <div class="custom-control custom-checkbox image-checkbox">
+                    <input type="checkbox" class="custom-control-input" id="ck1a" <?php if($templateParams["food"]["glutenFree"] == "1") echo "checked" ?> name="gluten">
+                    <label style="width: 200px" class="custom-control-label" for="ck1a">
+                        <img src="<?php echo UPLOAD_DIR."gluten-free.jpg"; ?>" alt="gluten-free" class="img-fluid">
+                    </label>
+                </div>
             </div>
         </div>
 
@@ -89,7 +90,6 @@ elseif($templateParams["editType"] == "edit"):
 */
 
 endif; ?>
-            
             <input type="submit" class="btn btn-primary">
             <a href="login.php" class="btn btn-danger m-1">
                 Annulla

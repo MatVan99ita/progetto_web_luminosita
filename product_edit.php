@@ -12,8 +12,7 @@ $url = explode('&', $url);
 $type = $url[0];
 $id = explode('=', $url[1])[1];
 
-print_r($url);
-
+$templateParams["foodID"] = $url[1];
 $templateParams["editType"] = $url[0];
 $templateParams["category"] = $dbh->getFoodTypes();
 $templateParams["food"] = $dbh->getFoodByID($id);
