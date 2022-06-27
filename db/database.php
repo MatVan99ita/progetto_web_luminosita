@@ -95,7 +95,8 @@ class DatabaseHelper{
         
         $stmt->execute();
         $result = $stmt->get_result();
-        return $result->fetch_all(MYSQLI_ASSOC);
+        $user = $result->fetch_all(MYSQLI_ASSOC);
+        return $user[0];
     }
 
     public function addUser($nome, $cognome, $mail, $sesso, $password){
@@ -234,8 +235,26 @@ class DatabaseHelper{
         return true;
     }
 
-    public function addNewProduct(){
+    public function addNewProduct($nome, $descr, $price, $gluten, $quantity, $cat){
 
+        $sql = "SELECT `vendorID` FROM `venditore` WHERE `userID`= ?";
+        $stmt = $this->db->prepare($sql);
+        $stmt->bind_param('s', $_COOKIE["id"]);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        $ven = $result->fetch_all(MYSQLI_ASSOC);
+        $vendorID = $ven[0]["vendorID"];
+
+        $sql = "INSERT INTO `prodotto`(`nomeProd`, `descrProd`, `prezzo`, `glutenFree`, `quantity`, `vendorID`, `foodType`) 
+        VALUES (?, ?, ?, ?, ?, ?, ?)";
+        $stmt = $this->db->prepare($sql);
+        $stmt->bind_param('sssssss', $nome, $descr, $price, $gluten, $quantity, $vendorID, $cat);
+        $stmt->execute();
+        if($this->db->error){
+            print_r($this->db->error);
+            return false;
+        }
+        return true;
     }
 
     
@@ -247,9 +266,6 @@ class DatabaseHelper{
         $stmt->execute();
         $result = $stmt->get_result();
         $ven = $result->fetch_all(MYSQLI_ASSOC);
-        
-        print_r($ven[0]);
-        echo("<br><br>");
 
         $sql = "SELECT `prodottoID`, `nomeProd`, `descrProd`, `prezzo`, `glutenFree`, `quantity`, `CategoryName`, c1.vendorID 
         FROM `prodotto` AS p LEFT JOIN `venditore` AS c1 
@@ -263,9 +279,6 @@ class DatabaseHelper{
         $stmt->execute();
         $result = $stmt->get_result();
         $ven = $result->fetch_all(MYSQLI_ASSOC);
-
-        
-        print_r($ven);
 
         return $ven;
         // `prodottoID`, `nomeProd`, `descrProd`, `prezzo`, `glutenFree`, `quantity`, `CategoryName`, c1.vendorID
@@ -293,7 +306,6 @@ class DatabaseHelper{
         echo("<br><br>");
         //UserID, Email, password, salt
         $info = $this->getUserLogInfo($mail);
-        print_r($info);
         echo("<br><br>");
         // Crea una password usando la chiave appena creata.
         $password = hash('sha512', $password.$info[0]['salt']);

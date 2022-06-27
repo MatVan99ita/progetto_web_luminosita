@@ -8,25 +8,25 @@
 $utente = $dbh->getAllUserLoggedInfo($_COOKIE["mail"], $_COOKIE["id"]);
 
 // Nome
-$nome = $utente[0]["Nome"];
+$nome = $utente["Nome"];
 
 // Cognome,
-$cognome = $utente[0]["Cognome"];
+$cognome = $utente["Cognome"];
 
 // Email,
-$mail = $utente[0]["Email"];
+$mail = $utente["Email"];
 
 // codUnibo,
-$unicode = $utente[0]["codUnibo"];
+$unicode = $utente["codUnibo"];
 
 // sesso,
-$sesso = $utente[0]["sesso"];
+$sesso = $utente["sesso"];
 
 // zoneConsegna,
-$consegne = $utente[0]["zoneConsegna"];
+$consegne = $utente["zoneConsegna"];
 
 // info_pagamento
-$pagah = $utente[0]["info_pagamento"];
+$pagah = $utente["info_pagamento"];
 
 /**
  * Array ( [0] => UserID [1] => Nome [2] => Cognome [3] => Email 

@@ -15,7 +15,7 @@ $id = explode('=', $url[1])[1];
 $templateParams["foodID"] = $url[1];
 $templateParams["editType"] = $url[0];
 $templateParams["category"] = $dbh->getFoodTypes();
-$templateParams["food"] = $dbh->getFoodByID($id);
+$templateParams["food"] = $id < 0 ? 0 : $dbh->getFoodByID($id);
 $templateParams["nome"] = "productEdit_Template.php";
 
 

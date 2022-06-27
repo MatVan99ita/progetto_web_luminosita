@@ -5,8 +5,6 @@
 <?php endif;?>
 <?php
 
-print_r($templateParams["foods"]);
-
 ?>
 
 <div class="container" id="art">
@@ -16,13 +14,24 @@ print_r($templateParams["foods"]);
             <th scope="col"><h2>Dashboard</h2></th>
         </tr>
     </thead>
-    <tbody>
+    <tbody>        
+        <?php 
+        //Nome, Cognome, Email, nomeAzienda, indirizzo, orariConsegna, contatto, descrizione
+            $mail = $templateParams["user"]["Email"];
+            $referente  = $templateParams["user"]["Nome"] . " " . $templateParams["user"]["Cognome"];
+            $nomeAzienda  = $templateParams["user"]["nomeAzienda"];
+            $indirizzo  = $templateParams["user"]["indirizzo"];
+            $orari  = $templateParams["user"]["orariConsegna"];
+            $contatti  = $templateParams["user"]["contatto"];
+            $descr  = $templateParams["user"]["descrizione"];
+            ?>
+            
         <tr>
             <th scope="row" style="width: 10%">•</th>
-            <td style="width: 100px"><h5>Utente:</h5></td>
-            <td style="width: 100px"><?php echo $nome." ".$cognome; ?></td>
+            <td><h5>Nome azienda:</h5></td>
+            <td><?php echo $nomeAzienda; ?></td>
         </tr>
-        
+
         <tr>
             <th scope="row">•</th>
             <td><h5>Mail:</h5></td>
@@ -31,34 +40,36 @@ print_r($templateParams["foods"]);
         
         <tr>
             <th scope="row">•</th>
-            <td><h5>Sesso:</h5></td>
-            <td><?php echo $sesso; ?></td>
+            <td><h5>Referente:</h5></td>
+            <td><?php echo $referente; ?></td>
         </tr>
         
         <tr>
             <th scope="row">•</th>
-            <td><h5>Cod. Unibo:</h5></td>
-            <td><?php echo $unicode; ?></td>
+            <td><h5>Indirizzo:</h5></td>
+            <td><?php echo $indirizzo; ?></td>
         </tr>
         
         <tr>
             <th scope="row">•</th>
-            <td><h5>Zone consegna:</h5></td>
-            <td><?php echo $consegne; ?></td>
+            <td><h5>Orari:</h5></td>
+            <td><?php echo $orari; ?></td>
         </tr>
         
         <tr>
             <th scope="row">•</th>
-            <td><h5>Info pagamento:</h5></td>
-            <td><?php echo $pagah; ?></td>
+            <td><h5>Contatti:</h5></td>
+            <td><?php echo $contatti; ?></td>
+        </tr>
+        
+        <tr>
+            <th scope="row">•</th>
+            <td><h5>Descrizione:</h5></td>
+            <td><?php echo $descr; ?></td>
         </tr>
     </tbody>
     </table>
-    <div>
-        <a href="change_data.php?datas" class="btn btn-warning m-1">
-            Cambia dati
-        </a>
-        
+    <div>        
         <a href="change_data.php?passData" class="btn btn-danger m-1">
             Cambia password
         </a>
@@ -96,6 +107,11 @@ print_r($templateParams["foods"]);
             <?php endforeach; ?>
         </tbody>
     </table>
+    <div>
+        <a class="btn btn-success m-1" href="product_edit.php?new&id=-1">
+            Aggiungi un nuovo prodotto
+        </a>            
+    </div>
     <?php 
     /**
      * Array ( 
