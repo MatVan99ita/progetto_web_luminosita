@@ -6,7 +6,6 @@
 <?php
 //getAllUserLoggedInfo($mail, $id, $pass, $salt){
 $utente = $dbh->getAllUserLoggedInfo($_COOKIE["mail"], $_COOKIE["id"]);
-
 // Nome
 $nome = $utente["Nome"];
 

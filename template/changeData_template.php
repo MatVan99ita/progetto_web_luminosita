@@ -2,9 +2,10 @@
 <?php
 $url = parse_url($_SERVER['REQUEST_URI'], $component = -1);
 $query = explode("&", $url["query"]);
+print_r($query);
 ?>
 <div id="login_form" class="container justify-content-center col-md-12">
-    <form action="#" method="POST">
+    <form action="change_edit.php?<?php echo $query[0]; ?>" method="POST">
 <?php if($query[0] == "passData"): ?>
         <h2>Cambio password</h2>
         <div class="form-group">
@@ -50,33 +51,29 @@ $query = explode("&", $url["query"]);
             <li id="special" class="invalid">At least <strong>1 special character(Ex.: .,_?! etc...)</strong></li>
         </ul>
     </div>
-    <div>
-            <a href="change_edit.php?<?php echo $query[0]; ?>" class="btn btn-success m-1">
-                Cambia dati
-            </a>
 <?php
 elseif ($query[0] == "datas"):
     $utente = $dbh->getAllUserLoggedInfo($_COOKIE["mail"], $_COOKIE["id"]);
     // Nome
-    $nome = $utente[0]["Nome"];
+    $nome = $utente["Nome"];
 
     // Cognome,
-    $cognome = $utente[0]["Cognome"];
+    $cognome = $utente["Cognome"];
 
     // Email,
-    $mail = $utente[0]["Email"];
+    $mail = $utente["Email"];
 
     // codUnibo,
-    $unicode = $utente[0]["codUnibo"];
+    $unicode = $utente["codUnibo"];
 
     // sesso,
-    $sesso = $utente[0]["sesso"];
+    $sesso = $utente["sesso"];
     
     // zoneConsegna,
-    $consegne = $utente[0]["zoneConsegna"];
+    $consegne = $utente["zoneConsegna"];
     
     // info_pagamento
-    $pagah = $utente[0]["info_pagamento"];
+    $pagah = $utente["info_pagamento"];
     
     ?>
     
@@ -85,51 +82,49 @@ elseif ($query[0] == "datas"):
         <div class="form-group">
             <label>Nome</label>
             <div class="input-group" id="show_hide_password">
-                <input type="text" name="name" value="<?php echo $nome; ?>" class="form-control">
+                <input type="text" name="nome" value="<?php echo $nome; ?>" class="form-control">
             </div>
         </div>
         <div class="form-group">
             <label>Cognome</label>
             <div class="input-group" id="show_hide_password">
-                <input type="text" name="name" value="<?php echo $cognome; ?>" class="form-control">
+                <input type="text" name="cognome" value="<?php echo $cognome; ?>" class="form-control">
             </div>
         </div>
         <div class="form-group">
             <label>Email</label>
             <div class="input-group" id="show_hide_password">
-                <input type="email" name="name" value="<?php echo $mail; ?>" class="form-control">
+                <input type="email" name="mail" value="<?php echo $mail; ?>" class="form-control">
             </div>
         </div>
         <div class="form-group">
             <label>Sesso</label>
             <div class="input-group" id="show_hide_password">
-                <input type="text" name="name" value="<?php echo $sesso; ?>" class="form-control">
+                <input type="text" name="sex" value="<?php echo $sesso; ?>" class="form-control">
             </div>
         </div>
         <div class="form-group">
             <label>Cod. UniBo</label>
             <div class="input-group" id="show_hide_password">
-                <input type="text" name="name" value="<?php echo $unicode; ?>" placeholder="cod unibo" class="form-control">
+                <input type="text" name="cod.unibo" value="<?php echo $unicode; ?>" placeholder="cod unibo" class="form-control">
             </div>
         </div>
         <div class="form-group">
             <label>Zona consegna</label>
             <div class="input-group" id="show_hide_password">
-                <input type="text" name="name" value="<?php echo $consegne; ?>" placeholder="zone di consegna" class="form-control">
+                <input type="text" name="consegna" value="<?php echo $consegne; ?>" placeholder="zone di consegna" class="form-control">
             </div>
         </div>
         <div class="form-group">
             <label>Info pagamento</label>
             <div class="input-group" id="show_hide_password">
-                <input type="text" name="name" value="<?php echo $pagah; ?>" placeholder="info pagamento" class="form-control">
+                <input type="text" name="pagamento" value="<?php echo $pagah; ?>" placeholder="info pagamento" class="form-control">
             </div>
         </div>
-        <div>
-            <a href="change_edit.php?<?php echo $query[0]; ?>" class="btn btn-success m-1">
-                Cambia dati
-            </a>
 <?php endif; ?>
-
+        <div class="form-group">
+            <input type="submit" class="btn btn-success m-1" value="Cambia dati">   
+            </input>
             <a href="login.php" class="btn btn-danger m-1">
                 Annulla
             </a>

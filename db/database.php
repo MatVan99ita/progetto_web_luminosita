@@ -175,8 +175,38 @@ class DatabaseHelper{
         return true;
     }
     
-    public function changeInfo($datas){
-        return $datas;
+    public function changeInfo($nome, $cognome, $mail, $sex, $codUni, $consegna, $paga){
+
+        $sql = "UPDATE `utente` SET `Nome` = ?, `Cognome` = ?, `Email` = ? WHERE UserID = ?";
+        $stmt = $this->db->prepare($sql);
+        $stmt->bind_param('ssss', $nome, $cognome, $mail, $_COOKIE["id"]);
+        $stmt->execute();
+        if($this->db->error){
+            print_r($this->db->error);
+            return false;
+        }
+
+        $sql = "SELECT BuyerID FROM compratore WHERE UserID = ?";
+        $stmt = $this->db->prepare($sql);
+        $stmt->bind_param('s', $_COOKIE['id']);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        $ven = $result->fetch_all(MYSQLI_ASSOC);
+
+        echo $ven[0]["BuyerID"];
+        
+        $sql="UPDATE `compratore` SET `codUnibo`= ?, `sesso` = ?, `zoneConsegna` = ?, `info_pagamento` = ? WHERE BuyerID = ?";
+        $stmt = $this->db->prepare($sql);
+        $stmt->bind_param('sssss', $codUni, $sex, $consegna, $paga, $ven[0]["BuyerID"]);
+        $stmt->execute();
+        if($this->db->error){
+            print_r($this->db->error);
+            return false;
+        }
+
+        unset($_COOKIE['mail']);
+        setcookie("mail", $mail);
+        return true;
     }
 
     public function getFoodByID($id){
