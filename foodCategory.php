@@ -17,7 +17,7 @@ if(count($nomecategoria)>0){
     $templateParams["list-type"]="container";
 }
 else{
-    $templateParams["titolo_pagina"] = "Categoria non trovata"; 
+    $templateParams["titolo_pagina"] = "Al momento non ci sono prodotti"; 
     $templateParams["articoli"] = array();
 }
 

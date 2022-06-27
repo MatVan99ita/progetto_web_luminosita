@@ -2,13 +2,7 @@
  TODO: ricordarsi di usare sempre questo (https://webaim.org/resources/contrastchecker/)
 
  NOTA: 
-    i login possono essere essere effettuati da utenti e venditori, 
-    ma la registrazione è solo per gli utenti(per i vendors faccio un link nel footer tutto nascosto)
-
-    quindi quando un venditore logga dovrà avere la zona con le proprie info come un utente normale,
-    in più devo creare un template singolo per vendor e buyer
-    i vendor avranno la lista dei loro prodotti aggiornabile in qualsiasi momento
-
+    un vendor può cambiare i propri dati solo attraverso il gestore del sito per evitare frodi
 
  TODO:
     il carrello lo dovrò gestire in modo bislacco con jquery, cookie e backand sul sito, sarà un delirio
@@ -27,8 +21,6 @@
    inserire nellan zona carrello la campanella con le notifiche
 
  TODO:
-
- TODO:
    creare zona per leggere le notifiche con tipo
    Azienda<Mail azienda>
    oggetto                                                   btn-leggi    btn-cancella
@@ -36,10 +28,13 @@
    leggi apre la notifica completa con anche il corpo, immagini se ci sono e cambia il valore di lettura
    
  TODO:
-   nella lista dei prodotti aggiungere un cerca, e sistemare la grafica del titolo
+   nella lista dei prodotti aggiungere un cerca per nome prodotto, 
+   e sistemare la grafica della scheda dettagli
 
- TODO:
-   finire la parte del vendor con i bottoni per sistemare i prodotti(riuso del template di cambio dati generico)
- 
- TODO:
-   finire la funzione di cambio dati dell'utente
+  RECAP:
+    ~ Cerca nei prodotti (2h)
+    ~ Carrello (3gg)
+    ~ Notifiche (2gg)
+    ~ Grafica (8h)
+    ~ Accessibilità (2gg)
+
