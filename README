@@ -4,17 +4,18 @@ NOTA:
    un vendor può cambiare i propri dati solo attraverso il gestore del sito per evitare frodi
 
 TODO:
-   il carrello lo dovrò gestire in modo bislacco con jquery, cookie e backand sul sito, sarà un delirio
-TODO:
    per la zona acquisti dovrò gestirmi non solo la zona di consegna, tipo aula ma anche 
    l'orario per chi vuole prenotare prima le cose altrimenti l'ora di arrivo 
    metto che di predefinito sarà sempre 1h o 30m dopo la conferma di acquisto
+   
 TODO: 
    la grafica la sistemo per ultima perchè è meglio che mi implementi prima le funzionalità
    altrimenti succede come per BdD
+
 TODO:
    tabella notifiche creata
    inserire nellan zona carrello la campanella con le notifiche
+
 TODO:
    creare zona per leggere le notifiche con tipo
    Azienda<Mail azienda>
@@ -24,6 +25,7 @@ TODO:
 TODO:
    nella lista dei prodotti aggiungere un cerca per nome prodotto, 
    e sistemare la grafica della scheda dettagli
+
 TODO:
    Creare una paginetta con i dettagli di un venditore per gli utenti con una lista di tutti i prodotti che vende(acquistabili e dettagliabili ome per le liste normali)
 

@@ -56,52 +56,23 @@ class DatabaseHelper{
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 
-    public function getFoodSpecificDetails($id){
-        /**
-         * nomeProd	
-         * prodottoID	
-         * descrProd	
-         * prezzo	
-         * glutenFree	
-         * quantity	
-         * vendorID	
-         * foodType	
-         * vendorID	
-         * nomeAzienda	
-         * indirizzo	
-         * orariConsegna	
-         * contatto	
-         * descrizione	
-         * userID	
-         * CategoryID	
-         * CategoryName	
-         * CategoryDescr
-         */
+    public function getFoodSpecificDetails($id) {
         $sql = "SELECT 
-                    `prodottoID`,
+                    `prodottoID`, 
+                     p.`vendorID`,
+                    `CategoryID`, 
+                    `CategoryName`,
                     `nomeProd`,
+                    `descrProd`,
                     `glutenFree`,
                     `quantity`,
                     `prezzo`,
-                    `nomeAzienda`,
-                    `CategoryName`,
-                    `CategoryID`
-                FROM `prodotto` AS p LEFT JOIN `venditore` AS c1 ON p.vendorID = c1.vendorID
+                    `nomeAzienda` 
+                FROM `prodotto` AS p LEFT JOIN `venditore` AS c1 ON p.vendorID = c1.vendorID 
                 LEFT JOIN `foodcategory` AS c2 ON p.foodType = c2.CategoryID
-                WHERE `foodType` = ?;";
-        /**SELECT 
-         * `prodottoID`, 
-         * `nomeProd`, 
-         * `glutenFree`, 
-         * `quantity`, 
-         * `prezzo`, 
-         * `nomeAzienda`, 
-         * `CategoryName` 
-         * FROM `prodotto` AS p LEFT JOIN `venditore` AS c1 ON p.vendorID = c1.vendorID 
-         * LEFT JOIN `foodcategory` AS c2 ON p.foodType = c2.CategoryID 
-         * WHERE `foodType` = ?; */
+                WHERE `prodottoID` = ?;";
         $stmt = $this->db->prepare($sql);
-        $stmt->bind_param('i', $type);
+        $stmt->bind_param('s', $id);
         $stmt->execute();
         $result = $stmt->get_result();
         $ven = $result->fetch_all(MYSQLI_ASSOC);
@@ -281,16 +252,6 @@ class DatabaseHelper{
         unset($_COOKIE['mail']);
         setcookie("mail", $mail);
         return true;
-    }
-
-    public function getFoodByID($id){
-        $sql = "SELECT `nomeProd`, `descrProd`, `prezzo`, `glutenFree`, `quantity`, `CategoryName`  FROM `prodotto` AS p LEFT JOIN `foodcategory` AS f ON p.foodType = f.CategoryID WHERE p.prodottoID = ?;";
-        $stmt = $this->db->prepare($sql);
-        $stmt->bind_param('s', $id);
-        $stmt->execute();
-        $result = $stmt->get_result();
-        $ven = $result->fetch_all(MYSQLI_ASSOC);
-        return $ven[0];
     }
 
     /*
