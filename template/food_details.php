@@ -1,5 +1,8 @@
-<h2>PRODOTTO</h2>
-<?php /*`prodottoID`, 
+
+<?php 
+/*
+$templateParams["food"]
+`prodottoID`, 
 p.`vendorID`,
 `CategoryID`, 
 `CategoryName`,
@@ -8,49 +11,84 @@ p.`vendorID`,
 `glutenFree`,
 `quantity`,
 `prezzo`,
-`nomeAzienda`*/?>
-<div class="form-group">
-    <label>Nome</label>
-    <div class="input-group" id="show_hide_password">
-        <input type="text" name="name" class="form-control" required>
-    </div>
-</div>
+`venduto`
+`nomeAzienda`*/
+$art = $templateParams["food"];
+$img = CAT_DIR.$art["CategoryID"].". ".$art["CategoryName"].".jpg";
+$val = $dbh->starRate($art["venduto"]);
+$value = explode('.', $val);
+$int = (int) $value[0];
+$decimal = (int) $value[1];
+?>
 
-<div class="form-group">
-    <label for="inputSurname">Descrizione</label>
-    <textarea id="inputDescr" name="inputDescr" rows="2" cols="50" class="form-control" required> </textarea>
-</div>
 
-<div class="form-group">
-    <label>Prezzo €</label>
-    <div class="input-group" id="show_hide_password">
-        <input type="number" name="price" value="1" class="form-control" min=0.01 step=0.01 required>
-    </div>
-</div>
-
-<div class="form-group">
-    <label class="form-check-label" for="flexSwitchCheckDefault">Gluten Free</label>
-    <div class="col-md-3">
-        <div class="custom-control custom-checkbox image-checkbox">
-            <input type="checkbox" class="custom-control-input" id="ck1a" name="gluten">
-            <label style="width: 200px" class="custom-control-label" for="ck1a">
-                <img src="<?php echo UPLOAD_DIR."gluten-free.jpg"; ?>" alt="gluten-free" class="img-fluid">
-            </label>
-        </div>
-    </div>
-</div>
-
-<div class="form-group">
-    <label>Quantità disponibile</label>
-    <div class="input-group">
-        <input type="number" name="quantityInput" class="form-control" value="0" required>
-    </div>
-</div>
-
-<div class="form-group">
-    <label>Categoria</label>
-    <div class="input-group">
-        <select name="categoryInput" class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
-        </select>
-    </div>
+<div class="container">
+	<div class="card">
+		<div class="container-fliud">
+			<div class="wrapper row">
+				<div class="preview col-md-6">
+					
+					<div class="preview-pic tab-content">
+					  <div class="tab-pane active" id="pic-1"><img style="width: 400px; height 252px" src="<?php echo $img; ?>"/></div>
+					  <div class="tab-pane" id="pic-2"><img src="<?php echo $img; ?>" /></div>
+					  <div class="tab-pane" id="pic-3"><img src="<?php echo $img; ?>" /></div>
+					  <div class="tab-pane" id="pic-4"><img src="<?php echo $img; ?>" /></div>
+					  <div class="tab-pane" id="pic-5"><img src="<?php echo $img; ?>" /></div>
+					</div>
+					<ul class="preview-thumbnail nav nav-tabs">
+					  <li class="active"><a data-target="#pic-1" data-toggle="tab"><img style="width: 400px; height 252px" src="<?php echo $img; ?>"/></a></li>
+					  <li><a data-target="#pic-2" data-toggle="tab"><img src="<?php echo $img; ?>" /></a></li>
+					  <li><a data-target="#pic-3" data-toggle="tab"><img src="<?php echo $img; ?>" /></a></li>
+					  <li><a data-target="#pic-4" data-toggle="tab"><img src="<?php echo $img; ?>" /></a></li>
+					  <li><a data-target="#pic-5" data-toggle="tab"><img src="<?php echo $img; ?>" /></a></li>
+					</ul>
+					
+				</div>
+				<div class="details col-md-6">
+					<h3 class="product-title"><?php echo $art["nomeProd"]; ?></h3>
+					<div class="rating">
+						<div class="stars">
+                            <?php
+                            if($decimal==0):
+                                $j = $int;
+                                for($i=0; $i<5; $i++):
+                                    if($j>0): 
+                                        $j--;?> 
+							            <span class="fa fa-star checked"></span>
+                                    <?php else: ?>
+							            <span class="fa fa-star"></span>
+                              <?php endif;
+                                endfor; ?>
+                            <?php else:
+                                $j = $int;
+                                $k = $decimal;
+                                for($i=0; $i<5; $i++):
+                                    if($j>0): 
+                                        $j--;?> 
+							            <span class="fa fa-star checked"></span>
+                                    <?php 
+                                    elseif($k>0 && $j==0):
+                                        $k=-1; ?>
+                                        <span class="fa fa-star-half-o checked"></span>
+                                    <?php else: ?>
+							            <span class="fa fa-star"></span>
+                                    <?php endif; ?>
+                                <?php 
+                                endfor;
+                            endif; ?>
+                            <span><?php echo $val; ?></span>
+						</div>
+						<span class="review-no">Venduto <?php echo $art["venduto"];?> volte</span>
+					</div>
+					<p class="product-description"><p><?php echo $art["descrProd"]; ?></p></p>
+					<h4 class="price">Prezzo: <span><?php echo $art["prezzo"]; ?>€</span></h4>
+					<h4 class="price">Quantità disponibile: <span><?php echo $art["quantity"]; ?></span></h4>
+					<div class="action">
+						<button class="add-to-cart btn btn-primary m-1" type="button">add to cart</button>
+						<button class="like btn btn-danger m-1" type="button"><span class="fa fa-heart"></span></button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
 </div>

@@ -25,16 +25,20 @@ class DatabaseHelper{
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 
-    public function getFoodMinimalDetailByType($type){
-        $sql = "SELECT 
-                    `prodottoID`,
+    
+    public function getFoodSpecificDetails($type) {
+        $sql = "SELECT  
+                    `prodottoID`, 
+                     p.`vendorID`,
+                    `CategoryID`, 
+                    `CategoryName`,
                     `nomeProd`,
+                    `descrProd`,
                     `glutenFree`,
                     `quantity`,
                     `prezzo`,
-                    `nomeAzienda`,
-                    `CategoryName`,
-                    `CategoryID`
+                    `venduto`,
+                    `nomeAzienda` 
                 FROM `prodotto` AS p LEFT JOIN `venditore` AS c1 ON p.vendorID = c1.vendorID
                 LEFT JOIN `foodcategory` AS c2 ON p.foodType = c2.CategoryID
                 WHERE `foodType` = ?;";
@@ -56,27 +60,12 @@ class DatabaseHelper{
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 
-    public function getFoodSpecificDetails($id) {
-        $sql = "SELECT 
-                    `prodottoID`, 
-                     p.`vendorID`,
-                    `CategoryID`, 
-                    `CategoryName`,
-                    `nomeProd`,
-                    `descrProd`,
-                    `glutenFree`,
-                    `quantity`,
-                    `prezzo`,
-                    `nomeAzienda` 
-                FROM `prodotto` AS p LEFT JOIN `venditore` AS c1 ON p.vendorID = c1.vendorID 
-                LEFT JOIN `foodcategory` AS c2 ON p.foodType = c2.CategoryID
-                WHERE `prodottoID` = ?;";
-        $stmt = $this->db->prepare($sql);
-        $stmt->bind_param('s', $id);
-        $stmt->execute();
-        $result = $stmt->get_result();
-        $ven = $result->fetch_all(MYSQLI_ASSOC);
-        return $ven[0];
+    public function starRate($value){
+        $val = $value / 5;
+        if($val > 5) {
+            return $this->starRate($val);
+        }
+        return $val;
     }
 
     public function getSpecificCat($id){
