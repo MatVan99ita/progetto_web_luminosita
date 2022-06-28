@@ -25,13 +25,87 @@ class DatabaseHelper{
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 
-    public function getFoodByType($type){
-        $sql = "SELECT CategoryID, CategoryName, prodottoID, nomeProd, descrProd, glutenFree, quantity, nomeAzienda FROM prodotto, foodcategory, venditore WHERE foodType = ? GROUP BY(nomeProd);";
+    public function getFoodMinimalDetailByType($type){
+        $sql = "SELECT 
+                    `prodottoID`,
+                    `nomeProd`,
+                    `glutenFree`,
+                    `quantity`,
+                    `prezzo`,
+                    `nomeAzienda`,
+                    `CategoryName`,
+                    `CategoryID`
+                FROM `prodotto` AS p LEFT JOIN `venditore` AS c1 ON p.vendorID = c1.vendorID
+                LEFT JOIN `foodcategory` AS c2 ON p.foodType = c2.CategoryID
+                WHERE `foodType` = ?;";
+        /**SELECT 
+         * `prodottoID`, 
+         * `nomeProd`, 
+         * `glutenFree`, 
+         * `quantity`, 
+         * `prezzo`, 
+         * `nomeAzienda`, 
+         * `CategoryName` 
+         * FROM `prodotto` AS p LEFT JOIN `venditore` AS c1 ON p.vendorID = c1.vendorID 
+         * LEFT JOIN `foodcategory` AS c2 ON p.foodType = c2.CategoryID 
+         * WHERE `foodType` = ?; */
         $stmt = $this->db->prepare($sql);
         $stmt->bind_param('i', $type);
         $stmt->execute();
         $result = $stmt->get_result();
         return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
+    public function getFoodSpecificDetails($id){
+        /**
+         * nomeProd	
+         * prodottoID	
+         * descrProd	
+         * prezzo	
+         * glutenFree	
+         * quantity	
+         * vendorID	
+         * foodType	
+         * vendorID	
+         * nomeAzienda	
+         * indirizzo	
+         * orariConsegna	
+         * contatto	
+         * descrizione	
+         * userID	
+         * CategoryID	
+         * CategoryName	
+         * CategoryDescr
+         */
+        $sql = "SELECT 
+                    `prodottoID`,
+                    `nomeProd`,
+                    `glutenFree`,
+                    `quantity`,
+                    `prezzo`,
+                    `nomeAzienda`,
+                    `CategoryName`,
+                    `CategoryID`
+                FROM `prodotto` AS p LEFT JOIN `venditore` AS c1 ON p.vendorID = c1.vendorID
+                LEFT JOIN `foodcategory` AS c2 ON p.foodType = c2.CategoryID
+                WHERE `foodType` = ?;";
+        /**SELECT 
+         * `prodottoID`, 
+         * `nomeProd`, 
+         * `glutenFree`, 
+         * `quantity`, 
+         * `prezzo`, 
+         * `nomeAzienda`, 
+         * `CategoryName` 
+         * FROM `prodotto` AS p LEFT JOIN `venditore` AS c1 ON p.vendorID = c1.vendorID 
+         * LEFT JOIN `foodcategory` AS c2 ON p.foodType = c2.CategoryID 
+         * WHERE `foodType` = ?; */
+        $stmt = $this->db->prepare($sql);
+        $stmt->bind_param('i', $type);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        $ven = $result->fetch_all(MYSQLI_ASSOC);
+        return $ven[0];
     }
 
     public function getSpecificCat($id){

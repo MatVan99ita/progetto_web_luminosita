@@ -13,7 +13,7 @@ if(isset($_GET["id"])){
 $nomecategoria = $dbh->getSpecificCat($idcategoria)[0];
 if(count($nomecategoria)>0){
     $templateParams["titolo_pagina"] = $nomecategoria["CategoryName"];
-    $templateParams["articoli"] = $dbh->getFoodByType($nomecategoria["CategoryID"]);
+    $templateParams["articoli"] = $dbh->getFoodMinimalDetailByType($nomecategoria["CategoryID"]);
     $templateParams["list-type"]="container";
 }
 else{
