@@ -9,6 +9,10 @@ class DatabaseHelper{
         }
     }
 
+    public function printFormattedArray($array){
+        print("<pre>".print_r($array,true)."</pre>");
+    }
+
     public function getRandomFoods($n){
         $stmt = $this->db->prepare("SELECT nomeProd, prezzo, CategoryID, categoryName FROM prodotto, foodcategory WHERE prodotto.foodType =`CategoryID` ORDER BY RAND() LIMIT ?");
         $stmt->bind_param('i',$n);
@@ -440,7 +444,7 @@ class DatabaseHelper{
         WHERE p.vendorID=v.vendorID 
         GROUP BY v.nomeAzienda;
         */
-        $sql = "SELECT SUM(venduto) AS vendite_tot, nomeAzienda, orariConsegna, contatto FROM `prodotto` AS p, `venditore` AS v WHERE p.vendorID=v.vendorID GROUP BY nomeAzienda ORDER BY vendite_tot DESC;";
+        $sql = "SELECT SUM(venduto) AS vendite_tot, nomeAzienda, orariConsegna, contatto, v.vendorID FROM `prodotto` AS p, `venditore` AS v WHERE p.vendorID=v.vendorID GROUP BY nomeAzienda ORDER BY vendite_tot DESC;";
         $stmt = $this->db->prepare($sql);
         $stmt->execute();
         $result = $stmt->get_result();
@@ -451,7 +455,8 @@ class DatabaseHelper{
      * Dettagli specifici di un venditore
      */
     public function specificVendorList($id){
-        $sql = "SELECT `vendorID`, `nomeAzienda`, `indirizzo`, `orariConsegna`, `contatto`, `descrizione`, `Email` FROM `venditore` AS v LEFT JOIN `utente` AS u ON v.userID=u.userID WHERE vendorID = ?;";
+        //$sql = "SELECT `vendorID`, `nomeAzienda`, `indirizzo`, `orariConsegna`, `contatto`, `descrizione`, `Email`, `Nome`, `Cognome` FROM `venditore` AS v LEFT JOIN `utente` AS u ON v.userID=u.userID WHERE vendorID = ?;";
+        $sql="SELECT v.`vendorID`, `nomeAzienda`, `indirizzo`, `orariConsegna`, `contatto`, `descrizione`, `Email`, `Nome`, `Cognome` FROM `venditore` AS v LEFT JOIN `utente` AS u ON v.userID=u.userID WHERE v.vendorID = ?;";
         $stmt = $this->db->prepare($sql);
         $stmt->bind_param('s', $id);
         $stmt->execute();

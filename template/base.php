@@ -44,6 +44,7 @@
             <p>ORARIO</p>
         </div>
         <div class="column-right">
+            <a href="foodVendor.php?list" class="btn btn-primary">I nostri partner</a>
             <a href="carrello.php" class="btn btn-primary">Vai al carrello</a>
             <a href="notifiche.php" class="btn btn-primary">Notifiche</a>
         </div>
