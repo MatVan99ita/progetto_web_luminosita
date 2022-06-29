@@ -312,7 +312,7 @@ class DatabaseHelper{
     }
 
     
-    public function getVendorFoods($mail, $id){
+    public function getVendorFoods($id){
 
         $sql = "SELECT vendorID FROM venditore WHERE userID = ?";
         $stmt = $this->db->prepare($sql);
@@ -428,6 +428,78 @@ class DatabaseHelper{
         setcookie("vendors", 1);
         
         return array(true, "Registrazione avvenuta con successo");
+    }
+
+    /**
+     * Lista generica con poche informazioni dei venditori
+     */
+    public function vendorList(){
+        /*
+        SELECT SUM(venduto) AS tot_prod, v.nomeAzienda, orariConsegna, contatto 
+        FROM `prodotto` AS p, `venditore` AS v 
+        WHERE p.vendorID=v.vendorID 
+        GROUP BY v.nomeAzienda;
+        */
+        $sql = "SELECT SUM(venduto) AS vendite_tot, nomeAzienda, orariConsegna, contatto FROM `prodotto` AS p, `venditore` AS v WHERE p.vendorID=v.vendorID GROUP BY nomeAzienda ORDER BY vendite_tot DESC;";
+        $stmt = $this->db->prepare($sql);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
+    /**
+     * Dettagli specifici di un venditore
+     */
+    public function specificVendorList($id){
+        $sql = "SELECT `vendorID`, `nomeAzienda`, `indirizzo`, `orariConsegna`, `contatto`, `descrizione`, `Email` FROM `venditore` AS v LEFT JOIN `utente` AS u ON v.userID=u.userID WHERE vendorID = ?;";
+        $stmt = $this->db->prepare($sql);
+        $stmt->bind_param('s', $id);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        $res = $result->fetch_all(MYSQLI_ASSOC);
+        return $res[0];
+        /*
+        ########################
+
+        vendorID
+        nomeAzienda *
+        indirizzo *
+        orariConsegna *
+        contatto *
+        descrizione *
+        userID
+        
+        ########################
+        
+        prodottoID
+        nomeProd
+        descrProd
+        prezzo
+        glutenFree
+        quantity
+        venduto
+        vendorID
+        foodType
+
+        ########################
+        */
+    }
+
+    
+    public function specificVendorFoodList($id){
+        $sql = "SELECT `prodottoID`, `nomeProd`, `descrProd`, `prezzo`, `glutenFree`, `quantity`, `CategoryName`, `CategoryID`, c1.vendorID, `venduto`, `nomeAzienda`, c1.vendorID
+        FROM `prodotto` AS p LEFT JOIN `venditore` AS c1 
+        ON p.vendorID = c1.vendorID 
+        LEFT JOIN foodcategory AS c2 
+        ON p.foodType = c2.CategoryID 
+        WHERE c1.vendorID = ?
+        ORDER BY `venduto` DESC;";
+
+        $stmt = $this->db->prepare($sql);
+        $stmt->bind_param('s', $id);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        return $result->fetch_all(MYSQLI_ASSOC);
     }
 
 }

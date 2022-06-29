@@ -1,24 +1,22 @@
 <?php
 require_once 'bootstrap.php';
+$url = parse_url($_SERVER['REQUEST_URI'], $component = -1);
+$query = explode("&", $url["query"]);
+
 
 //Base Template
 $templateParams["titolo"] = "Luminosità - ";
-$templateParams["nome"] = "foodList.php";
 $templateParams["categorie"] = $dbh->getFoodTypes();
 //Articoli Categoria Template
 $idcategoria = -1;
-if(isset($_GET["id"])){
-    $idcategoria = $_GET["id"];
-}
-$nomecategoria = $dbh->getSpecificCat($idcategoria)[0];
-if(count($nomecategoria)>0){
-    $templateParams["titolo_pagina"] = $nomecategoria["CategoryName"];
-    $templateParams["articoli"] = $dbh->getFoodMinimalDetailByType($nomecategoria["CategoryID"]);
-    $templateParams["list-type"]="container";
-}
-else{
-    $templateParams["titolo_pagina"] = "Al momento non ci sono prodotti"; 
-    $templateParams["articoli"] = array();
+if($query[0]=="spec"){
+    $templateParams["nome"] = "vendor_details.php";
+    $templateParams["vendorID"] = explode("=", $query[1])[1];
+    $templateParams["details"] = $dbh->specificVendorList($templateParams["vendorID"]);
+    $templateParams["food_list"] = $dbh->specificVendorFoodList($templateParams["vendorID"]);
+} elseif ($query[0]=="list") {
+    $templateParams["nome"] = "vendor_list.php";
+    $templateParams["lista"] = $dbh->vendorList();
 }
 
 require 'template/base.php';

@@ -1,131 +1,187 @@
 
+<h2>AZIENDA</h2>
+<?php 
+print("<pre>".print_r($templateParams["details"],true)."</pre>");
+$vendor = $templateParams["details"][0];
 
-<?php if(isset($templateParams["titolo_pagina"])): ?>
-    <h2><?php echo $templateParams["titolo_pagina"]; ?></h2>
-<?php endif;?>
-<?php
-
+/**
+ * vendorID, nomeAzienda, indirizzo, orariConsegna, contatto, descrizione
+ */
 ?>
-
-<div class="container" id="art">
-    <table class="table table-striped table-bordered" style="width: 1000px">
-    <thead>
-        <tr>
-            <th scope="col"><h2>Dashboard</h2></th>
-        </tr>
-    </thead>
-    <tbody>        
-        <?php 
-        //Nome, Cognome, Email, nomeAzienda, indirizzo, orariConsegna, contatto, descrizione
-            $mail = $templateParams["user"]["Email"];
-            $referente  = $templateParams["user"]["Nome"] . " " . $templateParams["user"]["Cognome"];
-            $nomeAzienda  = $templateParams["user"]["nomeAzienda"];
-            $indirizzo  = $templateParams["user"]["indirizzo"];
-            $orari  = $templateParams["user"]["orariConsegna"];
-            $contatti  = $templateParams["user"]["contatto"];
-            $descr  = $templateParams["user"]["descrizione"];
-            ?>
-            
-        <tr>
-            <th scope="row" style="width: 10%">•</th>
-            <td><h5>Nome azienda:</h5></td>
-            <td><?php echo $nomeAzienda; ?></td>
-        </tr>
-
-        <tr>
-            <th scope="row">•</th>
-            <td><h5>Mail:</h5></td>
-            <td><?php echo $mail; ?></td>
-        </tr>
-        
-        <tr>
-            <th scope="row">•</th>
-            <td><h5>Referente:</h5></td>
-            <td><?php echo $referente; ?></td>
-        </tr>
-        
-        <tr>
-            <th scope="row">•</th>
-            <td><h5>Indirizzo:</h5></td>
-            <td><?php echo $indirizzo; ?></td>
-        </tr>
-        
-        <tr>
-            <th scope="row">•</th>
-            <td><h5>Orari:</h5></td>
-            <td><?php echo $orari; ?></td>
-        </tr>
-        
-        <tr>
-            <th scope="row">•</th>
-            <td><h5>Contatti:</h5></td>
-            <td><?php echo $contatti; ?></td>
-        </tr>
-        
-        <tr>
-            <th scope="row">•</th>
-            <td><h5>Descrizione:</h5></td>
-            <td><?php echo $descr; ?></td>
-        </tr>
-    </tbody>
-    </table>
-    <div>        
-        <a href="change_data.php?passData" class="btn btn-danger m-1">
-            Cambia password
-        </a>
-        <a href="login.php" onclick="deleteAllCookies()" class="btn btn-danger m-1">
-            Logout
-        </a>
-    </div>
-<?php
-//############################################################################
-?>
-    <h3>Lista prodotti</h3>
-    <table class="table table-striped table-bordered" style="width: 1000px">
-        <thead>
-            <tr>
-            <?php foreach($templateParams["foods"][0] as $key => $food):
-                echo "<th scope='col'>".$key."</th>";
-                endforeach; ?>
-                <th scope='col'>Edit</th>
-                <th scope='col'>Refill</th>
-            </tr>
-        </thead>
-        <tbody>
-            <?php foreach($templateParams["foods"] as $food): ?>
-            <tr>
-                <?php 
-                    foreach($food as $key => $det):
-                    echo "<td>".$det."</td>";
-                    if($key == "vendorID"): ?>
-                        <th scope='col'><a class="btn btn-warning" href="product_edit.php?edit&id=<?php echo $food["prodottoID"]; ?>">Edit</a></th>
-                        <th scope='col'><a class="btn btn-warning" href="product_edit.php?refill&id=<?php echo $food["prodottoID"]; ?>">Refill</a></th>
-                <?php endif;
-                endforeach;
-                ?>
-            </tr>
-            <?php endforeach; ?>
-        </tbody>
-    </table>
-    <div>
-        <a class="btn btn-success m-1" href="product_edit.php?new&id=-1">
-            Aggiungi un nuovo prodotto
-        </a>            
-    </div>
-    <?php 
-    /**
-     * Array ( 
-     * [prodottoID] => 3 
-     * [nomeProd] => Panino con la mortadella 
-     * [descrProd] => La mortazza Bologna IGP 
-     * [prezzo] => 0 
-     * [glutenFree] => 0 
-     * [quantity] => 50 
-     * [CategoryName] => Panini 
-     * [vendorID] => 3 )
-     */?>
-</div>
-
-<div id="change_data_form" class="container justify-content-center col-md-12">
+    ?>
     
-</div>
+    
+    <div class="container">
+        <div class="card">
+            <div class="container-fliud">
+                <div class="wrapper row">
+                    <!-- <div class="preview col-md-6">
+                        
+                        <div class="preview-pic tab-content">
+                          <div class="tab-pane active" id="pic-1"><img style="width: 400px; height 252px" src="<?php //echo $img; ?>"/></div>
+                          <div class="tab-pane" id="pic-2"><img src="<?php //echo $img; ?>" /></div>
+                          <div class="tab-pane" id="pic-3"><img src="<?php //echo $img; ?>" /></div>
+                          <div class="tab-pane" id="pic-4"><img src="<?php //echo $img; ?>" /></div>
+                          <div class="tab-pane" id="pic-5"><img src="<?php //echo $img; ?>" /></div>
+                        </div>
+                        <ul class="preview-thumbnail nav nav-tabs">
+                          <li class="active"><a data-target="#pic-1" data-toggle="tab"><img style="width: 400px; height 252px" src="<?php //echo $img; ?>"/></a></li>
+                          <li><a data-target="#pic-2" data-toggle="tab"><img src="<?php //echo $img; ?>" /></a></li>
+                          <li><a data-target="#pic-3" data-toggle="tab"><img src="<?php //echo $img; ?>" /></a></li>
+                          <li><a data-target="#pic-4" data-toggle="tab"><img src="<?php //echo $img; ?>" /></a></li>
+                          <li><a data-target="#pic-5" data-toggle="tab"><img src="<?php //echo $img; ?>" /></a></li>
+                        </ul>
+                        
+                    </div> -->
+                    <div class="details col-md-6">
+                        <h3 class="product-title"><?php echo $vendor[""]; ?></h3>
+                        <div class="rating">
+                            <div class="stars">
+                                <?php
+                                if($decimal==0):
+                                    $j = $int;
+                                    for($i=0; $i<5; $i++):
+                                        if($j>0): 
+                                            $j--;?> 
+                                            <span class="fa fa-star checked"></span>
+                                        <?php else: ?>
+                                            <span class="fa fa-star"></span>
+                                  <?php endif;
+                                    endfor; ?>
+                                <?php else:
+                                    $j = $int;
+                                    $k = $decimal;
+                                    for($i=0; $i<5; $i++):
+                                        if($j>0): 
+                                            $j--;?> 
+                                            <span class="fa fa-star checked"></span>
+                                        <?php 
+                                        elseif($k>0 && $j==0):
+                                            $k=-1; ?>
+                                            <span class="fa fa-star-half-o checked"></span>
+                                        <?php else: ?>
+                                            <span class="fa fa-star"></span>
+                                        <?php endif; ?>
+                                    <?php 
+                                    endfor;
+                                endif; ?>
+                                <span><?php echo $val; ?></span>
+                            </div>
+                            <span class="review-no">Venduto <?php echo $art["venduto"];?> volte</span>
+                        </div>
+                        <p class="product-description"><p>Venduto da: <a href="foodVendor.php?spec&id=<?php echo $art["vendorID"] ?>"><?php echo $art["nomeAzienda"]; ?></a></p></p>
+                        <p class="product-description"><p><?php echo $art["descrProd"]; ?></p></p>
+                        <h4 class="price">Prezzo: <span><?php echo $art["prezzo"]; ?>€</span></h4>
+                        <h4 class="price">Quantità disponibile: <span><?php echo $art["quantity"]; ?></span></h4>
+                        <div class="action">
+                            <button class="add-to-cart btn btn-primary m-1" type="button">add to cart</button>
+                            <button class="like btn btn-danger m-1" type="button"><span class="fa fa-heart"></span></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+<br>
+<h2>LISTA PRODOTTI</h2>
+<?php
+print("<pre>".print_r($templateParams["food_list"],true)."</pre>");
+foreach($templateParams["food_list"] as $art):
+    $img = CAT_DIR.$art["CategoryID"].". ".$art["CategoryName"].".jpg";
+    $val = $dbh->starRate($art["venduto"]);
+    $value = explode('.', $val);
+    $int = (int) $value[0];
+    $decimal = isset($value[1]) ? (int) $value[1]: 0;
+    /*
+$templateParams["food"]
+`prodottoID`, 
+p.`vendorID`,
+`CategoryID`, 
+`CategoryName`,
+`nomeProd`,
+`descrProd`,
+`glutenFree`,
+`quantity`,
+`prezzo`,
+`venduto`
+`nomeAzienda`*/
+    ?>
+    
+    
+    <div class="container">
+        <div class="card">
+            <div class="container-fliud">
+                <div class="wrapper row">
+                    <div class="preview col-md-6">
+                        
+                        <div class="preview-pic tab-content">
+                          <div class="tab-pane active" id="pic-1"><img style="width: 400px; height 252px" src="<?php echo $img; ?>"/></div>
+                          <div class="tab-pane" id="pic-2"><img src="<?php echo $img; ?>" /></div>
+                          <div class="tab-pane" id="pic-3"><img src="<?php echo $img; ?>" /></div>
+                          <div class="tab-pane" id="pic-4"><img src="<?php echo $img; ?>" /></div>
+                          <div class="tab-pane" id="pic-5"><img src="<?php echo $img; ?>" /></div>
+                        </div>
+                        <ul class="preview-thumbnail nav nav-tabs">
+                          <li class="active"><a data-target="#pic-1" data-toggle="tab"><img style="width: 400px; height 252px" src="<?php echo $img; ?>"/></a></li>
+                          <li><a data-target="#pic-2" data-toggle="tab"><img src="<?php echo $img; ?>" /></a></li>
+                          <li><a data-target="#pic-3" data-toggle="tab"><img src="<?php echo $img; ?>" /></a></li>
+                          <li><a data-target="#pic-4" data-toggle="tab"><img src="<?php echo $img; ?>" /></a></li>
+                          <li><a data-target="#pic-5" data-toggle="tab"><img src="<?php echo $img; ?>" /></a></li>
+                        </ul>
+                        
+                    </div>
+                    <div class="details col-md-6">
+                        <h3 class="product-title"><?php echo $art["nomeProd"]; ?></h3>
+                        <div class="rating">
+                            <div class="stars">
+                                <?php
+                                if($decimal==0):
+                                    $j = $int;
+                                    for($i=0; $i<5; $i++):
+                                        if($j>0): 
+                                            $j--;?> 
+                                            <span class="fa fa-star checked"></span>
+                                        <?php else: ?>
+                                            <span class="fa fa-star"></span>
+                                  <?php endif;
+                                    endfor; ?>
+                                <?php else:
+                                    $j = $int;
+                                    $k = $decimal;
+                                    for($i=0; $i<5; $i++):
+                                        if($j>0): 
+                                            $j--;?> 
+                                            <span class="fa fa-star checked"></span>
+                                        <?php 
+                                        elseif($k>0 && $j==0):
+                                            $k=-1; ?>
+                                            <span class="fa fa-star-half-o checked"></span>
+                                        <?php else: ?>
+                                            <span class="fa fa-star"></span>
+                                        <?php endif; ?>
+                                    <?php 
+                                    endfor;
+                                endif; ?>
+                                <span><?php echo $val; ?></span>
+                            </div>
+                            <span class="review-no">Venduto <?php echo $art["venduto"];?> volte</span>
+                        </div>
+                        <p class="product-description"><p>Venduto da: <a href="foodVendor.php?spec&id=<?php echo $art["vendorID"] ?>"><?php echo $art["nomeAzienda"]; ?></a></p></p>
+                        <p class="product-description"><p><?php echo $art["descrProd"]; ?></p></p>
+                        <h4 class="price">Prezzo: <span><?php echo $art["prezzo"]; ?>€</span></h4>
+                        <h4 class="price">Quantità disponibile: <span><?php echo $art["quantity"]; ?></span></h4>
+                        <div class="action">
+                            <button class="add-to-cart btn btn-primary m-1" type="button">add to cart</button>
+                            <button class="like btn btn-danger m-1" type="button"><span class="fa fa-heart"></span></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+<?php endforeach; ?>
+?>

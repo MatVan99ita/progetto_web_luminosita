@@ -1,6 +1,7 @@
 <?php
 require_once 'bootstrap.php';
-
+$url = explode('?', $_SERVER['REQUEST_URI'])[1];
+$url = explode('=', $url);
 //Base Template
 $templateParams["titolo"] = "Luminosità - ";
 $templateParams["nome"] = "foodList.php";
