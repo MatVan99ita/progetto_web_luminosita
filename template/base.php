@@ -62,12 +62,9 @@
                                         Categoria
                                     </a>
                                     <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                                        <li><a class="dropdown-item" href="#">Cider</a></li>
-                                        <li><a class="dropdown-item" href="#">Mead</a></li>
-                                        <li><a class="dropdown-item" href="#">Others</a></li>
                                         <?php foreach($templateParams["category"] as $category): ?>
                                         <li>
-                                            <a href="foodCategory.php?id=<?php echo $category["CategoryID"]; ?>&list-type=container">
+                                            <a class="dropdown-item" href="foodCategory.php?id=<?php echo $category["CategoryID"]; ?>&list-type=container">
                                                 <?php echo $category["CategoryName"]; ?>
                                             </a>
                                         </li>
@@ -76,7 +73,6 @@
                                 </li>
                             </ul>
                         </div>
-                        
                     </div>
                 </nav>
             </div>
@@ -106,7 +102,7 @@
 
             <div class="col-lg-2 col-md-3 cart-login">
                 <div class="float-end cart mt-2">
-                    <a href="carrello.php" class="far fa-shopping-cart">
+                    <a href="carrello.php">
                         <span class="number">NUMERO PRODOTTI</span>
                         <img class="img-fluid" style="width: 50px" src="<?php echo UPLOAD_DIR."carts.png"; ?>" alt="cart" />
                         <span>Cart</span>
@@ -114,9 +110,9 @@
                 </div>
 
                 <div class="float-end cart mt-2">
-                    <a href="notifiche.php" class="far fa-shopping-cart">
+                    <a href="notifiche.php">
                         <span class="number">NUMERO NOTIFICHE</span>
-                        <img class="img-fluid" style="width: 50px" src="<?php echo LOGO."scuro-200x200.png"; ?>" alt="cart" />
+                        <img class="img-fluid" style="width: 50px" src="<?php echo UPLOAD_DIR."bell.png"; ?>" alt="cart" />
                         <span>Cart</span>
                     </a>
                 </div>
