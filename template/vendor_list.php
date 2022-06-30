@@ -1,13 +1,4 @@
-<?php 
-
-print("<pre>".print_r($templateParams["lista"],true)."</pre>");?>
 <?php
-
-/*[vendite_tot]
-  [nomeAzienda]
-  [orariConsegna]
-  [contatto]
-  */
 foreach($templateParams["lista"] AS $vendor):
 ?>
 
