@@ -57,8 +57,26 @@
                                 <li class="nav-item">
                                     <a class="nav-link active" style="aria-current="page" href="foodVendor.php?list">Venditori</a>
                                 </li>
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                        Categoria
+                                    </a>
+                                    <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                        <li><a class="dropdown-item" href="#">Cider</a></li>
+                                        <li><a class="dropdown-item" href="#">Mead</a></li>
+                                        <li><a class="dropdown-item" href="#">Others</a></li>
+                                        <?php foreach($templateParams["category"] as $category): ?>
+                                        <li>
+                                            <a href="foodCategory.php?id=<?php echo $category["CategoryID"]; ?>&list-type=container">
+                                                <?php echo $category["CategoryName"]; ?>
+                                            </a>
+                                        </li>
+                                        <?php endforeach; ?>
+                                    </ul>
+                                </li>
                             </ul>
                         </div>
+                        
                     </div>
                 </nav>
             </div>
