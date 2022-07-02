@@ -69,7 +69,7 @@ $decimal = (int) $value[1];
                                     <?php 
                                     elseif($k>0 && $j==0):
                                         $k=-1; ?>
-                                        <span class="fa fa-star-half-o checked"></span>
+                                        <span class="fa fa-star-half checked"></span>
                                     <?php else: ?>
 							            <span class="fa fa-star"></span>
                                     <?php endif; ?>

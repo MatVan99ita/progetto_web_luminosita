@@ -20,7 +20,10 @@ var shoppingCart = (function() {
     // Save cart
     function saveCart() {
       sessionStorage.setItem('shoppingCart', JSON.stringify(cart));
-      document.cookie('shoppingCart', JSON.stringify(cart));
+      const d = new Date();
+      d.setTime(d.getTime() + (30*24*60*60*1000));//Scadenza dopo 30 giorni
+      let expires = "expires="+ d.toUTCString();
+      document.cookie = "shoppingCart=" + JSON.stringify(cart) + ";" + expires;
     }
     
       // Load cart

@@ -103,9 +103,8 @@
             <div class="col-lg-2 col-md-3 cart-login">
                 <div class="float-end cart mt-2">
                     <a href="carrello.php">
-                        <span class="number" id="products_num"><span class="total-count"></span></span>
                         <img class="img-fluid" style="width: 50px" src="<?php echo UPLOAD_DIR."carts.png"; ?>" alt="cart" />
-                        <span>Cart</span>
+                        <span class="number" id="products_num"><span class="total-count btn btn-danger"></span></span>
                     </a>
                     <button class="clear-cart btn btn-danger">Clear Cart</button>
                 </div>

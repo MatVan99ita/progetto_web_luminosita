@@ -80,7 +80,7 @@ $vendor = $templateParams["details"];
                                         <?php 
                                         elseif($k>0 && $j==0):
                                             $k=-1; ?>
-                                            <span class="fa fa-star-half-o checked"></span>
+                                            <span class="fa fa-star-half checked"></span>
                                         <?php else: ?>
                                             <span class="fa fa-star"></span>
                                         <?php endif; ?>
@@ -96,7 +96,7 @@ $vendor = $templateParams["details"];
                         <h4 class="price">Prezzo: <span><?php echo $art["prezzo"]; ?>€</span></h4>
                         <h4 class="price">Quantità disponibile: <span><?php echo $art["quantity"]; ?></span></h4>
                         <div class="action">
-                            <button class="add-to-cart btn btn-primary m-1" type="button">add to cart</button>
+                            <button data-id="<?php echo $art["prodottoID"]; ?>" data-name="<?php echo $art["nomeProd"]; ?>" data-price="<?php echo $art["prezzo"]; ?>" class="add-to-cart btn btn-primary m-1" type="button">add to cart</button>
                             <button class="like btn btn-danger m-1" type="button"><span class="fa fa-heart"></span></button>
                         </div>
                     </div>
