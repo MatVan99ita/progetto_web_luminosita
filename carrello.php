@@ -36,5 +36,7 @@ require_once 'bootstrap.php';
  * la parte dei prodotti non so se tenerli singolarmente o ad array per aggiungerne o eliminarne più facilmente
  */
 
+ $templateParams["nome"]="cart_template.php";
+
 require 'template/base.php';
 ?>

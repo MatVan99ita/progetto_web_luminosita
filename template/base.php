@@ -103,15 +103,16 @@
             <div class="col-lg-2 col-md-3 cart-login">
                 <div class="float-end cart mt-2">
                     <a href="carrello.php">
-                        <span class="number">NUMERO PRODOTTI</span>
+                        <span class="number" id="products_num"><span class="total-count"></span></span>
                         <img class="img-fluid" style="width: 50px" src="<?php echo UPLOAD_DIR."carts.png"; ?>" alt="cart" />
                         <span>Cart</span>
                     </a>
+                    <button class="clear-cart btn btn-danger">Clear Cart</button>
                 </div>
 
                 <div class="float-end cart mt-2">
                     <a href="notifiche.php">
-                        <span class="number">NUMERO NOTIFICHE</span>
+                        <span class="number" id="notification_num">NUMERO NOTIFICHE</span>
                         <img class="img-fluid" style="width: 50px" src="<?php echo UPLOAD_DIR."bell.png"; ?>" alt="cart" />
                         <span>Cart</span>
                     </a>

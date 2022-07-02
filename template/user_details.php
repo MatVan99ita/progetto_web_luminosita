@@ -148,7 +148,7 @@ $pagah = $utente["info_pagamento"];
                         
                     </div>
                     <div class="details col-md-6">
-                        <h3 class="product-title"><?php echo $art["nomeProd"]; ?></h3>
+                        <h4 class="card-title product-title"><?php echo $art["nomeProd"]; ?></h4>
                         <div class="rating">
                             <div class="stars">
                                 <?php
@@ -172,7 +172,7 @@ $pagah = $utente["info_pagamento"];
                                         <?php 
                                         elseif($k>0 && $j==0):
                                             $k=-1; ?>
-                                            <span class="fa fa-star-half-o checked"></span>
+                                            <span class="fa fa-star-half checked"></span>
                                         <?php else: ?>
                                             <span class="fa fa-star"></span>
                                         <?php endif; ?>
@@ -185,10 +185,10 @@ $pagah = $utente["info_pagamento"];
                         </div>
                         <p class="product-description"><p>Venduto da: <a href="foodVendor.php?spec&id=<?php echo $art["vendorID"] ?>"><?php echo $art["nomeAzienda"]; ?></a></p></p>
                         <p class="product-description"><p><?php echo $art["descrProd"]; ?></p></p>
-                        <h4 class="price">Prezzo: <span><?php echo $art["prezzo"]; ?>€</span></h4>
+                        <h4 class="price card-text">Prezzo: <span><?php echo $art["prezzo"]; ?>€</span></h4>
                         <h4 class="price">Quantità disponibile: <span><?php echo $art["quantity"]; ?></span></h4>
                         <div class="action">
-                            <button class="add-to-cart btn btn-primary m-1" type="button">add to cart</button>
+                            <button data-id="<?php echo $art["prodottoID"]; ?>" data-name="<?php echo $art["nomeProd"]; ?>" data-price="<?php echo $art["prezzo"]; ?>" class="add-to-cart btn btn-primary m-1" type="button">add to cart</button>
                             <button class="like btn btn-danger m-1" type="button"><span class="fa fa-heart"></span></button>
                         </div>
                     </div>
@@ -198,3 +198,14 @@ $pagah = $utente["info_pagamento"];
     </div>
     <?php endforeach; ?>
 </div>
+
+<div class="col">
+        <div class="card" style="width: 20rem;">
+            <img class="card-img-top" src="http://www.azspagirls.com/files/2010/09/orange.jpg" alt="Card image cap">
+            <div class="card-block">
+                <h4 class="card-title">Orange</h4>
+                <p class="card-text">Price: $0.5</p>
+                <a href="#" data-name="Orange" data-price="0.5" class="add-to-cart btn btn-primary">Add to cart</a>
+            </div>
+        </div>
+    </div>

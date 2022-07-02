@@ -45,7 +45,7 @@ $decimal = (int) $value[1];
 					
 				</div>
 				<div class="details col-md-6">
-					<h3 class="product-title"><?php echo $art["nomeProd"]; ?></h3>
+					<h4 class="card-title product-title"><?php echo $art["nomeProd"]; ?></h4>
 					<div class="rating">
 						<div class="stars">
                             <?php
@@ -81,7 +81,7 @@ $decimal = (int) $value[1];
 						<span class="review-no">Venduto <?php echo $art["venduto"];?> volte</span>
 					</div>
 					<p class="product-description"><p><?php echo $art["descrProd"]; ?></p></p>
-					<h4 class="price">Prezzo: <span><?php echo $art["prezzo"]; ?>€</span></h4>
+					<h4 class="price card-price">Prezzo: <span><?php echo $art["prezzo"]; ?>€</span></h4>
 					<h4 class="price">Quantità disponibile: <span><?php echo $art["quantity"]; ?></span></h4>
 					<div class="action">
 						<button class="add-to-cart btn btn-primary m-1" type="button">add to cart</button>
