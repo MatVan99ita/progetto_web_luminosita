@@ -55,7 +55,7 @@
                                     <a class="nav-link active" aria-current="page" href="index.php">Home</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link active" style="aria-current="page" href="foodVendor.php?list">Venditori</a>
+                                    <a class="nav-link active" aria-current='page' href="foodVendor.php?list">Venditori</a>
                                 </li>
                                 <li class="nav-item dropdown">
                                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -104,9 +104,11 @@
                 <div class="float-end cart mt-2">
                     <a href="carrello.php">
                         <img class="img-fluid" style="width: 50px" src="<?php echo UPLOAD_DIR."carts.png"; ?>" alt="cart" />
-                        <span class="number" id="products_num"><span class="total-count btn btn-danger"></span></span>
+                        <span class="number" id="products_num">
+                            <span class="total-count btn btn-danger"></span>
+                        </span>
                     </a>
-                    <button class="clear-cart btn btn-danger">Clear Cart</button>
+                    
                 </div>
 
                 <div class="float-end cart mt-2">
@@ -121,37 +123,15 @@
                     <a href="login.php" class="btn btn-light mt-2 btn-sm"><?php echo isset($_COOKIE["id"]) && isset($_COOKIE["mail"]) ? "Dashboard": "Login"?></a>
                 </div>
             </div>
-            
-            <!--
-            <div class="col-12 mt-sm-2 mt-lg-0">
-                <div class="store-location p-0 text-end">
-                    <div class="form-check-inline">
-                        <input type="radio" id="test1" name="radio-group" data-toggle="modal" data-target=".bd-example-modal-lg" />
-                        <label for="test1">Choose a Store</label>
-                    </div>
-
-                    <div class="form-check-inline">
-                        <img class="img-fluid" src="/images/or.png" alt="Esplanda" width="20" />
-                    </div>
-
-                    <div class="form-check-inline">
-                        <input type="radio" id="test2" name="radio-group" data-toggle="modal" data-target=".bd-example-modal-lg1" />
-                        <label for="test2">Show Local Availblity</label>
-                    </div>
-                </div>
-            </div>
-            -->
         </div>
             <a href="login.php">
                 <img class="img-fluid float-right" id="logo_head" src="<?php echo LOGO."scuro-200x200.png"?>" alt="<?php echo $templateParams["titolo"]; ?>" />
             </a>
     </div>
 </header>
-<!--nav>
-    <ul> <--le 4 voci in alto->
-        <li><a <?php isActive("index.php");?> href="index.php">Home</a></li><li><a <?php isActive("archivio.php");?> href="archivio.php">Archivio</a></li><li><a <?php isActive("contatti.php");?> href="contatti.php">Contatti</a></li><li><a <?php isActive("login.php");?> href="login.php">Login</a></li>
-    </ul>
-</nav-->
+
+
+
 <main class="container col col-lg-12 col-md-12 col-sm-12 col-1">
     <?php //class="<?php echo $templateParams["list-type"]"
     if(isset($templateParams["nome"])){
@@ -159,6 +139,7 @@
     }
     ?>
 </main>
+
 
 <footer>
     <p><img id="logo_foot" style="width: 10px" src=<?php echo LOGO."chiaro.png"; ?> ><?php echo $templateParams["titolo"]; ?></p>
