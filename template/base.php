@@ -1,6 +1,4 @@
-
-<!DOCTYPE html>
-
+<?php ?>
 <html lang="it">
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <head>
@@ -105,8 +103,9 @@
                     <a href="carrello.php">
                         <img class="img-fluid" style="width: 50px" src="<?php echo UPLOAD_DIR."carts.png"; ?>" alt="cart" />
                         <span class="number" id="products_num">
-                            <span class="total-count btn btn-danger"></span>
+                            <span id="cart_notification" class="total-count btn btn-danger"></span>
                         </span>
+                        <label for="" class="total-count"></label>
                     </a>
                     
                 </div>

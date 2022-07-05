@@ -31,6 +31,7 @@ var shoppingCart = (function() {
       let res = document.cookie.split('; ').find(row => row.startsWith('shoppingCart='))?.split('=')[1];
       cart = JSON.parse(res)
       console.log(cart);
+      sessionStorage.setItem('shoppingCart', JSON.stringify(cart));
     }
     if (document.cookie.split(';').some((item) => item.trim().startsWith('shoppingCart='))) {
       loadCart();
@@ -55,6 +56,7 @@ var shoppingCart = (function() {
       cart.push(item);
       saveCart();
     }
+
     // Set count from item
     obj.setCountForItem = function(id, count) {
       for(var i in cart) {
@@ -64,6 +66,18 @@ var shoppingCart = (function() {
         }
       }
     };
+    
+    // Add one to cart
+    obj.addOneToCart = function(id) {
+      for(var item in cart) {
+        if(cart[item].id === id) {
+          cart[item].count ++;
+          break;
+        }
+      }
+      saveCart();
+    }
+
     // Remove item from cart
     obj.removeItemFromCart = function(id) {
         for(var item in cart) {
@@ -79,9 +93,9 @@ var shoppingCart = (function() {
     }
   
     // Remove all items from cart
-    obj.removeItemFromCartAll = function(name) {
+    obj.removeItemFromCartAll = function(id) {
       for(var item in cart) {
-        if(cart[item].name === name) {
+        if(cart[item].id === id) {
           cart.splice(item, 1);
           break;
         }
@@ -164,15 +178,41 @@ var shoppingCart = (function() {
     document.cookie = 'shoppingCart=; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;';
   });
   
-  
+  // Update the notification of the item count
   function displayCart() {
-    //window.location.replace("http://localhost/LAVORI/PROGETTO_WEBBBETE/progetto_web_luminosita/carrello.php");
+    var cartArray = shoppingCart.listCart();
+    var output = "";
+    for(var i in cartArray) {
+      output += "<tr> \
+                  <td>" + cartArray[i].id + "</td> \
+                  <td>" + cartArray[i].name + "</td> \
+                  <td>" + cartArray[i].price + " €</td> \
+                  <td> \
+                    <div class='input-group'> \
+                      <button class='minus-item input-group-addon btn btn-primary' data-id='" + cartArray[i].id + "'>-</button> \
+                      <input type='number' class='item-count form-control' data-id='" + cartArray[i].id + "' value='" + cartArray[i].count + "'/> \
+                      <button class='plus-item btn btn-primary input-group-addon' data-id='" + cartArray[i].id + "'>+</button> \
+                    </div></td> \
+                  <td> \
+                    <button class='delete-item btn btn-danger' data-id='" + cartArray[i].id + "'>X</button> \
+                  </td> \
+                  <td> \
+                    <div>" + cartArray[i].total + " € </div> \
+                  </td>\
+                </tr>";
+    }
+    $('.show-cart').html(output);
+    $('.total-cart').html(shoppingCart.totalCart());
+    $('.total-count').html(shoppingCart.totalCount());
+    console.log("Tota cart: " + shoppingCart.totalCart());
+    console.log("Tota count: " + shoppingCart.totalCount());
   }
   
   // Delete item button
   
-  $('.show-cart').on("click", ".delete-item", function(event) {
-    var id = $(this).data('id')
+  $(".show-cart").on("click", ".delete-item", function(event) {
+    var id = $(this).data('id');
+    console.log("Item id: "+id);
     shoppingCart.removeItemFromCartAll(id);
     displayCart();
   })
@@ -180,24 +220,33 @@ var shoppingCart = (function() {
   
   // -1
   $('.show-cart').on("click", ".minus-item", function(event) {
-    var id = $(this).data('id')
+    var id = $(this).data('id');
+    console.log("Item id: "+id);
     shoppingCart.removeItemFromCart(id);
     displayCart();
   })
   // +1
   $('.show-cart').on("click", ".plus-item", function(event) {
-    var id = $(this).data('id')
-    shoppingCart.addItemToCart(name);
+    var id = $(this).data('id');
+    console.log("Item id: "+id);
+    shoppingCart.addOneToCart(id);
     displayCart();
   })
   
   // Item count input
   $('.show-cart').on("change", ".item-count", function(event) {
-     var name = $(this).data('id');
+     var id = $(this).data('id');
      var count = Number($(this).val());
-    shoppingCart.setCountForItem(name, count);
+    shoppingCart.setCountForItem(id, count);
     displayCart();
   });
-  
+
+  $("#cart_notification").on("change", ".item-count", function(event) {
+    var id = $(this).data('id');
+    var count = Number($(this).val());
+    shoppingCart.setCountForItem(id, count);
+    displayCart();
+  });
+
   displayCart();
 });
