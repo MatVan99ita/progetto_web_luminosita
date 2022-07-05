@@ -65,9 +65,9 @@ main{
 body > footer > p{
     font-family: 'Courier New', Courier, monospace;
 }
-#logo_head{
+/*#logo_head a{
     width: 125px;
-}
+}*/
 
 #login_form, #register_form{
     padding: 20px 5%;
@@ -391,9 +391,6 @@ div.scrollmenu a:hover {
 body {
     font-family: 'open sans';
     overflow-x: hidden; }
-  
-  img {
-    max-width: 100%; }
   
   .preview {
     display: -webkit-box;

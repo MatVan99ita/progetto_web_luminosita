@@ -43,7 +43,9 @@
             <div class="col-lg-6 col-md-6">
                 <nav class="navbar navbar-expand-xl navbar-light">
                     <div class="container-fluid">
-                        <a href="index.php" class="navbar-brand"><img style="width: 400px" src="<?php echo LOGO."scuro-200x200.png"; ?>" alt="logo" class="img-fluid" /></a>
+                        <a href="index.php" class="navbar-brand">
+                            <img style="width: 400px" src="<?php echo LOGO."scuro.png"; ?>" alt="logo" class="img-fluid" />
+                        </a>
                         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
                             <span class="navbar-toggler-icon"></span>
                         </button>
