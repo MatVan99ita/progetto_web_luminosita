@@ -43,7 +43,7 @@
             <div class="col-lg-6 col-md-6">
                 <nav class="navbar navbar-expand-xl navbar-light">
                     <div class="container-fluid">
-                        <a href="index.php" class="navbar-brand"><img src="<?php echo LOGO."scuro-200x200.png"; ?>" alt="logo" class="img-fluid" /></a>
+                        <a href="index.php" class="navbar-brand"><img style="width: 400px" src="<?php echo LOGO."scuro-200x200.png"; ?>" alt="logo" class="img-fluid" /></a>
                         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
                             <span class="navbar-toggler-icon"></span>
                         </button>
@@ -62,7 +62,7 @@
                                     <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                                         <?php foreach($templateParams["category"] as $category): ?>
                                         <li>
-                                            <a class="dropdown-item" href="foodCategory.php?id=<?php echo $category["CategoryID"]; ?>&list-type=container">
+                                            <a class="dropdown-item" href="foodCategory.php?id=<?php echo $category["CategoryID"]; ?>">
                                                 <?php echo $category["CategoryName"]; ?>
                                             </a>
                                         </li>
@@ -99,6 +99,9 @@
             </div>
 
             <div class="col-lg-2 col-md-3 cart-login">
+                
+
+                
 
                 <div class="float-end cart mt-2">
                     <a href="carrello.php">
@@ -119,14 +122,13 @@
                     </a>
                 </div>
 
-                <div class="float-end">
-                    <a href="login.php" class="btn btn-light mt-2 btn-sm"><?php echo isset($_COOKIE["id"]) && isset($_COOKIE["mail"]) ? "Dashboard": "Login"?></a>
+                <div class="float-end cart mt-2">
+                    <a href="login.php">
+                        <?php if(isset($_COOKIE["id"]) && isset($_COOKIE["mail"])): ?><img class="img-fluid" style="width: 50px" src="<?php echo UPLOAD_DIR."user.png"; ?>" alt="dashboard" /><?php else: ?><img class="img-fluid" style="width: 50px" src="<?php echo UPLOAD_DIR."login.png"; ?>" alt="login" /><?php endif; ?>
+                    </a>
                 </div>
             </div>
         </div>
-            <a href="login.php">
-                <img class="img-fluid float-right" id="logo_head" src="<?php echo LOGO."scuro-200x200.png"?>" alt="<?php echo $templateParams["titolo"]; ?>" />
-            </a>
     </div>
 </header>
 
