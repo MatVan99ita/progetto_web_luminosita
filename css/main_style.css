@@ -611,22 +611,30 @@ body {
                 position: relative;
                 left: -15px;
             }
-            header .cart a span.number {
+            header .cart a span.number{
                 position: relative;
-                left: 38px;
-                top: -4px;
+                left: -10;
+                top: -20;
                 color: #ef2d2c;
             }
             header .cart a span.number {
                 position: relative;
-                left: 38px;
-                top: -4px;
+                left: -10;
+                top: -20;
                 color: #ffffff;
             }
             header .cart a {
                 color: #fff;
                 text-decoration: none;
             }
+            .dot {
+                height: 25px;
+                width: 25px;
+                text-align: center;
+                background-color: #ef2d2c;
+                border-radius: 50%;
+                display: inline-block;
+              }
             /* End Header cart CSS */
             
             

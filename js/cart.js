@@ -240,13 +240,6 @@ var shoppingCart = (function() {
     shoppingCart.setCountForItem(id, count);
     displayCart();
   });
-
-  $("#cart_notification").on("change", ".item-count", function(event) {
-    var id = $(this).data('id');
-    var count = Number($(this).val());
-    shoppingCart.setCountForItem(id, count);
-    displayCart();
-  });
-
+  
   displayCart();
 });

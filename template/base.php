@@ -99,22 +99,23 @@
             </div>
 
             <div class="col-lg-2 col-md-3 cart-login">
+
                 <div class="float-end cart mt-2">
                     <a href="carrello.php">
                         <img class="img-fluid" style="width: 50px" src="<?php echo UPLOAD_DIR."carts.png"; ?>" alt="cart" />
-                        <span class="number" id="products_num">
-                            <span id="cart_notification" class="total-count btn btn-danger"></span>
+                        <span class="dot number" id="products_num">
+                            <span class="total-count dot"></span>
                         </span>
-                        <label for="" class="total-count"></label>
                     </a>
                     
                 </div>
 
                 <div class="float-end cart mt-2">
                     <a href="notifiche.php">
-                        <span class="number" id="notification_num">NUMERO NOTIFICHE</span>
                         <img class="img-fluid" style="width: 50px" src="<?php echo UPLOAD_DIR."bell.png"; ?>" alt="cart" />
-                        <span>Cart</span>
+                        <span class="dot number" id="products_num">
+                            <span class="">0</span>
+                        </span>
                     </a>
                 </div>
 
