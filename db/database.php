@@ -283,51 +283,7 @@ class DatabaseHelper{
         return true;
     }
 
-    /*
-    
-    UPDATE `prodotto` SET 
-    `nomeProd`='[value-2]',
-    `descrProd`='[value-3]',
-    `prezzo`='[value-4]',
-    `glutenFree`='[value-5]',
-    `quantity`='[value-6]',
-    `foodType`='[value-8]' WHERE id = $id
-    */
-    public function updateProduct($nome, $descr, $prezzo, $gluten, $quantity, $type, $id) {
-        $sql = "UPDATE `prodotto` SET nomeProd=?, descrProd=?, prezzo=?, glutenFree=?, foodType=? WHERE prodottoID=?";
-        $stmt = $this->db->prepare($sql);
-        $stmt->bind_param('ssssss', $nome, $descr, $prezzo, $gluten, $type, $id);
-        $stmt->execute();
-        $this->refillProduct($quantity, $id);
-        if($this->db->error){
-            return false;
-        }
-        return true;
-    }
 
-    public function deleteProduct($id) {
-        $sql = "DELETE FROM `prodotto` WHERE prodottoID=?";
-        $stmt = $this->db->prepare($sql);
-        $stmt->bind_param('s', $id);
-        $stmt->execute();
-        if($this->db->error){
-            print_r($this->db->error);
-            return false;
-        }
-        return true;
-    }
-
-    public function refillProduct($quantity, $id){
-        $sql = "UPDATE `prodotto` SET quantity=? WHERE prodottoID=?";
-        $stmt = $this->db->prepare($sql);
-        $stmt->bind_param('ss', $quantity, $id);
-        $stmt->execute();
-        if($this->db->error){
-            print_r($this->db->error);
-            return false;
-        }
-        return true;
-    }
 
     public function addNewProduct($nome, $descr, $price, $gluten, $quantity, $cat){
 
@@ -541,6 +497,76 @@ class DatabaseHelper{
         $stmt->execute();
         $result = $stmt->get_result();
         return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
+    /**
+     * operation => + / - / =
+     */
+    public function changeQuantity($id, $quantity, $operation){
+        $sql = "SELECT quantity FROM prodotto WHERE prodottoID=?";
+        $stmt->bind_param('s', $id);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        $remain = $result->fetch_all(MYSQLI_ASSOC)[0];
+
+        switch($operation){
+            case "+":
+                $new_quantity = $remain + $quantity;
+                $err = updateQuantity($new_quantity, $id);
+                break;
+
+            case "-":
+                if($remain < $quantity){
+                    echo "Quantità non disponibile";
+                    return false;
+                }
+                $remain -= $quantity;
+                $new_quantity = $remain < 0 ? 0 : $remain;
+                $err = updateQuantity($new_quantity, $id);
+                break;
+            
+            case "=":
+                $err = updateQuantity($quantity, $id);
+                break;
+
+            }
+        return $err;
+    }
+
+
+    public function updateProduct($op, $nome, $descr, $prezzo, $gluten, $quantity, $type, $id) {
+        $sql = "UPDATE `prodotto` SET nomeProd=?, descrProd=?, prezzo=?, glutenFree=?, foodType=? WHERE prodottoID=?";
+        $stmt = $this->db->prepare($sql);
+        $stmt->bind_param('ssssss', $nome, $descr, $prezzo, $gluten, $type, $id);
+        $stmt->execute();
+        $this->changeQuantity($quantity, $id, $op);
+        if($this->db->error){
+            return false;
+        }
+        return true;
+    }
+
+    private function updateQuantity($new_quantity, $id){
+        $sql = "UPDATE `prodotto` SET `quantity`=? WHERE `prodottoID`=?";
+        $stmt = $this->db->prepare($sql);
+        $stmt->bind_param('ss', $new_quantity, $id);
+        $stmt->execute();
+        if($this->db->error){
+            return false;
+        }
+        return true;
+    }
+
+    public function deleteProduct($id) {
+        $sql = "DELETE FROM `prodotto` WHERE prodottoID=?";
+        $stmt = $this->db->prepare($sql);
+        $stmt->bind_param('s', $id);
+        $stmt->execute();
+        if($this->db->error){
+            print_r($this->db->error);
+            return false;
+        }
+        return true;
     }
 
 }

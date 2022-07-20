@@ -34,6 +34,7 @@ $(document).ready(function() {
 });
 
 $(document).ready(function() {
+  $("#paymentText").prop("disabled", true);
   const scroll = document.getElementById('inputDescr');
 
   scroll.addEventListener('wheel', (evt) => {
@@ -78,3 +79,10 @@ $(".image-checkbox").on("click", function (e) {
   e.preventDefault();
 });
 //# sourceURL=pen.js
+
+
+function enableText(){
+  $("#paymentText").prop("disabled", false);
+  $("#paymentBtn").prop("disabled", true);
+  $("#paymentBtn").removeClass( "btn-primary" ).addClass( "btn-secondary" )
+}

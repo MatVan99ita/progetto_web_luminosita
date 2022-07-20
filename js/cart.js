@@ -184,7 +184,7 @@ var shoppingCart = (function() {
     var output = "";
     for(var i in cartArray) {
       output += "<tr> \
-                  <td>" + cartArray[i].id + "</td> \
+                  <td> • </td> \
                   <td>" + cartArray[i].name + "</td> \
                   <td>" + cartArray[i].price + " €</td> \
                   <td> \
