@@ -7,6 +7,9 @@ TODO:
    per la zona acquisti dovrò gestirmi non solo la zona di consegna, tipo aula ma anche 
    l'orario per chi vuole prenotare prima le cose altrimenti l'ora di arrivo 
    metto che di predefinito sarà sempre 1h o 30m dopo la conferma di acquisto
+
+TODO:
+   nel checkout manca l'info sull'ora di consegna basta aggiungere un input per il resto va tutto
    
 TODO: 
    la grafica la sistemo per ultima perchè è meglio che mi implementi prima le funzionalità

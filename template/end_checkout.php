@@ -6,4 +6,9 @@
     $check = $dbh->saveCheckout($_COOKIE["id"], $checkPay, $payInfo, $checkZone, $zoneInfo);
 
     //Eliminazione del carrello in caso di successo
+    if($check){
+        unset($_COOKIE["shoppingCart"]);
+    } else{
+        echo "Errore nel pagamento"; 
+    }
  ?>
