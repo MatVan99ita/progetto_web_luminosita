@@ -3,6 +3,7 @@
 // ************************************************
 
 $(document).ready(function(){
+  
 var shoppingCart = (function() {
     // =============================
     // Private methods and propeties
@@ -242,4 +243,5 @@ var shoppingCart = (function() {
   });
   
   displayCart();
+  $(".total-cart-checkout").html("Paga "+shoppingCart.totalCart()+"€");
 });

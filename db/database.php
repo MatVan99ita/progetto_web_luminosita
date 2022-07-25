@@ -569,4 +569,32 @@ class DatabaseHelper{
         return true;
     }
 
+    public function saveCheckout($userID, $savePay, $payInfo, $saveZone, $zoneInfo){
+        $sql = "UPDATE compratore SET ";
+        if($savePay):
+            $sql .= "info_pagamento = ?". ($saveZone? ", ":"");
+        endif;
+        if($saveZone):
+            $sql .= "zoneConsegna = ? ";
+        endif;
+        $sql .= "WHERE userID = ?";
+
+        $stmt = $this->db->prepare($sql);
+        
+        if($savePay):
+            $stmt->bind_param("s", $savePay);
+        endif;
+        if($saveZone):
+            $stmt->bind_param("s", $saveZone);
+        endif;
+        $stmt->bind_param("s", $userID);
+
+        $stmt->execute();
+        if($this->db->error){
+            print_r($this->db->error);
+            return false;
+        }
+        return true;
+    }
+
 }

@@ -35,6 +35,7 @@ $(document).ready(function() {
 
 $(document).ready(function() {
   $("#paymentText").prop("disabled", true);
+  $("#zoneText").prop("disabled", true);
   const scroll = document.getElementById('inputDescr');
 
   scroll.addEventListener('wheel', (evt) => {
@@ -81,8 +82,16 @@ $(".image-checkbox").on("click", function (e) {
 //# sourceURL=pen.js
 
 
-function enableText(){
+function enablePay(){
   $("#paymentText").prop("disabled", false);
   $("#paymentBtn").prop("disabled", true);
+  $("#hiddenPay").proo("disabled", true);
   $("#paymentBtn").removeClass( "btn-primary" ).addClass( "btn-secondary" )
+}
+
+function enableZone(){
+  $("#zoneText").prop("disabled", false);
+  $("#zoneBtn").prop("disabled", true);
+  $("#hiddenZone").proo("disabled", true);
+  $("#zoneBtn").removeClass( "btn-primary" ).addClass( "btn-secondary" )
 }

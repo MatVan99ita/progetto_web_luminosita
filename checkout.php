@@ -10,7 +10,9 @@ if(isset($_COOKIE["logged"])){
     }
 }
 $templateParams["paga"]=$templateParams["user"]["info_pagamento"];
+$templateParams["luogo"]=$templateParams["user"]["zoneConsegna"];
 $templateParams["nome"] = "payment.php";
+
 
 require 'template/base.php';
 ?>

@@ -1,21 +1,61 @@
+<div id="register_form" class="container justify-content-center col-md-12">
+    <form action="end_checkout.php" method="POST">
+        <h2>Checkout</h2>
+
 <?php
-
-$paga = $templateParams["paga"];
-
-if($paga == "NotSaved"):
+if($templateParams["paga"] == "NotSaved"):
     //Qua vanno le cose per immettere il pagamento e salvarlo in caso
     ?>
-    <input type="text" name="" id="" class="form-group" value="banana">
-    <input type="checkbox" name="saveCheck" id="saveCheck" class="form-group">
-    <label for="saveCheck">Salva per pagamenti futuri</label>
+    
+    <div class="form-group">
+        <label for="paymentText">Pagamento: </label>
+        <input id="paymentText" name="paymentText" type="text" class="form-control" placeholder="Enter payment info" required>
+        <div class="form-check form-switch">
+          <input class="form-check-input" type="checkbox" id="flexSwitchCheckPay">
+          <label class="form-check-label" for="flexSwitchCheckPay">Salva per pagamenti futuri</label>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="zoneText">Zona consegna: </label>
+        <input id="zoneText" name="zoneText" type="text" class="form-control" placeholder='Scrivi dove vorresti che arrivasse il tuo cibo(Default: Segreteria piano terra)' <?php if(!empty($templateParams["luogo"])): ?> value="<?php echo $templateParams["luogo"]; ?>" <?php endif; ?> required>
+        <div class="form-check form-switch">
+          <input class="form-check-input" type="checkbox" id="flexSwitchCheckZone">
+          <label class="form-check-label" for="flexSwitchCheckZone">Salva per consegne future</label>
+        </div>
+    </div>
+        
+    <button id="submit" type="submit" class="btn btn-primary">€$ PAGAH $€</button>
+
 <?php else:
     //Qua si dice chè è stato pagato e bottone per tornare alla home
 ?>
-<input type="text" name="paymentText" id="paymentText" class="form-group" value="<?php echo $paga; ?>">
-<input type="checkbox" name="saveCheck" id="saveCheck" class="form-group" checked>
-<button class="btn btn-primary" id="paymentBtn" onclick="enableText()">Cambia dati pagamento</button>
-<label for="saveCheck">Salva per pagamenti futuri</label>
+
+    <div class="form-group">
+        <label for="paymentText">Pagamento: </label>
+        <input id="paymentText" name="paymentText" type="text" class="form-control" value="<?php echo $templateParams["paga"]; ?>" required>
+        <input type="hidden" id="hiddenPay" name="paymentText" class="form-control" value="<?php echo $templateParams["paga"]; ?>">
+        <div class="form-check form-switch">
+          <input class="form-check-input" type="checkbox" name="flexSwitchCheckPay" id="flexSwitchCheckPay" value="true">
+          <label class="form-check-label" for="flexSwitchCheckPay">Salva per pagamenti futuri</label>
+        </div>
+        <button class="btn btn-primary" id="paymentBtn" onclick="enablePay()">Cambia dati pagamento</button>
+    </div>
+
+    <div class="form-group">
+        <label for="zoneText">Zona consegna: </label>
+        <input id="zoneText" name="zoneText" type="text" class="form-control" placeholder='Scrivi dove vorresti che arrivasse il tuo cibo(Default: Segreteria piano terra)' <?php if(!empty($templateParams["luogo"])): ?> value="<?php echo $templateParams["luogo"]; ?>" <?php endif; ?> required>
+        <input type="hidden" id="hiddenZone" name="zoneText" class="form-control" <?php if(!empty($templateParams["luogo"])): ?> value="<?php echo $templateParams["luogo"]; ?>" <?php endif; ?>>
+        <div class="form-check form-switch">
+          <input class="form-check-input" type="checkbox" name="flexSwitchCheckZone" id="flexSwitchCheckZone" value="true">
+          <label class="form-check-label" for="flexSwitchCheckZone">Salva per consegne future</label>
+        </div>
+        <button class="btn btn-primary" id="zoneBtn" onclick="enableZone()">Cambia zona consegna</button>
+    </div>
+        
+    <button type="submit" id="submit" class="btn btn-success total-cart-checkout"></button>
 
 <?php endif; ?>
+    </form>
+</div>
 
-<input type="button" value="€$ PAGAH $€" class="btn btn-success">
