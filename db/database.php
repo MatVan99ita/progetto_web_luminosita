@@ -504,29 +504,30 @@ class DatabaseHelper{
      */
     public function changeQuantity($id, $quantity, $operation){
         $sql = "SELECT quantity FROM prodotto WHERE prodottoID=?";
+        $stmt = $this->db->prepare($sql);
         $stmt->bind_param('s', $id);
         $stmt->execute();
         $result = $stmt->get_result();
-        $remain = $result->fetch_all(MYSQLI_ASSOC)[0];
+        $remain = $result->fetch_all(MYSQLI_ASSOC)[0]["quantity"];
 
         switch($operation){
-            case "+":
+            case '+':
                 $new_quantity = $remain + $quantity;
-                $err = updateQuantity($new_quantity, $id);
+                $err = $this->updateQuantity($new_quantity, $id);
                 break;
 
-            case "-":
+            case '-':
                 if($remain < $quantity){
                     echo "Quantità non disponibile";
                     return false;
                 }
-                $remain -= $quantity;
+                $remain = $remain - $quantity;
                 $new_quantity = $remain < 0 ? 0 : $remain;
-                $err = updateQuantity($new_quantity, $id);
+                $err = $this->updateQuantity($new_quantity, $id);
                 break;
             
-            case "=":
-                $err = updateQuantity($quantity, $id);
+            case '=':
+                $err = $this->updateQuantity($quantity, $id);
                 break;
 
             }
@@ -570,24 +571,29 @@ class DatabaseHelper{
     }
 
     public function saveCheckout($userID, $savePay, $payInfo, $saveZone, $zoneInfo){
-        $sql = "UPDATE compratore SET ";
-        if($savePay):
-            $sql .= "info_pagamento = ?". ($saveZone? ", ":"");
-        endif;
-        if($saveZone):
-            $sql .= "zoneConsegna = ? ";
-        endif;
-        $sql .= "WHERE userID = ?";
-
-        $stmt = $this->db->prepare($sql);
         
-        if($savePay):
-            $stmt->bind_param("s", $savePay);
-        endif;
-        if($saveZone):
-            $stmt->bind_param("s", $saveZone);
-        endif;
-        $stmt->bind_param("s", $userID);
+        $sql = "UPDATE `compratore` SET ";
+        if($savePay)
+            $sql .= "`info_pagamento` = ?". ($saveZone? ", ":" ");
+        if($saveZone)
+            $sql .= "`zoneConsegna` = ? ";
+        $sql .= "WHERE `userID` = ?";
+
+        
+        $stmt = $this->db->prepare($sql);
+        echo $sql;
+
+        if($savePay && $saveZone) {
+            $stmt->bind_param("sss", $payInfo, $zoneInfo, $id);
+        } else if($savePay && !$saveZone) {
+            $stmt->bind_param("ss", $payInfo, $id);
+        } else if(!$savePay && $saveZone) {
+            $stmt->bind_param("ss", $zoneInfo, $id);
+        } else {
+            return false;
+        }
+
+        print_r($stmt);
 
         $stmt->execute();
         if($this->db->error){
@@ -595,6 +601,17 @@ class DatabaseHelper{
             return false;
         }
         return true;
+    }
+
+    /**shoppingCart => Il cookie settato con tutte le info del carrello */
+    public function takeOrder($shoppingCart) {
+        $cart = json_decode($shoppingCart, true);
+        foreach($cart as $product){
+            $check = $this->changeQuantity($product["id"], $product["count"], '-');
+            if(!$check) return false;
+        }
+        return true;
+
     }
 
 }

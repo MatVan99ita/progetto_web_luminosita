@@ -36,6 +36,10 @@ $(document).ready(function() {
 $(document).ready(function() {
   $("#paymentText").prop("disabled", true);
   $("#zoneText").prop("disabled", true);
+  var dt = new Date();
+  dt.setHours( dt.getHours() + 1 );
+  const dateTimeLocalValue = (new Date(dt.getTime() - dt.getTimezoneOffset() * 60000).toISOString()).slice(0, 16);
+  $("#timeText").val(dateTimeLocalValue);
   const scroll = document.getElementById('inputDescr');
 
   scroll.addEventListener('wheel', (evt) => {
@@ -85,13 +89,13 @@ $(".image-checkbox").on("click", function (e) {
 function enablePay(){
   $("#paymentText").prop("disabled", false);
   $("#paymentBtn").prop("disabled", true);
-  $("#hiddenPay").proo("disabled", true);
+  $("#hiddenPay").prop("disabled", true);
   $("#paymentBtn").removeClass( "btn-primary" ).addClass( "btn-secondary" )
 }
 
 function enableZone(){
   $("#zoneText").prop("disabled", false);
   $("#zoneBtn").prop("disabled", true);
-  $("#hiddenZone").proo("disabled", true);
+  $("#hiddenZone").prop("disabled", true);
   $("#zoneBtn").removeClass( "btn-primary" ).addClass( "btn-secondary" )
 }
