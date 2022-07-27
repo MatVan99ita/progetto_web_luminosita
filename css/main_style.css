@@ -338,6 +338,9 @@ div.scrollmenu a:hover {
     }
 }
 
+#notification_list li.list-group-item-primary{
+    border-left: solid 10px;
+}
 
 @media screen and (min-width:768px){
     
