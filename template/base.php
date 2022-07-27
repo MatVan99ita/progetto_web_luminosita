@@ -116,7 +116,7 @@
                 </div>
 
                 <div class="float-end cart mt-2">
-                    <a href="notifiche.php">
+                    <a href="notifications_list.php">
                         <img class="img-fluid" style="width: 50px" src="<?php echo UPLOAD_DIR."bell.png"; ?>" alt="cart" />
                         <span class="dot number" id="products_num">
                             <span class="">0</span>
