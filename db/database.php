@@ -593,9 +593,8 @@ class DatabaseHelper{
             return false;
         }
 
-        print_r($stmt);
 
-        $stmt->execute();
+        $stmt->execute();//NON AGGIORNA E NON SO IL PERCHE' NON DA NEMMENO ERRORI
         if($this->db->error){
             print_r($this->db->error);
             return false;

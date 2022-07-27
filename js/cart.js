@@ -207,6 +207,14 @@ var shoppingCart = (function() {
     $('.total-count').html(shoppingCart.totalCount());
     console.log("Tota cart: " + shoppingCart.totalCart());
     console.log("Tota count: " + shoppingCart.totalCount());
+
+    if(shoppingCart.totalCount()<=0){
+      $("#btn-order").prop("disabled", true);
+      $("#btn-order").removeClass( "btn-primary" ).addClass( "btn-secondary" );
+    } else {
+      $("#btn-order").prop("disabled", false);
+      $("#btn-order").removeClass( "btn-secondary" ).addClass( "btn-primary" );
+    }
   }
   
   // Delete item button
