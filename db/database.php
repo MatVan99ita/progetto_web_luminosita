@@ -649,14 +649,27 @@ class DatabaseHelper{
         return $result->fetch_all(MYSQLI_ASSOC)[0]['da_leggere'];
     }
 
-    public function getSpecificNotification($id)
+    public function getSpecificNotification($id, $isRead)
     {
+        if($isRead) if($this->setNotificationToReaded($id)) return array();
         $sql = "SELECT * FROM `notifiche` WHERE `notificationID`=?";
         $stmt = $this->db->prepare($sql);
         $stmt->bind_param('i', $id);
         $stmt->execute();
         $result = $stmt->get_result();
         return $result->fetch_all(MYSQLI_ASSOC)[0];
+    }
+
+    public function setNotificationToReaded($id){
+        $sql = "UPDATE `notifiche` SET `isRead`='1' WHERE `notificationID`=?;";
+        $stmt = $this->db->prepare($sql);
+        $stmt->bind_param('i', $id);
+        $stmt->execute();
+        if($this->db->error){
+            print_r($this->db->error);
+            return false;
+        }
+        return true;
     }
 
 }

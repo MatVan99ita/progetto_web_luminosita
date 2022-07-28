@@ -137,5 +137,5 @@
 </div>
 
 <?php
-
+$dbh->printFormattedArray($templateParams["mail"]);
 ?>

@@ -17,7 +17,7 @@
             <div class="row">
               <div class="col-12 col-lg-6 col-xl-4 pe-0 pe-md-5 mb-3 font-serif"><?php echo $mail["send"]; ?></div>
               <div class="col-12 col-lg-6 col-xl-4 pe-0 pe-md-5 mb-3 font-serif"></div>
-              <div class="col-12 col-lg-6 col-xl-4 pe-0 pe-md-5 font-serif"><a href="notifiche.php?id=<?php echo $mail["notificationID"]; ?>">Leggi la notifica</a></div>
+              <div class="col-12 col-lg-6 col-xl-4 pe-0 pe-md-5 font-serif"><a href="notifiche.php?id=<?php echo $mail["notificationID"]."&read=".$mail["isRead"]; ?>">Leggi la notifica</a></div>
             </div>
           </div>
           <!-- contenuto di esempio END -->
@@ -25,6 +25,8 @@
       </section>
     </li>
   <?php endforeach; ?>
+  <li id="spacing" class="list-group-item">
+  </li>
 </ul>
 <?php /*
     (
