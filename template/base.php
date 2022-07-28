@@ -1,4 +1,8 @@
-<?php ?>
+<?php if(isset($_COOKIE["logged"]) && isset($_COOKIE["mail"]) && isset($_COOKIE["id"])){
+    $templateParams["toReadNotif"] = $dbh->getNotificationToRead($_COOKIE["id"]);
+} else {
+    $templateParams["toReadNotif"] = 0;
+}?>
 <html lang="it">
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <head>
@@ -119,7 +123,7 @@
                     <a href="notifications_list.php">
                         <img class="img-fluid" style="width: 50px" src="<?php echo UPLOAD_DIR."bell.png"; ?>" alt="cart" />
                         <span class="dot number" id="products_num">
-                            <span class="">0</span>
+                            <span class=""><?php echo $templateParams["toReadNotif"]; ?></span>
                         </span>
                     </a>
                 </div>

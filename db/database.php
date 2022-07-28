@@ -379,7 +379,7 @@ class DatabaseHelper{
         $stmt = $this->db->prepare($query);
         $stmt->bind_param('s', $mail);
         $stmt->execute();
-        $result = $stmt->get_result();
+        $result = $stmt->get_result(); 
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 
@@ -611,6 +611,52 @@ class DatabaseHelper{
         }
         return true;
 
+    }
+
+    //NOTIFICATION ZONE
+    public function writeEmail(/*$dati vari*/)
+    {
+        # code...
+    }
+
+    public function getUserNotification($id)
+    {
+        $sql = "SELECT `notificationID`, `send`, `isRead`, `obj` FROM `notifiche` WHERE `customerID`=?";
+        $stmt = $this->db->prepare($sql);
+        $stmt->bind_param('i', $id);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
+    public function getNotificationNum($id)
+    {
+        $sql = "SELECT COUNT(`notificationID`) AS 'totali' FROM `notifiche` WHERE `customerID`=?;";
+        $stmt = $this->db->prepare($sql);
+        $stmt->bind_param('i', $id);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        return $result->fetch_all(MYSQLI_ASSOC)[0]['totali'];
+    }
+
+    public function getNotificationToRead($id)
+    {
+        $sql = "SELECT COUNT(`isRead`) AS 'da_leggere' FROM `notifiche` WHERE `customerID`=? AND `isRead`=0";
+        $stmt = $this->db->prepare($sql);
+        $stmt->bind_param('i', $id);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        return $result->fetch_all(MYSQLI_ASSOC)[0]['da_leggere'];
+    }
+
+    public function getSpecificNotification($id)
+    {
+        $sql = "SELECT * FROM `notifiche` WHERE `notificationID`=?";
+        $stmt = $this->db->prepare($sql);
+        $stmt->bind_param('i', $id);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        return $result->fetch_all(MYSQLI_ASSOC)[0];
     }
 
 }
