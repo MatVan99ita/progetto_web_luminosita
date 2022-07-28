@@ -8,9 +8,14 @@ TODO:
    altrimenti succede come per BdD
 
 TODO:
-   Template per la notifica completa creata per l'utente(va solo modificata in modo che sia gestibile anche per il venditore)
-   Devo fare la lista delle notifiche con quelle lette normali e quelle non lette in grassetto o qualcosa per capire che va letta
-
+   Per il venditore faccio un sistema apparte stile amazon che lo avvisa dell'ordine e dei soldi pagati e basta
+NOTA:
+   La mail dovrà essere così
+   dest: mail dell'utente a cui è arrivata
+   send: mail di chi l'ha spedita(cioè la mail del sito mia) (per il venditore vedo se mettere quella dell'utente o simili perchè comunque dovrò lasciare un nominativo o qualcosa)
+         Compratore                         |   Venditore
+   obj:  Conferma ordine per prodotti n°(?) |   Richiesta ordine per prodotti n°(?)
+   body: Tutto il carrello con il resoconto |   Il carrello con il solo resoconto dello specifico venditore
 TODO:
    nella lista dei prodotti aggiungere un cerca per nome prodotto
    e sistemare la lista delle categoria nella headbar

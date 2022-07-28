@@ -616,6 +616,17 @@ class DatabaseHelper{
     //NOTIFICATION ZONE
     public function writeEmail(/*$dati vari*/)
     {
+        $cart = $_COOKIE["shoppingCart"];
+        /*... qui va il codice di scrittura della mail e tutti i lavori che vanno fatti su di essa
+        
+        INSERT INTO `notifiche` (`dest`, `send`, `obj`, `body`, `isRead`, `customerID`)
+        VALUES ('utente@mail', 'luminosita@cibo.food<-tipo valore predefinito del db(va cambiato allora nel db)', 
+        'Tot cart', 'il cart', '1', 'l'id del tipo che ha fatto l'ordine o del venditore da ricercare poi con ulteriori query')
+        
+        
+        */
+        unset($_COOKIE["shoppingCart"]);
+        setcookie("shoppingCart", "", time()-3600);
         # code...
     }
 
@@ -660,7 +671,7 @@ class DatabaseHelper{
         return $result->fetch_all(MYSQLI_ASSOC)[0];
     }
 
-    public function setNotificationToReaded($id){
+    private function setNotificationToReaded($id){
         $sql = "UPDATE `notifiche` SET `isRead`='1' WHERE `notificationID`=?;";
         $stmt = $this->db->prepare($sql);
         $stmt->bind_param('i', $id);

@@ -26,11 +26,7 @@ if(isset($_COOKIE["shoppingCart"])){
 
     $check = $dbh->takeOrder($_COOKIE["shoppingCart"]);
     if($check) {
-        //Da implemenare Invio notifica al venditore
-        //$dbh->sendBuyerRequest($_COOKIE["shoppingCart"]);
-        //MEssgaggio per utente: Ordine andato a buon fine e buona mangiata
-        unset($_COOKIE["shoppingCart"]);
-        setcookie("shoppingCart", "", time()-3600);
+        
     } else { 
         echo "<label>Errore con l'ordine</label>";
     }
