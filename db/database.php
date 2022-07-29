@@ -602,17 +602,18 @@ class DatabaseHelper{
         echo $sql;
 
         if($savePay && $saveZone) {
-            $stmt->bind_param("sss", $payInfo, $zoneInfo, $id);
+            $stmt->bind_param("sss", $payInfo, $zoneInfo, $userID);
         } else if($savePay && !$saveZone) {
-            $stmt->bind_param("ss", $payInfo, $id);
+            $stmt->bind_param("ss", $payInfo, $userID);
         } else if(!$savePay && $saveZone) {
-            $stmt->bind_param("ss", $zoneInfo, $id);
+            $stmt->bind_param("ss", $zoneInfo, $userID);
         } else {
             return false;
         }
 
 
         $stmt->execute();//NON AGGIORNA E NON SO IL PERCHE' NON DA NEMMENO ERRORI
+        print_r($stmt);
         if($this->db->error){
             print_r($this->db->error);
             return false;
@@ -635,29 +636,32 @@ class DatabaseHelper{
     public function writeEmail()
     {
         $cart = json_decode($_COOKIE["shoppingCart"], true);
+        $body = json_encode($_COOKIE["shoppingCart"]);
+        $this->printFormattedArray($body);
         $id = $_COOKIE["id"];
         $mail = $_COOKIE["mail"];
         $tot = 0;
         $product_list = array();
         foreach ($cart as $product) {
-            $tot += $product["count"];
+            var_dump($product["count"]);
+            $tot = $tot == 0 ? $product["count"] : $tot + $product["count"];
             array_push($product_list, $product["id"]);
         }
-        /*[{"name":"Ciccioli","id":5,"price":1,"count":4},{"name":"Lasagna","id":11,"price":4,"count":3}] */
-        /*... qui va il codice di scrittura della mail e tutti i lavori che vanno fatti su di essa
-        */
-        $scrivi_mail_utente = "INSERT INTO `notifiche` (`dest`, `obj`, `body`, `customerID`)
-        VALUE (".$mail.
-        ", 'Ordine per numero prodotti n°".$tot. //<- da prendere attraverso js
-        ", 'il cart', ".//<- il body con il carrello fatto come nell'esempio e con i dati del carrello quindi direi di prendere e copiare tutto il template direttamente qui
-        $id.");";
-        echo "scrivi: " . $scrivi_mail_utente;
+        $hash = bin2hex(mcrypt_create_iv(22, MCRYPT_DEV_URANDOM)); //<- usata solo per generare un codice dell'ordine
+        $obj = "Ricevuta ordine #" . strtoupper(substr($hash, 0, 6)). ": n°" .$tot . " prodotti";
+        $scrivi_mail_utente = "INSERT INTO `notifiche` (`dest`, `obj`, `body`, `customerID`) VALUE (?, ?, ?, ?);";
+        $stmt = $this->db->prepare($scrivi_mail_utente);
+        $stmt->bind_param("ssss", $mail, $obj, $body, $id);
+        $stmt->execute();
+        $this->printFormattedArray($stmt);
         /* Query per la ricerca del venditore per inviare le richieste*/
         //SELECT * FROM `prodotto` WHERE `prodottoID` IN (3, 5, 8) ORDER BY `vendorID`; <- sql per selezionare n elementi diversi
         $cerca_venditori = "SELECT * FROM `prodotto` WHERE `prodottoID` IN (" . implode(',', $product_list) . ") ORDER BY `vendorID`;";
-        echo "cerca: " . $cerca_venditori;
+ 
         //unset($_COOKIE["shoppingCart"]);
         //setcookie("shoppingCart", "", time()-3600);
+
+
     }
 
     public function getUserNotification($id)
