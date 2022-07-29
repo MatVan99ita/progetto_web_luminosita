@@ -17,6 +17,8 @@ NOTA:
    obj:  Conferma ordine per prodotti n°(?) |   Richiesta ordine per prodotti n°(?)
    body: Tutto il carrello con il resoconto |   Il carrello con il solo resoconto dello specifico venditore
 TODO:
+   il checkout lo devo sistemare come fosse un unico file con più template per evitare che la gente possa bypassare le cose scrivendo il nome della pagina in alto
+TODO:
    nella lista dei prodotti aggiungere un cerca per nome prodotto
    e sistemare la lista delle categoria nella headbar
 

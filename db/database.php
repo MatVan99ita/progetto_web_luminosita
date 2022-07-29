@@ -13,6 +13,24 @@ class DatabaseHelper{
         print("<pre>".print_r($array,true)."</pre>");
     }
 
+    public function timestampToAArray($timestamp)
+    {
+        $divided = explode(" ", $timestamp);
+        $temp_calendar = explode("-", $divided[0]);
+        $temp_clock = explode(":", $divided[1]);
+        $calendar = array("day"=>$temp_calendar[2], "month"=>$temp_calendar[1], "year"=>$temp_calendar[0]);
+        $clock = array("hour"=>$temp_clock[0], "minutes"=>$temp_clock[1], "seconds"=>$temp_clock[2]);
+        return array("calendar"=>$calendar, "clock"=>$clock);
+    }
+
+    public function printFormattedTimestamp($timestamp)
+    {
+        $new_t = $this->timestampToAArray($timestamp);
+        $cal = $new_t["calendar"];
+        $clk = $new_t["clock"];
+        return $cal["day"]."/".$cal["month"]."/".$cal["year"]." ".$clk["hour"].":".$clk["minutes"].":".$clk["seconds"];
+    }
+
     public function getRandomFoods($n){
         $sql = "SELECT 
                     `prodottoID`, 
@@ -614,25 +632,37 @@ class DatabaseHelper{
     }
 
     //NOTIFICATION ZONE
-    public function writeEmail(/*$dati vari*/)
+    public function writeEmail()
     {
-        $cart = $_COOKIE["shoppingCart"];
+        $cart = json_decode($_COOKIE["shoppingCart"], true);
+        $id = $_COOKIE["id"];
+        $mail = $_COOKIE["mail"];
+        $tot = 0;
+        $product_list = array();
+        foreach ($cart as $product) {
+            $tot += $product["count"];
+            array_push($product_list, $product["id"]);
+        }
+        /*[{"name":"Ciccioli","id":5,"price":1,"count":4},{"name":"Lasagna","id":11,"price":4,"count":3}] */
         /*... qui va il codice di scrittura della mail e tutti i lavori che vanno fatti su di essa
-        
-        INSERT INTO `notifiche` (`dest`, `send`, `obj`, `body`, `isRead`, `customerID`)
-        VALUES ('utente@mail', 'luminosita@cibo.food<-tipo valore predefinito del db(va cambiato allora nel db)', 
-        'Tot cart', 'il cart', '1', 'l'id del tipo che ha fatto l'ordine o del venditore da ricercare poi con ulteriori query')
-        
-        
         */
-        unset($_COOKIE["shoppingCart"]);
-        setcookie("shoppingCart", "", time()-3600);
-        # code...
+        $scrivi_mail_utente = "INSERT INTO `notifiche` (`dest`, `obj`, `body`, `customerID`)
+        VALUE (".$mail.
+        ", 'Ordine per numero prodotti n°".$tot. //<- da prendere attraverso js
+        ", 'il cart', ".//<- il body con il carrello fatto come nell'esempio e con i dati del carrello quindi direi di prendere e copiare tutto il template direttamente qui
+        $id.");";
+        echo "scrivi: " . $scrivi_mail_utente;
+        /* Query per la ricerca del venditore per inviare le richieste*/
+        //SELECT * FROM `prodotto` WHERE `prodottoID` IN (3, 5, 8) ORDER BY `vendorID`; <- sql per selezionare n elementi diversi
+        $cerca_venditori = "SELECT * FROM `prodotto` WHERE `prodottoID` IN (" . implode(',', $product_list) . ") ORDER BY `vendorID`;";
+        echo "cerca: " . $cerca_venditori;
+        //unset($_COOKIE["shoppingCart"]);
+        //setcookie("shoppingCart", "", time()-3600);
     }
 
     public function getUserNotification($id)
     {
-        $sql = "SELECT `notificationID`, `send`, `isRead`, `obj` FROM `notifiche` WHERE `customerID`=?";
+        $sql = "SELECT `notificationID`, `send`, `isRead`, `obj`, `spedita` FROM `notifiche` WHERE `customerID`=? ORDER BY `isRead`, `spedita` DESC";
         $stmt = $this->db->prepare($sql);
         $stmt->bind_param('i', $id);
         $stmt->execute();
@@ -662,7 +692,7 @@ class DatabaseHelper{
 
     public function getSpecificNotification($id, $isRead)
     {
-        if($isRead) if($this->setNotificationToReaded($id)) return array();
+        if($isRead==0) if($this->setNotificationToReaded($id)) return array();
         $sql = "SELECT * FROM `notifiche` WHERE `notificationID`=?";
         $stmt = $this->db->prepare($sql);
         $stmt->bind_param('i', $id);

@@ -26,7 +26,7 @@ if(isset($_COOKIE["shoppingCart"])){
 
     $check = $dbh->takeOrder($_COOKIE["shoppingCart"]);
     if($check) {
-        
+        $dbh->writeEmail();
     } else { 
         echo "<label>Errore con l'ordine</label>";
     }
