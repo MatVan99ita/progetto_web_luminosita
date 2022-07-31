@@ -647,21 +647,39 @@ class DatabaseHelper{
             $tot = $tot == 0 ? $product["count"] : $tot + $product["count"];
             array_push($product_list, $product["id"]);
         }
-        $hash = bin2hex(mcrypt_create_iv(22, MCRYPT_DEV_URANDOM)); //<- usata solo per generare un codice dell'ordine
+        
+        $hash = hash('sha512', uniqid(mt_rand(1, mt_getrandmax()), true));//<- usata solo per generare un codice dell'ordine
         $obj = "Ricevuta ordine #" . strtoupper(substr($hash, 0, 6)). ": n°" .$tot . " prodotti";
         $scrivi_mail_utente = "INSERT INTO `notifiche` (`dest`, `obj`, `body`, `customerID`) VALUE (?, ?, ?, ?);";
         $stmt = $this->db->prepare($scrivi_mail_utente);
         $stmt->bind_param("ssss", $mail, $obj, $body, $id);
         $stmt->execute();
-        $this->printFormattedArray($stmt);
-        /* Query per la ricerca del venditore per inviare le richieste*/
-        //SELECT * FROM `prodotto` WHERE `prodottoID` IN (3, 5, 8) ORDER BY `vendorID`; <- sql per selezionare n elementi diversi
-        $cerca_venditori = "SELECT * FROM `prodotto` WHERE `prodottoID` IN (" . implode(',', $product_list) . ") ORDER BY `vendorID`;";
- 
-        //unset($_COOKIE["shoppingCart"]);
-        //setcookie("shoppingCart", "", time()-3600);
 
 
+        /* Query per la ricerca del venditore per inviare la notifica di vendita*/
+        usort($cart, function ($item1, $item2) {
+            return $item1['id'] <=> $item2['id'];
+        });
+        $cerca_venditori = "SELECT u.UserID, v.`vendorID`, `Email`, `prodottoID`, `quantity`, `venduto` FROM `prodotto` AS p LEFT JOIN `venditore` AS v ON p.vendorID = v.vendorID
+                            LEFT JOIN `utente` AS u ON u.UserID = v.userID WHERE `prodottoID` IN (". implode(',', $product_list) .") ORDER BY prodottoID";
+        $stmt = $this->db->prepare($cerca_venditori);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        $res = $result->fetch_all(MYSQLI_ASSOC);
+        
+        for ($i=0; $i < count($res); $i++) {
+            $obj = "Ricevuta ordine #" . strtoupper(substr($hash, 0, 6)). ": " . $cart[$i]["name"] . " -> quantity: ".$cart[$i]["count"];
+            $scrivi_mail_venditore = "INSERT INTO `notifiche` (`send`, `dest`, `obj`, `body`, `customerID`) VALUE (?, ?, ?, ?, ?);";
+            $stmt = $this->db->prepare($scrivi_mail_venditore);
+            $details = array("name"=>$cart[$i]["name"], "richieste"=>$cart[$i]["count"], "rimanenti"=>$res[$i]["quantity"], "venduto"=>$res[$i]["venduto"]);
+            $body = json_encode($details);
+            echo $body;
+            $stmt->bind_param("sssss", $mail, $res[$i]["Email"], $obj, $body, $res[$i]["UserID"]);
+            $stmt->execute();
+        }
+
+        unset($_COOKIE["shoppingCart"]);
+        setcookie("shoppingCart", "", time()-3600);
     }
 
     public function getUserNotification($id)
