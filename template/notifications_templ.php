@@ -14,18 +14,18 @@
                                         target="_blank"
                                     >
                                         <img
-                                            src="//ssl.gstatic.com/accounts/ui/logo_2x.png"
-                                            alt="Bootdey.com"
-                                            style="height: 50px; max-width: 100%; width: 157px;"
+                                            src="<?php echo LOGO."scuro.png"; ?>"
+                                            alt="lumininosita.food logo"
+                                            style="height: 125px; max-width: 100%; width: 125px;"
                                             height="50"
                                             width="157"
                                         />
                                     </a>
                                 </td>
                                 <td style="color: #999; font-size: 12px; padding: 0; text-align: right;" align="right">
-                                    Bootdey<br />
-                                    Invoice #3440952<br />
-                                    August 04, 2018
+                                    Luminosita<br />
+                                    Invoice <?php echo substr($templateParams["mail"]["obj"], 16, 7); ?><br />
+                                    <?php echo $templateParams["mail"]["spedita"]?>
                                 </td>
                             </tr>
                         </tbody>
@@ -40,8 +40,8 @@
                     <table width="100%" style="background: #f9f9f9; border-bottom: 1px solid #eee; border-collapse: collapse; color: #999;">
                         <tbody>
                             <tr>
-                                <td width="50%" style="padding: 20px;"><strong style="color: #333; font-size: 24px;">$23.95</strong> Paid</td>
-                                <td align="right" width="50%" style="padding: 20px;">Thanks for using <span class="il">Bootdey.com</span></td>
+                                <td width="50%" style="padding: 20px;"><strong style="color: #333; font-size: 24px;">€ <?php echo $templateParams["amount"] ?></strong> Paid</td>
+                                <td align="right" width="50%" style="padding: 20px;">Thanks for using <span class="il">luminosita.food</span></td>
                             </tr>
                         </tbody>
                     </table>
@@ -73,21 +73,17 @@
                                     </h3>
                                     <table cellspacing="0" style="border-collapse: collapse; margin-bottom: 40px;">
                                         <tbody>
-                                            <tr>
-                                                <td style="padding: 5px 0;">Old Plan</td>
-                                                <td align="right" style="padding: 5px 0;">Free plan (10,000 msg/month)</td>
-                                            </tr>
-                                            <tr>
-                                                <td style="padding: 5px 0;">New Plan</td>
-                                                <td align="right" style="padding: 5px 0;">Concept Plan</td>
-                                            </tr>
-                                            <tr>
-                                                <td style="padding: 5px 0;">Prorated subscription amount due</td>
-                                                <td align="right" style="padding: 5px 0;">$23.95</td>
-                                            </tr>
+                                            <?php foreach ($templateParams["body"] as $value): ?>
+                                                <tr>
+                                                    <td style="padding: 5px 0;"><?php echo $value["name"]; ?></td>
+                                                    <td align="left" style="padding: 5px 0;"><?php echo $value["price"]."€"; ?></td>
+                                                    <td align="right" style="padding: 5px 0;"><?php echo "x".$value["count"]; ?></td>
+                                                </tr>
+                                            <?php endforeach; ?>
                                             <tr>
                                                 <td style="border-bottom: 2px solid #000; border-top: 2px solid #000; font-weight: bold; padding: 5px 0;">Amount paid</td>
-                                                <td align="right" style="border-bottom: 2px solid #000; border-top: 2px solid #000; font-weight: bold; padding: 5px 0;">$23.95</td>
+                                                <td align="left" style="border-bottom: 2px solid #000; border-top: 2px solid #000; font-weight: bold; padding: 5px 0;"><?php echo $templateParams["amount"]."€"; ?></td>
+                                                <td align="right" style="border-bottom: 2px solid #000; border-top: 2px solid #000; font-weight: bold; padding: 5px 0;"><?php echo "x".$templateParams["count"]; ?></td>
                                             </tr>
                                         </tbody>
                                     </table>
@@ -108,22 +104,22 @@
                                 <td width="40%" valign="top" style="padding: 10px 0;">
                                     <h4 style="margin: 0;">Questions?</h4>
                                     <p style="color: #666; font-size: 12px; font-weight: normal; margin-bottom: 10px;">
-                                        Please visit our
+                                        Please visit
                                         <a
-                                            href="#"
+                                            href="https://www.google.com/webhp?hl=it&ictx=2&sa=X&ved=0ahUKEwjN1pG856L5AhXNQ_EDHVJDDcQQPQgJ"
                                             style="color: #666;"
                                             target="_blank"
                                         >
-                                            Support Center
+                                            Google
                                         </a>
-                                        with any questions.
+                                        for any questions.
                                     </p>
                                 </td>
                                 <td width="10%" style="padding: 10px 0;">&nbsp;</td>
                                 <td width="40%" valign="top" style="padding: 10px 0;">
-                                    <h4 style="margin: 0;"><span class="il">Bootdey</span> Technologies</h4>
+                                    <h4 style="margin: 0;"><span class="il">Luminosità</span> Vicinanza . Silenzio . Bevande</h4>
                                     <p style="color: #666; font-size: 12px; font-weight: normal; margin-bottom: 10px;">
-                                        <a href="#">535 Mission St., 14th Floor San Francisco, CA 94105</a>
+                                        <a href="https://goo.gl/maps/vhQxGoiM6xqfpFMT6">Via dell'Università, Via Cesare Pavese, 47522 Cesena FC</a>
                                     </p>
                                 </td>
                             </tr>
@@ -135,7 +131,3 @@
         </tbody>
     </table>
 </div>
-
-<?php
-$dbh->printFormattedArray($templateParams["mail"]);
-?>

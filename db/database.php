@@ -714,7 +714,11 @@ class DatabaseHelper{
 
     public function getSpecificNotification($id, $isRead)
     {
-        if($isRead==0) if($this->setNotificationToReaded($id)) return array();
+        if($isRead==0) {
+            $err = $this->setNotificationToReaded($id);
+            if(!$err)
+                return array();
+        }
         $sql = "SELECT * FROM `notifiche` WHERE `notificationID`=?";
         $stmt = $this->db->prepare($sql);
         $stmt->bind_param('i', $id);
