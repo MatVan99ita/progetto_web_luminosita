@@ -30,8 +30,18 @@ $vendor = $templateParams["user"];
     $value = explode('.', $val);
     $int = (int) $value[0];
     $decimal = isset($value[1]) ? (int) $value[1]: 0;
+    /*[0] => Array
+        (
+            [prodottoID] => 3
+            [nomeProd] => Panino con la mortadella
+            [descrProd] => La mortazza Bologna IGPfrgethsrnb
+            [prezzo] => 1.00
+            [glutenFree] => 0
+            [quantity] => 950
+            [CategoryName] => Panini
+            [vendorID] => 3
+        )*/
     ?>
-    
     
     <div class="container">
         <div class="card">

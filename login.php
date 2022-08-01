@@ -29,7 +29,7 @@ else if(isset($_COOKIE["logged"])){
         } else {
             $templateParams["nome"] = "vendor_details.php";
             $templateParams["user"] = $dbh->getAllUserLoggedInfo($_COOKIE["mail"], $_COOKIE["id"]);
-            $templateParams["foods"] = $dbh->getVendorFoods($_COOKIE["mail"], $_COOKIE["id"]);
+            $templateParams["foods"] = $dbh->getVendorFoods($_COOKIE["id"]);
         }
     if(isset($_GET["formmsg"])){
         $templateParams["formmsg"] = $_GET["formmsg"];

@@ -7,10 +7,10 @@ TODO:
    la grafica la sistemo per ultima perchè è meglio che mi implementi prima le funzionalità
    altrimenti succede come per BdD
 
-NOTE:
-   Per il venditore faccio un sistema apparte stile amazon che lo avvisa dell'ordine basta
 TODO:
-   creare un template anche per le mail del venditore
+   sistemare la zona di login del venditore
+   se stampo il template di una lista di cibo viene meglio come cosa e fa anche figo
+   e ricapire come gestire le cose da login che mi sono scordato
 
 TODO:
    il checkout lo devo sistemare come fosse un unico file con più template per evitare che la gente possa bypassare le cose scrivendo il nome della pagina in alto
