@@ -1,6 +1,6 @@
 
 <?php
-$vendor = $templateParams["details"];
+$vendor = $templateParams["user"];
 ?>    
 <div class="container">
     <div class="container">
@@ -24,7 +24,7 @@ $vendor = $templateParams["details"];
     </div>
 <br>
     <h2>Lista dei prodotti venduti da <?php echo $vendor["nomeAzienda"]; ?></h2>
-    <?php foreach($templateParams["food_list"] as $art):
+    <?php foreach($templateParams["foods"] as $art):
     $img = CAT_DIR.$art["CategoryID"].". ".$art["CategoryName"].".jpg";
     $val = $dbh->starRate($art["venduto"]);
     $value = explode('.', $val);

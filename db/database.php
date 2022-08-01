@@ -739,4 +739,14 @@ class DatabaseHelper{
         return true;
     }
 
+    public function checkUserIsVendor($id){
+        $sql = "SELECT vendors FROM utente WHERE UserID=?;";
+        $stmt = $this->db->prepare($sql);
+        $stmt->bind_param("i", $id);
+        $stmt->execute();
+        $val = $stmt->get_result();
+        $isVendor = $val->fetch_all(MYSQLI_ASSOC)[0];
+        return $isVendor["vendors"] == 1;
+    }
+
 }
