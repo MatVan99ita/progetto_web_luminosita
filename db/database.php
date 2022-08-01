@@ -466,7 +466,7 @@ class DatabaseHelper{
      */
     public function specificVendorList($id){
         //$sql = "SELECT `vendorID`, `nomeAzienda`, `indirizzo`, `orariConsegna`, `contatto`, `descrizione`, `Email`, `Nome`, `Cognome` FROM `venditore` AS v LEFT JOIN `utente` AS u ON v.userID=u.userID WHERE vendorID = ?;";
-        $sql="SELECT v.`vendorID`, `nomeAzienda`, `indirizzo`, `orariConsegna`, `contatto`, `descrizione`, `Email`, `Nome`, `Cognome` FROM `venditore` AS v LEFT JOIN `utente` AS u ON v.userID=u.userID WHERE v.vendorID = ?;";
+        $sql="SELECT u.UserID, v.`vendorID`, `nomeAzienda`, `indirizzo`, `orariConsegna`, `contatto`, `descrizione`, `Email`, `Nome`, `Cognome` FROM `venditore` AS v LEFT JOIN `utente` AS u ON v.userID=u.UserID WHERE u.UserID = ?;";
         $stmt = $this->db->prepare($sql);
         $stmt->bind_param('s', $id);
         $stmt->execute();
@@ -745,7 +745,7 @@ class DatabaseHelper{
         $stmt->bind_param("i", $id);
         $stmt->execute();
         $val = $stmt->get_result();
-        $isVendor = $val->fetch_all(MYSQLI_ASSOC)[0];
+        $isVendor = $val->fetch_all(MYSQLI_ASSOC);
         return $isVendor["vendors"] == 1;
     }
 
