@@ -185,6 +185,17 @@ $pagah = $utente["info_pagamento"];
                         </div>
                         <p class="product-description"><p>Venduto da: <a href="foodVendor.php?spec&id=<?php echo $art["vendorID"] ?>"><?php echo $art["nomeAzienda"]; ?></a></p></p>
                         <p class="product-description"><p><?php echo $art["descrProd"]; ?></p></p>
+                        <p class="product-description">
+                            <label class="form-check-label" for="flexSwitchCheckDefault">Gluten Free</label>
+                            <div class="col-md-3">
+                                <div class="custom-control custom-checkbox image-checkbox">
+                                    <input type="checkbox" class="custom-control-input" id="ck1a" name="gluten" disabled>
+                                    <label style="width: 200px" class="custom-control-label" for="ck1a">
+                                        <img src="<?php echo UPLOAD_DIR."gluten-free.jpg"; ?>" alt="gluten-free" class="<?php if($art["glutenFree"] == "0") echo "no-gluten"; ?> img-fluid">
+                                    </label>
+                                </div>
+                            </div>
+                        </p>
                         <h4 class="price card-text">Prezzo: <span><?php echo $art["prezzo"]; ?>€</span></h4>
                         <h4 class="price">Quantità disponibile: <span><?php echo $art["quantity"]; ?></span></h4>
                         <div class="action">
