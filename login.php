@@ -27,7 +27,7 @@ else if(isset($_COOKIE["logged"])){
             $templateParams["user"] = $dbh->getAllUserLoggedInfo($_COOKIE["mail"], $_COOKIE["id"]);
             $templateParams["randomFoods"] = $dbh->getRandomFoods(10);
         } else {
-            $templateParams["nome"] = "vendor_details.php";
+            $templateParams["nome"] = "vendor_login.php";
             $templateParams["user"] = $dbh->getAllUserLoggedInfo($_COOKIE["mail"], $_COOKIE["id"]);
             $templateParams["foods"] = $dbh->getVendorFoods($_COOKIE["id"]);
         }

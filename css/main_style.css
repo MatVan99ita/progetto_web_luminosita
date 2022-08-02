@@ -284,6 +284,10 @@ div.scrollmenu a:hover {
     display: block !important;
 }/**/
 
+.no-gluten {
+    filter: grayscale(100%);
+}
+
 .custom-control.image-checkbox {
     position: relative;
     padding-left: 0;
@@ -661,5 +665,6 @@ body {
                     max-width: 150px;
                 }
             }
-
+            
+            
 

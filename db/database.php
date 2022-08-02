@@ -335,7 +335,7 @@ class DatabaseHelper{
         $result = $stmt->get_result();
         $ven = $result->fetch_all(MYSQLI_ASSOC);
 
-        $sql = "SELECT `prodottoID`, `nomeProd`, `descrProd`, `prezzo`, `glutenFree`, `quantity`, `CategoryName`, c1.vendorID 
+        $sql = "SELECT `prodottoID`, `nomeProd`, `descrProd`, `prezzo`, `glutenFree`, `quantity`, `CategoryName`, c2.CategoryID, c1.vendorID, `venduto` 
         FROM `prodotto` AS p LEFT JOIN `venditore` AS c1 
         ON p.vendorID = c1.vendorID 
         LEFT JOIN foodcategory AS c2 
