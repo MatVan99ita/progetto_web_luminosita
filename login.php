@@ -7,7 +7,6 @@
 
 <?php
 require_once 'bootstrap.php';
-$templateParams["titolo"] = "Luminosità -";
 
 if(isset($_POST["username"]) && isset($_POST["password"])){
     $login_result = $dbh->checkLogin($_POST["mail"], $_POST["pass"]);

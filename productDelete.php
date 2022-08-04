@@ -7,7 +7,7 @@ $query = explode("&", $url["query"]);
 $type = $query[0];
 $id = explode("=", $query[1])[1];
 
-$templateParams["easter_egg"] = random_int(0, 100);
+$templateParams["easter_egg"] = random_int(0, 1000);
 if(isset($_POST["answer"])) {
     unset($_POST["answer"]);
     $dbh->deleteProduct($id);

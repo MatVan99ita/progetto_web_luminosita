@@ -4,7 +4,6 @@ require_once 'bootstrap.php';
 
 
 //Base Template
-$templateParams["titolo"] = "Luminosità - ";
 $templateParams["categorie"] = $dbh->getFoodTypes();
 $templateParams["nome"] = "vendor_details.php";
 //Articoli Categoria Template
