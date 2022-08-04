@@ -180,7 +180,7 @@ foreach($templateParams["foods"] as $art):
                         <div class="action">
                             <a href="product_edit.php?edit-type=update&id=<?php echo $art["prodottoID"]; ?>" class="like btn btn-warning m-1" type="button">modifica</a>
                             <a href="product_edit.php?edit-type=refill&id=<?php echo $art["prodottoID"]; ?>" class="like btn btn-success m-1" type="button">refill</a>
-                            <a href="productDelete.php?&id=<?php echo $art["prodottoID"]; ?>" class="like btn btn-danger m-1" type="button">rimuovi</a>
+                            <a href="productDelete.php?delete&id=<?php echo $art["prodottoID"]; ?>" class="like btn btn-danger m-1" type="button">rimuovi</a>
                         </div>
                     </div>
                 </div>
@@ -190,7 +190,7 @@ foreach($templateParams["foods"] as $art):
     <?php endforeach; ?>
     
 
-    <a href="product_edit.php?edit-type=new&id=-1?>" class="like btn btn-success m-1" type="button">
+    <a href="product_edit.php?edit-type=new&id=-1" class="like btn btn-success m-1" type="button">
         Aggiungi un nuovo prodotto
     </a>
 </div>

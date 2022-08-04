@@ -10,10 +10,10 @@ $query = explode("&", $url["query"]);
 $type = explode('=', $query[0])[1];
 $id = explode('=', $query[1])[1];
 if($type != "new"){
-    $templateParams["foodID"] = $id;
-    $templateParams["editType"] = $type;
     $templateParams["food"] = $id < 0 ? 0 : $dbh->getFoodByID($id);
 }
+$templateParams["editType"] = $type;
+$templateParams["foodID"] = $id;
 $templateParams["nome"] = "productEdit_Template.php";
 
 
