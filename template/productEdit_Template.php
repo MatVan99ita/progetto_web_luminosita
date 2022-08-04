@@ -25,7 +25,6 @@ elseif($templateParams["editType"] == "update"):
         
  */
     ?>
-    
         <h2>Aggiorna prodotto</h2>
 
         <div class="form-group">
@@ -107,7 +106,7 @@ elseif($templateParams["editType"] == "new"):?>
         <div class="form-group">
             <label class="form-check-label" for="flexSwitchCheckDefault">Gluten Free</label>
             <div class="col-md-3">
-                <div class="custom-control custom-checkbox image-checkbox">
+                <div class="custom-control custom-checkbox no-gluten image-checkbox">
                     <input type="checkbox" class="custom-control-input" id="ck1a" name="gluten">
                     <label style="width: 200px" class="custom-control-label" for="ck1a">
                         <img src="<?php echo UPLOAD_DIR."gluten-free.jpg"; ?>" alt="gluten-free" class="img-fluid">

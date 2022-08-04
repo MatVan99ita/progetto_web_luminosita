@@ -1,17 +1,21 @@
 <?php 
 
 require_once 'bootstrap.php';
+$dbh->printFormattedArray($_POST);
+$url = parse_url($_SERVER['REQUEST_URI'], $component = -1);
+$query = explode("&", $url["query"]);
 
-$url = explode("&", explode('?', $_SERVER['REQUEST_URI'])[1]);
+$type = $query[0];
+$id = $query[1];
 
-$id = str_replace("id=", "", $url[1]);
-
-if($url[0]=="edit"){
+if($type=="update") {
+    echo "update";
     $gluten = isset($_POST["gluten"]) ? "1": "0";
+    echo $gluten;
     $val = $dbh->updateProduct("=", $_POST["name"], $_POST["inputDescr"], $_POST["price"], $gluten, $_POST["quantityInput"], $_POST["categoryInput"], $id);
-} else if($url[0]=="refill"){
+} else if($type=="refill") {
     $val = $dbh->refillProduct("=", $_POST["quantityInput"], $id);
-} else if ($url[0] == "new"){
+} else if ($type == "new") {
     $gluten = isset($_POST["gluten"]) ? "1": "0";
     $val = $dbh->addNewProduct($_POST["name"], $_POST["inputDescr"], $_POST["price"], $gluten, $_POST["quantityInput"], $_POST["categoryInput"]);
 }

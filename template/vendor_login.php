@@ -63,7 +63,7 @@ $user = $templateParams["user"];
             <a href="change_data.php?datas" class="btn btn-warning m-1">
                 Cambia dati
             </a>
-            
+
             <a href="change_data.php?passData" class="btn btn-danger m-1">
                 Cambia password
             </a>
@@ -180,7 +180,7 @@ foreach($templateParams["foods"] as $art):
                         <div class="action">
                             <a href="product_edit.php?edit-type=update&id=<?php echo $art["prodottoID"]; ?>" class="like btn btn-warning m-1" type="button">modifica</a>
                             <a href="product_edit.php?edit-type=refill&id=<?php echo $art["prodottoID"]; ?>" class="like btn btn-success m-1" type="button">refill</a>
-                            <a href="product_edit.php?edit-type=delete&id=<?php echo $art["prodottoID"]; ?>" class="like btn btn-danger m-1" type="button">rimuovi</a>
+                            <a href="productDelete.php?&id=<?php echo $art["prodottoID"]; ?>" class="like btn btn-danger m-1" type="button">rimuovi</a>
                         </div>
                     </div>
                 </div>
@@ -188,15 +188,9 @@ foreach($templateParams["foods"] as $art):
         </div>
     </div>
     <?php endforeach; ?>
-</div>
+    
 
-<div class="col">
-        <div class="card" style="width: 20rem;">
-            <img class="card-img-top" src="http://www.azspagirls.com/files/2010/09/orange.jpg" alt="Card image cap">
-            <div class="card-block">
-                <h4 class="card-title">Orange</h4>
-                <p class="card-text">Price: $0.5</p>
-                <a href="#" data-name="Orange" data-price="0.5" class="add-to-cart btn btn-primary">Add to cart</a>
-            </div>
-        </div>
-    </div>
+    <a href="product_edit.php?edit-type=new&id=-1?>" class="like btn btn-success m-1" type="button">
+        Aggiungi un nuovo prodotto
+    </a>
+</div>

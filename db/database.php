@@ -506,34 +506,34 @@ class DatabaseHelper{
      * operation => + / - / =
      */
     public function changeQuantity($id, $quantity, $operation){
-        $sql = "SELECT quantity FROM prodotto WHERE prodottoID=?";
-        $stmt = $this->db->prepare($sql);
-        $stmt->bind_param('s', $id);
-        $stmt->execute();
-        $result = $stmt->get_result();
-        $remain = $result->fetch_all(MYSQLI_ASSOC)[0]["quantity"];
-
-        switch($operation){
-            case '+':
-                $new_quantity = $remain + $quantity;
-                $err = $this->updateQuantity($new_quantity, $id);
-                break;
-
-            case '-':
-                if($remain < $quantity){
-                    echo "Quantità non disponibile";
-                    return false;
-                }
-                $remain = $remain - $quantity;
-                $new_quantity = $remain < 0 ? 0 : $remain;
-                $err = $this->updateQuantity($new_quantity, $id);
-                break;
-            
-            case '=':
-                $err = $this->updateQuantity($quantity, $id);
-                break;
-
+        if($operation != "=") {
+            $sql = "SELECT quantity FROM prodotto WHERE prodottoID=?";
+            $stmt = $this->db->prepare($sql);
+            $stmt->bind_param('s', $id);
+            $stmt->execute();
+            $result = $stmt->get_result();
+            $remain = $result->fetch_all(MYSQLI_ASSOC)/*[0]["quantity"]*/;
+            $this->printFormattedArray($remain);
+            switch($operation){
+                case '+':
+                    $new_quantity = $remain + $quantity;
+                    $err = $this->updateQuantity($new_quantity, $id);
+                    break;
+    
+                case '-':
+                    if($remain < $quantity){
+                        echo "Quantità non disponibile";
+                        return false;
+                    }
+                    $remain = $remain - $quantity;
+                    $new_quantity = $remain < 0 ? 0 : $remain;
+                    $err = $this->updateQuantity($new_quantity, $id);
+                    break;
             }
+        } else {
+            $q = $quantity < 0 ? 0 : $quantity;
+            $err = $this->updateQuantity($q, $id);
+        }
         return $err;
     }
 
@@ -551,9 +551,10 @@ class DatabaseHelper{
     }
 
     private function updateQuantity($new_quantity, $id){
+        $new = $new_quantity < 0 ? 0 : $new_quantity;
         $sql = "UPDATE `prodotto` SET `quantity`=? WHERE `prodottoID`=?";
         $stmt = $this->db->prepare($sql);
-        $stmt->bind_param('ss', $new_quantity, $id);
+        $stmt->bind_param('ss', $new, $id);
         $stmt->execute();
         if($this->db->error){
             return false;
