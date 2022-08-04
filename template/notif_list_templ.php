@@ -1,5 +1,10 @@
 <ul id="notification_list" class="list-group">
-  <li class="list-group-item"><h2><?php echo $templateParams["totNotification"] . " notifiche di cui " . $templateParams["toReadNotif"] . " non lette"; ?></h2></li>
+  <li class="list-group-item">
+    <h2><?php echo $templateParams["totNotification"] . " notifiche di cui " . $templateParams["toReadNotif"] . " non lette"; ?></h2>
+    <form action="#" method="POST">
+      <input type="submit" value="Segna tutte come già lette" name="allRead" class="btn btn-success m.1"></input>
+    </form>
+  </li>
   <?php $class = array("primary", "light");
   $b = 0;
   $index = 1;

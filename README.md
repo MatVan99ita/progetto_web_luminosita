@@ -16,3 +16,5 @@ TODO:
 TODO:
    provare a cambiare tutte le cose gestite da url con variabili di sessione, se non settate almeno posso gestire i redirect
 
+TODO:
+   togliere la possibilità ai venditori di fare acquisti per evitare problemi

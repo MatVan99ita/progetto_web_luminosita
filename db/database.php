@@ -512,8 +512,7 @@ class DatabaseHelper{
             $stmt->bind_param('s', $id);
             $stmt->execute();
             $result = $stmt->get_result();
-            $remain = $result->fetch_all(MYSQLI_ASSOC)/*[0]["quantity"]*/;
-            $this->printFormattedArray($remain);
+            $remain = $result->fetch_all(MYSQLI_ASSOC)[0]["quantity"];
             switch($operation){
                 case '+':
                     $new_quantity = $remain + $quantity;
@@ -713,7 +712,7 @@ class DatabaseHelper{
         return $result->fetch_all(MYSQLI_ASSOC)[0];
     }
 
-    private function setNotificationToReaded($id){
+    public function setNotificationToReaded($id){
         $sql = "UPDATE `notifiche` SET `isRead`='1' WHERE `notificationID`=?;";
         $stmt = $this->db->prepare($sql);
         $stmt->bind_param('i', $id);
@@ -731,7 +730,7 @@ class DatabaseHelper{
         $stmt->bind_param("i", $id);
         $stmt->execute();
         $val = $stmt->get_result();
-        $isVendor = $val->fetch_all(MYSQLI_ASSOC);
+        $isVendor = $val->fetch_all(MYSQLI_ASSOC)[0];
         return $isVendor["vendors"] == 1;
     }
 
