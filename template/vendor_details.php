@@ -1,6 +1,6 @@
 
 <?php
-$vendor = $templateParams["user"];
+$vendor = $templateParams["details"];
 ?>    
 <div class="container">
     <div class="container">
@@ -12,7 +12,6 @@ $vendor = $templateParams["user"];
                         </div>
                         <p class="product-description">
                             <p><?php echo $vendor["descrizione"]; ?></p>
-                            <p>Referente:<?php echo $vendor["Nome"]." ".$vendor["Cognome"]; ?></p>
                         </p>
                         <h4 class="price">Orari di consegna: <span><?php echo $vendor["orariConsegna"]; ?></span></h4>
                         <h4 class="price">Referente: <span><?php echo $vendor["Nome"]." ".$vendor["Cognome"]; ?></span></h4>
@@ -24,24 +23,16 @@ $vendor = $templateParams["user"];
     </div>
 <br>
     <h2>Lista dei prodotti venduti da <?php echo $vendor["nomeAzienda"]; ?></h2>
-    <?php foreach($templateParams["foods"] as $art):
+    <?php $gluten = UPLOAD_DIR."gluten-free.jpg";
+
+foreach($templateParams["foods"] as $art):
     $img = CAT_DIR.$art["CategoryID"].". ".$art["CategoryName"].".jpg";
     $val = $dbh->starRate($art["venduto"]);
     $value = explode('.', $val);
     $int = (int) $value[0];
     $decimal = isset($value[1]) ? (int) $value[1]: 0;
-    /*[0] => Array
-        (
-            [prodottoID] => 3
-            [nomeProd] => Panino con la mortadella
-            [descrProd] => La mortazza Bologna IGPfrgethsrnb
-            [prezzo] => 1.00
-            [glutenFree] => 0
-            [quantity] => 950
-            [CategoryName] => Panini
-            [vendorID] => 3
-        )*/
     ?>
+    
     
     <div class="container">
         <div class="card">
@@ -66,7 +57,7 @@ $vendor = $templateParams["user"];
                         
                     </div>
                     <div class="details col-md-6">
-                        <h3 class="product-title"><?php echo $art["nomeProd"]; ?></h3>
+                        <h4 class="card-title product-title"><?php echo $art["nomeProd"]; ?></h4>
                         <div class="rating">
                             <div class="stars">
                                 <?php
@@ -101,9 +92,19 @@ $vendor = $templateParams["user"];
                             </div>
                             <span class="review-no">Venduto <?php echo $art["venduto"];?> volte</span>
                         </div>
-                        <p class="product-description"><p>Venduto da: <a href="foodVendor.php?spec&id=<?php echo $art["vendorID"] ?>"><?php echo $art["nomeAzienda"]; ?></a></p></p>
-                        <p class="product-description"><p><?php echo $art["descrProd"]; ?></p></p>
-                        <h4 class="price">Prezzo: <span><?php echo $art["prezzo"]; ?>€</span></h4>
+                        <p class="product-description"><p>Descrizione: <?php echo $art["descrProd"]; ?></p></p>
+                        <p class="product-description">
+                            <label class="form-check-label" for="flexSwitchCheckDefault">Gluten Free</label>
+                            <div class="col-md-3">
+                                <div class="custom-control custom-checkbox image-checkbox">
+                                    <input type="checkbox" class="custom-control-input" id="ck1a" name="gluten" disabled>
+                                    <label style="width: 200px" class="custom-control-label" for="ck1a">
+                                        <img src="<?php echo $gluten; ?>" alt="gluten-free" class="<?php if($art["glutenFree"] == "0") echo "no-gluten"; ?> img-fluid">
+                                    </label>
+                                </div>
+                            </div>
+                        </p>
+                        <h4 class="price card-text">Prezzo: <span><?php echo $art["prezzo"]; ?>€</span></h4>
                         <h4 class="price">Quantità disponibile: <span><?php echo $art["quantity"]; ?></span></h4>
                         <div class="action">
                             <button data-id="<?php echo $art["prodottoID"]; ?>" data-name="<?php echo $art["nomeProd"]; ?>" data-price="<?php echo $art["prezzo"]; ?>" class="add-to-cart btn btn-primary m-1" type="button">add to cart</button>
@@ -116,3 +117,14 @@ $vendor = $templateParams["user"];
     </div>
     <?php endforeach; ?>
 </div>
+
+<div class="col">
+        <div class="card" style="width: 20rem;">
+            <img class="card-img-top" src="http://www.azspagirls.com/files/2010/09/orange.jpg" alt="Card image cap">
+            <div class="card-block">
+                <h4 class="card-title">Orange</h4>
+                <p class="card-text">Price: $0.5</p>
+                <a href="#" data-name="Orange" data-price="0.5" class="add-to-cart btn btn-primary">Add to cart</a>
+            </div>
+        </div>
+    </div>

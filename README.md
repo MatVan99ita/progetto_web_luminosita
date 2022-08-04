@@ -19,4 +19,6 @@ TODO:
    nella lista dei prodotti aggiungere un cerca per nome prodotto
    e sistemare la lista delle categoria nella headbar
 
+TODO:
+   provare a cambiare tutte le cose gestite da url con variabili di sessione, se non settate almeno posso gestire i redirect
 

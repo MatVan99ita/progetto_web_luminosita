@@ -50,30 +50,25 @@ class DatabaseHelper{
                 WHERE p.foodType =`CategoryID` 
                 ORDER BY RAND() LIMIT ?;";
 
-        /*SELECT 
-            `prodottoID`, 
-            `nomeProd`, 
-            `descrProd`, 
-            `prezzo`, 
-            `glutenFree`, 
-            `quantity`, 
-            `CategoryName`, 
-            `CategoryID`, 
-            c1.vendorID, 
-            `venduto`, 
-            `nomeAzienda`, 
-            c1.vendorID 
-        FROM `prodotto` AS p LEFT JOIN `venditore` AS c1 ON p.vendorID = c1.vendorID 
-        LEFT JOIN foodcategory AS c2 ON p.foodType = c2.CategoryID 
-        WHERE p.foodType =`CategoryID` 
-        ORDER BY RAND() LIMIT 5; */
-
         $stmt = $this->db->prepare($sql);
         $stmt->bind_param('i',$n);
         $stmt->execute();
         $result = $stmt->get_result();
 
         return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
+    public function getFoodByID($id)
+    {
+        $sql = "SELECT * FROM prodotto as p LEFT JOIN foodcategory as fc ON p.foodType = fc.CategoryID WHERE prodottoID = ?;";
+
+        $stmt = $this->db->prepare($sql);
+        $stmt->bind_param('i',$id);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        $food = $result->fetch_all(MYSQLI_ASSOC);
+        return $food[0];
     }
 
     public function getFoodTypes(){
@@ -100,17 +95,7 @@ class DatabaseHelper{
                 FROM `prodotto` AS p LEFT JOIN `venditore` AS c1 ON p.vendorID = c1.vendorID
                 LEFT JOIN `foodcategory` AS c2 ON p.foodType = c2.CategoryID
                 WHERE `foodType` = ?;";
-        /**SELECT 
-         * `prodottoID`, 
-         * `nomeProd`, 
-         * `glutenFree`, 
-         * `quantity`, 
-         * `prezzo`, 
-         * `nomeAzienda`, 
-         * `CategoryName` 
-         * FROM `prodotto` AS p LEFT JOIN `venditore` AS c1 ON p.vendorID = c1.vendorID 
-         * LEFT JOIN `foodcategory` AS c2 ON p.foodType = c2.CategoryID 
-         * WHERE `foodType` = ?; */
+        
         $stmt = $this->db->prepare($sql);
         $stmt->bind_param('i', $type);
         $stmt->execute();
@@ -466,7 +451,7 @@ class DatabaseHelper{
      */
     public function specificVendorList($id){
         //$sql = "SELECT `vendorID`, `nomeAzienda`, `indirizzo`, `orariConsegna`, `contatto`, `descrizione`, `Email`, `Nome`, `Cognome` FROM `venditore` AS v LEFT JOIN `utente` AS u ON v.userID=u.userID WHERE vendorID = ?;";
-        $sql="SELECT u.UserID, v.`vendorID`, `nomeAzienda`, `indirizzo`, `orariConsegna`, `contatto`, `descrizione`, `Email`, `Nome`, `Cognome` FROM `venditore` AS v LEFT JOIN `utente` AS u ON v.userID=u.UserID WHERE u.UserID = ?;";
+        $sql="SELECT u.UserID, v.`vendorID`, `nomeAzienda`, `indirizzo`, `orariConsegna`, `contatto`, `descrizione`, `Email`, `Nome`, `Cognome` FROM `venditore` AS v LEFT JOIN `utente` AS u ON v.userID=u.UserID WHERE v.`vendorID` = ?;";
         $stmt = $this->db->prepare($sql);
         $stmt->bind_param('s', $id);
         $stmt->execute();

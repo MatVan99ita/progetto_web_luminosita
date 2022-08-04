@@ -13,6 +13,8 @@ const deleteAllCookies = () => {
   }
 }
 
+
+
 $(document).ready(function() {
   const scroll = document.getElementById('scrolling');
 
@@ -35,7 +37,6 @@ $(document).ready(function() {
     evt.preventDefault();
     scroll.scrollTop += evt.deltaY;
   });
-  
 
 
   $("#readed").mouseenter(function() {//light > dark
@@ -45,7 +46,6 @@ $(document).ready(function() {
     console.log("esce");
     $("#readed").removeClass( "list-group-item-dark" ).addClass( "list-group-item-light" );
   });
-});
 
 $(function () {
   $(".toRead").hover(
@@ -86,12 +86,13 @@ function showResult(str) {
   xmlhttp.send();
 }
 
-
 $(".image-checkbox").each(function () {
   if ($(this).find('input[type="checkbox"]').first().attr("checked")) {
       $(this).addClass('image-checkbox-checked');
+      $(this).removeClass('no-gluten');
   } else {
       $(this).removeClass('image-checkbox-checked');
+      $(this).addClass('no-gluten');
   }
 });
 
@@ -99,11 +100,23 @@ $(".image-checkbox").each(function () {
 $(".image-checkbox").on("click", function (e) {
   $(this).toggleClass('image-checkbox-checked');
   var $checkbox = $(this).find('input[type="checkbox"]');
-  $checkbox.prop("checked", !$checkbox.prop("checked"))
-
+  $checkbox.prop("checked", !$checkbox.prop("checked"));
+  $checkbox.prop("checked", function() { 
+    if($checkbox.prop("checked")){
+      $(".image-checkbox").removeClass("no-gluten");
+    } else {
+      $(".image-checkbox").addClass("no-gluten");
+    }
+  });
+  console.log("cliccato");
   e.preventDefault();
 });
 
+if($(".image-checkbox").is("checked")){
+  $(this).removeClass('no-gluten');
+} else {
+  $(this).addClass('no-gluten');
+}
 
 function enablePay(){
   $("#paymentText").prop("disabled", false);
@@ -118,3 +131,4 @@ function enableZone(){
   $("#hiddenZone").prop("disabled", true);
   $("#zoneBtn").removeClass( "btn-primary" ).addClass( "btn-secondary" )
 }
+});

@@ -78,7 +78,6 @@ $user = $templateParams["user"];
     <h3>Prodotti</h3>
 </div>
 <?php 
-$dbh->printFormattedArray($templateParams["foods"]);
 /*Array
 (
 [0] => Array
@@ -179,18 +178,16 @@ foreach($templateParams["foods"] as $art):
                         <h4 class="price card-text">Prezzo: <span><?php echo $art["prezzo"]; ?>€</span></h4>
                         <h4 class="price">Quantità disponibile: <span><?php echo $art["quantity"]; ?></span></h4>
                         <div class="action">
-                            <a href="product_edit.php/id=<?php echo $art["prodottoID"]; ?>" class="like btn btn-warning m-1" type="button">modifica</a>
-                            <button class="like btn btn-success m-1" type="button">refill</button>
-                            <button class="like btn btn-danger m-1" type="button">rimuovi</button>
+                            <a href="product_edit.php?edit-type=update&id=<?php echo $art["prodottoID"]; ?>" class="like btn btn-warning m-1" type="button">modifica</a>
+                            <a href="product_edit.php?edit-type=refill&id=<?php echo $art["prodottoID"]; ?>" class="like btn btn-success m-1" type="button">refill</a>
+                            <a href="product_edit.php?edit-type=delete&id=<?php echo $art["prodottoID"]; ?>" class="like btn btn-danger m-1" type="button">rimuovi</a>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <?php endforeach; 
-imagedestroy($dest);
-imagedestroy($src);?>
+    <?php endforeach; ?>
 </div>
 
 <div class="col">
