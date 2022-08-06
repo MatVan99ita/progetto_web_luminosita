@@ -12,9 +12,13 @@ TODO:
 TODO:
    nella lista dei prodotti aggiungere un cerca per nome prodotto
    e sistemare la lista delle categoria nella headbar
+   
+TODO:
+   il cerca funziona con foodList ma devo mettere un h3 con il nome della ricerca e la categoria se selezionata
+
+TODO:
+   fare un qualcosa per gestire la ricerca di prodotti solo gluten-free con js nasconendo gli elementi dalla lista che va a crearsi usando la class no-gluten
 
 TODO:
    provare a cambiare tutte le cose gestite da url con variabili di sessione, se non settate almeno posso gestire i redirect
 
-TODO:
-   togliere la possibilità ai venditori di fare acquisti per evitare problemi
