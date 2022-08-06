@@ -78,6 +78,24 @@ class DatabaseHelper{
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 
+    public function searchFoodName($text){
+        $sql = "SELECT * FROM `prodotto` WHERE nomeProd LIKE '%".$text."%';";
+        $stmt = $this->db->prepare($sql);
+        //$stmt->bind_param('s', $text);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
+    public function searchFoodNameAndCategory($text, $id){
+        $sql = "SELECT * FROM prodotto as p LEFT JOIN foodcategory as fc ON p.foodType = fc.CategoryID WHERE nomeProd LIKE '%".$text."%' AND fc.CategoryID = ?;";
+        $stmt = $this->db->prepare($sql);
+        $stmt->bind_param('i', $id);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
     
     public function getFoodSpecificDetails($type) {
         $sql = "SELECT  

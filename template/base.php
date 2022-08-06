@@ -80,7 +80,6 @@
                     </div>
                 </nav>
             </div>
-
             <div class="col-lg-4 col-md-3">
                 <div class="header-search mt-2">
                     <div class="search-form">
@@ -94,10 +93,10 @@
                                         <?php endforeach; ?>
                                     </select>
                                 </div>
-                                <input type="text" name="search" id="search" class="form-control" placeholder="Search Here" />
-                                <div class="input-group-addon">
-                                    <button type="submit"><i class="fas fa-search"></i></button>
-                                </div>
+                                <input type="text" name="search" id="search" class="form-control search-food-name" placeholder="Search Here" />
+                                <form class="input-group-addon">
+                                    <a href="foodSearch.php" type="submit"><i class="fas fa-search"></i></a>
+                                </form>
                             </div>
                         </form>
                     </div>
