@@ -14,7 +14,7 @@ if($type=="update") {
     echo $gluten;
     $val = $dbh->updateProduct("=", $_POST["name"], $_POST["inputDescr"], $_POST["price"], $gluten, $_POST["quantityInput"], $_POST["categoryInput"], $id);
 } else if($type=="refill") {
-    $val = $dbh->refillProduct("=", $_POST["quantityInput"], $id);
+    $val = $dbh->changeQuantity($id, $_POST["quantityInput"], "+");
 } else if ($type == "new") {
     $gluten = isset($_POST["gluten"]) ? "1": "0";
     $val = $dbh->addNewProduct($_POST["name"], $_POST["inputDescr"], $_POST["price"], $gluten, $_POST["quantityInput"], $_POST["categoryInput"]);

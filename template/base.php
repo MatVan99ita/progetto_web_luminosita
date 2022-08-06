@@ -108,7 +108,7 @@
                 
 
                 
-
+                <?php if($_COOKIE["vendors"]=="0"): ?>
                 <div class="float-end cart mt-2">
                     <a href="carrello.php">
                         <img class="img-fluid" style="width: 50px" src="<?php echo UPLOAD_DIR."carts.png"; ?>" alt="cart" />
@@ -116,8 +116,8 @@
                             <span class="total-count dot"></span>
                         </span>
                     </a>
-                    
                 </div>
+                <?php endif; ?>
 
                 <div class="float-end cart mt-2">
                     <a href="notifications_list.php">

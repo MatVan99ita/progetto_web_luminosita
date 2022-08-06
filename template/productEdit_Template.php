@@ -11,7 +11,7 @@
         <div class="form-group">
             <label>Cambia quantità</label>
             <div class="input-group" id="show_hide_new_password">
-                <input type="number" name="quantityInput" class="form-control" value="<?php echo $templateParams["food"]["quantity"]; ?>">
+                <input type="number" name="quantityInput" class="form-control" value="0">
             </div>
         <div>
 <?php

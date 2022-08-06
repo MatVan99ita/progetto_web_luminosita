@@ -9,7 +9,7 @@
     $val = $dbh->starRate($art["venduto"]);
     $value = explode('.', $val);
     $int = (int) $value[0];
-    $decimal = (int) $value[1];
+    $decimal = isset($value[1]) ? (int) $value[1] : 0;
     /*
 $templateParams["food"]
 `prodottoID`, 
@@ -100,7 +100,7 @@ p.`vendorID`,
                         <h4 class="price">Prezzo: <span><?php echo $art["prezzo"]; ?>€</span></h4>
                         <h4 class="price">Quantità disponibile: <span><?php echo $art["quantity"]; ?></span></h4>
                         <div class="action">
-                            <button data-id="<?php echo $art["prodottoID"]; ?>" data-name="<?php echo $art["nomeProd"]; ?>" data-price="<?php echo $art["prezzo"]; ?>" class="add-to-cart btn btn-primary m-1" type="button">add to cart</button>
+                            <button data-id="<?php echo $art["prodottoID"]; ?>" data-name="<?php echo $art["nomeProd"]; ?>" data-price="<?php echo $art["prezzo"]; ?>" class="add-to-cart btn btn-primary m-1" type="button" <?php if($_COOKIE["vendors"]=="1") echo "disabled"; ?>>add to cart</button>
                             <button class="like btn btn-danger m-1" type="button"><span class="fa fa-heart"></span></button>
                         </div>
                     </div>
