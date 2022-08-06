@@ -79,7 +79,21 @@ class DatabaseHelper{
     }
 
     public function searchFoodName($text){
-        $sql = "SELECT * FROM `prodotto` WHERE nomeProd LIKE '%".$text."%';";
+        $sql = "SELECT  
+        `prodottoID`, 
+      p.`vendorID`,
+        `CategoryID`, 
+        `CategoryName`,
+        `nomeProd`,
+        `descrProd`,
+        `glutenFree`,
+        `quantity`,
+        `prezzo`,
+        `venduto`,
+        `nomeAzienda` 
+        FROM `prodotto` AS p LEFT JOIN `venditore` AS c1 ON p.vendorID = c1.vendorID
+        LEFT JOIN `foodcategory` AS c2 ON p.foodType = c2.CategoryID
+        WHERE nomeProd LIKE '%".$text."%' ORDER BY `nomeProd`;";
         $stmt = $this->db->prepare($sql);
         //$stmt->bind_param('s', $text);
         $stmt->execute();
@@ -88,7 +102,21 @@ class DatabaseHelper{
     }
 
     public function searchFoodNameAndCategory($text, $id){
-        $sql = "SELECT * FROM prodotto as p LEFT JOIN foodcategory as fc ON p.foodType = fc.CategoryID WHERE nomeProd LIKE '%".$text."%' AND fc.CategoryID = ?;";
+        $sql = "SELECT  
+        `prodottoID`, 
+         p.`vendorID`,
+        `CategoryID`, 
+        `CategoryName`,
+        `nomeProd`,
+        `descrProd`,
+        `glutenFree`,
+        `quantity`,
+        `prezzo`,
+        `venduto`,
+        `nomeAzienda` 
+        FROM `prodotto` AS p LEFT JOIN `venditore` AS c1 ON p.vendorID = c1.vendorID
+        LEFT JOIN `foodcategory` AS c2 ON p.foodType = c2.CategoryID
+        WHERE `nomeProd` LIKE '%".$text."%' AND fc.CategoryID = ? ORDER BY `nomeProd`;";
         $stmt = $this->db->prepare($sql);
         $stmt->bind_param('i', $id);
         $stmt->execute();
