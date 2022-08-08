@@ -2,7 +2,7 @@
 require_once 'bootstrap.php';
 $url = explode('?', $_SERVER['REQUEST_URI'])[1];
 $url = explode('=', $url);
-//Base Template
+
 $templateParams["nome"] = "foodList.php";
 $templateParams["categorie"] = $dbh->getFoodTypes();
 //Articoli Categoria Template
@@ -13,6 +13,7 @@ if(isset($_GET["id"])){
 $nomecategoria = $dbh->getSpecificCat($idcategoria)[0];
 if(count($nomecategoria)>0){
     $templateParams["titolo_pagina"] = $nomecategoria["CategoryName"];
+    $templateParams["descrPagina"] = $nomecategoria["CategoryDescr"];
     //$templateParams["articoli"] = $dbh->getFoodMinimalDetailByType($nomecategoria["CategoryID"]);
     $templateParams["articoli"] = $dbh->getFoodSpecificDetails($nomecategoria["CategoryID"]);
     $templateParams["list-type"]="container";

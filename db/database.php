@@ -116,9 +116,10 @@ class DatabaseHelper{
         `nomeAzienda` 
         FROM `prodotto` AS p LEFT JOIN `venditore` AS c1 ON p.vendorID = c1.vendorID
         LEFT JOIN `foodcategory` AS c2 ON p.foodType = c2.CategoryID
-        WHERE `nomeProd` LIKE '%".$text."%' AND fc.CategoryID = ? ORDER BY `nomeProd`;";
+        WHERE `nomeProd` LIKE '%".$text."%' AND c2.CategoryID = ? ORDER BY `nomeProd`;";
+
         $stmt = $this->db->prepare($sql);
-        $stmt->bind_param('i', $id);
+        $stmt->bind_param('s', $id);
         $stmt->execute();
         $result = $stmt->get_result();
         return $result->fetch_all(MYSQLI_ASSOC);
@@ -158,7 +159,7 @@ class DatabaseHelper{
     }
 
     public function getSpecificCat($id){
-        $sql = "SELECT CategoryID, CategoryName FROM foodcategory WHERE CategoryID = ?";
+        $sql = "SELECT CategoryID, CategoryName, CategoryDescr FROM foodcategory WHERE CategoryID = ?";
         $stmt = $this->db->prepare($sql);
         $stmt->bind_param('i', $id);
         $stmt->execute();

@@ -2,7 +2,12 @@
 
 <?php if(isset($templateParams["titolo_pagina"])): ?>
     <h2><?php echo $templateParams["titolo_pagina"]; ?></h2>
+    <p><?php echo $templateParams["descrPagina"]; ?></p>
 <?php endif;?>
+
+<?php if(isset($templateParams["searchParams"])): ?>
+<h3><?php echo $templateParams["searchParams"]; ?></h3>
+<?php endif; ?>
 
 <?php foreach($templateParams["articoli"] as $art):
     $img = CAT_DIR.$art["CategoryID"].". ".$art["CategoryName"].".jpg";
