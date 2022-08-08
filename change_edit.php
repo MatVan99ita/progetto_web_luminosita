@@ -1,5 +1,5 @@
 <?php 
-
+//banana
 require_once 'bootstrap.php';
 $url = explode('?', $_SERVER['REQUEST_URI'])[1];
 // $templateParams["nome"] = "template di partenza delle user info con un check sull'andata a buon fine di quello che è stato
