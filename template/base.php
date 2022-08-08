@@ -117,7 +117,8 @@
                     </a>
                 </div>
                 <?php endif; ?>
-
+                
+                <?php if(isset($_COOKIE["logged"]) && isset($_COOKIE["mail"]) && isset($_COOKIE["id"])): ?>
                 <div class="float-end cart mt-2">
                     <a href="notifications_list.php">
                         <img class="img-fluid" style="width: 50px" src="<?php echo UPLOAD_DIR."bell.png"; ?>" alt="cart" />
@@ -126,6 +127,7 @@
                         </span>
                     </a>
                 </div>
+                <?php endif; ?>
 
                 <div class="float-end cart mt-2">
                     <a href="login.php">
