@@ -669,7 +669,7 @@ class DatabaseHelper{
     {
         $cart = json_decode($_COOKIE["shoppingCart"], true);
         $body = json_encode($_COOKIE["shoppingCart"]);
-        $this->printFormattedArray($body);
+        //$this->printFormattedArray($body);
         $id = $_COOKIE["id"];
         $mail = $_COOKIE["mail"];
         $tot = 0;

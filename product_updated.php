@@ -1,7 +1,7 @@
 <?php 
 
 require_once 'bootstrap.php';
-$dbh->printFormattedArray($_POST);
+//$dbh->printFormattedArray($_POST);
 $url = parse_url($_SERVER['REQUEST_URI'], $component = -1);
 $query = explode("&", $url["query"]);
 

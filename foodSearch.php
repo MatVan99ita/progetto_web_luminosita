@@ -21,6 +21,7 @@ if(!isset($_POST) || count($_POST)==0) {
     }
 
     if(count($ret)==0) {
+        $templateParams["articoli"] = array();
         $templateParams["searchParams"] = "Nessun risultato per: '" . $_POST["search"] . "'";
         if($test) $templateParams["searchParams"] .= " in '". $order[1]."'";
     } else {

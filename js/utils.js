@@ -47,88 +47,125 @@ $(document).ready(function() {
     $("#readed").removeClass( "list-group-item-dark" ).addClass( "list-group-item-light" );
   });
 
-$(function () {
-  $(".toRead").hover(
-    function () {
-      $(this).removeClass( "list-group-item-primary" ).addClass( "list-group-item-info" );
-    }, 
-    function(){
-      $(this).removeClass( "list-group-item-info" ).addClass( "list-group-item-primary" );
+  $(function () {
+    $(".toRead").hover(
+      function () {
+        $(this).removeClass( "list-group-item-primary" ).addClass( "list-group-item-info" );
+      }, 
+      function(){
+        $(this).removeClass( "list-group-item-info" ).addClass( "list-group-item-primary" );
+      }
+    );
+  });
+
+  $(function () {
+    $(".readed").hover(
+      function () {
+        $(this).removeClass( "list-group-item-light" ).addClass( "list-group-item-dark" );
+      }, 
+      function(){
+        $(this).removeClass( "list-group-item-dark" ).addClass( "list-group-item-light" );
+      }
+    );
+  });
+
+  function showResult(str) {
+    if (str.length==0) {
+      document.getElementById("livesearch").innerHTML="";
+      document.getElementById("livesearch").style.border="0px";
+      return;
     }
-  );
-});
-
-$(function () {
-  $(".readed").hover(
-    function () {
-      $(this).removeClass( "list-group-item-light" ).addClass( "list-group-item-dark" );
-    }, 
-    function(){
-      $(this).removeClass( "list-group-item-dark" ).addClass( "list-group-item-light" );
+    var xmlhttp=new XMLHttpRequest();
+    xmlhttp.onreadystatechange=function() {
+      if (this.readyState==4 && this.status==200) {
+        document.getElementById("livesearch").innerHTML=this.responseText;
+        document.getElementById("livesearch").style.border="1px solid #A5ACB2";
+      }
     }
-  );
-});
-
-function showResult(str) {
-  if (str.length==0) {
-    document.getElementById("livesearch").innerHTML="";
-    document.getElementById("livesearch").style.border="0px";
-    return;
+    xmlhttp.open("GET","livesearch.php?q="+str,true);
+    xmlhttp.send();
   }
-  var xmlhttp=new XMLHttpRequest();
-  xmlhttp.onreadystatechange=function() {
-    if (this.readyState==4 && this.status==200) {
-      document.getElementById("livesearch").innerHTML=this.responseText;
-      document.getElementById("livesearch").style.border="1px solid #A5ACB2";
-    }
-  }
-  xmlhttp.open("GET","livesearch.php?q="+str,true);
-  xmlhttp.send();
-}
 
-$(".image-checkbox").each(function () {
-  if ($(this).find('input[type="checkbox"]').first().attr("checked")) {
-      $(this).addClass('image-checkbox-checked');
-      $(this).removeClass('no-gluten');
-  } else {
-      $(this).removeClass('image-checkbox-checked');
-      $(this).addClass('no-gluten');
-  }
-});
-
-// sync the state to the input
-$(".image-checkbox").on("click", function (e) {
-  $(this).toggleClass('image-checkbox-checked');
-  var $checkbox = $(this).find('input[type="checkbox"]');
-  $checkbox.prop("checked", !$checkbox.prop("checked"));
-  $checkbox.prop("checked", function() { 
-    if($checkbox.prop("checked")){
-      $(".image-checkbox").removeClass("no-gluten");
+  //########## USATO NEL TAMPLATE DI AGGIORNAMENTO DEI PRODOTTI ########## e va
+  $(".image-checkbox").each(function () {
+    if ($(this).find('input[type="checkbox"]').first().attr("checked")) {
+        $(this).addClass('image-checkbox-checked');
+        $(this).removeClass('no-gluten');
     } else {
-      $(".image-checkbox").addClass("no-gluten");
+        $(this).removeClass('image-checkbox-checked');
+        $(this).addClass('no-gluten');
     }
   });
-  console.log("cliccato");
-  e.preventDefault();
-});
 
-if($(".image-checkbox").is("checked")){
-  $(this).removeClass('no-gluten');
-} else {
-  $(this).addClass('no-gluten');
-}
+  // sync the state to the input
+  $(".image-checkbox").on("click", function (e) {
+    $(this).toggleClass('image-checkbox-checked');
+    var $checkbox = $(this).find('input[type="checkbox"]');
+    $checkbox.prop("checked", !$checkbox.prop("checked"));
+    $checkbox.prop("checked", function() { 
+      if($checkbox.prop("checked")){
+        $(".image-checkbox").removeClass("no-gluten");
+      } else {
+        $(".image-checkbox").addClass("no-gluten");
+      }
+    });
+    console.log("cliccato");
+    e.preventDefault();
+  });
 
-function enablePay(){
-  $("#paymentText").prop("disabled", false);
-  $("#paymentBtn").prop("disabled", true);
-  $("#hiddenPay").prop("disabled", true);
-  $("#paymentBtn").removeClass( "btn-primary" ).addClass( "btn-secondary" )
-}
+  if($(".image-checkbox").is("checked")){
+    $(this).removeClass('no-gluten');
+  } else {
+    $(this).addClass('no-gluten');
+  }
+  //######################################################################
 
-function enableZone(){
-  $("#zoneText").prop("disabled", false);
-  $("#zoneBtn").prop("disabled", true);
-  $("#hiddenZone").prop("disabled", true);
-  $("#zoneBtn").removeClass( "btn-primary" ).addClass( "btn-secondary" )
-}
+  //########## Filtraggio dei cibi gluten ########## lui non va
+  $(".gluten-search").each(function () {
+    if ($(this).find('input[type="checkbox"]').first().attr("checked")) {
+        $(this).addClass('image-checkbox-checked');
+        $(this).removeClass('no-gluten');
+    } else {
+        $(this).removeClass('image-checkbox-checked');
+        $(this).addClass('no-gluten');
+    }
+  });
+
+  //synch the state of the input
+  $(".gluten-search").on("click", function (e) {
+    $(this).toggleClass('image-checkbox-checked');
+    var $checkbox = $(this).find('input[type="checkbox"]');
+    $checkbox.prop("checked", !$checkbox.prop("checked"));
+    $checkbox.prop("checked", function() { 
+      if($checkbox.prop("checked")){
+        $(this).removeClass("no-gluten");
+      } else {
+        $(this).addClass("no-gluten");
+      }
+    });
+    console.log("cliccato");
+    e.preventDefault();
+  });
+
+
+  if($(".gluten-search").is("checked")){
+    $(this).removeClass('no-gluten');
+  } else {
+    $(this).addClass('no-gluten');
+  }
+  //######################################################################
+
+  function enablePay(){
+    $("#paymentText").prop("disabled", false);
+    $("#paymentBtn").prop("disabled", true);
+    $("#hiddenPay").prop("disabled", true);
+    $("#paymentBtn").removeClass( "btn-primary" ).addClass( "btn-secondary" )
+  }
+
+  function enableZone(){
+    $("#zoneText").prop("disabled", false);
+    $("#zoneBtn").prop("disabled", true);
+    $("#hiddenZone").prop("disabled", true);
+    $("#zoneBtn").removeClass( "btn-primary" ).addClass( "btn-secondary" )
+  }
 });

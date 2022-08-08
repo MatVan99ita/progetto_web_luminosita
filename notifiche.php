@@ -23,7 +23,7 @@ if($dbh->checkUserIsVendor($_COOKIE["id"])){
         $templateParams["count"] += $val[$i]["count"];
     }
     $templateParams["body"] = $val;
-    $dbh->printFormattedArray($templateParams["body"]);
+    //$dbh->printFormattedArray($templateParams["body"]);
 }
 
 

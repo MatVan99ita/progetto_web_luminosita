@@ -7,6 +7,14 @@
 
 <?php if(isset($templateParams["searchParams"])): ?>
 <h3><?php echo $templateParams["searchParams"]; ?></h3>
+<div class="col-md-3">
+    <div class="custom-control custom-checkbox no-gluten gluten-search image-checkbox">
+        <input type="checkbox" class="custom-control-input" id="ck1a" name="gluten">
+        <label style="width: 200px" class="custom-control-label" for="ck1a">
+            <img src="<?php echo UPLOAD_DIR."gluten-free.jpg"; ?>" alt="gluten-free" class="img-fluid">
+        </label>
+    </div>
+</div>
 <?php endif; ?>
 
 <?php foreach($templateParams["articoli"] as $art):

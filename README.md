@@ -10,15 +10,13 @@ TODO:
 TODO:
    il checkout lo devo sistemare come fosse un unico file con più template per evitare che la gente possa bypassare le cose scrivendo il nome della pagina in alto
 TODO:
-   nella lista dei prodotti aggiungere un cerca per nome prodotto
-   e sistemare la lista delle categoria nella headbar
-   
-TODO:
-   il cerca funziona con foodList ma devo mettere un h3 con il nome della ricerca e la categoria se selezionata
+   sistemare la lista delle categoria nella headbar
 
 TODO:
    fare un qualcosa per gestire la ricerca di prodotti solo gluten-free con js nasconendo gli elementi dalla lista che va a crearsi usando la class no-gluten
 
 TODO:
-   provare a cambiare tutte le cose gestite da url con variabili di sessione, se non settate almeno posso gestire i redirect
+   provare a cambiare tutte le cose gestite da url con variabili di sessione o comunque sessione locale, se non settate almeno posso gestire i redirect
 
+TODO:
+   utils.js riga 85 per capire come gestire le ricerche belle da js senza php
