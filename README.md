@@ -18,5 +18,5 @@ TODO:
 TODO:
    provare a cambiare tutte le cose gestite da url con variabili di sessione o comunque sessione locale, se non settate almeno posso gestire i redirect
 
-TODO:
+NOTA:
    utils.js riga 85 per capire come gestire le ricerche belle da js senza php

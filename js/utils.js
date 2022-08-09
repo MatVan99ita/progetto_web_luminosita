@@ -69,6 +69,7 @@ $(document).ready(function() {
     );
   });
 
+  //da studiare
   function showResult(str) {
     if (str.length==0) {
       document.getElementById("livesearch").innerHTML="";
@@ -168,4 +169,11 @@ $(document).ready(function() {
     $("#hiddenZone").prop("disabled", true);
     $("#zoneBtn").removeClass( "btn-primary" ).addClass( "btn-secondary" )
   }
+
+  $(".dropdown").hover(function(){
+    var dropdownMenu = $(this).children(".dropdown-menu");
+    if(dropdownMenu.is(":visible")){
+        dropdownMenu.parent().toggleClass("open");
+    }
+  });
 });

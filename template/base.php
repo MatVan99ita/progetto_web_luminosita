@@ -48,7 +48,7 @@
                 <nav class="navbar navbar-expand-xl navbar-light">
                     <div class="container-fluid">
                         <a href="index.php" class="navbar-brand">
-                            <img style="width: 400px" src="<?php echo LOGO."scuro.png"; ?>" alt="logo" class="img-fluid" />
+                            <img style="width: 200%" src="<?php echo LOGO."scuro.png"; ?>" alt="logo" class="img-fluid" />
                         </a>
                         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
                             <span class="navbar-toggler-icon"></span>
@@ -58,17 +58,17 @@
                                 <li class="nav-item">
                                     <a class="nav-link active" aria-current="page" href="index.php">Home</a>
                                 </li>
-                                <li class="nav-item">
-                                    <a class="nav-link active" aria-current='page' href="foodVendor.php?list">Venditori</a>
+                                <li class="nav-item mx-auto">
+                                    <a class="nav-link active" aria-current='page' href="foodVendor.php?list">Venditori  </a>
                                 </li>
-                                <li class="nav-item dropdown">
+                                <li class="nav-item mx-auto dropdown">
                                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                         Categoria
                                     </a>
                                     <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                                         <?php foreach($templateParams["category"] as $category): ?>
-                                        <li>
-                                            <a class="dropdown-item" href="foodCategory.php?id=<?php echo $category["CategoryID"]; ?>">
+                                        <li class="dropdown-item">
+                                            <a href="foodCategory.php?id=<?php echo $category["CategoryID"]; ?>">
                                                 <?php echo $category["CategoryName"]; ?>
                                             </a>
                                         </li>
@@ -80,14 +80,14 @@
                     </div>
                 </nav>
             </div>
-            <form action="foodSearch.php" method="POST"><div class="col-lg-4 col-md-3">
+            <div class="col-lg-4 col-md-3">
                 <div class="header-search mt-2">
                     <div class="search-form">
-                        <form method="get">
+                        <form action="foodSearch.php" method="POST">
                             <div class="input-group">
                                 <div class="select-style">
                                     <select name="order">
-                                        <option class="topshow" value="1-All">All</option>                                        
+                                        <option class="topshow" value="1-All">All</option>
                                         <?php foreach($templateParams["category"] as $category): ?>
                                             <option value="<?php echo $category["CategoryID"]."-".$category["CategoryName"]; ?>" ><?php echo $category["CategoryID"] . " - " . $category["CategoryName"]; ?></option>
                                         <?php endforeach; ?>
@@ -95,18 +95,16 @@
                                 </div>
                                 <input type="text" name="search" id="search" class="form-control search-food-name" placeholder="Search Here" />
                                 <div class="input-group-addon">
-                                    <input type="submit" type="submit"><i class="fas fa-search"></i></input>
+                                    <button type="submit" class="fas fa-search"></button>
                                 </div>
                             </div>
                         </form>
                     </div>
                 </div>
-            </div></form>
+            </div>
+            
 
-            <div class="col-lg-2 col-md-3 cart-login">
-                
-
-                
+            <div class="col-lg-2 col-md-3 cart-login">                
                 <?php if($_COOKIE["vendors"]=="0"): ?>
                 <div class="float-end cart mt-2">
                     <a href="carrello.php">

@@ -10,7 +10,11 @@
         ?>
         
             <div id="card_cat" class="col-4" media="screen and (min-width: 480px) and (max-width: 1920px)">
-                <img src="<?php echo $img; ?>" class="card-img-top" alt="<?php echo $img; ?>">
+                <div class="image">
+                    <a href="foodCategory.php?id=<?php echo $tipo["CategoryID"]; ?>&list-type=container">
+                        <img src="<?php echo $img; ?>" class="card-img-top bg-image hover-zoom" alt="<?php echo $img; ?>">
+                    </a>
+                </div>
                 <div class="card-header">
                     <h2 class="card-title"><?php echo $tipo["CategoryName"]; ?></h2>
                 </div>
