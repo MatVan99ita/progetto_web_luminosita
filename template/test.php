@@ -1,29 +1,17 @@
 <style>
-    html,
-body {
-    height: 100%
-}
-
-body {
-    display: grid;
-    place-items: center;
-    background: #000
-}
 
 .image {
     border: 2px solid #fff;
-    width: 100%;
-    height: 184px;
     overflow: hidden
 }
 
-.image a img {
+.image img {
     width: 100%;
     height: 300;
     transition: all 1s ease-in-out
 }
 
-.image:hover a img {
+.image:hover img {
     transform: scale(1.5, 1.5);
     cursor: pointer
 }
