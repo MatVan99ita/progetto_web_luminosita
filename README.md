@@ -8,9 +8,7 @@ TODO:
    altrimenti succede come per BdD
 
 TODO:
-   il checkout lo devo sistemare come fosse un unico file con più template per evitare che la gente possa bypassare le cose scrivendo il nome della pagina in alto
-TODO:
-   sistemare la lista delle categoria nella headbar
+   lista delle categoria nella headbar ha problemi di visualizzazione quando esce il mouse
 
 TODO:
    fare un qualcosa per gestire la ricerca di prodotti solo gluten-free con js nasconendo gli elementi dalla lista che va a crearsi usando la class no-gluten

@@ -68,7 +68,7 @@
                                     <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                                         <?php foreach($templateParams["category"] as $category): ?>
                                         <li class="dropdown-item">
-                                            <a href="foodCategory.php?id=<?php echo $category["CategoryID"]; ?>">
+                                            <a class="btn btn-secondary w-100" href="foodCategory.php?id=<?php echo $category["CategoryID"]; ?>">
                                                 <?php echo $category["CategoryName"]; ?>
                                             </a>
                                         </li>

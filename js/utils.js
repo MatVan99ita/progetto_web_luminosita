@@ -173,7 +173,34 @@ $(document).ready(function() {
   $(".dropdown").hover(function(){
     var dropdownMenu = $(this).children(".dropdown-menu");
     if(dropdownMenu.is(":visible")){
-        dropdownMenu.parent().toggleClass("open");
+        dropdownMenu.parent().toggleClass("show");
     }
+  });
+
+  $(".dropdown").mouseenter(function() {
+    $(this).addClass("show");
+    $(this).attr("aria-expanded","true");
+    $(this).children(".dropdown-menu").addClass("show");
+  }).mouseleave(function() {
+    $(this).removeClass("show");
+    $(this).attr("aria-expanded","false");
+    $(this).children(".dropdown-menu").removeClass("show");
+  });
+
+  $(function () {
+    $(".dropdown").hover(
+      function () {
+        $(this).addClass("show");
+        $(this).attr("aria-expanded","true");
+        $(this).children(".dropdown-menu").addClass("show");
+        console.log("bananan1");
+      },
+      function(){
+        $(this).removeClass("show");
+        $(this).attr("aria-expanded","false");
+        $(this).children(".dropdown-menu").removeClass("show");
+        console.log("bananan2");
+      }
+    );
   });
 });
