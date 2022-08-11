@@ -9,9 +9,9 @@
 <h3><?php echo $templateParams["searchParams"]; ?></h3>
 <div class="col-md-3">
     <div class="custom-control custom-checkbox no-gluten gluten-search image-checkbox">
-        <input type="checkbox" class="custom-control-input" id="ck1a" name="gluten">
+        <input type="checkbox" class="custom-control-input" id="ck1a" name="gluten" disabled>
         <label style="width: 200px" class="custom-control-label" for="ck1a">
-            <img src="<?php echo UPLOAD_DIR."gluten-free.jpg"; ?>" alt="gluten-free" class="img-fluid">
+            <img id="gluten-search" src="<?php echo UPLOAD_DIR."gluten-free.jpg"; ?>" alt="gluten-free" class="img-fluid">
         </label>
     </div>
 </div>
@@ -39,7 +39,7 @@ p.`vendorID`,
     ?>
     
     
-    <div class="container">
+    <div class="container <?php if($art["glutenFree"] == "0") echo "gluten-filter"; ?>">
         <div class="card">
             <div class="container-fliud">
                 <div class="wrapper row">
@@ -103,7 +103,7 @@ p.`vendorID`,
                             <label class="form-check-label" for="flexSwitchCheckDefault">Gluten Free</label>
                             <div class="col-md-3">
                                 <div class="custom-control custom-checkbox image-checkbox">
-                                    <input type="checkbox" class="custom-control-input" id="ck1a" name="gluten" disabled>
+                                    <input type="checkbox" class="custom-control-input" id="ck1a" name="gluten" <?php if($art["glutenFree"] == "1") echo "checked"; ?> disabled>
                                     <label style="width: 200px" class="custom-control-label" for="ck1a">
                                         <img src="<?php echo UPLOAD_DIR."gluten-free.jpg"; ?>" alt="gluten-free" class="<?php if($art["glutenFree"] == "0") echo "no-gluten"; ?> img-fluid">
                                     </label>

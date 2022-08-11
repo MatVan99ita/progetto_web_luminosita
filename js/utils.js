@@ -104,6 +104,20 @@ $(document).ready(function() {
     $(this).addClass('no-gluten');
   }
   //######################################################################
+  $(".image-checkbox").each(function () {
+    if ($(this).find('input[type="checkbox"]').first().attr("checked")) {
+      $(".gluten-filter").prop("hidden", true);
+    } else {
+      $(".gluten-filter").prop("hidden", false);
+    }
+  });
+  
+  $(".gluten-search").on("click", function(){
+    var $checkbox = $(this).find('input[type="checkbox"]');
+    $(".gluten-filter").prop("hidden", !$checkbox.prop("checked"));
+  });
+
+
   //######################################################################*/
 
   function enablePay(){
