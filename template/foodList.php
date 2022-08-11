@@ -7,6 +7,7 @@
 
 <?php if(isset($templateParams["searchParams"])): ?>
 <h3><?php echo $templateParams["searchParams"]; ?></h3>
+<?php endif; ?>
 <div class="col-md-3">
     <div class="custom-control custom-checkbox gluten-search image-checkbox active-gluten-check">
         <input type="checkbox" class="custom-control-input" id="ck1a" name="gluten">
@@ -15,7 +16,6 @@
         </label>
     </div>
 </div>
-<?php endif; ?>
 
 <?php foreach($templateParams["articoli"] as $art):
     $img = CAT_DIR.$art["CategoryID"].". ".$art["CategoryName"].".jpg";
