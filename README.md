@@ -8,10 +8,16 @@ TODO:
    altrimenti succede come per BdD
 
 TODO:
-   lista delle categoria nella headbar ha problemi di visualizzazione quando esce il mouse
+   aggiungere nuovi prodotti al db
 
 TODO:
-   fare un qualcosa per gestire la ricerca di prodotti solo gluten-free con js nasconendo gli elementi dalla lista che va a crearsi usando la class no-gluten
+   sistemare il collapse della headbar
+
+TODO:
+   sistemare il ridimensionamento del logo
+
+TODO:
+   l'headbar che cambia colore in base al'orario la voglio ancora fare o metto solo un tasto che cambia il tema attuale e lo mantiene salvato in qualche modo tra le pagine?
 
 TODO:
    provare a cambiare tutte le cose gestite da url con variabili di sessione o comunque sessione locale, se non settate almeno posso gestire i redirect
