@@ -8,8 +8,8 @@
 <?php if(isset($templateParams["searchParams"])): ?>
 <h3><?php echo $templateParams["searchParams"]; ?></h3>
 <div class="col-md-3">
-    <div class="custom-control custom-checkbox no-gluten gluten-search image-checkbox">
-        <input type="checkbox" class="custom-control-input" id="ck1a" name="gluten" disabled>
+    <div class="custom-control custom-checkbox gluten-search image-checkbox active-gluten-check">
+        <input type="checkbox" class="custom-control-input" id="ck1a" name="gluten">
         <label style="width: 200px" class="custom-control-label" for="ck1a">
             <img id="gluten-search" src="<?php echo UPLOAD_DIR."gluten-free.jpg"; ?>" alt="gluten-free" class="img-fluid">
         </label>
@@ -104,7 +104,7 @@ p.`vendorID`,
                             <div class="col-md-3">
                                 <div class="custom-control custom-checkbox image-checkbox">
                                     <input type="checkbox" class="custom-control-input" id="ck1a" name="gluten" <?php if($art["glutenFree"] == "1") echo "checked"; ?> disabled>
-                                    <label style="width: 200px" class="custom-control-label" for="ck1a">
+                                    <label style="width: 200px" class="custom-control-label" for="ck1a" disabled>
                                         <img src="<?php echo UPLOAD_DIR."gluten-free.jpg"; ?>" alt="gluten-free" class="<?php if($art["glutenFree"] == "0") echo "no-gluten"; ?> img-fluid">
                                     </label>
                                 </div>

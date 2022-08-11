@@ -73,48 +73,49 @@ $(document).ready(function() {
   }
 
   //########## USATO NEL TAMPLATE DI AGGIORNAMENTO DEI PRODOTTI ########## e va
-  $(".image-checkbox").each(function () {
-    if ($(this).find('input[type="checkbox"]').first().attr("checked")) {
-        $(this).addClass('image-checkbox-checked');
-        $(this).removeClass('no-gluten');
+  $(".active-gluten-check").each(function () {
+    var check = $(this).find('input[type="checkbox"]');
+    var imageCheck = $(this);
+    if (check.attr("checked")) {
+      imageCheck.removeClass('no-gluten');
+      imageCheck.addClass('image-checkbox-checked');
     } else {
-        $(this).removeClass('image-checkbox-checked');
-        $(this).addClass('no-gluten');
+      imageCheck.addClass('no-gluten');
+      imageCheck.removeClass('image-checkbox-checked');
     }
   });
 
   // sync the state to the input
-  $(".image-checkbox").on("click", function (e) {
+  $(".active-gluten-check").on("click", function (e) {
     $(this).toggleClass('image-checkbox-checked');
+    var $this = $(this);
     var $checkbox = $(this).find('input[type="checkbox"]');
-    $checkbox.prop("checked", !$checkbox.prop("checked"));
-    $checkbox.prop("checked", function() { 
-      if($checkbox.prop("checked")){
-        $(".image-checkbox").removeClass("no-gluten");
-      } else {
-        $(".image-checkbox").addClass("no-gluten");
-      }
-    });
+
+    $checkbox.prop("checked", !$checkbox.is(":checked"));
+    if($checkbox.is(":checked")){
+      $this.removeClass("no-gluten");
+    } else {
+      $this.addClass("no-gluten");
+    }
     e.preventDefault();
   });
 
-  if($(".image-checkbox").is("checked")){
+  if($(".active-gluten-check").is("checked")){
     $(this).removeClass('no-gluten');
   } else {
     $(this).addClass('no-gluten');
   }
+
   //######################################################################
-  $(".image-checkbox").each(function () {
-    if ($(this).find('input[type="checkbox"]').first().attr("checked")) {
-      $(".gluten-filter").prop("hidden", true);
-    } else {
-      $(".gluten-filter").prop("hidden", false);
-    }
+
+  $(".gluten-search").each(function () {
+    $(this).find('input[type="checkbox"]').first().attr("checked", false);
+    $(".gluten-filter").prop("hidden", false);
   });
-  
+
   $(".gluten-search").on("click", function(){
     var $checkbox = $(this).find('input[type="checkbox"]');
-    $(".gluten-filter").prop("hidden", !$checkbox.prop("checked"));
+    $(".gluten-filter").prop("hidden", $checkbox.prop("checked"));
   });
 
 

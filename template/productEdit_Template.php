@@ -49,7 +49,7 @@ elseif($templateParams["editType"] == "update"):
         <div class="form-group">
             <label class="form-check-label" for="flexSwitchCheckDefault">Gluten Free</label>
             <div class="col-md-3">
-                <div class="custom-control custom-checkbox no-gluten image-checkbox">
+                <div class="custom-control custom-checkbox no-gluten image-checkbox active-gluten-check">
                     <input type="checkbox" class="custom-control-input" id="ck1a" <?php if($templateParams["food"]["glutenFree"] == "1") echo "checked"; ?> name="gluten">
                     <label style="width: 200px" class="custom-control-label" for="ck1a">
                         <img src="<?php echo UPLOAD_DIR."gluten-free.jpg"; ?>" alt="gluten-free" class="img-fluid">
