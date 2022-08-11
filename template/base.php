@@ -62,7 +62,7 @@
                                     <a class="nav-link active" aria-current='page' href="foodVendor.php?list">Venditori  </a>
                                 </li>
                                 <li class="nav-item mx-auto dropdown">
-                                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                         Categoria
                                     </a>
                                     <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">

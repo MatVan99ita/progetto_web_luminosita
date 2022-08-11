@@ -13,17 +13,6 @@ const deleteAllCookies = () => {
   }
 }
 
-
-
-$(document).ready(function() {
-  const scroll = document.getElementById('scrolling');
-
-  scroll.addEventListener('wheel', (evt) => {
-    evt.preventDefault();
-    scroll.scrollLeft += evt.deltaY;
-  });
-});
-
 $(document).ready(function() {
   $("#paymentText").prop("disabled", true);
   $("#zoneText").prop("disabled", true);
@@ -32,11 +21,6 @@ $(document).ready(function() {
   const dateTimeLocalValue = (new Date(dt.getTime() - dt.getTimezoneOffset() * 60000).toISOString()).slice(0, 16);
   $("#timeText").val(dateTimeLocalValue);
   const scroll = document.getElementById('inputDescr');
-
-  scroll.addEventListener('wheel', (evt) => {
-    evt.preventDefault();
-    scroll.scrollTop += evt.deltaY;
-  });
 
 
   $("#readed").mouseenter(function() {//light > dark
@@ -61,6 +45,7 @@ $(document).ready(function() {
   $(function () {
     $(".readed").hover(
       function () {
+        console.log("3");
         $(this).removeClass( "list-group-item-light" ).addClass( "list-group-item-dark" );
       }, 
       function(){
@@ -110,7 +95,6 @@ $(document).ready(function() {
         $(".image-checkbox").addClass("no-gluten");
       }
     });
-    console.log("cliccato");
     e.preventDefault();
   });
 
@@ -120,41 +104,7 @@ $(document).ready(function() {
     $(this).addClass('no-gluten');
   }
   //######################################################################
-
-  //########## Filtraggio dei cibi gluten ########## lui non va
-  $(".gluten-search").each(function () {
-    if ($(this).find('input[type="checkbox"]').first().attr("checked")) {
-        $(this).addClass('image-checkbox-checked');
-        $(this).removeClass('no-gluten');
-    } else {
-        $(this).removeClass('image-checkbox-checked');
-        $(this).addClass('no-gluten');
-    }
-  });
-
-  //synch the state of the input
-  $(".gluten-search").on("click", function (e) {
-    $(this).toggleClass('image-checkbox-checked');
-    var $checkbox = $(this).find('input[type="checkbox"]');
-    $checkbox.prop("checked", !$checkbox.prop("checked"));
-    $checkbox.prop("checked", function() { 
-      if($checkbox.prop("checked")){
-        $(this).removeClass("no-gluten");
-      } else {
-        $(this).addClass("no-gluten");
-      }
-    });
-    console.log("cliccato");
-    e.preventDefault();
-  });
-
-
-  if($(".gluten-search").is("checked")){
-    $(this).removeClass('no-gluten');
-  } else {
-    $(this).addClass('no-gluten');
-  }
-  //######################################################################
+  //######################################################################*/
 
   function enablePay(){
     $("#paymentText").prop("disabled", false);
@@ -170,37 +120,32 @@ $(document).ready(function() {
     $("#zoneBtn").removeClass( "btn-primary" ).addClass( "btn-secondary" )
   }
 
-  $(".dropdown").hover(function(){
-    var dropdownMenu = $(this).children(".dropdown-menu");
-    if(dropdownMenu.is(":visible")){
-        dropdownMenu.parent().toggleClass("show");
-    }
-  });
-
   $(".dropdown").mouseenter(function() {
-    $(this).addClass("show");
+    $(this).toggleClass("show");
     $(this).attr("aria-expanded","true");
     $(this).children(".dropdown-menu").addClass("show");
   }).mouseleave(function() {
-    $(this).removeClass("show");
+    $(this).toggleClass("show");
     $(this).attr("aria-expanded","false");
     $(this).children(".dropdown-menu").removeClass("show");
   });
 
-  $(function () {
-    $(".dropdown").hover(
-      function () {
-        $(this).addClass("show");
-        $(this).attr("aria-expanded","true");
-        $(this).children(".dropdown-menu").addClass("show");
-        console.log("bananan1");
-      },
-      function(){
-        $(this).removeClass("show");
-        $(this).attr("aria-expanded","false");
-        $(this).children(".dropdown-menu").removeClass("show");
-        console.log("bananan2");
-      }
-    );
-  });
+
+
+
+
+
+
+
+
+
+  var ginopeppo = true;
+  $(".banana").on("click", function (e) {
+    console.log("click");
+    var container = $(".pompelmo").closest("#container");
+    container.addClass("hidden");
+    container.attr("hidden", ginopeppo);
+    ginopeppo = !ginopeppo;
+    console.log(container);
+});
 });
