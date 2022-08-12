@@ -17,7 +17,7 @@
             </i>
         </span>
         <span class="input-group-text custom-control">
-            <input class="form-control form-control-lg search-food-name" type="text" placeholder="Search food name">
+            <input class="form-control form-control-lg search-food-name" type="text" placeholder="Search food name" value="" onkeypress="searchFoodName($(this).val())">
         </span>
 
         <div class="input-group-addon col-md-3">
@@ -53,6 +53,8 @@ p.`vendorID`,
 `prezzo`,
 `venduto`
 `nomeAzienda`*/
+    
+    if($art["quantity"] > 0):
     ?>
     
     
@@ -138,4 +140,4 @@ p.`vendorID`,
             </div>
         </div>
     </div>
-<?php endforeach; ?>
+<?php endif; endforeach; ?>
