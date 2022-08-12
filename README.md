@@ -24,3 +24,7 @@ TODO:
 
 NOTA:
    utils.js riga 85 per capire come gestire le ricerche belle da js senza php
+
+
+TODO:
+   ora devo fare in modo di far ricomparire gli elementi nascosti quando si cancella, ma bisogna controllare il check del gluten per non far ricomparire i no gluten free
