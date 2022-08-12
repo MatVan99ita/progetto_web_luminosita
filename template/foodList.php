@@ -8,14 +8,31 @@
 <?php if(isset($templateParams["searchParams"])): ?>
 <h3><?php echo $templateParams["searchParams"]; ?></h3>
 <?php endif; ?>
-<div class="col-md-3">
-    <div class="custom-control custom-checkbox gluten-search image-checkbox active-gluten-check">
-        <input type="checkbox" class="custom-control-input" id="ck1a" name="gluten">
-        <label style="width: 200px" class="custom-control-label" for="ck1a">
-            <img id="gluten-search" src="<?php echo UPLOAD_DIR."gluten-free.jpg"; ?>" alt="gluten-free" class="img-fluid">
-        </label>
+
+<div class="input-group">
+    
+    <div id="input_search" class="input-group">
+        <span class="input-group-text">
+            <i class="fa fa-filter">
+            </i>
+        </span>
+        <span class="input-group-text custom-control">
+            <input class="form-control form-control-lg search-food-name" type="text" placeholder="Search food name">
+        </span>
+
+        <div class="input-group-addon col-md-3">
+            <div class="custom-control custom-checkbox gluten-search image-checkbox active-gluten-check">
+                <input type="checkbox" class="custom-control-input" id="ck1a" name="gluten">
+                <label style="width: 200px" class="custom-control-label" for="ck1a">
+                    <img id="gluten-search" src="<?php echo UPLOAD_DIR."gluten-free.jpg"; ?>" alt="gluten-free" class="img-fluid">
+                </label>
+            </div>
+        </div>
     </div>
+    
+    
 </div>
+
 
 <?php foreach($templateParams["articoli"] as $art):
     $img = CAT_DIR.$art["CategoryID"].". ".$art["CategoryName"].".jpg";
@@ -39,7 +56,7 @@ p.`vendorID`,
     ?>
     
     
-    <div class="container <?php if($art["glutenFree"] == "0") echo "gluten-filter"; ?>">
+    <div class="container <?php if($art["glutenFree"] == "0") echo "gluten-filter"; ?> food-card" data-name="<?php echo $art["nomeProd"]; ?>">
         <div class="card">
             <div class="container-fliud">
                 <div class="wrapper row">

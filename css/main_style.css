@@ -681,3 +681,7 @@ body {
                 cursor: pointer
             } 
 
+#input_search{
+    align-self: flex-end;
+    align-content: flex-end;
+}
