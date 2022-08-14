@@ -52,3 +52,11 @@ function searchFoodName(value) {
         }
     }
 }
+
+
+function searchFromGlutenCheck() {
+    searchFoodName("il valore ricercato");
+    //i controlli sul check ce li ho già
+    //basta solo avere un modo per far si che ciò funzioni senza entrare in conflitto con quello che c'è in utils
+    //ma in quel caso basta la ricerca per '' quando switcha e bona e posso eliminare quella roba precaria
+}
