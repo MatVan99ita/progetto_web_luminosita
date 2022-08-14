@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', () =>
 {
     const input = document.querySelectorAll('.search-food-name')[1];
 
-    input.addEventListener('keypress', e =>
+    input.addEventListener('keydown', e =>
     {
         setTimeout(() => searchFoodName(e.target.value), 0);
     });
@@ -31,14 +31,24 @@ function searchFoodName(value) {
             }
         } else {
             var input = $(".gluten-search").find('input[type="checkbox"]');
-            if(input.prop("checked")){
-                var test = tmpName.search(val.toLocaleUpperCase());
+            var tmpName = foodName.toLocaleUpperCase()
+            var test = tmpName.search(val.toLocaleUpperCase());
+            if($(input).is(":checked")){
+                console.log("gluten check");
+                var foodInput = $(food).find('input[type="checkbox"]');
+                var isChecked = $(foodInput).is(":checked");
                 if(test != -1){
-                    $(food).attr("hidden", true);
+                    console.log("trovata somiglianza gluten");
+                    $(food).attr("hidden", !isChecked);
                 }
             } else {
-
+                console.log("no gluten check");
+                if(test != -1){
+                    console.log("trovata somiglianza non gluten");
+                    $(food).attr("hidden", false);
+                }
             }
+            
         }
     }
 }
