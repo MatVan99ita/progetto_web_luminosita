@@ -37,10 +37,10 @@ function searchFoodName(value) {
                 console.log("gluten check");
                 var foodInput = $(food).find('input[type="checkbox"]');
                 var isChecked = $(foodInput).is(":checked");
-                if(test != -1){
-                    $(food).attr("hidden", !isChecked);
+                if(test != -1 && isChecked) {
+                    $(food).attr("hidden", false);
                 } else {
-                    $(food).attr("hidden", !isChecked);
+                    $(food).attr("hidden", true);
                 }
             } else {
                 console.log("no gluten check");
