@@ -8,7 +8,7 @@ TODO:
    altrimenti succede come per BdD
 
 TODO:
-   aggiungere nuovi prodotti al db
+   aggiungere nuovi prodotti al db per testare la ricerca
 
 TODO:
    sistemare il collapse della headbar
@@ -22,9 +22,5 @@ TODO:
 TODO:
    provare a cambiare tutte le cose gestite da url con variabili di sessione o comunque sessione locale, se non settate almeno posso gestire i redirect
 
-NOTA:
-   utils.js riga 85 per capire come gestire le ricerche belle da js senza php
-
-
 TODO:
-   ora devo fare in modo di far ricomparire gli elementi nascosti quando si cancella, ma bisogna controllare il check del gluten per non far ricomparire i no gluten free
+   fare in modo di far comparire gli elementi che corrispondono alla ricerca e alla categoria gluten e no quando cliccato
