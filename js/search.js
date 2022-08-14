@@ -1,11 +1,22 @@
 
+
 $(document).ready(function () {
+
+});
+
+document.addEventListener('DOMContentLoaded', () =>
+{
+    const input = document.querySelectorAll('.search-food-name')[1];
+
+    input.addEventListener('keypress', e =>
+    {
+        setTimeout(() => searchFoodName(e.target.value), 0);
+    });
 });
 
 function searchFoodName(value) {
-    var $input = $(".search-food-name")[1]; //preso il secondo perchè il primo è la ricerca nella headbar
-    var val = $input.value;
-
+    console.log(value);
+    let val = value;
     var foodList = document.getElementsByClassName("food-card");
     for(var i = 0; i < foodList.length; i++) {
         var food = foodList[i];

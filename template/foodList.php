@@ -17,7 +17,7 @@
             </i>
         </span>
         <span class="input-group-text custom-control">
-            <input class="form-control form-control-lg search-food-name" type="text" placeholder="Search food name" value="" onkeypress="searchFoodName($(this).val())">
+            <input class="form-control form-control-lg search-food-name" type="text" placeholder="Search food name" value="" >
         </span>
 
         <div class="input-group-addon col-md-3">
