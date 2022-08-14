@@ -106,7 +106,7 @@ $(document).ready(function() {
     $(this).addClass('no-gluten');
   }
 
-  //######################################################################
+  /*/######################################################################
 
   $(".gluten-search").each(function () {
     $(this).find('input[type="checkbox"]').first().attr("checked", false);
@@ -145,22 +145,4 @@ $(document).ready(function() {
     $(this).children(".dropdown-menu").removeClass("show");
   });
 
-
-
-
-
-
-
-
-
-
-  var ginopeppo = true;
-  $(".banana").on("click", function (e) {
-    console.log("click");
-    var container = $(".pompelmo").closest("#container");
-    container.addClass("hidden");
-    container.attr("hidden", ginopeppo);
-    ginopeppo = !ginopeppo;
-    console.log(container);
-});
 });

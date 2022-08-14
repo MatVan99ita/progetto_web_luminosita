@@ -38,14 +38,16 @@ function searchFoodName(value) {
                 var foodInput = $(food).find('input[type="checkbox"]');
                 var isChecked = $(foodInput).is(":checked");
                 if(test != -1){
-                    console.log("trovata somiglianza gluten");
+                    $(food).attr("hidden", !isChecked);
+                } else {
                     $(food).attr("hidden", !isChecked);
                 }
             } else {
                 console.log("no gluten check");
                 if(test != -1){
-                    console.log("trovata somiglianza non gluten");
                     $(food).attr("hidden", false);
+                } else {
+                    $(food).attr("hidden", true);
                 }
             }
             
@@ -55,7 +57,9 @@ function searchFoodName(value) {
 
 
 function searchFromGlutenCheck() {
-    searchFoodName("il valore ricercato");
+    const input = document.querySelectorAll('.search-food-name')[1];
+    console.log(input.value);
+    searchFoodName(input.value);
     //i controlli sul check ce li ho già
     //basta solo avere un modo per far si che ciò funzioni senza entrare in conflitto con quello che c'è in utils
     //ma in quel caso basta la ricerca per '' quando switcha e bona e posso eliminare quella roba precaria
