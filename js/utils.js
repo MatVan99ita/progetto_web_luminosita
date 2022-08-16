@@ -110,9 +110,9 @@ $(document).ready(function() {
 
   $(".gluten-search").each(function () {
     $(this).find('input[type="checkbox"]').first().attr("checked", false);
-    //$(".gluten-filter").prop("hidden", false);
+    $(".gluten-filter").removeClass("not-equal-to-search");
   });
-
+/*/
   $(".gluten-search").on("click", function(){
     var $checkbox = $(this).find('input[type="checkbox"]');
     if($checkbox.prop("checked")){

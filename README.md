@@ -8,9 +8,6 @@ TODO:
    altrimenti succede come per BdD
 
 TODO:
-   aggiungere nuovi prodotti al db per testare la ricerca
-
-TODO:
    sistemare il collapse della headbar
 
 TODO:
@@ -22,5 +19,3 @@ TODO:
 TODO:
    provare a cambiare tutte le cose gestite da url con variabili di sessione o comunque sessione locale, se non settate almeno posso gestire i redirect
 
-TODO:
-   fare in modo di far comparire gli elementi che corrispondono alla ricerca e alla categoria gluten e no quando cliccato
