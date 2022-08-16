@@ -1,8 +1,5 @@
 
 $(document).ready(function () {
-    console.log("########### document ready ###########");
-    console.log($(".gluten-search").find('input[type="checkbox"]').is(":checked"));
-    console.log("########### document ready ###########");
 });
 
 document.addEventListener('DOMContentLoaded', () =>
@@ -21,7 +18,6 @@ document.addEventListener('DOMContentLoaded', () =>
 
     label.addEventListener('click', e =>
     {
-        console.log("cliccato");
         setTimeout(() => searchFromGlutenCheck(), 0);
     });
 
@@ -35,12 +31,6 @@ function searchFoodName(value) {
 
     var inputGlutenCheck = $(".gluten-search").find('input[type="checkbox"]');
     var isGlutenCheckChecked = $(inputGlutenCheck).is(":checked");
-    
-    console.log();
-    console.log("########### searchFoodName ###########");
-    console.log(isGlutenCheckChecked);
-    console.log("########### searchFoodName ###########");
-    console.log();
 
     for( i = 0; i < foodList.length; i++) {
         var food = foodList[i];
@@ -74,12 +64,6 @@ function searchFoodName(value) {
 
 
 function searchFromGlutenCheck() {
-    console.clear();
-    const input = document.querySelectorAll('.search-food-name')[1];
-    
-    console.log("########### searchFromGlutenCheck ###########");
-    console.log($(".gluten-search").find('input[type="checkbox"]').is(":checked"));
-    console.log("########### searchFromGlutenCheck ###########");   
-    
+    const input = document.querySelectorAll('.search-food-name')[1];    
     searchFoodName(input.value);
 }
