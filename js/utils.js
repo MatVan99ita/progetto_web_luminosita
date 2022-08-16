@@ -106,16 +106,21 @@ $(document).ready(function() {
     $(this).addClass('no-gluten');
   }
 
-  /*/######################################################################
+  //######################################################################
 
   $(".gluten-search").each(function () {
     $(this).find('input[type="checkbox"]').first().attr("checked", false);
-    $(".gluten-filter").prop("hidden", false);
+    //$(".gluten-filter").prop("hidden", false);
   });
 
   $(".gluten-search").on("click", function(){
     var $checkbox = $(this).find('input[type="checkbox"]');
-    $(".gluten-filter").prop("hidden", $checkbox.prop("checked"));
+    if($checkbox.prop("checked")){
+      $(".gluten-filter").addClass("not-equal-to-search");
+    } else {
+      $(".gluten-filter").removeClass("not-equal-to-search");
+    }
+    //$(".gluten-filter").prop("hidden", $checkbox.prop("checked"));
   });
 
 

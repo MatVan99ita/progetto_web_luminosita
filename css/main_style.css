@@ -685,3 +685,7 @@ body {
     align-self: flex-end;
     align-content: flex-end;
 }
+
+.not-equal-to-search{
+    display: none;
+}

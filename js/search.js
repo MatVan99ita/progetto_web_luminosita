@@ -25,9 +25,9 @@ function searchFoodName(value) {
             var tmpName = foodName.toLocaleUpperCase()
             var test = tmpName.search(val.toLocaleUpperCase());
             if(test == -1){
-                $(food).attr("hidden", true);
+                $(food).addClass("not-equal-to-search");
             } else {
-                $(food).attr("hidden", false);
+                $(food).removeClass("not-equal-to-search");
             }
         } else {
             var input = $(".gluten-search").find('input[type="checkbox"]');
@@ -38,16 +38,16 @@ function searchFoodName(value) {
                 var foodInput = $(food).find('input[type="checkbox"]');
                 var isChecked = $(foodInput).is(":checked");
                 if(test != -1 && isChecked) {
-                    $(food).attr("hidden", false);
+                    $(food).removeClass("not-equal-to-search");
                 } else {
-                    $(food).attr("hidden", true);
+                    $(food).addClass("not-equal-to-search");
                 }
             } else {
                 console.log("no gluten check");
                 if(test != -1){
-                    $(food).attr("hidden", false);
+                    $(food).removeClass("not-equal-to-search");
                 } else {
-                    $(food).attr("hidden", true);
+                    $(food).addClass("not-equal-to-search");
                 }
             }
             
