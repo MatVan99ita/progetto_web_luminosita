@@ -41,72 +41,55 @@
     ?>
 </head>
 <body>
-<header class="navbar navbar-inverse navbar-static-top">
-<div class="container-fluid">
-        <div class="row">
-            <div class="col-lg-6 col-md-6">
-                <nav class="navbar navbar-expand-xl navbar-light">
-                    <div class="container-fluid">
-                        <a href="index.php" class="navbar-brand">
-                            <img style="width: 200%" src="<?php echo LOGO."scuro.png"; ?>" alt="logo" class="img-fluid" />
-                        </a>
-                        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-                            <span class="navbar-toggler-icon"></span>
-                        </button>
-                        <div class="collapse navbar-collapse" id="navbarNavDropdown">
-                            <ul class="navbar-nav mx-auto">
-                                <li class="nav-item">
-                                    <a class="nav-link active" aria-current="page" href="index.php">Home</a>
-                                </li>
-                                <li class="nav-item mx-auto">
-                                    <a class="nav-link active" aria-current='page' href="foodVendor.php?list">Venditori  </a>
-                                </li>
-                                <li class="nav-item mx-auto dropdown">
-                                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        Categoria
-                                    </a>
-                                    <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                                        <?php foreach($templateParams["category"] as $category): ?>
-                                        <li class="dropdown-item">
-                                            <a class="btn btn-secondary w-100" href="foodCategory.php?id=<?php echo $category["CategoryID"]; ?>">
-                                                <?php echo $category["CategoryName"]; ?>
-                                            </a>
-                                        </li>
-                                        <?php endforeach; ?>
-                                    </ul>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </nav>
-            </div>
-            <div class="col-lg-4 col-md-3">
-                <div class="header-search mt-2">
-                    <div class="search-form">
-                        <form action="foodSearch.php" method="POST">
-                            <div class="input-group">
-                                <div class="select-style">
-                                    <select name="order">
-                                        <option class="topshow" value="1-All">All</option>
-                                        <?php foreach($templateParams["category"] as $category): ?>
-                                            <option value="<?php echo $category["CategoryID"]."-".$category["CategoryName"]; ?>" ><?php echo $category["CategoryID"] . " - " . $category["CategoryName"]; ?></option>
-                                        <?php endforeach; ?>
-                                    </select>
-                                </div>
-                                <input type="text" name="search" id="search" class="form-control search-food-name" placeholder="Search Here" />
-                                <div class="input-group-addon">
-                                    <button type="submit" class="fas fa-search"></button>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
+<header class="bg-dark">
+        <nav class="navbar navbar-expand-lg navbar-light ">
+            <a href="index.php" class="navbar-brand">
+                <img style="width: 200%" src="<?php echo LOGO."scuro.png"; ?>" alt="logo" class="img-fluid" />
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
             
+            <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link active" aria-current="page" href="index.php">Home</a>
+                    </li>
+                    <li class="nav-item mx-100 active">
+                        <a class="nav-link active" aria-current='page' href="foodVendor.php?list">Venditori  </a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Categoria
+                        </a>
+                        <ul class="dropdown-menu bg-dark" aria-labelledby="navbarDropdownMenuLink">
+                            <?php foreach($templateParams["category"] as $category): ?>
+                            <li class="dropdown-item">
+                                <a class="btn btn-secondary w-100 bg-dark" href="foodCategory.php?id=<?php echo $category["CategoryID"]; ?>">
+                                    <?php echo $category["CategoryName"]; ?>
+                                </a>
+                            </li>
+                            <?php endforeach; ?>
+                        </ul>
+                    </li>
+                </ul>
 
-            <div class="col-lg-2 col-md-3 cart-login">                
+                
+                <form class="form-inline my-2 my-lg-0" action="foodSearch.php" method="POST">
+                    <select name="order">
+                        <option class="topshow" value="1-All">All</option>
+                        <?php foreach($templateParams["category"] as $category): ?>
+                            <option value="<?php echo $category["CategoryID"]."-".$category["CategoryName"]; ?>" ><?php echo $category["CategoryID"] . " - " . $category["CategoryName"]; ?></option>
+                        <?php endforeach; ?>
+                    </select>
+                    <input type="text" name="search" id="search" class="form-control search-food-name" placeholder="Search Here" />
+                    <div class="input-group-addon">
+                        <button type="submit" class="fas fa-search"></button>
+                    </div>
+                </form>
+                
                 <?php if($_COOKIE["vendors"]=="0"): ?>
-                <div class="float-end cart mt-2">
+                <div class="nav-item cart mt-2">
                     <a href="carrello.php">
                         <img class="img-fluid" style="width: 50px" src="<?php echo UPLOAD_DIR."carts.png"; ?>" alt="cart" />
                         <span class="dot number" id="products_num">
@@ -117,7 +100,7 @@
                 <?php endif; ?>
                 
                 <?php if(isset($_COOKIE["logged"]) && isset($_COOKIE["mail"]) && isset($_COOKIE["id"])): ?>
-                <div class="float-end cart mt-2">
+                <div class="nav-item cart mt-2">
                     <a href="notifications_list.php">
                         <img class="img-fluid" style="width: 50px" src="<?php echo UPLOAD_DIR."bell.png"; ?>" alt="cart" />
                         <span class="dot number" id="products_num">
@@ -127,14 +110,15 @@
                 </div>
                 <?php endif; ?>
 
-                <div class="float-end cart mt-2">
+                <div class="nav-item cart mt-2">
                     <a href="login.php">
                         <?php if(isset($_COOKIE["id"]) && isset($_COOKIE["mail"])): ?><img class="img-fluid" style="width: 50px" src="<?php echo UPLOAD_DIR."user.png"; ?>" alt="dashboard" /><?php else: ?><img class="img-fluid" style="width: 50px" src="<?php echo UPLOAD_DIR."login.png"; ?>" alt="login" /><?php endif; ?>
                     </a>
                 </div>
+                
             </div>
-        </div>
-    </div>
+        </nav>
+        
 </header>
 
 
