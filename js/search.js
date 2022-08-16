@@ -44,6 +44,8 @@ function searchFoodName(value) {
             if(isFoodChecked) {
                 if(test != -1){
                     $(food).removeClass("not-equal-to-search");
+                } else {
+                    $(food).addClass("not-equal-to-search");
                 }
             } else {
                 $(food).addClass("not-equal-to-search");
@@ -58,10 +60,6 @@ function searchFoodName(value) {
         }
     }
 }
-
-
-
-
 
 function searchFromGlutenCheck() {
     const input = document.querySelectorAll('.search-food-name')[1];    
