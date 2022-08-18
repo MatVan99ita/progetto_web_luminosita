@@ -55,4 +55,25 @@
         </form>
     </div>
 </nav>
+
+.image {
+  width: 100%;
+  height: 200px;
+  background-image: url("PNG/immagini/82343.jpg");
+  background-attachment: fixed;
+  background-position: center center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #00ff00;
+    /*position: absolute;
+
+    width: 120px;
+    height: 120px;*/
+    -webkit-animation:spin 0.1s linear infinite;
+    -moz-animation:spin 0.1s linear infinite;
+    animation:spin 0.1s linear infinite;
+
+
+}
      
