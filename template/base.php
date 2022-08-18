@@ -51,7 +51,7 @@
             </button>
             
             <div class="collapse navbar-collapse" id="navbarNavDropdown">
-                <ul class="navbar-nav mr-auto">
+                <ul class="navbar-nav">
                     <li class="nav-item active">
                         <a class="nav-link active" aria-current="page" href="index.php">Home</a>
                     </li>
@@ -75,7 +75,7 @@
                 </ul>
 
                 
-                <form class="form-inline my-2 my-lg-0" action="foodSearch.php" method="POST">
+                <form class="form-inline my-2 my-lg-0 mr-auto" action="foodSearch.php" method="POST">
                     <select name="order">
                         <option class="topshow" value="1-All">All</option>
                         <?php foreach($templateParams["category"] as $category): ?>
@@ -84,7 +84,7 @@
                     </select>
                     <input type="text" name="search" id="search" class="form-control search-food-name" placeholder="Search Here" />
                     <div class="input-group-addon">
-                        <button type="submit" class="fas fa-search"></button>
+                        <button type="submit" class="fas fa-search bg-red"></button>
                     </div>
                 </form>
                 
