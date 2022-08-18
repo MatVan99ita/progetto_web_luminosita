@@ -77,3 +77,16 @@
 
 }
      
+#mission
+{
+  width: 100%;
+  height: 200px;
+  background-image: url("PNG/immagini/82343.jpg");
+  background-attachment: fixed;
+  background-position: center center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #00ff00;
+  animation: ingrandisci 1s infinite;
+}
