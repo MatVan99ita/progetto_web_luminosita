@@ -2,6 +2,10 @@ NOTA:
    ricordarsi di usare sempre questo (https://webaim.org/resources/contrastchecker/)
 
 TODO:
+   sistemare il collapse della navbar per evitare che i pulsanti si sovrappongano
+   (potrei far scomparire fin da subito le 3 voci più le icone e mantenere solo la ricerca che andrà sparendo dopo)
+
+TODO:
    sistamre il form di ricerca nella navbar collassata
 
 TODO:
