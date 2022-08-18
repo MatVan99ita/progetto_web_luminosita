@@ -42,7 +42,7 @@
 </head>
 <body>
 <header class="bg-dark">
-        <nav class="navbar navbar-expand-lg navbar-light ">
+        <nav class="navbar navbar-expand-lg navbar-light">
             <a href="index.php" class="navbar-brand">
                 <img style="width: 200%" src="<?php echo LOGO."scuro.png"; ?>" alt="logo" class="img-fluid" />
             </a>
@@ -52,13 +52,13 @@
             
             <div class="collapse navbar-collapse" id="navbarNavDropdown">
                 <ul class="navbar-nav">
-                    <li class="nav-item active">
+                    <li class="nav-item mx-auto active w-auto">
                         <a class="nav-link active" aria-current="page" href="index.php">Home</a>
                     </li>
-                    <li class="nav-item mx-100 active">
+                    <li class="nav-item mx-auto active w-auto">
                         <a class="nav-link active" aria-current='page' href="foodVendor.php?list">Venditori  </a>
                     </li>
-                    <li class="nav-item dropdown">
+                    <li class="nav-item mx-auto dropdown w-auto">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             Categoria
                         </a>
@@ -75,7 +75,7 @@
                 </ul>
 
                 
-                <form class="form-inline my-2 my-lg-0 mr-auto" action="foodSearch.php" method="POST">
+                <form class="form-inline my-2 my-lg-0 mr-auto mx-auto" action="foodSearch.php" method="POST">
                     <select name="order">
                         <option class="topshow" value="1-All">All</option>
                         <?php foreach($templateParams["category"] as $category): ?>
@@ -136,7 +136,6 @@
     <p><img id="logo_foot" style="width: 10px" src=<?php echo LOGO."chiaro.png"; ?> ><?php echo $templateParams["titolo"]; ?></p>
     <p>UniBo - Campus Cesena</p>
     <p><a href="vendor_register.php">Lavora per noi</a></p>
-    <a href="test.php">Testate ai muri</a>
 </footer>
 </body>
 </html>
