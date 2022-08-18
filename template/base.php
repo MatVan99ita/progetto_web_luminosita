@@ -122,7 +122,6 @@
 </header>
 
 
-
 <main class="container col col-lg-12 col-md-12 col-sm-12 col-1">
     <?php //class="<?php echo $templateParams["list-type"]"
     if(isset($templateParams["nome"])){
