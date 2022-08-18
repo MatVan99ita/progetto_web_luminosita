@@ -46,7 +46,7 @@
             <a href="index.php" class="navbar-brand">
                 <img style="width: 200%" src="<?php echo LOGO."scuro.png"; ?>" alt="logo" class="img-fluid" />
             </a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" onclick="openNav()">
                 <span class="navbar-toggler-icon"></span>
             </button>
             
@@ -121,7 +121,58 @@
         
 </header>
 
+<div id="myNav" class="overlay">
+            <a href="index.php" class="navbar-brand">
+                <img style="width: 50%" src="<?php echo LOGO."scuro.png"; ?>" alt="logo" class="img-fluid" />
+            </a>
+            <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+            <a class="nav-link active" aria-current="page" href="index.php">Home</a>
 
+            <a class="nav-link active cart mt-2" href="login.php">
+                <?php if(isset($_COOKIE["id"]) && isset($_COOKIE["mail"])): ?>
+                        <img class="img-fluid" style="width: 50px" src="<?php echo UPLOAD_DIR."user.png"; ?>" alt="dashboard" />
+                        <label for="">Dashboard</label>
+                    <?php else: ?>
+                        <img class="img-fluid" style="width: 50px" src="<?php echo UPLOAD_DIR."login.png"; ?>" alt="login" />
+                        <label for="">Login</label>
+                    <?php endif; ?>
+            </a>
+            <?php if($_COOKIE["vendors"]=="0"): ?>
+                <a class="nav-link active cart mt-2" href="carrello.php">
+                    <img class="img-fluid" style="width: 50px" src="<?php echo UPLOAD_DIR."carts.png"; ?>" alt="cart" />
+                    <label class="number" id="products_num">Carrello (<span class="total-count">0</span>)</label>
+                </a>
+            <?php endif; ?>
+            
+            <?php if(isset($_COOKIE["logged"]) && isset($_COOKIE["mail"]) && isset($_COOKIE["id"])): ?>
+                <a class="nav-link active cart mt-2" href="notifications_list.php">
+                    <img class="img-fluid" style="width: 50px" src="<?php echo UPLOAD_DIR."bell.png"; ?>" alt="cart" />
+                    <label class="number" id="products_num">Notifiche (<span class="">0</span>)</label>
+                </a>
+            <?php endif; ?>
+
+            <form class="form-inline my-2 my-lg-0 mr-auto mx-auto" action="foodSearch.php" method="POST">
+            <select name="order">
+                <option class="topshow" value="1-All">All</option>
+                <?php foreach($templateParams["category"] as $category): ?>
+                    <option value="<?php echo $category["CategoryID"]."-".$category["CategoryName"]; ?>" ><?php echo $category["CategoryID"] . " - " . $category["CategoryName"]; ?></option>
+                <?php endforeach; ?>
+            </select>
+            <input type="text" name="search" id="search" class="form-control search-food-name" placeholder="Search Here">
+            <div class="input-group-addon">
+                <button type="submit" class="fas fa-search bg-red"></button>
+            </div>
+        </form>
+
+            <a class="nav-link disabled dropdown-divider"> </a>
+            <a href="" class="nav-link disabled">Categorie</a>
+            <?php foreach($templateParams["category"] as $category): ?>
+                <a class="nav-link active" href="foodCategory.php?id=<?php echo $category["CategoryID"]; ?>"><?php echo $category["CategoryID"] . " - " . $category["CategoryName"]; ?></option>
+            <?php endforeach; ?>
+
+            <a class="nav-link active" aria-current="page" href="foodVendor.php?list">Venditori</a>
+
+        </div>
 <main class="container col col-lg-12 col-md-12 col-sm-12 col-1">
     <?php //class="<?php echo $templateParams["list-type"]"
     if(isset($templateParams["nome"])){
