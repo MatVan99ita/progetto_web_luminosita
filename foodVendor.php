@@ -15,9 +15,13 @@ if(isset($_GET)){
         $templateParams["vendorID"] = explode("=", $query[1])[1];
         $templateParams["details"] = $dbh->specificVendorList($templateParams["vendorID"]);
         $templateParams["foods"] = $dbh->specificVendorFoodList($templateParams["vendorID"]);
+        
+        $templateParams["titolo"] = "Venditore:".$templateParams["details"]["nomeAzienda"];
     } elseif ($query[0]=="list") {
         $templateParams["nome"] = "vendor_list.php";
         $templateParams["lista"] = $dbh->vendorList();
+        
+        $templateParams["titolo"] = "Venditori";
     }
 } else {
 

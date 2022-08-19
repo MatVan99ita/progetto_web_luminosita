@@ -26,7 +26,7 @@ $vendor = $templateParams["details"];
     <?php $gluten = UPLOAD_DIR."gluten-free.jpg";
 
 foreach($templateParams["foods"] as $art):
-    $img = CAT_DIR.$art["CategoryID"].". ".$art["CategoryName"].".jpg";
+    $img = CAT_DIR.$art["CategoryID"].".".$art["CategoryName"].".jpg";
     $val = $dbh->starRate($art["venduto"]);
     $value = explode('.', $val);
     $int = (int) $value[0];

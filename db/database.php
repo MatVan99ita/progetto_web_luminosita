@@ -420,6 +420,7 @@ class DatabaseHelper{
             setcookie("mail", $mail);
             setcookie("logged", true);
             setcookie("vendors", $info[0]["vendors"]);
+            return $info;
         }
     }
     

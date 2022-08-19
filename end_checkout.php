@@ -1,6 +1,7 @@
 <?php 
 require_once 'bootstrap.php';
 
+$templateParams["titolo"] = "EndCheckout";
 if(isset($_COOKIE["shoppingCart"])){
     $checkPay = isset($_POST["flexSwitchCheckPay"]) ? $_POST["flexSwitchCheckPay"] : false;
     $checkZone = isset($_POST["flexSwitchCheckZone"]) ? $_POST["flexSwitchCheckZone"] : false;

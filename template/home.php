@@ -6,7 +6,7 @@
 <div class="row mt-4 justify-content-left">
     <?php foreach($templateParams["categorie"] as $tipo): ?>
         <?php 
-        $img = CAT_DIR.$tipo["CategoryID"].". ".$tipo["CategoryName"].".jpg"; 
+        $img = CAT_DIR.$tipo["CategoryID"].".".$tipo["CategoryName"].".jpg"; 
         $id = $tipo["CategoryID"]."_catImg";
         ?>
         

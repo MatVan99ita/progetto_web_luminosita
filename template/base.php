@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <?php if(isset($_COOKIE["logged"]) && isset($_COOKIE["mail"]) && isset($_COOKIE["id"])){
     $templateParams["toReadNotif"] = $dbh->getNotificationToRead($_COOKIE["id"]);
 } else {
@@ -74,7 +75,19 @@
                     </li>
                 </ul>
 
-                
+                <form class="form-inline my-2 my-lg-0 mr-auto mx-auto" action="foodSearch.php" method="POST">
+                    <select name="order">
+                        <option class="topshow" value="1-All">All</option>
+                        <?php foreach($templateParams["category"] as $category): ?>
+                            <option value="<?php echo $category["CategoryID"]."-".$category["CategoryName"]; ?>" ><?php echo $category["CategoryID"] . " - " . $category["CategoryName"]; ?></option>
+                        <?php endforeach; ?>
+                    </select>
+                    <input type="text" name="search" id="search_head" class="form-control search-food-name" placeholder="Search Here" />
+                    <div class="input-group-addon">
+                        <button type="submit" class="fas fa-search bg-red"></button>
+                    </div>
+                </form>
+                <a class="nav-link disabled dropdown-divider"> </a>
                 
                 <?php if($_COOKIE["vendors"]=="0"): ?>
                     <div class="nav-item cart mt-2">
@@ -91,7 +104,7 @@
                     <div class="nav-item cart mt-2">
                         <a href="notifications_list.php">
                             <img class="img-fluid" style="width: 50px" src="<?php echo UPLOAD_DIR."bell.png"; ?>" alt="cart" />
-                            <span class="dot number" id="products_num">
+                            <span class="dot number" id="notification_num">
                                 <span class=""><?php echo $templateParams["toReadNotif"]; ?></span>
                             </span>
                         </a>
@@ -100,31 +113,18 @@
                         
                 <div class="nav-item cart mt-2">
                     <a href="login.php">
-                        <img class="img-fluid" style="width: 50px" src="<?php   if(isset($_COOKIE["id"]) && isset($_COOKIE["mail"])):
-                                                                                    echo UPLOAD_DIR."user.png";
-                                                                                else:
-                                                                                    echo UPLOAD_DIR."login.png";
-                                                                                endif; 
-                                                                        ?>" alt="dashboard" />
-                        
+                        <?php if(isset($_COOKIE["id"]) && isset($_COOKIE["mail"])): ?>
+                            <img class="img-fluid" style="width: 50px" src="<?php echo UPLOAD_DIR."user.png"; ?>" alt="dashboard" />
+                        <?php else: ?>
+                            <img class="img-fluid" style="width: 50px" src="<?php echo UPLOAD_DIR."login.png"; ?>" alt="login" />
+                        <?php endif; ?>                        
                         <a class="nav-link disabled dropdown-divider"> </a>
                     </a>
                 </div>
 
                 <a class="nav-link disabled dropdown-divider"> </a>
 
-                <form class="form-inline my-2 my-lg-0 mr-auto mx-auto" action="foodSearch.php" method="POST">
-                    <select name="order">
-                        <option class="topshow" value="1-All">All</option>
-                        <?php foreach($templateParams["category"] as $category): ?>
-                            <option value="<?php echo $category["CategoryID"]."-".$category["CategoryName"]; ?>" ><?php echo $category["CategoryID"] . " - " . $category["CategoryName"]; ?></option>
-                        <?php endforeach; ?>
-                    </select>
-                    <input type="text" name="search" id="search" class="form-control search-food-name" placeholder="Search Here" />
-                    <div class="input-group-addon">
-                        <button type="submit" class="fas fa-search bg-red"></button>
-                    </div>
-                </form>
+                
 
             </div>       
         </nav>
@@ -138,26 +138,27 @@
             <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
             <a class="nav-link active" aria-current="page" href="index.php">Home</a>
 
-            <a class="nav-link active cart mt-2" href="login.php">
+            <a id="login_dashboard_link"class="nav-link active cart mt-2" href="login.php">
                 <?php if(isset($_COOKIE["id"]) && isset($_COOKIE["mail"])): ?>
-                        <img class="img-fluid" style="width: 50px" src="<?php echo UPLOAD_DIR."user.png"; ?>" alt="dashboard" />
-                        <label for="">Dashboard</label>
-                    <?php else: ?>
-                        <img class="img-fluid" style="width: 50px" src="<?php echo UPLOAD_DIR."login.png"; ?>" alt="login" />
-                        <label for="">Login</label>
-                    <?php endif; ?>
+                    <img class="img-fluid" style="width: 50px" src="<?php echo UPLOAD_DIR."user.png"; ?>" alt="dashboard" />
+                    Dashboard
+                <?php else: ?>
+                    <img class="img-fluid" style="width: 50px" src="<?php echo UPLOAD_DIR."login.png"; ?>" alt="login" />
+                    Login
+                <?php endif; ?>
             </a>
+
             <?php if($_COOKIE["vendors"]=="0"): ?>
-                <a class="nav-link active cart mt-2" href="carrello.php">
-                    <img class="img-fluid" style="width: 50px" src="<?php echo UPLOAD_DIR."carts.png"; ?>" alt="cart" />
-                    <label class="number" id="products_num">Carrello (<span class="total-count">0</span>)</label>
+                <a id="cart_link" class="nav-link active cart mt-2" href="carrello.php">
+                    <img id="cart_img" class="img-fluid" style="width: 50px" src="<?php echo UPLOAD_DIR."carts.png"; ?>" alt="cart" />
+                    Carrello (<span class="total-count">0</span>)
                 </a>
             <?php endif; ?>
             
             <?php if(isset($_COOKIE["logged"]) && isset($_COOKIE["mail"]) && isset($_COOKIE["id"])): ?>
-                <a class="nav-link active cart mt-2" href="notifications_list.php">
-                    <img class="img-fluid" style="width: 50px" src="<?php echo UPLOAD_DIR."bell.png"; ?>" alt="cart" />
-                    <label class="number" id="products_num">Notifiche (<span class="">0</span>)</label>
+                <a id="notification_link" class="nav-link active cart mt-2" href="notifications_list.php">
+                    <img id="notification_img" class="img-fluid" style="width: 50px" src="<?php echo UPLOAD_DIR."bell.png"; ?>" alt="cart" />
+                    Notifiche (<span class="">0</span>)
                 </a>
             <?php endif; ?>
 
@@ -168,7 +169,7 @@
                     <option value="<?php echo $category["CategoryID"]."-".$category["CategoryName"]; ?>" ><?php echo $category["CategoryID"] . " - " . $category["CategoryName"]; ?></option>
                 <?php endforeach; ?>
             </select>
-            <input type="text" name="search" id="search" class="form-control search-food-name" placeholder="Search Here">
+            <input type="text" name="search" id="search_nav" class="form-control search-food-name" placeholder="Search Here">
             <div class="input-group-addon">
                 <button type="submit" class="fas fa-search bg-red"></button>
             </div>
@@ -193,7 +194,7 @@
 
 
 <footer>
-    <p><img id="logo_foot" style="width: 10px" src=<?php echo LOGO."chiaro.png"; ?> ><?php echo $templateParams["titolo"]; ?></p>
+    <p><img id="logo_foot" style="width: 10px" src=<?php echo LOGO."chiaro.png"; ?> alt="logo_footer"><?php echo $templateParams["titolo"]; ?></p>
     <p>UniBo - Campus Cesena</p>
     <p><a href="vendor_register.php">Lavora per noi</a></p>
     <a href="test.php">Testate ai muri</a>

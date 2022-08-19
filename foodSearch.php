@@ -16,6 +16,7 @@ if(!isset($_POST) || count($_POST)==0) {
             header("Location: ./foodCategory.php?id=" . $order[0] . "&list-type=container");
         } else {
             $ret = $dbh->searchFoodNameAndCategory($_POST["search"], $order[0]);
+            $templateParams["titolo"] = "Ricerca:" . $_POST["search"];
         }
     } else {
         $ret = $dbh->searchFoodName($_POST["search"]);

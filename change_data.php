@@ -3,6 +3,7 @@
 require_once 'bootstrap.php';
 
 $templateParams["nome"] = "changeData_template.php";
+$templateParams["titolo"] = "CambiaDati";
 if(isset($_URL["pass"])) {
     $templateParams["passData"] = true;
 } else {

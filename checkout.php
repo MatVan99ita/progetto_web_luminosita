@@ -13,6 +13,7 @@ $templateParams["paga"]=$templateParams["user"]["info_pagamento"];
 $templateParams["luogo"]=$templateParams["user"]["zoneConsegna"];
 $templateParams["nome"] = "payment.php";
 
+$templateParams["titolo"] = "Checkout";
 
 require 'template/base.php';
 ?>

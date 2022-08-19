@@ -89,7 +89,7 @@ $pagah = $utente["info_pagamento"];
                 Cambia password
             </a>
 
-            <a href="login.php" onclick="deleteAllCookies()" class="btn btn-danger m-1">
+            <a href="logout.php" onclick="deleteAllCookies()" class="btn btn-danger m-1">
                 Logout
             </a>
         </div>
@@ -117,7 +117,7 @@ $pagah = $utente["info_pagamento"];
     <h3>Prodotti consigliati</h3>
 </div>
 <?php foreach($templateParams["randomFoods"] as $art):
-    $img = CAT_DIR.$art["CategoryID"].". ".$art["CategoryName"].".jpg";
+    $img = CAT_DIR.$art["CategoryID"].".".$art["CategoryName"].".jpg";
     $val = $dbh->starRate($art["venduto"]);
     $value = explode('.', $val);
     $int = (int) $value[0];

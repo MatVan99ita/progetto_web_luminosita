@@ -5,6 +5,7 @@
 require_once 'bootstrap.php';
 
  $templateParams["nome"]="cart_template.php";
+ $templateParams["titolo"] = "Carrello";
 
 require 'template/base.php';
 ?>

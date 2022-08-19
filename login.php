@@ -9,7 +9,7 @@
 require_once 'bootstrap.php';
 
 if(isset($_POST["username"]) && isset($_POST["password"])){
-    $login_result = $dbh->checkLogin($_POST["mail"], $_POST["pass"]);
+    $login_result = $dbh->logUser($_POST["mail"], $_POST["pass"]);
     if(count($login_result)==0){
         //Login fallito
         $templateParams["errorelogin"] = "Errore! Controllare username o password!";
