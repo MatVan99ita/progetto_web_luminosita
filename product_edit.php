@@ -16,6 +16,7 @@ $templateParams["editType"] = $type;
 $templateParams["foodID"] = $id;
 $templateParams["nome"] = "productEdit_Template.php";
 
+$templateParams["titolo"] = "ModificaProdotto";
 
 require 'template/base.php';
 

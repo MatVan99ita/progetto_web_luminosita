@@ -30,6 +30,7 @@ if(isset($_POST["answer"])) {
 $templateParams["nome"] = "productDelete_template.php";
 
 
+$templateParams["titolo"] = "ProductDeleted";
 require 'template/base.php';
 
 ?>

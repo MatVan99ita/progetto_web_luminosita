@@ -9,6 +9,7 @@
 require_once 'bootstrap.php';
 
 if(isset($_POST["username"]) && isset($_POST["password"])){
+    
     $login_result = $dbh->logUser($_POST["mail"], $_POST["pass"]);
     if(count($login_result)==0){
         //Login fallito
@@ -21,6 +22,8 @@ if(isset($_POST["username"]) && isset($_POST["password"])){
 }
 else if(isset($_COOKIE["logged"])){
     if($_COOKIE["logged"]){
+        
+        $templateParams["titolo"] = "Dashboard";
         if($_COOKIE["vendors"]==0){
             $templateParams["nome"] = "user_details.php";
             $templateParams["user"] = $dbh->getAllUserLoggedInfo($_COOKIE["mail"], $_COOKIE["id"]);
@@ -40,6 +43,8 @@ else if(isset($_COOKIE["logged"])){
 }
 else{
     $templateParams["nome"] = "loggin_in.php";
+    
+    $templateParams["titolo"] = "Login";
 }
 //$templateParams["vendors"] = $dbh->isVendors($mail, $password(però si potrebbe usare direttamente l'id));
 //$templateParams["articolicasuali"] = $dbh->getRandomPosts(2);

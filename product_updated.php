@@ -8,6 +8,7 @@ $query = explode("&", $url["query"]);
 $type = $query[0];
 $id = $query[1];
 
+$templateParams["titolo"] = "ProductUpdated";
 if($type=="update") {
     echo "update";
     $gluten = isset($_POST["gluten"]) ? "1": "0";

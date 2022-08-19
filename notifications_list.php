@@ -4,6 +4,7 @@
 */
 require_once 'bootstrap.php';
 
+$templateParams["titolo"] = "Notifiche generali";
 $templateParams["nome"] = "notif_list_templ.php";
 if(isset($_COOKIE["logged"]) && isset($_COOKIE["mail"]) && isset($_COOKIE["id"])){
 

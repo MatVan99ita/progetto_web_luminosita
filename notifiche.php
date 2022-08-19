@@ -8,10 +8,12 @@ $url = explode('?', $_SERVER['REQUEST_URI'])[1];
 $url = explode('&', $url);
 $id = explode('=', $url[0]);
 $read = explode('=', $url[1]);
+
 if($dbh->checkUserIsVendor($_COOKIE["id"])){
     $templateParams["nome"] = "notifications_templ_vend.php";
     $templateParams["mail"] = $dbh->getSpecificNotification($id[1], $read[1]);
     $templateParams["body"] = json_decode($templateParams["mail"]["body"], true);
+    
 } else {
     $templateParams["nome"] = "notifications_templ_buy.php";
     $templateParams["mail"] = $dbh->getSpecificNotification($id[1], $read[1]);
@@ -26,6 +28,7 @@ if($dbh->checkUserIsVendor($_COOKIE["id"])){
     //$dbh->printFormattedArray($templateParams["body"]);
 }
 
+$templateParams["titolo"] = "Notifica_#" . substr($templateParams["mail"]["obj"], 16, 7);
 
 require 'template/base.php';
 ?>
