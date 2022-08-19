@@ -1,9 +1,9 @@
 
 <?php if(isset($templateParams["titolo_pagina"])): ?>
     <h2><?php echo $templateParams["titolo_pagina"]; ?></h2>
-<?php endif;
-?>
-<div class="row mt-5 justify-content-left">
+<?php endif; ?>
+
+<div class="row mt-4 justify-content-left">
     <?php foreach($templateParams["categorie"] as $tipo): ?>
         <?php 
         $img = CAT_DIR.$tipo["CategoryID"].". ".$tipo["CategoryName"].".jpg"; 
@@ -13,7 +13,7 @@
             <div id="card_cat" class="col-4" media="screen and (min-width: 480px) and (max-width: 1920px)">
                 <div class="image">
                     <a href="foodCategory.php?id=<?php echo $tipo["CategoryID"]; ?>&list-type=container">
-                        <img src="<?php echo $img; ?>" class="card-img-top bg-image hover-zoom" alt="<?php echo $img; ?>">
+                        <img src="<?php echo $img; ?>" class="card-img-top image bg-image hover-zoom" alt="<?php echo $img; ?>">
                     </a>
                 </div>
                 <div class="card-header">

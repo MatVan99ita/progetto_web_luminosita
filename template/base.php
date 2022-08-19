@@ -75,6 +75,44 @@
                 </ul>
 
                 
+                
+                <?php if($_COOKIE["vendors"]=="0"): ?>
+                    <div class="nav-item cart mt-2">
+                        <a href="carrello.php">
+                            <img class="img-fluid" style="width: 50px" src="<?php echo UPLOAD_DIR."carts.png"; ?>" alt="cart" />
+                            <span class="dot number" id="products_num">
+                                <span class="total-count dot"></span>
+                            </span>
+                        </a>
+                    </div>
+                <?php endif; ?>
+                    
+                <?php if(isset($_COOKIE["logged"]) && isset($_COOKIE["mail"]) && isset($_COOKIE["id"])): ?>
+                    <div class="nav-item cart mt-2">
+                        <a href="notifications_list.php">
+                            <img class="img-fluid" style="width: 50px" src="<?php echo UPLOAD_DIR."bell.png"; ?>" alt="cart" />
+                            <span class="dot number" id="products_num">
+                                <span class=""><?php echo $templateParams["toReadNotif"]; ?></span>
+                            </span>
+                        </a>
+                    </div>
+                <?php endif; ?>
+                        
+                <div class="nav-item cart mt-2">
+                    <a href="login.php">
+                        <img class="img-fluid" style="width: 50px" src="<?php   if(isset($_COOKIE["id"]) && isset($_COOKIE["mail"])):
+                                                                                    echo UPLOAD_DIR."user.png";
+                                                                                else:
+                                                                                    echo UPLOAD_DIR."login.png";
+                                                                                endif; 
+                                                                        ?>" alt="dashboard" />
+                        
+                        <a class="nav-link disabled dropdown-divider"> </a>
+                    </a>
+                </div>
+
+                <a class="nav-link disabled dropdown-divider"> </a>
+
                 <form class="form-inline my-2 my-lg-0 mr-auto mx-auto" action="foodSearch.php" method="POST">
                     <select name="order">
                         <option class="topshow" value="1-All">All</option>
@@ -87,38 +125,10 @@
                         <button type="submit" class="fas fa-search bg-red"></button>
                     </div>
                 </form>
-                
-                <?php if($_COOKIE["vendors"]=="0"): ?>
-                <div class="nav-item cart mt-2">
-                    <a href="carrello.php">
-                        <img class="img-fluid" style="width: 50px" src="<?php echo UPLOAD_DIR."carts.png"; ?>" alt="cart" />
-                        <span class="dot number" id="products_num">
-                            <span class="total-count dot"></span>
-                        </span>
-                    </a>
-                </div>
-                <?php endif; ?>
-                
-                <?php if(isset($_COOKIE["logged"]) && isset($_COOKIE["mail"]) && isset($_COOKIE["id"])): ?>
-                <div class="nav-item cart mt-2">
-                    <a href="notifications_list.php">
-                        <img class="img-fluid" style="width: 50px" src="<?php echo UPLOAD_DIR."bell.png"; ?>" alt="cart" />
-                        <span class="dot number" id="products_num">
-                            <span class=""><?php echo $templateParams["toReadNotif"]; ?></span>
-                        </span>
-                    </a>
-                </div>
-                <?php endif; ?>
 
-                <div class="nav-item cart mt-2">
-                    <a href="login.php">
-                        <?php if(isset($_COOKIE["id"]) && isset($_COOKIE["mail"])): ?><img class="img-fluid" style="width: 50px" src="<?php echo UPLOAD_DIR."user.png"; ?>" alt="dashboard" /><?php else: ?><img class="img-fluid" style="width: 50px" src="<?php echo UPLOAD_DIR."login.png"; ?>" alt="login" /><?php endif; ?>
-                    </a>
-                </div>
-                
-            </div>
+            </div>       
         </nav>
-        
+                        
 </header>
 
 <div id="myNav" class="overlay">
