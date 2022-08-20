@@ -27,8 +27,8 @@ if($dbh->checkUserIsVendor($_COOKIE["id"])){
     $templateParams["body"] = $val;
     //$dbh->printFormattedArray($templateParams["body"]);
 }
-
-$templateParams["titolo"] = "Notifica_#" . substr($templateParams["mail"]["obj"], 16, 7);
+$str = substr($templateParams["mail"]["obj"], 16, 7);
+$templateParams["titolo"] = "Notifica_".str_replace("#", "", $str);
 
 require 'template/base.php';
 ?>

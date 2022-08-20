@@ -10,14 +10,14 @@
   $index = 1;
   foreach ($templateParams["mail"] as $mail):
   ?>
-    <li <?php if($mail["isRead"]==0): ?> id="toRead" style="border-left: solid 5px" <?php else: ?> id="readed"; <?php endif; ?> class="<?php if($mail["isRead"]==0): echo "toRead"; else: echo "readed"; endif ?> list-group-item list-group-item-<?php echo $class[$mail["isRead"]]; ?>">
-      <section class="mail-notification section" aria-describedby="titleEx1">
+    <li <?php if($mail["isRead"]==0): ?> id="toRead" style="border-left: solid 5px" <?php else: ?> id="readed" <?php endif; ?> class="<?php if($mail["isRead"]==0): echo "toRead"; else: echo "readed"; endif ?> list-group-item list-group-item-<?php echo $class[$mail["isRead"]]; ?>">
+      <section class="mail-notification section">
         <div class="section-content">
           <!-- contenuto di esempio START -->
           <div class="container">
             <div class="row mb-3">
               <div class="col-12">
-                <h2 id="titleEx1"><?php echo $mail["obj"]; ?></h2>
+                <h2><?php echo $mail["obj"]; ?></h2>
               </div>
             </div>
             <div class="row">

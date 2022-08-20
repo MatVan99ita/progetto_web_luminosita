@@ -184,7 +184,6 @@ class DatabaseHelper{
         $stmt->execute();
         $result = $stmt->get_result();
         $ven = $result->fetch_all(MYSQLI_ASSOC);
-        echo $ven;
         return $ven["vendors"]==0;
     }
 
@@ -306,7 +305,7 @@ class DatabaseHelper{
         $stmt->bind_param('ssss', $nome, $cognome, $mail, $_COOKIE["id"]);
         $stmt->execute();
         if($this->db->error){
-            print_r($this->db->error);
+            $this->printFormattedArray($this->db->error);;
             return false;
         }
 
@@ -316,15 +315,13 @@ class DatabaseHelper{
         $stmt->execute();
         $result = $stmt->get_result();
         $ven = $result->fetch_all(MYSQLI_ASSOC);
-
-        echo $ven[0]["BuyerID"];
         
         $sql="UPDATE `compratore` SET `codUnibo`= ?, `sesso` = ?, `zoneConsegna` = ?, `info_pagamento` = ? WHERE BuyerID = ?";
         $stmt = $this->db->prepare($sql);
         $stmt->bind_param('sssss', $codUni, $sex, $consegna, $paga, $ven[0]["BuyerID"]);
         $stmt->execute();
         if($this->db->error){
-            print_r($this->db->error);
+            $this->printFormattedArray($this->db->error);;
             return false;
         }
 
@@ -351,7 +348,7 @@ class DatabaseHelper{
         $stmt->bind_param('sssssss', $nome, $descr, $price, $gluten, $quantity, $vendorID, $cat);
         $stmt->execute();
         if($this->db->error){
-            print_r($this->db->error);
+            $this->printFormattedArray($this->db->error);;
             return false;
         }
         return true;
@@ -403,17 +400,17 @@ class DatabaseHelper{
 
     public function logUser($mail, $password){
         
-        echo("<br><br>");
+        //echo("<br><br>");
         //UserID, Email, password, salt
         $info = $this->getUserLogInfo($mail);
-        echo("<br><br>");
+        //echo("<br><br>");
         // Crea una password usando la chiave appena creata.
         $password = hash('sha512', $password.$info[0]['salt']);
-        
+        /*
         echo($password);
         
         echo("<br><br>");
-        echo($info[0]['password']);
+        echo($info[0]['password']);*/
 
         if($password == $info[0]["password"]){
             setcookie("id", $info[0]["UserID"]);
@@ -615,7 +612,7 @@ class DatabaseHelper{
         $stmt->bind_param('s', $id);
         $stmt->execute();
         if($this->db->error){
-            print_r($this->db->error);
+            $this->printFormattedArray($this->db->error);;
             return false;
         }
         return true;
@@ -632,7 +629,6 @@ class DatabaseHelper{
 
         
         $stmt = $this->db->prepare($sql);
-        echo $sql;
 
         if($savePay && $saveZone) {
             $stmt->bind_param("sss", $payInfo, $zoneInfo, $userID);
@@ -643,12 +639,9 @@ class DatabaseHelper{
         } else {
             return false;
         }
-
-
-        $stmt->execute();//NON AGGIORNA E NON SO IL PERCHE' NON DA NEMMENO ERRORI
-        print_r($stmt);
+        $stmt->execute();
         if($this->db->error){
-            print_r($this->db->error);
+            $this->printFormattedArray($this->db->error);;
             return false;
         }
         return true;
@@ -676,7 +669,6 @@ class DatabaseHelper{
         $tot = 0;
         $product_list = array();
         foreach ($cart as $product) {
-            var_dump($product["count"]);
             $tot = $tot == 0 ? $product["count"] : $tot + $product["count"];
             array_push($product_list, $product["id"]);
         }
@@ -706,7 +698,6 @@ class DatabaseHelper{
             $stmt = $this->db->prepare($scrivi_mail_venditore);
             $details = array("name"=>$cart[$i]["name"], "richieste"=>$cart[$i]["count"], "rimanenti"=>$res[$i]["quantity"], "venduto"=>$res[$i]["venduto"]);
             $body = json_encode($details);
-            echo $body;
             $stmt->bind_param("sssss", $mail, $res[$i]["Email"], $obj, $body, $res[$i]["UserID"]);
             $stmt->execute();
         }
@@ -766,7 +757,7 @@ class DatabaseHelper{
         $stmt->bind_param('i', $id);
         $stmt->execute();
         if($this->db->error){
-            print_r($this->db->error);
+            $this->printFormattedArray($this->db->error);;
             return false;
         }
         return true;

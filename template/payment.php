@@ -1,5 +1,5 @@
 <div id="register_form" class="container justify-content-center col-md-12">
-    <form action="end_checkout.php" method="POST">
+    <form action="#" method="POST">
         <h2>Checkout</h2>
 
 <?php
@@ -56,7 +56,7 @@ if($templateParams["paga"] == "NotSaved"):
         <div class="form-group">
             <label for="timeText">Orario di consegna:</label>
             <input id="timeText" name="timeText" type="datetime-local" class="form-control">
-            <label style="font-size: 13px; color: red" for="">Le date non idonee valgono come di seguito: 1 ora dalla richiesta o appena disponibile negli orari di consegna del venditore</label>
+            <label style="font-size: 13px; color: red" for="timeText">Le date non idonee valgono come di seguito: 1 ora dalla richiesta o appena disponibile negli orari di consegna del venditore</label>
         </div>
 
         <button type="submit" id="submit" class="btn btn-success total-cart-checkout"></button>

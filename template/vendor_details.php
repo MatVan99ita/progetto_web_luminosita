@@ -93,7 +93,7 @@ foreach($templateParams["foods"] as $art):
                         </div>
                         <p class="<?php echo $art["nomeProd"]; ?>-description"><p>Descrizione: <?php echo $art["descrProd"]; ?></p></p>
                         <p class="product-description">
-                            <span class="form-check-label" for="<?php echo $art["prodottoID"]; ?>-description">Gluten Free</span>
+                            <span class="form-check-label">Gluten Free</span>
                             <div class="col-md-3">
                                 <div class="custom-control custom-checkbox image-checkbox">
                                     <input type="checkbox" class="custom-control-input" id="ck-<?php echo $art["prodottoID"]; ?>" name="gluten" disabled>
