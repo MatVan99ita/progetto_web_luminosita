@@ -8,6 +8,7 @@ $templateParams["categorie"] = $dbh->getFoodTypes();
 $templateParams["nome"] = "vendor_details.php";
 //Articoli Categoria Template
 $idcategoria = -1;
+$templateParams["titolo"] = "Venditori";
 if(isset($_GET)){
     $url = parse_url($_SERVER['REQUEST_URI'], $component = -1);
     $query = explode("&", $url["query"]);
@@ -16,12 +17,10 @@ if(isset($_GET)){
         $templateParams["details"] = $dbh->specificVendorList($templateParams["vendorID"]);
         $templateParams["foods"] = $dbh->specificVendorFoodList($templateParams["vendorID"]);
         
-        $templateParams["titolo"] = "Venditore:".$templateParams["details"]["nomeAzienda"];
     } elseif ($query[0]=="list") {
         $templateParams["nome"] = "vendor_list.php";
         $templateParams["lista"] = $dbh->vendorList();
-        
-        $templateParams["titolo"] = "Venditori";
+    
     }
 } else {
 

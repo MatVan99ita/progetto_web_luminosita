@@ -132,18 +132,18 @@ $pagah = $utente["info_pagamento"];
                     <div class="preview col-md-6">
                         
                         <div class="preview-pic tab-content">
-                          <div class="tab-pane active" id="pic-1"><img style="width: 400px; height 252px" src="<?php echo $img; ?>"/></div>
-                          <div class="tab-pane" id="pic-2"><img src="<?php echo $img; ?>" /></div>
-                          <div class="tab-pane" id="pic-3"><img src="<?php echo $img; ?>" /></div>
-                          <div class="tab-pane" id="pic-4"><img src="<?php echo $img; ?>" /></div>
-                          <div class="tab-pane" id="pic-5"><img src="<?php echo $img; ?>" /></div>
+                          <div class="tab-pane active" id="pic-1"><img src="<?php echo $img; ?>"  alt="<?php echo $img; ?>"/></div>
+                          <div class="tab-pane" id="pic-2"><img src="<?php echo $img; ?>" alt="<?php echo $img; ?>"/></div>
+                          <div class="tab-pane" id="pic-3"><img src="<?php echo $img; ?>" alt="<?php echo $img; ?>"/></div>
+                          <div class="tab-pane" id="pic-4"><img src="<?php echo $img; ?>" alt="<?php echo $img; ?>"/></div>
+                          <div class="tab-pane" id="pic-5"><img src="<?php echo $img; ?>" alt="<?php echo $img; ?>"/></div>
                         </div>
                         <ul class="preview-thumbnail nav nav-tabs">
-                          <li class="active"><a data-target="#pic-1" data-toggle="tab"><img style="width: 400px; height 252px" src="<?php echo $img; ?>"/></a></li>
-                          <li><a data-target="#pic-2" data-toggle="tab"><img src="<?php echo $img; ?>" /></a></li>
-                          <li><a data-target="#pic-3" data-toggle="tab"><img src="<?php echo $img; ?>" /></a></li>
-                          <li><a data-target="#pic-4" data-toggle="tab"><img src="<?php echo $img; ?>" /></a></li>
-                          <li><a data-target="#pic-5" data-toggle="tab"><img src="<?php echo $img; ?>" /></a></li>
+                          <li class="active"><a data-target="#pic-1" data-toggle="tab"><img src="<?php echo $img; ?>" alt="<?php echo $img; ?>"/></a></li>
+                          <li><a data-target="#pic-2" data-toggle="tab"><img src="<?php echo $img; ?>" alt="<?php echo $img; ?>"/></a></li>
+                          <li><a data-target="#pic-3" data-toggle="tab"><img src="<?php echo $img; ?>" alt="<?php echo $img; ?>"/></a></li>
+                          <li><a data-target="#pic-4" data-toggle="tab"><img src="<?php echo $img; ?>" alt="<?php echo $img; ?>"/></a></li>
+                          <li><a data-target="#pic-5" data-toggle="tab"><img src="<?php echo $img; ?>" alt="<?php echo $img; ?>"/></a></li>
                         </ul>
                         
                     </div>
