@@ -6,26 +6,30 @@ TODO:
    sistemare qualche dettaglino a grafica cellularosa
 
 NOTA ACCESS:
-   disabled e aria-controls -> errori da ignorare
-   ACCESSIBILITà di 
-   HOME
-   LISTA PRODOTTI PER CAT
-   VENDITORI
-   VENDITORI CON LISTA PROD
-   RICERCA
-   CARRELLO
-   CHECKOUT
-   END CHECK
-   LISTA NOTIFICHE(id duplicati ma quelli servono)
-   NOTIFICA UTENTE
+      disabled e aria-controls -> errori da ignorare
+   • ACCESSIBILITA' DI •
+      ~ HOME
+      ~ LISTA PRODOTTI PER CAT
+      ~ VENDITORI
+      ~ VENDITORI CON LISTA PROD
+      ~ RICERCA
+      ~ CARRELLO
+      ~ CHECKOUT
+      ~ END CHECK
+      ~ LISTA NOTIFICHE(id duplicati ma quelli servono)
+      ~ NOTIFICA UTENTE
+      ~ DASHBOARD UTENTE(h2 non può essere discendente di th e warning sul numero di colonne rispetto all'header)
+      ~ CAMBIO DATI UTENTE
+      ~ CAMBIO PASSWORD UTENTE
+      ~ LOGIN (label for hidden ma sono i parametri nascosti quindi va bene)
+      ~ CREAZIONE UTENTE
 
 TODO per access:
    notifica vendor
-   dashboard utente e vendor
-   login
-   creazione account utente e vendor
-   cambio dati
-   cambio password
+   dashboard vendor
+   creazione account vendor
+   cambio dati vendor
+   cambio password vendor
    modifica prodotto
    refill prodotto
    aggiunta prodotto

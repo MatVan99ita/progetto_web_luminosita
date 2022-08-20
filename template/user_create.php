@@ -19,7 +19,7 @@
         <div class="form-group">
             <label for="gender_fluid">Sesso</label>
             <select id="gender_fluid" name="gender_fluid" class="form-select" aria-label="Default select example" style="width: 100%" required>
-                <option selected>Select gender...</option>
+                <option disabled selected value="">Select gender...</option>
                 <option value="Uomo">Uomo</option>
                 <option value="Donna">Donna</option>
                 <option value="Altro">Other...</option>

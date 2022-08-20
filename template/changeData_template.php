@@ -81,43 +81,43 @@ elseif ($query[0] == "datas"):
 
         <div class="form-group">
             <label>Nome</label>
-            <div class="input-group" id="show_hide_password">
+            <div class="input-group">
                 <input type="text" name="nome" value="<?php echo $nome; ?>" class="form-control">
             </div>
         </div>
         <div class="form-group">
             <label>Cognome</label>
-            <div class="input-group" id="show_hide_password">
+            <div class="input-group">
                 <input type="text" name="cognome" value="<?php echo $cognome; ?>" class="form-control">
             </div>
         </div>
         <div class="form-group">
             <label>Email</label>
-            <div class="input-group" id="show_hide_password">
+            <div class="input-group">
                 <input type="email" name="mail" value="<?php echo $mail; ?>" class="form-control">
             </div>
         </div>
         <div class="form-group">
             <label>Sesso</label>
-            <div class="input-group" id="show_hide_password">
+            <div class="input-group">
                 <input type="text" name="sex" value="<?php echo $sesso; ?>" class="form-control">
             </div>
         </div>
         <div class="form-group">
             <label>Cod. UniBo</label>
-            <div class="input-group" id="show_hide_password">
+            <div class="input-group">
                 <input type="text" name="cod.unibo" value="<?php echo $unicode; ?>" placeholder="cod unibo" class="form-control">
             </div>
         </div>
         <div class="form-group">
             <label>Zona consegna</label>
-            <div class="input-group" id="show_hide_password">
+            <div class="input-group">
                 <input type="text" name="consegna" value="<?php echo $consegne; ?>" placeholder="zone di consegna" class="form-control">
             </div>
         </div>
         <div class="form-group">
             <label>Info pagamento</label>
-            <div class="input-group" id="show_hide_password">
+            <div class="input-group">
                 <input type="text" name="pagamento" value="<?php echo $pagah; ?>" placeholder="info pagamento" class="form-control">
             </div>
         </div>

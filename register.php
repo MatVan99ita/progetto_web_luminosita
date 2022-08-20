@@ -14,5 +14,6 @@ if(isset($_POST["inputName"]) && isset($_POST["inputSurname"]) && isset($_POST["
 } else {
     $templateParams["nome"] = "user_create.php";
 }
+$templateParams["titolo"] = "CreazioneUtente";
 require 'template/base.php';
 ?>

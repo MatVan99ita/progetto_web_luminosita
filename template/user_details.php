@@ -36,50 +36,47 @@ $pagah = $utente["info_pagamento"];
 ?>
 
 <div class="container" id="art">
-        <table class="table table-striped table-bordered" style="width: 1000px">
-        <thead>
-            <tr>
-                <th scope="col"><h2>Dashboard</h2></th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <th scope="row" style="width: 10%">•</th>
-                <td style="width: 100px"><h5>Utente:</h5></td>
-                <td style="width: 100px"><?php echo $nome." ".$cognome; ?></td>
-            </tr>
-            
-            <tr>
-                <th scope="row">•</th>
-                <td><h5>Mail:</h5></td>
-                <td><?php echo $mail; ?></td>
-            </tr>
-            
-            <tr>
-                <th scope="row">•</th>
-                <td><h5>Sesso:</h5></td>
-                <td><?php echo $sesso; ?></td>
-            </tr>
-            
-            <tr>
-                <th scope="row">•</th>
-                <td><h5>Cod. Unibo:</h5></td>
-                <td><?php echo $unicode; ?></td>
-            </tr>
-            
-            <tr>
-                <th scope="row">•</th>
-                <td><h5>Zone consegna:</h5></td>
-                <td><?php echo $consegne; ?></td>
-            </tr>
-            
-            <tr>
-                <th scope="row">•</th>
-                <td><h5>Info pagamento:</h5></td>
-                <td><?php echo $pagah; ?></td>
-            </tr>
-        </tbody>
+        <table class="table table-striped table-bordered">
+            <thead>
+                <tr>
+                    <th scope="col"><h2>Dashboard</h2></th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <tr>
+                    <td><h5>Utente:</h5></td>
+                    <td><?php echo $nome." ".$cognome; ?></td>
+                </tr>
+
+                <tr>
+                    <td><h5>Mail:</h5></td>
+                    <td><?php echo $mail; ?></td>
+                </tr>
+
+                <tr>
+                    <td><h5>Sesso:</h5></td>
+                    <td><?php echo $sesso; ?></td>
+                </tr>
+
+                <tr>
+                    <td><h5>Cod. Unibo:</h5></td>
+                    <td><?php echo $unicode; ?></td>
+                </tr>
+
+                <tr>
+                    <td><h5>Zone consegna:</h5></td>
+                    <td><?php echo $consegne; ?></td>
+                </tr>
+
+                <tr>
+                    <td><h5>Info pagamento:</h5></td>
+                    <td><?php echo $pagah; ?></td>
+                </tr>
+            </tbody>
+
         </table>
+
         <div>
             <a href="change_data.php?datas" class="btn btn-warning m-1">
                 Cambia dati
