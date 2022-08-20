@@ -1,5 +1,6 @@
 NOTA: 
    ricordarsi di usare sempre questo (https://webaim.org/resources/contrastchecker/)
+https://validator.w3.org/#validate_by_input
 
 TODO:
    sistemare qualche dettaglino a grafica cellularosa
