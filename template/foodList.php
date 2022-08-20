@@ -22,8 +22,8 @@
 
         <div class="input-group-addon col-md-3">
             <div class="custom-control custom-checkbox gluten-search image-checkbox active-gluten-check">
-                <input type="checkbox" class="custom-control-input" id="ck1a" name="gluten">
-                <label style="width: 200px" class="custom-control-label" for="ck1a">
+                <input type="checkbox" class="custom-control-input" id="ck-1s" name="gluten">
+                <label style="width: 200px" class="custom-control-label" for="ck-1s">
                     <img id="gluten-search" src="<?php echo UPLOAD_DIR."gluten-free.jpg"; ?>" alt="gluten-free" class="img-fluid">
                 </label>
             </div>
@@ -65,18 +65,18 @@ p.`vendorID`,
                     <div class="preview col-md-6">
                         
                         <div class="preview-pic tab-content">
-                          <div class="tab-pane active" id="pic-1"><img src="<?php echo $img; ?>" alt="<?php echo $img; ?>"/></div>
-                          <div class="tab-pane" id="pic-2"><img src="<?php echo $img; ?>" alt="<?php echo $img; ?>"/></div>
-                          <div class="tab-pane" id="pic-3"><img src="<?php echo $img; ?>" alt="<?php echo $img; ?>"/></div>
-                          <div class="tab-pane" id="pic-4"><img src="<?php echo $img; ?>" alt="<?php echo $img; ?>"/></div>
-                          <div class="tab-pane" id="pic-5"><img src="<?php echo $img; ?>" alt="<?php echo $img; ?>"/></div>
+                          <div class="tab-pane active" id="<?php echo $art["prodottoID"]; ?>-pic-1"><img src="<?php echo $img; ?>" alt="<?php echo $img; ?>"/></div>
+                          <div class="tab-pane" id="<?php echo $art["prodottoID"]; ?>-pic-2"><img src="<?php echo $img; ?>" alt="<?php echo $img; ?>"/></div>
+                          <div class="tab-pane" id="<?php echo $art["prodottoID"]; ?>-pic-3"><img src="<?php echo $img; ?>" alt="<?php echo $img; ?>"/></div>
+                          <div class="tab-pane" id="<?php echo $art["prodottoID"]; ?>-pic-4"><img src="<?php echo $img; ?>" alt="<?php echo $img; ?>"/></div>
+                          <div class="tab-pane" id="<?php echo $art["prodottoID"]; ?>-pic-5"><img src="<?php echo $img; ?>" alt="<?php echo $img; ?>"/></div>
                         </div>
                         <ul class="preview-thumbnail nav nav-tabs">
-                          <li class="active"><a data-target="#pic-1" data-toggle="tab"><img src="<?php echo $img; ?>" alt="<?php echo $img; ?>"/></a></li>
-                          <li><a data-target="#pic-2" data-toggle="tab"><img src="<?php echo $img; ?>" alt="<?php echo $img; ?>"/></a></li>
-                          <li><a data-target="#pic-3" data-toggle="tab"><img src="<?php echo $img; ?>" alt="<?php echo $img; ?>"/></a></li>
-                          <li><a data-target="#pic-4" data-toggle="tab"><img src="<?php echo $img; ?>" alt="<?php echo $img; ?>"/></a></li>
-                          <li><a data-target="#pic-5" data-toggle="tab"><img src="<?php echo $img; ?>" alt="<?php echo $img; ?>"/></a></li>
+                          <li class="active"><a data-target="#<?php echo $art["prodottoID"]; ?>-pic-1" data-toggle="tab"><img src="<?php echo $img; ?>" alt="<?php echo $img; ?>"/></a></li>
+                          <li><a data-target="#<?php echo $art["prodottoID"]; ?>-pic-2" data-toggle="tab"><img src="<?php echo $img; ?>" alt="<?php echo $img; ?>"/></a></li>
+                          <li><a data-target="#<?php echo $art["prodottoID"]; ?>-pic-3" data-toggle="tab"><img src="<?php echo $img; ?>" alt="<?php echo $img; ?>"/></a></li>
+                          <li><a data-target="#<?php echo $art["prodottoID"]; ?>-pic-4" data-toggle="tab"><img src="<?php echo $img; ?>" alt="<?php echo $img; ?>"/></a></li>
+                          <li><a data-target="#<?php echo $art["prodottoID"]; ?>-pic-5" data-toggle="tab"><img src="<?php echo $img; ?>" alt="<?php echo $img; ?>"/></a></li>
                         </ul>
                         
                     </div>
@@ -119,11 +119,11 @@ p.`vendorID`,
                         <p class="product-description"><p>Venduto da: <a href="foodVendor.php?spec&id=<?php echo $art["vendorID"] ?>"><?php echo $art["nomeAzienda"]; ?></a></p></p>
                         <p class="product-description"><p><?php echo $art["descrProd"]; ?></p></p>
                         <p class="product-description">
-                            <label class="form-check-label" for="flexSwitchCheckDefault">Gluten Free</label>
+                            <span class="form-check-label">Gluten Free</span>
                             <div class="col-md-3">
                                 <div class="custom-control custom-checkbox image-checkbox">
-                                    <input type="checkbox" class="custom-control-input" id="ck1a" name="gluten" <?php if($art["glutenFree"] == "1") echo "checked"; ?> disabled>
-                                    <label style="width: 200px" class="custom-control-label" for="ck1a" disabled>
+                                    <input type="checkbox" class="custom-control-input" id="ck-<?php echo $art["prodottoID"]; ?>" name="gluten" <?php if($art["glutenFree"] == "1") echo "checked"; ?> disabled>
+                                    <label style="width: 200px" class="custom-control-label" for="ck-<?php echo $art["prodottoID"]; ?>" disabled>
                                         <img src="<?php echo UPLOAD_DIR."gluten-free.jpg"; ?>" alt="gluten-free" class="<?php if($art["glutenFree"] == "0") echo "no-gluten"; ?> img-fluid">
                                     </label>
                                 </div>

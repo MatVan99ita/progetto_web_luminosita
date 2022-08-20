@@ -46,12 +46,12 @@ elseif($templateParams["editType"] == "update"):
             </div>
         </div>
 
-        <div class="form-group">
-            <label class="form-check-label" for="flexSwitchCheckDefault">Gluten Free</label>
+        <div id="gluten-div" class="form-group">
+            <label class="form-check-label" for="gluten-div">Gluten Free</label>
             <div class="col-md-3">
                 <div class="custom-control custom-checkbox no-gluten image-checkbox active-gluten-check">
-                    <input type="checkbox" class="custom-control-input" id="ck1a" <?php if($templateParams["food"]["glutenFree"] == "1") echo "checked"; ?> name="gluten">
-                    <label style="width: 200px" class="custom-control-label" for="ck1a">
+                    <input type="checkbox" class="custom-control-input" id="ck-<?php echo $art["prodottoID"]; ?>" <?php if($templateParams["food"]["glutenFree"] == "1") echo "checked"; ?> name="gluten">
+                    <label style="width: 200px" class="custom-control-label" for="ck-<?php echo $art["prodottoID"]; ?>">
                         <img src="<?php echo UPLOAD_DIR."gluten-free.jpg"; ?>" alt="gluten-free" class="img-fluid">
                     </label>
                 </div>
@@ -103,12 +103,12 @@ elseif($templateParams["editType"] == "new"):?>
             </div>
         </div>
 
-        <div class="form-group">
-            <label class="form-check-label" for="flexSwitchCheckDefault">Gluten Free</label>
+        <div id="gluten-div" class="form-group">
+            <label class="form-check-label" for="gluten-div">Gluten Free</label>
             <div class="col-md-3">
                 <div class="custom-control custom-checkbox no-gluten image-checkbox">
-                    <input type="checkbox" class="custom-control-input" id="ck1a" name="gluten">
-                    <label style="width: 200px" class="custom-control-label" for="ck1a">
+                    <input type="checkbox" class="custom-control-input" id="ck-<?php echo $art["prodottoID"]; ?>" name="gluten">
+                    <label style="width: 200px" class="custom-control-label" for="ck-<?php echo $art["prodottoID"]; ?>">
                         <img src="<?php echo UPLOAD_DIR."gluten-free.jpg"; ?>" alt="gluten-free" class="img-fluid">
                     </label>
                 </div>

@@ -10,7 +10,7 @@
         $id = $tipo["CategoryID"]."_catImg";
         ?>
         
-            <div id="card_cat" class="col-4" media="screen and (min-width: 480px) and (max-width: 1920px)">
+            <div class="card_cat col-4" media="screen and (min-width: 480px) and (max-width: 1920px)">
                 <div class="image">
                     <a href="foodCategory.php?id=<?php echo $tipo["CategoryID"]; ?>&list-type=container">
                         <img src="<?php echo $img; ?>" class="card-img-top image bg-image hover-zoom" alt="<?php echo $img; ?>">
