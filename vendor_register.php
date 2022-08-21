@@ -47,5 +47,6 @@ if(
 } else {
     $templateParams["nome"] = "vendor_create.php";
 }
+$templateParams["titolo"]="LavoraPerNoi";
 require 'template/base.php';
 ?>

@@ -197,7 +197,6 @@
     <p><img id="logo_foot" style="width: 10px" src=<?php echo LOGO."chiaro.png"; ?> alt="logo_footer"><?php echo $templateParams["titolo"]; ?></p>
     <p>UniBo - Campus Cesena</p>
     <p><a href="vendor_register.php">Lavora per noi</a></p>
-    <a href="test.php">Testate ai muri</a>
 </footer>
 </body>
 </html>

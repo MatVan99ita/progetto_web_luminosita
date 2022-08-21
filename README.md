@@ -16,23 +16,24 @@ NOTA ACCESS:
       ~ CARRELLO
       ~ CHECKOUT
       ~ END CHECK
-      ~ LISTA NOTIFICHE(id duplicati ma quelli servono)
+      ~ LISTA NOTIFICHE UTENTE(id duplicati ma quelli servono)
       ~ NOTIFICA UTENTE
       ~ DASHBOARD UTENTE(h2 non può essere discendente di th e warning sul numero di colonne rispetto all'header)
       ~ CAMBIO DATI UTENTE
       ~ CAMBIO PASSWORD UTENTE
       ~ LOGIN (label for hidden ma sono i parametri nascosti quindi va bene)
       ~ CREAZIONE UTENTE
+      ~ DASHBOARD VENDOR(h2 non può essere discendente di th e warning sul numero di colonne rispetto all'header)
+      ~ MODIFICA PRODOTTO
+      ~ REFILL PRODOTTO
+      ~ AGGIUNTA PRODOTTO
+      ~ CAMBIO PASSWORD VENDOR
+      ~ CAMBIO DATI VENDOR
+      ~ CREAZIONE VENDOR
+      ~ LISTA NOTIFICHE VENDOR(id duplicati ma quelli servono)
 
 TODO per access:
    notifica vendor
-   dashboard vendor
-   creazione account vendor
-   cambio dati vendor
-   cambio password vendor
-   modifica prodotto
-   refill prodotto
-   aggiunta prodotto
 
 
 

@@ -2,7 +2,6 @@
 <?php
 $url = parse_url($_SERVER['REQUEST_URI'], $component = -1);
 $query = explode("&", $url["query"]);
-print_r($query);
 ?>
 <div id="login_form" class="container justify-content-center col-md-12">
     <form action="change_edit.php?<?php echo $query[0]; ?>" method="POST">
@@ -52,7 +51,7 @@ print_r($query);
         </ul>
     </div>
 <?php
-elseif ($query[0] == "datas"):
+elseif ($query[0] == "datas" && $_COOKIE["vendors"]==0):
     $utente = $dbh->getAllUserLoggedInfo($_COOKIE["mail"], $_COOKIE["id"]);
     // Nome
     $nome = $utente["Nome"];
@@ -121,9 +120,64 @@ elseif ($query[0] == "datas"):
                 <input type="text" name="pagamento" value="<?php echo $pagah; ?>" placeholder="info pagamento" class="form-control">
             </div>
         </div>
+<?php elseif ($query[0] == "datas" && $_COOKIE["vendors"]==1):
+        $utente = $dbh->getAllUserLoggedInfo($_COOKIE["mail"], $_COOKIE["id"]);
+
+        $nome = $utente["Nome"];
+        $cognome = $utente["Cognome"];
+        $mail = $utente["Email"];
+        $nomeAzienda = $utente["nomeAzienda"];
+        $indirizzo = $utente["indirizzo"];
+        $orari = $utente["orariConsegna"];
+        $tel = $utente["contatto"];
+        $descr = $utente["descrizione"];
+        ?>
+    
+        <h2>Diventa partner</h2>
+
+        <div class="form-group">
+            <label for="inputName">Nome</label>
+            <input id="inputName" name="nome" type="text" class="form-control" placeholder="Enter your name" value="<?php echo $nome; ?>">
+        </div>
+
+        <div class="form-group">
+            <label for="inputSurname">Cognome</label>
+            <input id="inputSurname" name="cognome" type="text" class="form-control" placeholder="Enter your surname" value="<?php echo $cognome; ?>">
+        </div>
+        
+        <div class="form-group">
+            <label for="InputEmail1">Email address</label>
+            <input type="email" class="form-control" id="InputEmail1" name="mail" aria-describedby="emailHelp" placeholder="Enter email" value="<?php echo $mail; ?>">
+            <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+        </div>
+
+        <div class="form-group">
+            <label for="inputnomeAzienda">Nome azienda</label>
+            <input id="inputnomeAzienda" name="inputAzienda" type="text" class="form-control" placeholder="Nome dell'azienda" value="<?php echo $nomeAzienda; ?>">
+        </div>
+
+        <div class="form-group">
+            <label for="inputAdress">Indirizzo</label>
+            <input id="inputAdress" name="inputIndirizzo" type="text" class="form-control" placeholder="(Ex.: via Paolo Rossi, 15)" value="<?php echo $indirizzo; ?>">
+        </div>
+
+        <div class="form-group">
+            <label for="inputOrari">Orari di consegna</label>
+            <input id="inputOrari" name="inputOrari" type="text" class="form-control" placeholder="(Ex.: 9:00/10:30 - 12:30/17:45) Default => 8:00/20:00" value="<?php echo $orari; ?>">
+        </div>
+
+        <div class="form-group">
+            <label for="inputTel">Contatto</label>            
+            <input id="inputTel" name="inputContatti" class="form-control" type="tel" pattern="[0-9]{10}" placeholder="(+39) 000 000 00 00" value="<?php echo $tel; ?>">
+        </div>
+
+        <div class="form-group">
+            <label for="inputDescr">Descrizione dell'azienda</label>
+            <textarea id="inputDescr" name="inputDescr" rows="2" cols="50" class="form-control"><?php echo $descr; ?></textarea>
+        </div>
 <?php endif; ?>
         <div class="form-group">
-            <input type="submit" class="btn btn-success m-1" value="Cambia dati">   
+            <input type="submit" class="btn btn-success m-1" value="Cambia dati">
             </input>
             <a href="login.php" class="btn btn-danger m-1">
                 Annulla

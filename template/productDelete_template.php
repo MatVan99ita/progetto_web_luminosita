@@ -12,7 +12,7 @@
             </div>
             <div class="action">
                 <input name="answer" value="SI" type="submit" class="btn btn-danger"/>
-                <a href="login.php" type="button" class="btn btn-success">NO</a>
+                <a href="login.php" class="btn btn-success">NO</a>
             </div>
         </div>
     </form>

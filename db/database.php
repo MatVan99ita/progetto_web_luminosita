@@ -189,7 +189,7 @@ class DatabaseHelper{
 
     public function getAllUserLoggedInfo($mail, $id){
 
-        if(!$_COOKIE["vendors"]){
+        if($_COOKIE["vendors"]==0){
             /*
             Nome
             Cognome
@@ -298,36 +298,57 @@ class DatabaseHelper{
         return true;
     }
     
-    public function changeInfo($nome, $cognome, $mail, $sex, $codUni, $consegna, $paga){
+    public function changeInfo($post){
+        $this->printFormattedArray($post);
 
+        
         $sql = "UPDATE `utente` SET `Nome` = ?, `Cognome` = ?, `Email` = ? WHERE UserID = ?";
         $stmt = $this->db->prepare($sql);
-        $stmt->bind_param('ssss', $nome, $cognome, $mail, $_COOKIE["id"]);
+        $stmt->bind_param('ssss', $post["nome"], $post["cognome"], $post["mail"], $_COOKIE["id"]);
         $stmt->execute();
         if($this->db->error){
             $this->printFormattedArray($this->db->error);;
             return false;
         }
 
-        $sql = "SELECT BuyerID FROM compratore WHERE UserID = ?";
-        $stmt = $this->db->prepare($sql);
-        $stmt->bind_param('s', $_COOKIE['id']);
-        $stmt->execute();
-        $result = $stmt->get_result();
-        $ven = $result->fetch_all(MYSQLI_ASSOC);
+        if($_COOKIE["vendors"]==0) {
+
+            $sql = "SELECT BuyerID FROM compratore WHERE UserID = ?";
+            $stmt = $this->db->prepare($sql);
+            $stmt->bind_param('s', $_COOKIE['id']);
+            $stmt->execute();
+            $result = $stmt->get_result();
+            $ven = $result->fetch_all(MYSQLI_ASSOC);
+
+            $sql="UPDATE `compratore` SET `codUnibo`= ?, `sesso` = ?, `zoneConsegna` = ?, `info_pagamento` = ? WHERE BuyerID = ?";
+            $stmt = $this->db->prepare($sql);
+            $stmt->bind_param('sssss', $post["cod_unibo"], $post["sex"], $post["consegna"], $post["pagamento"], $ven[0]["BuyerID"]);
+            $stmt->execute();
+
+        } else {
+            $sql = "SELECT vendorID FROM venditore WHERE UserID = ?";
+            $stmt = $this->db->prepare($sql);
+            $stmt->bind_param('s', $_COOKIE['id']);
+            $stmt->execute();
+            $result = $stmt->get_result();
+            $ven = $result->fetch_all(MYSQLI_ASSOC);
+            $this->printFormattedArray($ven);
+            //
+            $sql="UPDATE `venditore` SET `nomeAzienda`= ?, `indirizzo`= ?, `orariConsegna`= ?, `contatto`= ?, `descrizione`= ? WHERE `vendorID`=?;";
+            $stmt = $this->db->prepare($sql);
+            $stmt->bind_param('ssssss', $post["inputAzienda"], $post["inputIndirizzo"], $post["inputOrari"], $post["inputContatti"], $post["inputDescr"], $ven[0]["vendorID"]);
+            $stmt->execute();
+        }
         
-        $sql="UPDATE `compratore` SET `codUnibo`= ?, `sesso` = ?, `zoneConsegna` = ?, `info_pagamento` = ? WHERE BuyerID = ?";
-        $stmt = $this->db->prepare($sql);
-        $stmt->bind_param('sssss', $codUni, $sex, $consegna, $paga, $ven[0]["BuyerID"]);
-        $stmt->execute();
         if($this->db->error){
             $this->printFormattedArray($this->db->error);;
             return false;
         }
-
         unset($_COOKIE['mail']);
-        setcookie("mail", $mail);
+        setcookie("mail", $post["mail"]);
         return true;
+
+        
     }
 
 

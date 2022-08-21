@@ -13,7 +13,7 @@ if($url == "pass"){
         $templateParams["nome"] = "?buonFine";
     }
 } else if($url == "datas"){
-    $check = $dbh->changeInfo($_POST["nome"], $_POST["cognome"], $_POST["mail"], $_POST["sex"], $_POST["cod_unibo"], $_POST["consegna"], $_POST["pagamento"]);
+    $check = $dbh->changeInfo($_POST);
     
     if($check){}
         header("Location: ./login.php");

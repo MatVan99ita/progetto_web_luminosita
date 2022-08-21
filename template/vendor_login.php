@@ -16,43 +16,36 @@ $user = $templateParams["user"];
         </thead>
         <tbody>
             <tr>
-                <th scope="row" style="width: 10%">•</th>
-                <td style="width: 100px"><h5>Referente:</h5></td>
-                <td style="width: 100px"><?php echo $user["Nome"]." ".$user["Cognome"]; ?></td>
+                <td><h5>Referente:</h5></td>
+                <td><?php echo $user["Nome"]." ".$user["Cognome"]; ?></td>
             </tr>
 
             <tr>
-                <th scope="row">•</th>
                 <td><h5>Azienda:</h5></td>
                 <td><?php echo $user["nomeAzienda"]; ?></td>
             </tr>
             
             <tr>
-                <th scope="row">•</th>
                 <td><h5>Mail:</h5></td>
                 <td><?php echo $user["Email"]; ?></td>
             </tr>
             
             <tr>
-                <th scope="row">•</th>
                 <td><h5>Tel:</h5></td>
                 <td><?php echo $user["contatto"]; ?></td>
             </tr>
             
             <tr>
-                <th scope="row">•</th>
                 <td><h5>Indirizzo:</h5></td>
                 <td><?php echo $user["indirizzo"]; ?></td>
             </tr>
             
             <tr>
-                <th scope="row">•</th>
                 <td><h5>Orari di consegna:</h5></td>
                 <td><?php echo $user["orariConsegna"]; ?></td>
             </tr>
             
             <tr>
-                <th scope="row">•</th>
                 <td><h5>Descrizione:</h5></td>
                 <td><?php echo $user["descrizione"]; ?></td>
             </tr>
@@ -178,9 +171,9 @@ foreach($templateParams["foods"] as $art):
                         <h4 class="price card-text">Prezzo: <span><?php echo $art["prezzo"]; ?>€</span></h4>
                         <h4 class="price">Quantità disponibile: <span><?php echo $art["quantity"]; ?></span></h4>
                         <div class="action">
-                            <a href="product_edit.php?edit-type=update&id=<?php echo $art["prodottoID"]; ?>" class="like btn btn-warning m-1" type="button">modifica</a>
-                            <a href="product_edit.php?edit-type=refill&id=<?php echo $art["prodottoID"]; ?>" class="like btn btn-success m-1" type="button">refill</a>
-                            <a href="productDelete.php?delete&id=<?php echo $art["prodottoID"]; ?>" class="like btn btn-danger m-1" type="button">rimuovi</a>
+                            <a href="product_edit.php?edit-type=update&id=<?php echo $art["prodottoID"]; ?>" class="like btn btn-warning m-1">modifica</a>
+                            <a href="product_edit.php?edit-type=refill&id=<?php echo $art["prodottoID"]; ?>" class="like btn btn-success m-1">refill</a>
+                            <a href="productDelete.php?delete&id=<?php echo $art["prodottoID"]; ?>" class="like btn btn-danger m-1">rimuovi</a>
                         </div>
                     </div>
                 </div>
@@ -190,7 +183,7 @@ foreach($templateParams["foods"] as $art):
     <?php endforeach; ?>
     
 
-    <a href="product_edit.php?edit-type=new&id=-1" class="like btn btn-success m-1" type="button">
+    <a href="product_edit.php?edit-type=new&id=-1" class="like btn btn-success m-1">
         Aggiungi un nuovo prodotto
     </a>
 </div>

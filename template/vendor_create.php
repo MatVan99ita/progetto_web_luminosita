@@ -23,27 +23,27 @@
         </div>
 
         <div class="form-group">
-            <label for="inputSurname">Nome azienda *</label>
-            <input id="inputSurname" name="inputAzienda" type="text" class="form-control" placeholder="Nome dell'azienda" required>
+            <label for="inputNomeAzienda">Nome azienda *</label>
+            <input id="inputNomeAzienda" name="inputAzienda" type="text" class="form-control" placeholder="Nome dell'azienda" required>
         </div>
 
         <div class="form-group">
-            <label for="inputSurname">Indirizzo *</label>
-            <input id="inputSurname" name="inputIndirizzo" type="text" class="form-control" placeholder="(Ex.: via Paolo Rossi, 15)" required>
+            <label for="inputAdress">Indirizzo *</label>
+            <input id="inputAdress" name="inputIndirizzo" type="text" class="form-control" placeholder="(Ex.: via Paolo Rossi, 15)" required>
         </div>
 
         <div class="form-group">
-            <label for="inputSurname">Orari di consegna</label>
-            <input id="inputSurname" name="inputOrari" type="text" class="form-control" placeholder="(Ex.: 9:00/10:30 - 12:30/17:45) Default => 8:00/20:00">
+            <label for="inputOrari">Orari di consegna</label>
+            <input id="inputOrari" name="inputOrari" type="text" class="form-control" placeholder="(Ex.: 9:00/10:30 - 12:30/17:45) Default => 8:00/20:00">
         </div>
 
         <div class="form-group">
-            <label for="inputSurname">Contatto *</label>            
-            <input id="inputSurname" name="inputContatti" class="form-control" type="tel" pattern="[0-9]{10}" placeholder="(+39) 000 000 00 00">
+            <label for="inputTel">Contatto *</label>            
+            <input id="inputTel" name="inputContatti" class="form-control" type="tel" pattern="[0-9]{10}" placeholder="(+39) 000 000 00 00">
         </div>
 
         <div class="form-group">
-            <label for="inputSurname">Descrizione dell'azienda</label>
+            <label for="inputDescr">Descrizione dell'azienda</label>
             <textarea id="inputDescr" name="inputDescr" rows="2" cols="50" class="form-control"></textarea>
         </div>
 
