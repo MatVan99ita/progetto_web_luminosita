@@ -847,10 +847,13 @@ body {
 }
 
 .notif_head_info > table {
+    width: 100%;
     border-bottom: 1px solid #eee;
     border-collapse: collapse;
     color: #999;
 }
+
+
 
 .td_pay{
     width: 50%; 

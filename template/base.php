@@ -158,7 +158,7 @@
             <?php if(isset($_COOKIE["logged"]) && isset($_COOKIE["mail"]) && isset($_COOKIE["id"])): ?>
                 <a id="notification_link" class="nav-link active cart mt-2" href="notifications_list.php">
                     <img id="notification_img" class="img-fluid" style="width: 50px" src="<?php echo UPLOAD_DIR."bell.png"; ?>" alt="cart" />
-                    Notifiche (<span class="">0</span>)
+                    Notifiche (<span class=""><?php echo $templateParams["toReadNotif"]; ?></span>)
                 </a>
             <?php endif; ?>
 

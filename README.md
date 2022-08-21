@@ -31,9 +31,7 @@ NOTA ACCESS:
       ~ CAMBIO DATI VENDOR
       ~ CREAZIONE VENDOR
       ~ LISTA NOTIFICHE VENDOR(id duplicati ma quelli servono)
-
-TODO per access:
-   notifica vendor
+      ~ NOTIFICA VENDOR
 
 
 
