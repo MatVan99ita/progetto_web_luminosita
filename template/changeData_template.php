@@ -2,9 +2,10 @@
 <?php
 $url = parse_url($_SERVER['REQUEST_URI'], $component = -1);
 $query = explode("&", $url["query"]);
+$dbh->printFormattedArray($query);
 ?>
 <div id="login_form" class="container justify-content-center col-md-12">
-    <form action="change_edit.php?<?php echo $query[0]; ?>" method="POST">
+    <form action="<?php echo "change_edit.php?".$query[0]; ?>" method="POST">
 <?php if($query[0] == "passData"): ?>
         <h2>Cambio password</h2>
         <div class="form-group">
@@ -32,24 +33,6 @@ $query = explode("&", $url["query"]);
             <input type="password" class="form-control" id="InputPassword2" name="InputPassword2" pattern = "(?=.*\d)(?=.*[a-z])(?=.*?[0-9])(?=.*?[~`!@#$%^&amp;*()_=+\[\]{};:&apos;.,&quot;\\|\/?&gt;&lt;-]).{8,}" placeholder="Repeat new password" required>
             <div style="margin-top: 7px;" id="CheckPasswordMatch"></div>
         </div>
-        </form>
-    
-    <div>
-        <?php if(isset($templateParams["erroreCreazione"])): ?>
-            <p style="color: red"><?php echo $templateParams["erroreCreazione"]; ?></p>
-        <?php endif;?>
-    </div>
-    
-    <div id="pswd_info">
-        <h4>Password must meet the following requirements:</h4>
-        <ul>
-            <li id="letter" class="invalid">At least <strong>one letter</strong></li>
-            <li id="capital" class="invalid">At least <strong>one capital letter</strong></li>
-            <li id="number" class="invalid">At least <strong>one number</strong></li>
-            <li id="length" class="invalid">Be at least <strong>8 characters</strong></li>
-            <li id="special" class="invalid">At least <strong>1 special character(Ex.: .,_?! etc...)</strong></li>
-        </ul>
-    </div>
 <?php
 elseif ($query[0] == "datas" && $_COOKIE["vendors"]==0):
     $utente = $dbh->getAllUserLoggedInfo($_COOKIE["mail"], $_COOKIE["id"]);
@@ -184,4 +167,23 @@ elseif ($query[0] == "datas" && $_COOKIE["vendors"]==0):
             </a>
         </div>
     </form>
+
+    <?php if($query[0] == "passData"): ?>
+    <div>
+        <?php if(isset($templateParams["erroreCreazione"])): ?>
+            <p style="color: red"><?php echo $templateParams["erroreCreazione"]; ?></p>
+        <?php endif;?>
+    </div>
+    
+    <div id="pswd_info">
+        <h4>Password must meet the following requirements:</h4>
+        <ul>
+            <li id="letter" class="invalid">At least <strong>one letter</strong></li>
+            <li id="capital" class="invalid">At least <strong>one capital letter</strong></li>
+            <li id="number" class="invalid">At least <strong>one number</strong></li>
+            <li id="length" class="invalid">Be at least <strong>8 characters</strong></li>
+            <li id="special" class="invalid">At least <strong>1 special character(Ex.: .,_?! etc...)</strong></li>
+        </ul>
+    </div>
+    <?php endif; ?>
 </div>

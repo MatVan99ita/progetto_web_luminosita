@@ -2,8 +2,17 @@ NOTA:
    ricordarsi di usare sempre questo (https://webaim.org/resources/contrastchecker/)
 https://validator.w3.org/#validate_by_input
 
-TODO:
-   sistemare qualche dettaglino a grafica cellularosa
+IMPORTANTE:
+   importare il db dall'apposito file nella cartella `db`
+   account utente già esistente:
+      mail: 	matteo.vanni2@studio.unibo.it
+      pass:    Banana33!
+
+   account vendor già esistente:
+      mail:    panificio_rossi@ilforno.org
+      pass:    Banana33_
+
+
 
 NOTA ACCESS:
       disabled e aria-controls -> errori da ignorare

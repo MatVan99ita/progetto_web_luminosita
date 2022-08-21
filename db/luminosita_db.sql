@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Creato il: Ago 21, 2022 alle 11:11
+-- Creato il: Ago 21, 2022 alle 12:43
 -- Versione del server: 10.4.24-MariaDB
 -- Versione PHP: 7.4.29
 
@@ -196,13 +196,13 @@ CREATE TABLE `utente` (
 
 INSERT INTO `utente` (`UserID`, `Nome`, `Cognome`, `Email`, `password`, `salt`, `vendors`) VALUES
 (5, 'Giuseppe', 'Verdi', 'carnaza&grill@gmail.com', 'Bbq345.', '', 1),
-(41, 'Paperino', 'Papero', 'matteo.vanni2@studio.unibo.it', 'afe6ea1dab0794c64c54d074412f384ad42ec00e2b7e656aa8a5b7fe2da1d8f9a0620040061c2a51792c3d0a64022c97efda00c40933c667bafce6d6570191ee', '1c0de521759998d18d16e32a909b948a184e47577aa4aed37490de03715aa773989815f5ed2dda4caeaeac48c3b58195e8cd3b32049ab3a91bb76f672130f2e9', 0),
+(41, 'Paperino', 'Papero', 'matteo.vanni2@studio.unibo.iteeeeeeee', 'afe6ea1dab0794c64c54d074412f384ad42ec00e2b7e656aa8a5b7fe2da1d8f9a0620040061c2a51792c3d0a64022c97efda00c40933c667bafce6d6570191ee', '1c0de521759998d18d16e32a909b948a184e47577aa4aed37490de03715aa773989815f5ed2dda4caeaeac48c3b58195e8cd3b32049ab3a91bb76f672130f2e9', 0),
 (42, 'Paperino', 'Papero', 'gino.pippo@hotmail.comfvrbef', '261110e633863e29807599720754bae28543c8faeb3aca8f06d5ab797f56511548e523a0a6b02c92b8ae32c565bc4ffa80058a06c93d5777924de911289339a3', '53e2e5d43ea25a7d50b3f482df82b46894a864cf972b3fdfa86926de0664ac2a3bb0c91c564cd6ac15c956114ef570fdfc580c2f5539da98ebf86526b73c7ac1', 0),
 (43, 'Paperino', 'e', 'matteo.vanni2@studio.unibo.itfvcdfvcd', '2c5cbf4f6bd5cd61214853fad016b20ac41ec14098c4ab8ea731b0f735b22f961a1eae9b31ee6fb0dc686aef0afa443b596d3513f9837bacc8b0e69b2bded43f', '7e1f85be355895139f178d2f0066b86604079e8b7da94104119fb72cf2bf91de06d7784ea87724a1f221db5e1870b77471ca94022a1e9ee54051bdd3c757b5a0', 0),
 (44, 'bilbo', 'e', 'paperaino@topolinia.orguygfcdxsdfv', 'eb902215f85df81547178c19eb1d542f8425bbf1dc6cb185efaa79c0d744435212e633bd76666a4cb373e80275c7a66307698a0e1df0e10eb0acdcf8d4754adc', '1f6484bb037e685fed601de2c63d15c5a8e613d3c1937cc3f0e81061901e95605478d64c32474ae74f3d7dab421bdfb6ea57417a725611930a04bbaab8c5adf7', 0),
 (45, 'Gino', 'Pippo', 'gino.pippo@hotmail.comvbvfdfvv', 'b391a429fc4d70ffe65528008cc8b68db7699fa0e0b5a14b2b55db43221364dc7ed158fb68c6b89827e15f081183e89f3498669c2580b02d0a074d018ff3ee0a', '3605487a8908eb12541771acc97cc0ff0c335438a1ab234f8dd1a52b6446dc73d319cb8ac628bc8d962424fb70e3f0432b2d6c155917ccbb15a058669102a44c', 0),
-(46, 'Matteo', 'Vanni', 'vannicraft@gmail.com', 'da839cb302ccb3938c065efdd5895e720fc21e9b2bb1de27819f3c889be62db539a7da5aac1ef451eceffb4e9b3cd94aa6307ec0fb40e663dc9a479c7c74fbd2', '8a8cc9543668a888b7e7d106f31952030b6a4206ffaf6d063d6ab69c932f299ccf321688bf69ab9261a169ea86cfccbdfd8d1e96adab820645cd564e3ac10a04', 0),
-(48, 'Mario', 'Rossi', 'panificio_rossi@ilforno.org', 'ae5bc4f3da50508e3c03252b0a5a9cecfbf60848e486b2205bdbaf71c59e96fd330465b0024fa3594a8381162ea2a14d34c7a006dde3e69a5f97320e2c140c5b', 'f006c92afac7b4c78752f1735dd5f35cd7589c3775ed1305f9aa8d66f648a18f546533555f6b895373753100ff14be454888600c8c8a3e0bed311eb719097416', 1);
+(46, 'Matteo', 'Vanni', 'matteo.vanni2@studio.unibo.it', 'da839cb302ccb3938c065efdd5895e720fc21e9b2bb1de27819f3c889be62db539a7da5aac1ef451eceffb4e9b3cd94aa6307ec0fb40e663dc9a479c7c74fbd2', '8a8cc9543668a888b7e7d106f31952030b6a4206ffaf6d063d6ab69c932f299ccf321688bf69ab9261a169ea86cfccbdfd8d1e96adab820645cd564e3ac10a04', 0),
+(48, 'Mario', 'Rossi', 'panificio_rossi@ilforno.org', 'fbd7aa6adcde0c254a421f46403779dd0e47203f274f68dd637481a35bfa7e2128a061dd73cd890518737ce8dd087023317fe5482078f140f8e80e30164f90fe', 'f006c92afac7b4c78752f1735dd5f35cd7589c3775ed1305f9aa8d66f648a18f546533555f6b895373753100ff14be454888600c8c8a3e0bed311eb719097416', 1);
 
 -- --------------------------------------------------------
 
@@ -226,7 +226,7 @@ CREATE TABLE `venditore` (
 
 INSERT INTO `venditore` (`vendorID`, `nomeAzienda`, `indirizzo`, `orariConsegna`, `contatto`, `descrizione`, `userID`) VALUES
 (2, 'Carnaza & Grill', 'via diqua', 'Mattina 11:00 - 14:00\r\nPomeriggio/Sera 17:20 - 22:15', '0', 'Per le grigliate universitarie', 5),
-(3, 'Panificio Rossi', 'via Rossificio, 15', 'Lun/Ven - 11:00/14:00', '1234567890', 'Il camioncino nel parcheggio fico fico', 48);
+(3, 'Panificio Rossi', 'via Rossificio, 15', 'Lun/Ven - 11:00/14:00', '1234567890', 'Il camioncino nel parcheggio', 48);
 
 --
 -- Indici per le tabelle scaricate

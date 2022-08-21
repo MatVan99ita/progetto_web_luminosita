@@ -61,7 +61,7 @@ $user = $templateParams["user"];
                 Cambia password
             </a>
 
-            <a href="login.php" onclick="deleteAllCookies()" class="btn btn-danger m-1">
+            <a href="logout.php" onclick="deleteAllCookies()" class="btn btn-danger m-1">
                 Logout
             </a>
         </div>

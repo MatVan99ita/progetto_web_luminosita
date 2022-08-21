@@ -280,7 +280,6 @@ class DatabaseHelper{
 
     public function changePassword($old_pass, $new_pass){
         $db_privates = $this->getHashedPassword();
-
         $salt = $db_privates["salt"];
         $db_old_pass = $db_privates["password"];
 
@@ -291,9 +290,9 @@ class DatabaseHelper{
             return false;
         }
 
-        $sql = "UPDATE `utente` SET `password`= $new_pass WHERE `Email`= ? AND `UserID` = ?;";
+        $sql = "UPDATE `utente` SET `password`= ? WHERE `Email`= ? AND `UserID` = ?;";
         $stmt = $this->db->prepare($sql);
-        $stmt->bind_param('ss', $_COOKIE["mail"], $_COOKIE["id"]);
+        $stmt->bind_param("sss", $new_pass, $_COOKIE["mail"], $_COOKIE["id"]);
         $stmt->execute();
         return true;
     }
@@ -434,10 +433,11 @@ class DatabaseHelper{
         echo($info[0]['password']);*/
 
         if($password == $info[0]["password"]){
-            setcookie("id", $info[0]["UserID"]);
-            setcookie("mail", $mail);
-            setcookie("logged", true);
-            setcookie("vendors", $info[0]["vendors"]);
+            $inTwoMonths = 60 * 60 * 24 * 60 + time();
+            setcookie("id", $info[0]["UserID"], $inTwoMonths);
+            setcookie("mail", $mail, $inTwoMonths);
+            setcookie("logged", true, $inTwoMonths);
+            setcookie("vendors", $info[0]["vendors"], $inTwoMonths);
             return $info;
         }
     }
